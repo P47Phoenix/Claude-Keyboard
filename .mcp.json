@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "kicad": {
+      "command": "distrobox",
+      "args": [
+        "enter",
+        "kicad",
+        "--",
+        "/home/meconnelly/.local/share/kicad-mcp/.venv/bin/kicad-mcp"
+      ]
+    }
+  }
+}
