@@ -370,11 +370,13 @@ def build_lib_symbols():
     ))
     # P-MOSFET (DMG3415U-7) — pin numbers match SOT-23 Diodes DS31735:
     # pin1 = Gate, pin2 = Source, pin3 = Drain
+    # Cycle 9 B1 Y-flip: Source (pin 2) lib y inverted so it lands at
+    # sheet y=anchor+5.08 to match the wire emitter (`520, 50.08`).
     s.append(sym_def(
         "local:Q_PMOS", "Q", "PMOS_SOT23",
-        [{"name": "G", "number": "1", "x": -5.08, "y": 0, "angle": 0},
-         {"name": "S", "number": "2", "x": 0, "y": 5.08, "angle": 270},
-         {"name": "D", "number": "3", "x": 0, "y": -5.08, "angle": 90}],
+        [{"name": "G", "number": "1", "x": -5.08, "y":  0,    "angle": 0},
+         {"name": "S", "number": "2", "x":  0,    "y": -5.08, "angle": 270},
+         {"name": "D", "number": "3", "x":  0,    "y":  5.08, "angle": 90}],
         body="(rectangle (start -2.54 -2.54) (end 2.54 2.54) "
              "(stroke (width 0.254) (type default)) (fill (type none)))",
     ))
@@ -386,37 +388,61 @@ def build_lib_symbols():
         body="(circle (center -2.032 0) (radius 0.508) (stroke (width 0) (type default)) (fill (type none))) "
              "(circle (center 2.032 0) (radius 0.508) (stroke (width 0) (type default)) (fill (type none)))",
     ))
-    # SK6812MINI-E
+    # SK6812MINI-E -- Cycle 9 B1 (Y-flip): pin Y signs inverted to align
+    # with sheet-coordinate wire emitters in build_schematic. Pin 1
+    # (VDD) lands at sheet y=anchor+2.54 (BELOW anchor in sheet space)
+    # to match the `wire(.., ly+2.54)` calls.
     s.append(sym_def(
         "local:LED_RGB", "LED", "SK6812MINI-E",
-        [{"name": "VDD", "number": "1", "x": -6.35, "y": 2.54, "angle": 0, "etype": "power_in"},
-         {"name": "DOUT", "number": "2", "x": 6.35, "y": 2.54, "angle": 180, "etype": "output"},
-         {"name": "GND", "number": "3", "x": -6.35, "y": -2.54, "angle": 0, "etype": "power_in"},
-         {"name": "DIN", "number": "4", "x": 6.35, "y": -2.54, "angle": 180, "etype": "input"}],
+        [{"name": "VDD",  "number": "1", "x": -6.35, "y": -2.54, "angle": 0,   "etype": "power_in"},
+         {"name": "DOUT", "number": "2", "x":  6.35, "y": -2.54, "angle": 180, "etype": "output"},
+         {"name": "GND",  "number": "3", "x": -6.35, "y":  2.54, "angle": 0,   "etype": "power_in"},
+         {"name": "DIN",  "number": "4", "x":  6.35, "y":  2.54, "angle": 180, "etype": "input"}],
         body="(rectangle (start -3.81 3.81) (end 3.81 -3.81) "
              "(stroke (width 0.254) (type default)) (fill (type none)))",
     ))
     # SPDT slide (SS-12D00G4): pin 2 = common, pins 1 & 3 = throws (TH, 2.54 mm)
+    # Cycle 9 B1 Y-flip: pin 1 lib y inverted so sheet pin 1 lands at
+    # anchor+2.54 to match the wire emitter's `120 + 2.54`.
     s.append(sym_def(
         "local:SW_SPDT", "SW", "SPDT_SS12D00G4",
-        [{"name": "1", "number": "1", "x": -6.35, "y": 2.54, "angle": 180},
-         {"name": "COM", "number": "2", "x": -6.35, "y": 0, "angle": 0},
-         {"name": "3", "number": "3", "x": -6.35, "y": -2.54, "angle": 180}],
+        [{"name": "1",   "number": "1", "x": -6.35, "y": -2.54, "angle": 180},
+         {"name": "COM", "number": "2", "x": -6.35, "y":  0,    "angle": 0},
+         {"name": "3",   "number": "3", "x": -6.35, "y":  2.54, "angle": 180}],
         body="(rectangle (start -3.81 3.81) (end 3.81 -3.81) "
              "(stroke (width 0.254) (type default)) (fill (type background)))",
     ))
-    # EC11
+    # EC11 rotary encoder + push-switch (C255515 / Alps EC11E clone)
+    # Cycle 9 B1 fix: KiCad library-symbol Y is up-positive but the
+    # schematic Y is down-positive. Cycles 1-8 used lib-up Y (+5.08 for
+    # pin 1) while the wire/global-label emitter used sheet-down Y for
+    # the same position -- so ENC_A ended up electrically on pin 3 (B)
+    # and ENC_B on pin 1 (A); pins 4/5 likewise swapped (ENC_SW to the
+    # GND lug, GND to the switch pin). The PCB was correct; the
+    # schematic was the offender. Y signs here are now
+    # correct-for-sheet-coordinates, and MP1/MP2 are the two mounting
+    # lugs (both tied to GND for ESD per Cycle 3 M13); their PCB pads
+    # share the same "MP1"/"MP2" labels.
     s.append(sym_def(
         "local:EC11", "EC", "EC11",
-        [{"name": "A", "number": "1", "x": -7.62, "y": 5.08, "angle": 0, "etype": "input"},
-         {"name": "C", "number": "2", "x": -7.62, "y": 0, "angle": 0, "etype": "input"},
-         {"name": "B", "number": "3", "x": -7.62, "y": -5.08, "angle": 0, "etype": "input"},
-         {"name": "SW1", "number": "4", "x": 7.62, "y": 5.08, "angle": 180, "etype": "input"},
-         {"name": "SW2", "number": "5", "x": 7.62, "y": -5.08, "angle": 180, "etype": "input"}],
+        [{"name": "A",   "number": "1",   "x": -7.62, "y": -5.08, "angle": 0,   "etype": "input"},
+         {"name": "C",   "number": "2",   "x": -7.62, "y":  0.00, "angle": 0,   "etype": "input"},
+         {"name": "B",   "number": "3",   "x": -7.62, "y":  5.08, "angle": 0,   "etype": "input"},
+         {"name": "SW1", "number": "4",   "x":  7.62, "y": -5.08, "angle": 180, "etype": "input"},
+         {"name": "SW2", "number": "5",   "x":  7.62, "y":  5.08, "angle": 180, "etype": "input"},
+         {"name": "MP1", "number": "MP1", "x":  0.00, "y":  8.89, "angle": 90,  "etype": "passive"},
+         {"name": "MP2", "number": "MP2", "x":  0.00, "y":  10.16, "angle": 90,  "etype": "passive"}],
         body="(rectangle (start -5.08 7.62) (end 5.08 -7.62) "
              "(stroke (width 0.254) (type default)) (fill (type background)))",
     ))
-    # XIAO nRF52840 (14 front castellations + BAT+/BAT- rear pads)
+    # XIAO nRF52840 (14 front castellations + BAT+/BAT- rear pads).
+    # Cycle 9 B1 fix: pin (at) coords now use the body-edge X
+    # convention (lib_x = +/-7.62 = body width 5.08 + pin length 2.54)
+    # and sheet-Y-down lib_y so KiCad's wire-to-pin geometry matches
+    # the wire emitter. Pre-Cycle-9 used lib_x=+/-10.16, which placed
+    # the pin (at) point 2.54 mm OUTSIDE the wire start -- wires were
+    # silently disconnected (404 unconnected MCU pins on the
+    # GUI parity DRC).
     xiao_pins = []
     lbl = {
         1: "VUSB", 2: "GND", 3: "3V3",
@@ -428,35 +454,37 @@ def build_lib_symbols():
     for i in range(1, 15):
         xiao_pins.append({
             "name": lbl[i], "number": str(i),
-            "x": -10.16, "y": 16.51 - (i - 1) * 2.54,
-            "angle": 0,
+            "x": -7.62, "y": -(16.51 - (i - 1) * 2.54),
+            "angle": 180,
             "etype": "power_in" if i in (1, 2, 3) else "bidirectional",
         })
     xiao_pins.append({"name": "BAT+", "number": "15",
-                      "x": 10.16, "y": 2.54, "angle": 180, "etype": "power_in"})
+                      "x": 7.62, "y": -2.54, "angle": 0, "etype": "power_in"})
     xiao_pins.append({"name": "BAT-", "number": "16",
-                      "x": 10.16, "y": -2.54, "angle": 180, "etype": "power_in"})
+                      "x": 7.62, "y":  2.54, "angle": 0, "etype": "power_in"})
     s.append(sym_def(
         "local:XIAO_nRF52840", "U", "XIAO_nRF52840",
         xiao_pins,
         body="(rectangle (start -5.08 20.32) (end 5.08 -20.32) "
              "(stroke (width 0.254) (type default)) (fill (type background)))",
     ))
-    # NFC 4-pin header
+    # NFC 4-pin header -- Cycle 9 B1 Y-flip: pin Y signs inverted so
+    # sheet pin (1..4) lands at anchor + (3.81 - (i-1)*2.54).
     s.append(sym_def(
         "local:ConnHeader4", "J", "Header4",
         [{"name": str(i), "number": str(i), "x": -5.08,
-          "y": 3.81 - (i - 1) * 2.54, "angle": 0}
+          "y": -(3.81 - (i - 1) * 2.54), "angle": 0}
          for i in range(1, 5)],
         body="(rectangle (start -2.54 5.08) (end 2.54 -5.08) "
              "(stroke (width 0.254) (type default)) (fill (type background)))",
     ))
-    # 2-pin connector (JST)
+    # 2-pin connector (JST) -- Cycle 9 B1 Y-flip: pin 1 lib y inverted
+    # so sheet pin 1 lands at anchor+1.27 to match the wire emitter.
     s.append(sym_def(
         "local:ConnHeader2", "J", "Header2",
-        [{"name": "1", "number": "1", "x": -5.08, "y": 1.27, "angle": 0,
+        [{"name": "1", "number": "1", "x": -5.08, "y": -1.27, "angle": 0,
           "etype": "power_out"},
-         {"name": "2", "number": "2", "x": -5.08, "y": -1.27, "angle": 0,
+         {"name": "2", "number": "2", "x": -5.08, "y":  1.27, "angle": 0,
           "etype": "power_out"}],
         body="(rectangle (start -2.54 2.54) (end 2.54 -2.54) "
              "(stroke (width 0.254) (type default)) (fill (type background)))",
@@ -514,20 +542,33 @@ def build_lib_symbols():
 
 def sch_symbol(lib_id, ref, value, x, y, angle, unit_tag, extra_props=None,
                footprint="", lcsc="", description="", pin_count=None,
-               is_dnp=False):
+               is_dnp=False, pin_numbers=None):
     extra_props = extra_props or {}
     default_pc = {
         "local:R": 2, "local:C": 2, "local:D": 2, "local:TVS": 2,
         "local:NTC": 2, "local:SW_Push": 2, "local:ConnHeader2": 2,
         "local:ConnHeader4": 4, "local:Fuse": 2,
-        "local:LED_RGB": 4, "local:SW_SPDT": 3, "local:EC11": 5,
+        "local:LED_RGB": 4, "local:SW_SPDT": 3,
+        # Cycle 9 B1: EC11 now has 7 pins (5 electrical + 2 mounting lugs);
+        # alphanumeric numbers pinned through pin_numbers_by_lib below.
+        "local:EC11": 7,
         "local:Q_PMOS": 3, "local:XIAO_nRF52840": 16,
     }
+    # Libs whose pin "numbers" are not simply 1..N (Cycle 9 B1: EC11's
+    # mounting-lug pads are labelled "MP1"/"MP2" on the PCB side, so the
+    # matching symbol pins must use the same string numbers for the
+    # schematic-parity cross-check to resolve).
+    pin_numbers_by_lib = {
+        "local:EC11": ["1", "2", "3", "4", "5", "MP1", "MP2"],
+    }
     pc = pin_count if pin_count is not None else default_pc.get(lib_id, 2)
+    if pin_numbers is None:
+        pin_numbers = pin_numbers_by_lib.get(lib_id,
+                                             [str(i + 1) for i in range(pc)])
     sym_uuid = U(f"sym_{unit_tag}")
     pin_lines = "".join(
-        f'\t\t(pin "{i+1}" (uuid "{U(f"pin_{unit_tag}_{i+1}")}"))\n'
-        for i in range(pc)
+        f'\t\t(pin "{pn}" (uuid "{U(f"pin_{unit_tag}_{pn}")}"))\n'
+        for pn in pin_numbers
     )
     prop_extra = ""
     if lcsc:
@@ -544,11 +585,15 @@ def sch_symbol(lib_id, ref, value, x, y, angle, unit_tag, extra_props=None,
     eff_ref = ref if not is_power else f"#PWR_{unit_tag}"
     eff_value = value if not is_power else lib_id.split(":", 1)[1]
     dnp_flag = "yes" if is_dnp else "no"
+    # Cycle 9: DNP parts are excluded from BOM on the PCB side
+    # (`attr ... exclude_from_bom`), so the schematic must match --
+    # `in_bom no`. Non-DNP parts remain `in_bom yes`.
+    dnp_flag_inverse = "no" if is_dnp else "yes"
     return (
         f'\t(symbol\n'
         f'\t\t(lib_id "{lib_id}")\n'
         f'\t\t(at {x} {y} {angle}) (unit 1)\n'
-        f'\t\t(exclude_from_sim no) (in_bom yes) (on_board yes) (dnp {dnp_flag})\n'
+        f'\t\t(exclude_from_sim no) (in_bom {dnp_flag_inverse}) (on_board yes) (dnp {dnp_flag})\n'
         f'\t\t(uuid "{sym_uuid}")\n'
         f'\t\t(property "Reference" "{eff_ref}" (at {x+5} {y} 0) (effects (font (size 1.27 1.27))))\n'
         f'\t\t(property "Value" "{eff_value}" (at {x+5} {y+3} 0) (effects (font (size 1.27 1.27))))\n'
@@ -599,6 +644,9 @@ def build_schematic():
         footprint="local:XIAO_nRF52840_Castellated",
         lcsc="C2888140",
         description="Seeed XIAO nRF52840 (direct-solder castellations)",
+        # Cycle 9: BOM marks U1 DNP (hand-installed via castellations);
+        # PCB fp_xiao_nrf52840 sets DNP_ATTR -- match here too.
+        is_dnp=True,
     ))
     # Cycle 3 pin-map (14 front pins + 2 rear BAT pads). Post Option B the
     # +3V3_SYS net is gone; XIAO's 3V3 pin drives the whole +3V3 rail.
@@ -623,16 +671,17 @@ def build_schematic():
     ]
     for pin, net in xiao_map:
         if pin <= 14:
+            # Cycle 9 B1: XIAO sym pin (at) is now at lib_x=-7.62 (was
+            # -10.16); wire starts at the pin (at) point.
             ly = mcu_y + 16.51 - (pin - 1) * 2.54
-            lx = mcu_x - 10.16
-            out.append(wire(mcu_x - 7.62, ly, lx - 2.54, ly, f"mcu_p{pin}"))
-            out.append(gl(net, lx - 2.54, ly, 180))
+            out.append(wire(mcu_x - 7.62, ly, mcu_x - 12.70, ly, f"mcu_p{pin}"))
+            out.append(gl(net, mcu_x - 12.70, ly, 180))
         else:
             y_off = 2.54 if pin == 15 else -2.54
             ly = mcu_y + y_off
-            lx = mcu_x + 10.16
-            out.append(wire(lx, ly, lx + 2.54, ly, f"mcu_p{pin}"))
-            out.append(gl(net, lx + 2.54, ly, 0))
+            # Cycle 9 B1: pin 15/16 sym (at) is now lib_x=+7.62.
+            out.append(wire(mcu_x + 7.62, ly, mcu_x + 10.16, ly, f"mcu_p{pin}"))
+            out.append(gl(net, mcu_x + 10.16, ly, 0))
 
     # --- Back-pad breakout (ROW3/ROW4/ENC_A/ENC_B/ENC_SW/RGB_DIN/VBAT_ADC) ---
     # 7 signals rear-side in Cycle 4 (ROW3 moved here in C3 so D10 could
@@ -660,11 +709,16 @@ def build_schematic():
             d_ref = f"D{r}{c}"
             sx = sw_x0 + c * sw_dx
             sy = sw_y0 + r * sw_dy
+            # Cycle 9 B2: the PCB emits inline `local:SW_Kailh_HotSwap_MX`
+            # (geometrically Keebio MX_Only_HS + MX cutout); the
+            # schematic Footprint must match the PCB's LIB_ID exactly
+            # or parity DRC flags `footprint_symbol_mismatch`. Value
+            # "MX_HS" matches the PCB fp_switch_kailh Value property.
             out.append(sch_symbol(
-                "local:SW_Push", sw_ref, "Kailh_HS",
+                "local:SW_Push", sw_ref, "MX_HS",
                 sx, sy, 0, f"SW_{r}_{c}",
-                footprint=("Keebio:MX_Only_HS_2U" if is_2u(r, c)
-                           else "Keebio:MX_Only_HS"),
+                footprint=("local:SW_Kailh_HotSwap_MX_2U" if is_2u(r, c)
+                           else "local:SW_Kailh_HotSwap_MX"),
                 lcsc="C5184526",
                 description="MX hot-swap keyswitch (Keebio MX_Only_HS)",
             ))
@@ -706,7 +760,8 @@ def build_schematic():
         lx = rgb_x0 + 30 + (i // 13) * 44
         ly = rgb_y0 + 20 + (i % 13) * 14
         out.append(sch_symbol(
-            "local:LED_RGB", f"LED{led_idx}", "SK6812MINI-E",
+            # Cycle 9 B2: align Value with PCB fp_led_sk6812 Value ("SK6812").
+            "local:LED_RGB", f"LED{led_idx}", "SK6812",
             lx, ly, 0, f"LED_{led_idx}",
             footprint="LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm",
             lcsc="C5149201",
@@ -781,7 +836,8 @@ def build_schematic():
 
     # NFC header
     out.append(sch_symbol(
-        "local:ConnHeader4", "J_NFC", "NFC_PN532",
+        # Cycle 9 B2: align with PCB fp_header_4pin Value ("NFC").
+        "local:ConnHeader4", "J_NFC", "NFC",
         300, 120, 0, "J_NFC",
         footprint="Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
         lcsc="",
@@ -794,6 +850,10 @@ def build_schematic():
         out.append(gl(net, 300 - 7.62, ly, 180))
 
     # --- EC11 encoder + ESD TVS ---------------------------------------------
+    # Cycle 9 B1: symbol pin Y-signs flipped (see build_lib_symbols), so
+    # pin 1 (A) now renders at sheet y=center+5.08 and pin 3 (B) at
+    # sheet y=center-5.08 -- the ly_map below now matches. MP1/MP2
+    # mounting-lug pins added (both GND per M13).
     out.append(sch_symbol(
         "local:EC11", "EC1", "EC11",
         40, 240, 0, "EC1",
@@ -814,6 +874,14 @@ def build_schematic():
         else:
             out.append(wire(40 + 7.62, ly, 40 + 10.16, ly, f"ec1p{pin}"))
             out.append(gl(net, 40 + 10.16, ly, 0))
+    # MP1 / MP2 mounting lugs -- both GND (M13). Symbol pins MP1 at
+    # lib y=+8.89 -> sheet y=center-8.89=231.11; MP2 at lib y=+10.16
+    # -> sheet y=center-10.16=229.84 (remember: lib Y up-positive,
+    # sheet Y down-positive, so a positive lib Y anchors above the
+    # symbol in sheet space).
+    for pn, ly in [("MP1", 240 - 8.89), ("MP2", 240 - 10.16)]:
+        out.append(wire(40, ly, 40 - 2.54, ly, f"ec1_{pn}"))
+        out.append(gl("GND", 40 - 2.54, ly, 180))
 
     # TVS on ENC_A, ENC_B, ENC_SW -- same polarity fix as SDA/SCL
     for i, (tref, net) in enumerate([
@@ -862,7 +930,8 @@ def build_schematic():
     # which caused "Update PCB from Schematic" to silently revert the
     # PCB fix.
     out.append(sch_symbol(
-        "local:ConnHeader2", "J_BAT", "LiPo_JST-PH",
+        # Cycle 9 B2: align with PCB fp_jst_ph_2pin Value ("JST-PH-2P").
+        "local:ConnHeader2", "J_BAT", "JST-PH-2P",
         500, 40, 0, "J_BAT",
         footprint="Connector_JST:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal",
         lcsc="C295747",
@@ -931,7 +1000,8 @@ def build_schematic():
     # (Spec line said C89657 which is 200 mA; see DESIGN-NOTES §Cycle 3
     # §Deviations for justification -- we honour the "500 mA" number.)
     out.append(sch_symbol(
-        "local:Fuse", "F1", "PTC_500mA_0805",
+        # Cycle 9 B2: align with PCB fp_ptc_0805 Value ("PTC_500mA").
+        "local:Fuse", "F1", "PTC_500mA",
         500, 120, 0, "F1",
         footprint="Fuse:Fuse_0805_2012Metric",
         lcsc="C116170",
@@ -946,11 +1016,14 @@ def build_schematic():
     # throws. Wire common to VBAT_SW (post-fuse); one throw to VBAT (bus),
     # the other intentionally NC.
     out.append(sch_symbol(
-        "local:SW_SPDT", "SW_PWR", "SS-12D00G4",
+        # Cycle 9 B2: align with PCB fp_spdt Value ("SPDT").
+        "local:SW_SPDT", "SW_PWR", "SPDT",
         520, 120, 0, "SW_PWR",
         footprint="Button_Switch_THT:SW_Slide_1P2T_SS12D00G4",
         lcsc="C8325",
         description="SPDT slide power switch (TH, SS-12D00G4)",
+        # Cycle 9: BOM marks SW_PWR DNP (TH, hand-soldered).
+        is_dnp=True,
     ))
     # symbol pin 1 -> VBAT (ON throw)
     out.append(wire(520 - 6.35, 120 + 2.54, 520 - 8.89, 120 + 2.54, "swpwr1"))
@@ -971,6 +1044,8 @@ def build_schematic():
         470, 80, 0, "TH1",
         footprint="Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
         lcsc="C14128",
+        # Cycle 9: BOM marks TH1 DNP (axial THT, hand-soldered).
+        is_dnp=True,
         description="NTC 10k axial THT for battery temperature",
     ))
     out.append(wire(470, 80 - 3.81, 470, 80 - 6.35, "th1p1"))
@@ -1031,6 +1106,10 @@ def build_schematic():
     out.append(gl("GND", 550, 77 + 6.35, 270))
 
     # MCU-local bulk + bypass caps (VBAT bulk, 3V3 bulk, 3V3 decouple, VUSB decouple)
+    # Cycle 9 B4 fix: C5 (1 nF USB ground-bounce bypass) retired from
+    # both sides -- was removed from the PCB in Cycle 5 (see header
+    # note) but the schematic emitter still produced it, flagging a
+    # `missing_footprint` in the Cycle 9 parity DRC.
     for i, (cref, val, net, lcsc, desc, fp) in enumerate([
         ("C1", "22u",  "+3V3", "C45783",
          "3V3 bulk (near XIAO 3V3 pin)",  "Capacitor_SMD:C_0805_2012Metric"),
@@ -1040,8 +1119,6 @@ def build_schematic():
          "3V3 decoupling",                 "Capacitor_SMD:C_0402_1005Metric"),
         ("C4", "100n", "VUSB", "C1525",
          "USB 5V decoupling",              "Capacitor_SMD:C_0402_1005Metric"),
-        ("C5", "1n",   "VUSB", "C1540",
-         "USB 5V ground-bounce bypass",    "Capacitor_SMD:C_0402_1005Metric"),
     ]):
         cx = 620 + i * 10
         cy = 40
@@ -1340,7 +1417,7 @@ def fp_led_sk6812(ref, x, y, rotation, net_vdd, net_dout, net_gnd, net_din):
 
 def _smd_2pin(lib_name, ref, value, x, y, rotation, net_a, net_b,
               pad_size, pad_offset, body_h=0.6, layer="F.Cu",
-              rotation_hint="0", dnp=False):
+              rotation_hint="0", dnp=False, lcsc=""):
     uuid_fp = U(f"fp_{ref}")
     mirror = layer.startswith("B.")
     paste = "B.Paste" if mirror else "F.Paste"
@@ -1349,6 +1426,13 @@ def _smd_2pin(lib_name, ref, value, x, y, rotation, net_a, net_b,
     fab = "B.Fab" if mirror else "F.Fab"
     crtyd = "B.CrtYd" if mirror else "F.CrtYd"
     attr_flags = "smd " + DNP_ATTR if dnp else "smd"
+    # Cycle 9 B3: emit LCSC as a footprint property so the parity check
+    # resolves against the schematic symbol's LCSC field.
+    lcsc_prop = (
+        f'\t\t\t(property "LCSC" "{lcsc}" (at 0 0 {rotation}) (layer "{fab}") '
+        f'(hide yes) (uuid "{U(f"lc_{ref}")}") (effects (font (size 1 1) (thickness 0.15))))\n'
+        if lcsc else ""
+    )
     return textwrap.dedent(f'''\
         (footprint "{lib_name}"
             (layer "{layer}")
@@ -1362,7 +1446,7 @@ def _smd_2pin(lib_name, ref, value, x, y, rotation, net_a, net_b,
             (property "Datasheet" "" (layer "{fab}") (hide yes) (uuid "{U(f"d_{ref}")}") (effects (font (size 1.27 1.27))))
             (property "Description" "" (layer "{fab}") (hide yes) (uuid "{U(f"ds_{ref}")}") (effects (font (size 1.27 1.27))))
             (property "JLCPCB Rotation" "{rotation_hint}" (layer "{fab}") (hide yes) (uuid "{U(f"jr_{ref}")}") (effects (font (size 1 1) (thickness 0.15))))
-            (attr {attr_flags})
+{lcsc_prop}            (attr {attr_flags})
             (fp_line (start -{pad_offset+0.5} -{body_h}) (end {pad_offset+0.5} -{body_h}) (stroke (width 0.05) (type default)) (layer "{crtyd}") (uuid "{U(f"c1_{ref}")}"))
             (fp_line (start {pad_offset+0.5} -{body_h}) (end {pad_offset+0.5} {body_h}) (stroke (width 0.05) (type default)) (layer "{crtyd}") (uuid "{U(f"c2_{ref}")}"))
             (fp_line (start {pad_offset+0.5} {body_h}) (end -{pad_offset+0.5} {body_h}) (stroke (width 0.05) (type default)) (layer "{crtyd}") (uuid "{U(f"c3_{ref}")}"))
@@ -1373,37 +1457,47 @@ def _smd_2pin(lib_name, ref, value, x, y, rotation, net_a, net_b,
     ''')
 
 
-def fp_0402(ref, value, x, y, rotation, net_a, net_b, layer="F.Cu", dnp=False):
-    return _smd_2pin("Resistor_SMD:R_0402_1005Metric", ref, value, x, y, rotation,
+def fp_0402(ref, value, x, y, rotation, net_a, net_b, layer="F.Cu", dnp=False,
+            kind="R", lcsc=""):
+    """0402 SMD 2-pin. Pad geometry is identical for R and C, but the PCB
+    footprint LIB_ID must match the schematic symbol's Footprint field
+    or the Cycle 9 parity DRC flags `footprint_symbol_mismatch`. Default
+    `kind="R"` preserves pre-Cycle-9 behaviour; pass `kind="C"` for
+    capacitors (CL1..CL25, C3, C4, C_ENC1, C_VBAT1)."""
+    lib = "Capacitor_SMD:C_0402_1005Metric" if kind == "C" else "Resistor_SMD:R_0402_1005Metric"
+    return _smd_2pin(lib, ref, value, x, y, rotation,
                      net_a, net_b, pad_size=(0.65, 0.7), pad_offset=0.5,
-                     body_h=0.5, layer=layer, rotation_hint="0", dnp=dnp)
+                     body_h=0.5, layer=layer, rotation_hint="0", dnp=dnp,
+                     lcsc=lcsc)
 
 
-def fp_0603(ref, value, x, y, rotation, net_a, net_b, layer="F.Cu"):
+def fp_0603(ref, value, x, y, rotation, net_a, net_b, layer="F.Cu", lcsc=""):
     return _smd_2pin("Capacitor_SMD:C_0603_1608Metric", ref, value, x, y, rotation,
                      net_a, net_b, pad_size=(0.9, 1.0), pad_offset=0.85,
-                     body_h=0.8, layer=layer, rotation_hint="0")
+                     body_h=0.8, layer=layer, rotation_hint="0", lcsc=lcsc)
 
 
-def fp_0805(ref, value, x, y, rotation, net_a, net_b, layer="F.Cu"):
+def fp_0805(ref, value, x, y, rotation, net_a, net_b, layer="F.Cu", lcsc=""):
     return _smd_2pin("Capacitor_SMD:C_0805_2012Metric", ref, value, x, y, rotation,
                      net_a, net_b, pad_size=(1.1, 1.4), pad_offset=0.95,
-                     body_h=1.0, layer=layer, rotation_hint="0")
+                     body_h=1.0, layer=layer, rotation_hint="0", lcsc=lcsc)
 
 
-def fp_ptc_0805(ref, value, x, y, rotation, net_a, net_b, layer="F.Cu"):
+def fp_ptc_0805(ref, value, x, y, rotation, net_a, net_b, layer="F.Cu", lcsc=""):
     return _smd_2pin("Fuse:Fuse_0805_2012Metric", ref, value, x, y, rotation,
                      net_a, net_b, pad_size=(1.1, 1.4), pad_offset=0.95,
-                     body_h=1.0, layer=layer, rotation_hint="0")
+                     body_h=1.0, layer=layer, rotation_hint="0", lcsc=lcsc)
 
 
-def fp_sod523(ref, value, x, y, rotation, net_k, net_a, layer="F.Cu", dnp=False):
+def fp_sod523(ref, value, x, y, rotation, net_k, net_a, layer="F.Cu",
+              dnp=False, lcsc=""):
     """ESD9L3.3 / BZT52 SOD-523. Pin 1 = cathode (on left at rotation 0),
     pin 2 = anode. Caller is responsible for passing (net_k, net_a) in
     (cathode, anode) order."""
     return _smd_2pin("Diode_SMD:D_SOD-523", ref, value, x, y, rotation,
                      net_k, net_a, pad_size=(0.6, 0.7), pad_offset=0.6,
-                     body_h=0.5, layer=layer, rotation_hint="0", dnp=dnp)
+                     body_h=0.5, layer=layer, rotation_hint="0", dnp=dnp,
+                     lcsc=lcsc)
 
 
 def fp_sot23_3(ref, value, x, y, rotation, nets, rotation_hint="0"):
@@ -1899,7 +1993,8 @@ def build_pcb():
             ccx = kx - 4.0
             ccy = ky + 1.5
             out.append(fp_0402(cap_ref, "100n", ccx, ccy, 90,
-                               led_vdd, led_gnd, layer="B.Cu"))
+                               led_vdd, led_gnd, layer="B.Cu",
+                               kind="C", lcsc="C1525"))
 
     # --- MCU: XIAO nRF52840 direct-solder castellations ----------------------
     mcu_pin_nets_front = {
@@ -1986,13 +2081,16 @@ def build_pcb():
     # --- Passives (I2C pull-ups, RGB series R) on B.Cu under MCU -------------
     out.append(fp_0402("R1", "470",  mcu_x - 3, mcu_y - 3, 90,
                        (idx["RGB_DIN_MCU"], "RGB_DIN_MCU"),
-                       (idx["RGB_D1"], "RGB_D1"), layer="B.Cu"))
+                       (idx["RGB_D1"], "RGB_D1"), layer="B.Cu",
+                       kind="R", lcsc="C25744"))
     out.append(fp_0402("R2", "4k7",  mcu_x - 3, mcu_y + 0, 90,
                        (idx["+3V3"], "+3V3"),
-                       (idx["SDA"], "SDA"), layer="B.Cu"))
+                       (idx["SDA"], "SDA"), layer="B.Cu",
+                       kind="R", lcsc="C25905"))
     out.append(fp_0402("R3", "4k7",  mcu_x - 3, mcu_y + 3, 90,
                        (idx["+3V3"], "+3V3"),
-                       (idx["SCL"], "SCL"), layer="B.Cu"))
+                       (idx["SCL"], "SCL"), layer="B.Cu",
+                       kind="R", lcsc="C25905"))
 
     # --- PN532 NFC header ----------------------------------------------------
     # Cycle 4: moved north-east to (x0+13, y1-15) so header body sits in
@@ -2018,10 +2116,10 @@ def build_pcb():
     # For fp_sod523: net_k (pin 1 = cathode) first, net_a (pin 2 = anode) second.
     out.append(fp_sod523("TVS_SDA", "ESD9L3.3", nfc_hdr_x + 3, nfc_hdr_y + 1.27, 0,
                          (idx["SDA"], "SDA"),
-                         (idx["GND"], "GND"), layer="B.Cu"))
+                         (idx["GND"], "GND"), layer="B.Cu", lcsc="C709011"))
     out.append(fp_sod523("TVS_SCL", "ESD9L3.3", nfc_hdr_x + 3, nfc_hdr_y + 3.81, 0,
                          (idx["SCL"], "SCL"),
-                         (idx["GND"], "GND"), layer="B.Cu"))
+                         (idx["GND"], "GND"), layer="B.Cu", lcsc="C709011"))
 
     # --- Battery / power block (top-LEFT strip) ------------------------------
     # Cycle 4: power block moved with MCU -- now lives at y = mcu_y
@@ -2063,7 +2161,8 @@ def build_pcb():
     # + stub + pad).
     out.append(fp_0402("R_GREV", "10k", qrev_x - 1.95, qrev_y - 1.1, 90,
                        (idx["GATE_REV"], "GATE_REV"),
-                       (idx["GND"], "GND"), layer="F.Cu"))
+                       (idx["GND"], "GND"), layer="F.Cu",
+                       kind="R", lcsc="C25804"))
     # D_GREV 5V1 zener SOD-523: cathode = VBAT_CELL (Q_REV source pin 2
     # at qrev_x+0.95, qrev_y-1.1); anode = GATE_REV (Q_REV pin 1 rail).
     # Place D_GREV east of Q_REV on F.Cu at (qrev_x+2.5, qrev_y-1.1)
@@ -2093,14 +2192,15 @@ def build_pcb():
     out.append(fp_sod523("D_GREV", "BZT52C5V1", qrev_x + 2.5, qrev_y - 1.1, 0,
                          (idx["VBAT_CELL"], "VBAT_CELL"),    # cathode
                          (idx["GATE_REV"], "GATE_REV"),      # anode
-                         layer="F.Cu"))
+                         layer="F.Cu", lcsc="C8056"))
 
     # F1 PTC 0805 500 mA (MF-PSMF050X-2 / C116170)
     f1_x, f1_y = x0 + 23, y0 + 19.0
     out.append(fp_ptc_0805("F1", "PTC_500mA",
                            f1_x, f1_y, 0,
                            (idx["VBAT_F"], "VBAT_F"),
-                           (idx["VBAT_SW"], "VBAT_SW"), layer="F.Cu"))
+                           (idx["VBAT_SW"], "VBAT_SW"), layer="F.Cu",
+                           lcsc="C116170"))
 
     # SW_PWR SPDT slide (TH): pin1 -> VBAT (ON), pin2 -> VBAT_SW (COM),
     # pin3 -> NC_SW (OFF, floating)
@@ -2122,7 +2222,8 @@ def build_pcb():
                             (idx["NTC_ADC"], "NTC_ADC")))
     out.append(fp_0402("R_NTC", "10k", ntc_x + 7, ntc_y, 0,
                        (idx["NTC_ADC"], "NTC_ADC"),
-                       (idx["GND"], "GND"), layer="F.Cu"))
+                       (idx["GND"], "GND"), layer="F.Cu",
+                       kind="R", lcsc="C25804"))
 
     # EC1 encoder -- top-right of top strip (clear of 2U Enter at row 4 col 4).
     # Cycle 4: moved south with MCU so shaft/body still fits inside strip
@@ -2142,16 +2243,17 @@ def build_pcb():
     # Encoder debounce cap + ESD TVS on ENC_A/B/SW -- TVS polarity fixed
     out.append(fp_0402("C_ENC", "100n", enc_x - 5, enc_y + 5, 0,
                        (idx["ENC_SW"], "ENC_SW"),
-                       (idx["GND"], "GND"), layer="F.Cu"))
+                       (idx["GND"], "GND"), layer="F.Cu",
+                       kind="C", lcsc="C1525"))
     out.append(fp_sod523("TVS_ENCA", "ESD9L3.3", enc_x - 4, enc_y - 5, 0,
                          (idx["ENC_A"], "ENC_A"),
-                         (idx["GND"], "GND"), layer="F.Cu"))
+                         (idx["GND"], "GND"), layer="F.Cu", lcsc="C709011"))
     out.append(fp_sod523("TVS_ENCB", "ESD9L3.3", enc_x, enc_y - 5, 0,
                          (idx["ENC_B"], "ENC_B"),
-                         (idx["GND"], "GND"), layer="F.Cu"))
+                         (idx["GND"], "GND"), layer="F.Cu", lcsc="C709011"))
     out.append(fp_sod523("TVS_ENCSW", "ESD9L3.3", enc_x + 4, enc_y - 5, 0,
                          (idx["ENC_SW"], "ENC_SW"),
-                         (idx["GND"], "GND"), layer="F.Cu"))
+                         (idx["GND"], "GND"), layer="F.Cu", lcsc="C709011"))
 
     # Bulk / bypass caps near MCU -- Cycle 5 C5-B1 relocation.
     #
@@ -2210,14 +2312,15 @@ def build_pcb():
     # (mcu_x-11.5, mcu_y) -> F.Cu north-east to pin 3.
     out.append(fp_0805("C1", "22u", mcu_x - 13, mcu_y, 0,
                        (idx["+3V3"], "+3V3"),
-                       (idx["GND"], "GND"), layer="B.Cu"))
+                       (idx["GND"], "GND"), layer="B.Cu", lcsc="C45783"))
 
     # C3 (100 nF 0402, +3V3): B.Cu, rot 0. Adjacent to C1 on the same
     # +3V3 rail. Centre at (mcu_x-13, mcu_y+3). Short B.Cu stub joins
     # the C1 rail via one via site.
     out.append(fp_0402("C3", "100n", mcu_x - 13, mcu_y + 3, 0,
                        (idx["+3V3"], "+3V3"),
-                       (idx["GND"], "GND"), layer="B.Cu"))
+                       (idx["GND"], "GND"), layer="B.Cu",
+                       kind="C", lcsc="C1525"))
 
     # C4 (100 nF 0402, VUSB): B.Cu, rot 0. Centre at (mcu_x-13, mcu_y-7.62)
     # -- in the top strip SOUTH of the antenna keepout (ant_y1 = y0+10.3;
@@ -2227,14 +2330,15 @@ def build_pcb():
     # mcu_y-7.62) at a separate x location via a short F.Cu run.
     out.append(fp_0402("C4", "100n", mcu_x - 13, mcu_y - 7.62, 0,
                        (idx["VUSB"], "VUSB"),
-                       (idx["GND"], "GND"), layer="B.Cu"))
+                       (idx["GND"], "GND"), layer="B.Cu",
+                       kind="C", lcsc="C1525"))
 
     # C2 (22 uF 0805, VBAT bulk): B.Cu, rot 0. Centre at (mcu_x+3,
     # mcu_y+9.5) -- SOUTH of MCU. Pad 1 (VBAT) west at (mcu_x+2.05,
     # mcu_y+9.5). Pad 2 GND east at (mcu_x+3.95, mcu_y+9.5).
     out.append(fp_0805("C2", "22u", mcu_x + 3, mcu_y + 9.5, 0,
                        (idx["VBAT"], "VBAT"),
-                       (idx["GND"], "GND"), layer="B.Cu"))
+                       (idx["GND"], "GND"), layer="B.Cu", lcsc="C45783"))
 
     # C5 (1 nF) retired in Cycle 5 -- see header note.
 
@@ -2243,13 +2347,16 @@ def build_pcb():
     # VBAT_ADC (routed to rear-pad slot 7), other side to GND.
     out.append(fp_0402("R_VBAT1", "1M", mcu_x + 10, mcu_y + 4, 0,
                        (idx["VBAT"], "VBAT"),
-                       (idx["VBAT_ADC"], "VBAT_ADC"), layer="B.Cu"))
+                       (idx["VBAT_ADC"], "VBAT_ADC"), layer="B.Cu",
+                       kind="R", lcsc="C22935"))
     out.append(fp_0402("R_VBAT2", "1M", mcu_x + 10, mcu_y + 6, 0,
                        (idx["VBAT_ADC"], "VBAT_ADC"),
-                       (idx["GND"], "GND"), layer="B.Cu"))
+                       (idx["GND"], "GND"), layer="B.Cu",
+                       kind="R", lcsc="C22935"))
     out.append(fp_0402("C_VBAT", "100n", mcu_x + 12, mcu_y + 5, 90,
                        (idx["VBAT_ADC"], "VBAT_ADC"),
-                       (idx["GND"], "GND"), layer="B.Cu"))
+                       (idx["GND"], "GND"), layer="B.Cu",
+                       kind="C", lcsc="C1525"))
 
     # --- Antenna keepout (C4-B1: geometry fix) --------------------------------
     # XIAO nRF52840 antenna is in the first 5-8 mm from the USB-C edge (north)
@@ -3493,17 +3600,35 @@ def build_pro():
 # =============================================================================
 
 def main():
+    # Cycle 9: default `main()` is SCHEMATIC-ONLY. After Cycle 8 the PCB
+    # carries Freerouting routing (1095 segments) + 148 stitch vias +
+    # the UUID linkage; regenerating build_pcb() from scratch destroys
+    # all of that. Rev-B will re-enable full regen. For now,
+    # PCB-side edits are applied in-place via
+    # `pcb/_gen/autoroute/*.py` helpers.
+    #
+    # Pass `--full` to force the old full regeneration (only for a
+    # deliberate clean-room rebuild).
+    import sys
+    full = "--full" in sys.argv
     SCH.write_text(build_schematic())
-    PCB.write_text(build_pcb())
-    PRO.write_text(build_pro())
-    parts = collect_parts()
-    write_bom(parts)
-    write_cpl(parts)
     print(f"Wrote: {SCH}")
-    print(f"Wrote: {PCB}")
-    print(f"Wrote: {PRO}")
-    print(f"Wrote: {BOM} ({sum(1 for _ in open(BOM))} rows)")
-    print(f"Wrote: {CPL} ({sum(1 for _ in open(CPL))} rows)")
+    if full:
+        PCB.write_text(build_pcb())
+        PRO.write_text(build_pro())
+        parts = collect_parts()
+        write_bom(parts)
+        write_cpl(parts)
+        print(f"Wrote: {PCB}")
+        print(f"Wrote: {PRO}")
+        print(f"Wrote: {BOM} ({sum(1 for _ in open(BOM))} rows)")
+        print(f"Wrote: {CPL} ({sum(1 for _ in open(CPL))} rows)")
+    else:
+        parts = collect_parts()
+        write_bom(parts)
+        print(f"Wrote: {BOM} ({sum(1 for _ in open(BOM))} rows)")
+        print("PCB / PRO / CPL: skipped (routed layout preserved; "
+              "pass --full to force full regen).")
 
 
 if __name__ == "__main__":

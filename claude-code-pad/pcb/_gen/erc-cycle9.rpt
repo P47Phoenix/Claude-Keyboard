@@ -1,0 +1,1935 @@
+ERC report (2026-04-22T12:21:57, Encoding UTF8)
+Report includes: Errors, Warnings
+
+***** Sheet /
+[label_dangling]: Label not connected
+    ; warning
+    @(60.00 mm, 30.00 mm): Global Label 'ROW3'
+[label_dangling]: Label not connected
+    ; warning
+    @(60.00 mm, 36.00 mm): Global Label 'ROW4'
+[label_dangling]: Label not connected
+    ; warning
+    @(60.00 mm, 42.00 mm): Global Label 'ENC_A'
+[label_dangling]: Label not connected
+    ; warning
+    @(60.00 mm, 48.00 mm): Global Label 'ENC_B'
+[label_dangling]: Label not connected
+    ; warning
+    @(60.00 mm, 54.00 mm): Global Label 'ENC_SW'
+[label_dangling]: Label not connected
+    ; warning
+    @(60.00 mm, 60.00 mm): Global Label 'RGB_DIN_MCU'
+[label_dangling]: Label not connected
+    ; warning
+    @(60.00 mm, 66.00 mm): Global Label 'VBAT_ADC'
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(92.38 mm, 63.49 mm): Horizontal Wire, length 5.08 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(92.38 mm, 66.03 mm): Horizontal Wire, length 5.08 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(92.38 mm, 68.57 mm): Horizontal Wire, length 5.08 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(92.38 mm, 71.11 mm): Horizontal Wire, length 5.08 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(92.38 mm, 73.65 mm): Horizontal Wire, length 5.08 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(92.38 mm, 76.19 mm): Horizontal Wire, length 5.08 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(92.38 mm, 78.73 mm): Horizontal Wire, length 5.08 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(92.38 mm, 81.27 mm): Horizontal Wire, length 5.08 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(92.38 mm, 83.81 mm): Horizontal Wire, length 5.08 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(92.38 mm, 86.35 mm): Horizontal Wire, length 5.08 mm
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(100.00 mm, 80.00 mm): Symbol U1 [XIAO_nRF52840]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(100.00 mm, 80.00 mm): Symbol U1 [XIAO_nRF52840]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(92.38 mm, 88.89 mm): Horizontal Wire, length 5.08 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(92.38 mm, 91.43 mm): Horizontal Wire, length 5.08 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(92.38 mm, 93.97 mm): Horizontal Wire, length 5.08 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(107.62 mm, 77.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(92.38 mm, 96.51 mm): Horizontal Wire, length 5.08 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(92.38 mm, 96.51 mm): Symbol U1 Pin 1 [VUSB, Power input, Line]
+[power_pin_not_driven]: Input Power pin not driven by any Output Power pins
+    ; warning
+    @(92.38 mm, 96.51 mm): Symbol U1 Pin 1 [VUSB, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(107.62 mm, 82.54 mm): Horizontal Wire, length 2.54 mm
+[power_pin_not_driven]: Input Power pin not driven by any Output Power pins
+    ; warning
+    @(107.62 mm, 82.54 mm): Symbol U1 Pin 15 [BAT+, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(34.92 mm, 140.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(34.92 mm, 140.00 mm): Symbol SW00 Pin 1 [1, Passive, Line]
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(40.00 mm, 140.00 mm): Symbol SW00 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(40.00 mm, 140.00 mm): Symbol SW00 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(45.08 mm, 140.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(36.19 mm, 146.00 mm): Symbol D00 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(36.19 mm, 146.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(56.92 mm, 140.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(56.92 mm, 140.00 mm): Symbol SW01 Pin 1 [1, Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(40.00 mm, 146.00 mm): Symbol D00 [D]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(43.81 mm, 146.00 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(62.00 mm, 140.00 mm): Symbol SW01 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(62.00 mm, 140.00 mm): Symbol SW01 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(67.08 mm, 140.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(58.19 mm, 146.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(58.19 mm, 146.00 mm): Symbol D01 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(34.92 mm, 154.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(34.92 mm, 154.00 mm): Symbol SW10 Pin 1 [1, Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(62.00 mm, 146.00 mm): Symbol D01 [D]
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(40.00 mm, 154.00 mm): Symbol SW10 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(40.00 mm, 154.00 mm): Symbol SW10 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(65.81 mm, 146.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(45.08 mm, 154.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(78.92 mm, 140.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(78.92 mm, 140.00 mm): Symbol SW02 Pin 1 [1, Passive, Line]
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(84.00 mm, 140.00 mm): Symbol SW02 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(84.00 mm, 140.00 mm): Symbol SW02 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(36.19 mm, 160.00 mm): Symbol D10 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(36.19 mm, 160.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(56.92 mm, 154.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(56.92 mm, 154.00 mm): Symbol SW11 Pin 1 [1, Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(40.00 mm, 160.00 mm): Symbol D10 [D]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(43.81 mm, 160.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(89.08 mm, 140.00 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(62.00 mm, 154.00 mm): Symbol SW11 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(62.00 mm, 154.00 mm): Symbol SW11 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(80.19 mm, 146.00 mm): Symbol D02 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(80.19 mm, 146.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(67.08 mm, 154.00 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(84.00 mm, 146.00 mm): Symbol D02 [D]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(58.19 mm, 160.00 mm): Symbol D11 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(58.19 mm, 160.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(87.81 mm, 146.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(34.92 mm, 168.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(34.92 mm, 168.00 mm): Symbol SW20 Pin 1 [1, Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(62.00 mm, 160.00 mm): Symbol D11 [D]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(100.92 mm, 140.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(100.92 mm, 140.00 mm): Symbol SW03 Pin 1 [1, Passive, Line]
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(40.00 mm, 168.00 mm): Symbol SW20 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(40.00 mm, 168.00 mm): Symbol SW20 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(65.81 mm, 160.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(78.92 mm, 154.00 mm): Symbol SW12 Pin 1 [1, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(78.92 mm, 154.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(45.08 mm, 168.00 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(84.00 mm, 154.00 mm): Symbol SW12 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(84.00 mm, 154.00 mm): Symbol SW12 [SW_Push]
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(106.00 mm, 140.00 mm): Symbol SW03 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(106.00 mm, 140.00 mm): Symbol SW03 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(56.92 mm, 168.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(56.92 mm, 168.00 mm): Symbol SW21 Pin 1 [1, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(36.19 mm, 174.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(36.19 mm, 174.00 mm): Symbol D20 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(89.08 mm, 154.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(102.19 mm, 146.00 mm): Symbol D03 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(102.19 mm, 146.00 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(40.00 mm, 174.00 mm): Symbol D20 [D]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(111.08 mm, 140.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(80.19 mm, 160.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(80.19 mm, 160.00 mm): Symbol D12 Pin 1 [K, Passive, Line]
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(62.00 mm, 168.00 mm): Symbol SW21 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(62.00 mm, 168.00 mm): Symbol SW21 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(43.81 mm, 174.00 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(106.00 mm, 146.00 mm): Symbol D03 [D]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(84.00 mm, 160.00 mm): Symbol D12 [D]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(67.08 mm, 168.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(87.81 mm, 160.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(109.81 mm, 146.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(58.19 mm, 174.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(58.19 mm, 174.00 mm): Symbol D21 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(100.92 mm, 154.00 mm): Symbol SW13 Pin 1 [1, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(100.92 mm, 154.00 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(62.00 mm, 174.00 mm): Symbol D21 [D]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(34.92 mm, 182.00 mm): Symbol SW30 Pin 1 [1, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(34.92 mm, 182.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(78.92 mm, 168.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(78.92 mm, 168.00 mm): Symbol SW22 Pin 1 [1, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(65.81 mm, 174.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(122.92 mm, 140.00 mm): Symbol SW04 Pin 1 [1, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(122.92 mm, 140.00 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(40.00 mm, 182.00 mm): Symbol SW30 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(40.00 mm, 182.00 mm): Symbol SW30 [SW_Push]
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(106.00 mm, 154.00 mm): Symbol SW13 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(106.00 mm, 154.00 mm): Symbol SW13 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(45.08 mm, 182.00 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(84.00 mm, 168.00 mm): Symbol SW22 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(84.00 mm, 168.00 mm): Symbol SW22 [SW_Push]
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(128.00 mm, 140.00 mm): Symbol SW04 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(128.00 mm, 140.00 mm): Symbol SW04 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(102.19 mm, 160.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(102.19 mm, 160.00 mm): Symbol D13 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(111.08 mm, 154.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(89.08 mm, 168.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(56.92 mm, 182.00 mm): Symbol SW31 Pin 1 [1, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(56.92 mm, 182.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(36.19 mm, 188.00 mm): Symbol D30 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(36.19 mm, 188.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(80.19 mm, 174.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(80.19 mm, 174.00 mm): Symbol D22 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(124.19 mm, 146.00 mm): Symbol D04 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(124.19 mm, 146.00 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(106.00 mm, 160.00 mm): Symbol D13 [D]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(40.00 mm, 188.00 mm): Symbol D30 [D]
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(62.00 mm, 182.00 mm): Symbol SW31 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(62.00 mm, 182.00 mm): Symbol SW31 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(43.81 mm, 188.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(133.08 mm, 140.00 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(84.00 mm, 174.00 mm): Symbol D22 [D]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(67.08 mm, 182.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(109.81 mm, 160.00 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(128.00 mm, 146.00 mm): Symbol D04 [D]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(87.81 mm, 174.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(100.92 mm, 168.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(100.92 mm, 168.00 mm): Symbol SW23 Pin 1 [1, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(131.81 mm, 146.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(58.19 mm, 188.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(58.19 mm, 188.00 mm): Symbol D31 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(122.92 mm, 154.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(122.92 mm, 154.00 mm): Symbol SW14 Pin 1 [1, Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(62.00 mm, 188.00 mm): Symbol D31 [D]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(78.92 mm, 182.00 mm): Symbol SW32 Pin 1 [1, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(78.92 mm, 182.00 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(106.00 mm, 168.00 mm): Symbol SW23 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(106.00 mm, 168.00 mm): Symbol SW23 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(34.92 mm, 196.00 mm): Symbol SW40 Pin 1 [1, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(34.92 mm, 196.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(65.81 mm, 188.00 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(40.00 mm, 196.00 mm): Symbol SW40 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(40.00 mm, 196.00 mm): Symbol SW40 [SW_Push]
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(128.00 mm, 154.00 mm): Symbol SW14 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(128.00 mm, 154.00 mm): Symbol SW14 [SW_Push]
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(84.00 mm, 182.00 mm): Symbol SW32 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(84.00 mm, 182.00 mm): Symbol SW32 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(45.08 mm, 196.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(111.08 mm, 168.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(102.19 mm, 174.00 mm): Symbol D23 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(102.19 mm, 174.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(124.19 mm, 160.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(124.19 mm, 160.00 mm): Symbol D14 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(89.08 mm, 182.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(200.00 mm, 36.19 mm): Symbol R1 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(200.00 mm, 36.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(133.08 mm, 154.00 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(106.00 mm, 174.00 mm): Symbol D23 [D]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(200.00 mm, 40.00 mm): Symbol R1 [R]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(56.92 mm, 196.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(56.92 mm, 196.00 mm): Symbol SW41 Pin 1 [1, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(80.19 mm, 188.00 mm): Symbol D32 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(80.19 mm, 188.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(200.00 mm, 43.81 mm): Vertical Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(128.00 mm, 160.00 mm): Symbol D14 [D]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(36.19 mm, 202.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(36.19 mm, 202.00 mm): Symbol D40 Pin 1 [K, Passive, Line]
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(62.00 mm, 196.00 mm): Symbol SW41 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(62.00 mm, 196.00 mm): Symbol SW41 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(109.81 mm, 174.00 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(84.00 mm, 188.00 mm): Symbol D32 [D]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(40.00 mm, 202.00 mm): Symbol D40 [D]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(43.81 mm, 202.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(67.08 mm, 196.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(131.81 mm, 160.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(87.81 mm, 188.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(100.92 mm, 182.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(100.92 mm, 182.00 mm): Symbol SW33 Pin 1 [1, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(122.92 mm, 168.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(122.92 mm, 168.00 mm): Symbol SW24 Pin 1 [1, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(58.19 mm, 202.00 mm): Symbol D41 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(58.19 mm, 202.00 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(106.00 mm, 182.00 mm): Symbol SW33 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(106.00 mm, 182.00 mm): Symbol SW33 [SW_Push]
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(128.00 mm, 168.00 mm): Symbol SW24 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(128.00 mm, 168.00 mm): Symbol SW24 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(78.92 mm, 196.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(78.92 mm, 196.00 mm): Symbol SW42 Pin 1 [1, Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(62.00 mm, 202.00 mm): Symbol D41 [D]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(65.81 mm, 202.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(111.08 mm, 182.00 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(84.00 mm, 196.00 mm): Symbol SW42 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(84.00 mm, 196.00 mm): Symbol SW42 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(124.19 mm, 174.00 mm): Symbol D24 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(124.19 mm, 174.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(102.19 mm, 188.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(102.19 mm, 188.00 mm): Symbol D33 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(133.08 mm, 168.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(89.08 mm, 196.00 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(106.00 mm, 188.00 mm): Symbol D33 [D]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(128.00 mm, 174.00 mm): Symbol D24 [D]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(80.19 mm, 202.00 mm): Symbol D42 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(80.19 mm, 202.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(109.81 mm, 188.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(131.81 mm, 174.00 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(84.00 mm, 202.00 mm): Symbol D42 [D]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(122.92 mm, 182.00 mm): Symbol SW34 Pin 1 [1, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(122.92 mm, 182.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(87.81 mm, 202.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(100.92 mm, 196.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(100.92 mm, 196.00 mm): Symbol SW43 Pin 1 [1, Passive, Line]
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(128.00 mm, 182.00 mm): Symbol SW34 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(128.00 mm, 182.00 mm): Symbol SW34 [SW_Push]
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(106.00 mm, 196.00 mm): Symbol SW43 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(106.00 mm, 196.00 mm): Symbol SW43 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 56.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 56.19 mm): Symbol CL1 Pin 1 [Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(216.00 mm, 60.00 mm): Symbol CL1 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 63.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(111.08 mm, 196.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(124.19 mm, 188.00 mm): Symbol D34 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(124.19 mm, 188.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(133.08 mm, 182.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(102.19 mm, 202.00 mm): Symbol D43 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(102.19 mm, 202.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 70.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 70.19 mm): Symbol CL2 Pin 1 [Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(128.00 mm, 188.00 mm): Symbol D34 [D]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(106.00 mm, 202.00 mm): Symbol D43 [D]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(216.00 mm, 74.00 mm): Symbol CL2 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 77.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(131.81 mm, 188.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(109.81 mm, 202.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 57.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(122.92 mm, 196.00 mm): Symbol SW44 Pin 1 [1, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(122.92 mm, 196.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 84.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 84.19 mm): Symbol CL3 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 62.54 mm): Symbol LED1 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 62.54 mm): Horizontal Wire, length 2.54 mm
+[power_pin_not_driven]: Input Power pin not driven by any Output Power pins
+    ; warning
+    @(223.65 mm, 62.54 mm): Symbol LED1 Pin 1 [VDD, Power input, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(216.00 mm, 88.00 mm): Symbol CL3 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(40.00 mm, 229.84 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: The current configuration does not include the footprint library 'local'
+    ; warning
+    @(128.00 mm, 196.00 mm): Symbol SW44 [SW_Push]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(128.00 mm, 196.00 mm): Symbol SW44 [SW_Push]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(40.00 mm, 231.11 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 91.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 71.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 76.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 76.54 mm): Symbol LED2 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(133.08 mm, 196.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(20.00 mm, 236.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(20.00 mm, 236.19 mm): Symbol C_ENC Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(124.19 mm, 202.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(124.19 mm, 202.00 mm): Symbol D44 Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(32.38 mm, 234.92 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 98.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 98.19 mm): Symbol CL4 Pin 1 [Passive, Line]
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(230.00 mm, 60.00 mm): Symbol LED1 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(230.00 mm, 60.00 mm): Symbol LED1 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(216.00 mm, 102.00 mm): Symbol CL4 [C]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(128.00 mm, 202.00 mm): Symbol D44 [D]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(66.19 mm, 230.00 mm): Symbol TVS_ENCA Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(66.19 mm, 230.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 85.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(47.62 mm, 234.92 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(70.00 mm, 230.00 mm): Symbol TVS_ENCA [TVS]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 105.81 mm): Vertical Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(20.00 mm, 240.00 mm): Symbol C_ENC [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(131.81 mm, 202.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 90.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 90.54 mm): Symbol LED3 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(73.81 mm, 230.00 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(230.00 mm, 74.00 mm): Symbol LED2 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(230.00 mm, 74.00 mm): Symbol LED2 [LED_RGB]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(32.38 mm, 240.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 57.46 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: Footprint 'RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm' not found in library 'Button_Switch_THT'
+    ; warning
+    @(40.00 mm, 240.00 mm): Symbol EC1 [EC11]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(40.00 mm, 240.00 mm): Symbol EC1 [EC11]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 112.19 mm): Symbol CL5 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 112.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 62.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(20.00 mm, 243.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 99.46 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(216.00 mm, 116.00 mm): Symbol CL5 [C]
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(230.00 mm, 88.00 mm): Symbol LED3 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(230.00 mm, 88.00 mm): Symbol LED3 [LED_RGB]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 104.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 104.54 mm): Symbol LED4 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 71.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 119.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(66.19 mm, 238.00 mm): Symbol TVS_ENCB Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(66.19 mm, 238.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(32.38 mm, 245.08 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(32.38 mm, 245.08 mm): Symbol EC1 Pin 1 [A, Input, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(70.00 mm, 238.00 mm): Symbol TVS_ENCB [TVS]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 76.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(73.81 mm, 238.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(47.62 mm, 245.08 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 126.19 mm): Symbol CL10 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 126.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 113.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 85.46 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(230.00 mm, 102.00 mm): Symbol LED4 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(230.00 mm, 102.00 mm): Symbol LED4 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(216.00 mm, 130.00 mm): Symbol CL10 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 90.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 118.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 118.54 mm): Symbol LED5 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 133.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(66.19 mm, 246.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(66.19 mm, 246.00 mm): Symbol TVS_ENCSW Pin 1 [K, Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(70.00 mm, 246.00 mm): Symbol TVS_ENCSW [TVS]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 99.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(73.81 mm, 246.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 127.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 140.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 140.19 mm): Symbol CL9 Pin 1 [Passive, Line]
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(230.00 mm, 116.00 mm): Symbol LED5 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(230.00 mm, 116.00 mm): Symbol LED5 [LED_RGB]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 104.54 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(216.00 mm, 144.00 mm): Symbol CL9 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 132.54 mm): Symbol LED10 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 132.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 147.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 113.46 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(230.00 mm, 130.00 mm): Symbol LED10 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(230.00 mm, 130.00 mm): Symbol LED10 [LED_RGB]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 118.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 141.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 154.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 154.19 mm): Symbol CL8 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 56.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 56.19 mm): Symbol CL14 Pin 1 [Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(260.00 mm, 60.00 mm): Symbol CL14 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 146.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 146.54 mm): Symbol LED9 Pin 1 [VDD, Power input, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(216.00 mm, 158.00 mm): Symbol CL8 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 63.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 127.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 70.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 70.19 mm): Symbol CL15 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 161.81 mm): Vertical Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(260.00 mm, 74.00 mm): Symbol CL15 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 132.54 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(230.00 mm, 144.00 mm): Symbol LED9 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(230.00 mm, 144.00 mm): Symbol LED9 [LED_RGB]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 77.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 155.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 84.19 mm): Symbol CL20 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 84.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 57.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 168.19 mm): Symbol CL7 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 168.19 mm): Vertical Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(260.00 mm, 88.00 mm): Symbol CL20 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 62.54 mm): Symbol LED14 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 62.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 160.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 160.54 mm): Symbol LED8 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 141.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 91.81 mm): Vertical Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(216.00 mm, 172.00 mm): Symbol CL7 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 71.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 98.19 mm): Symbol CL19 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 98.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 146.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 76.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 76.54 mm): Symbol LED15 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 175.81 mm): Vertical Wire, length 2.54 mm
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(230.00 mm, 158.00 mm): Symbol LED8 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(230.00 mm, 158.00 mm): Symbol LED8 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(260.00 mm, 102.00 mm): Symbol CL19 [C]
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(274.00 mm, 60.00 mm): Symbol LED14 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(274.00 mm, 60.00 mm): Symbol LED14 [LED_RGB]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 169.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 105.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 85.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 90.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 90.54 mm): Symbol LED20 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 182.19 mm): Symbol CL6 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 182.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 155.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 112.19 mm): Symbol CL18 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 112.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 174.54 mm): Symbol LED7 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 174.54 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(274.00 mm, 74.00 mm): Symbol LED15 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(274.00 mm, 74.00 mm): Symbol LED15 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(260.00 mm, 116.00 mm): Symbol CL18 [C]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(216.00 mm, 186.00 mm): Symbol CL6 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 99.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 160.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 57.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 119.81 mm): Vertical Wire, length 2.54 mm
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(230.00 mm, 172.00 mm): Symbol LED7 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(230.00 mm, 172.00 mm): Symbol LED7 [LED_RGB]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 62.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 104.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 104.54 mm): Symbol LED19 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 189.81 mm): Vertical Wire, length 2.54 mm
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(274.00 mm, 88.00 mm): Symbol LED20 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(274.00 mm, 88.00 mm): Symbol LED20 [LED_RGB]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 126.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 126.19 mm): Symbol CL17 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 183.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 71.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 76.54 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(260.00 mm, 130.00 mm): Symbol CL17 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 113.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 169.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 196.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 196.19 mm): Symbol CL11 Pin 1 [Passive, Line]
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(274.00 mm, 102.00 mm): Symbol LED19 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(274.00 mm, 102.00 mm): Symbol LED19 [LED_RGB]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 133.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 188.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 188.54 mm): Symbol LED6 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 118.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 118.54 mm): Symbol LED18 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 85.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 174.54 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(216.00 mm, 200.00 mm): Symbol CL11 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 90.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 140.19 mm): Symbol CL16 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 140.19 mm): Vertical Wire, length 2.54 mm
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(230.00 mm, 186.00 mm): Symbol LED6 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(230.00 mm, 186.00 mm): Symbol LED6 [LED_RGB]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 127.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 203.81 mm): Vertical Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(260.00 mm, 144.00 mm): Symbol CL16 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 99.46 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(274.00 mm, 116.00 mm): Symbol LED18 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(274.00 mm, 116.00 mm): Symbol LED18 [LED_RGB]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 197.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 132.54 mm): Symbol LED17 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 132.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 147.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 183.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 104.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 210.19 mm): Symbol CL12 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 210.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 202.54 mm): Symbol LED11 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 202.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(300.00 mm, 36.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(300.00 mm, 36.19 mm): Symbol R2 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 154.19 mm): Symbol CL21 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 154.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 188.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 113.46 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(300.00 mm, 40.00 mm): Symbol R2 [R]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 141.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(300.00 mm, 43.81 mm): Vertical Wire, length 2.54 mm
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(274.00 mm, 130.00 mm): Symbol LED17 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(274.00 mm, 130.00 mm): Symbol LED17 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(216.00 mm, 214.00 mm): Symbol CL12 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(300.00 mm, 50.19 mm): Symbol R3 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(300.00 mm, 50.19 mm): Vertical Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(260.00 mm, 158.00 mm): Symbol CL21 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 118.54 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(230.00 mm, 200.00 mm): Symbol LED11 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(230.00 mm, 200.00 mm): Symbol LED11 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(300.00 mm, 54.00 mm): Symbol R3 [R]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 146.54 mm): Symbol LED16 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 146.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(300.00 mm, 57.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 161.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 217.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 211.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 127.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 197.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 155.46 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(274.00 mm, 144.00 mm): Symbol LED16 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(274.00 mm, 144.00 mm): Symbol LED16 [LED_RGB]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 168.19 mm): Symbol CL22 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 168.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 132.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 202.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 216.54 mm): Symbol LED12 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 216.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 224.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 224.19 mm): Symbol CL13 Pin 1 [Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(260.00 mm, 172.00 mm): Symbol CL22 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 160.54 mm): Symbol LED21 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 160.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 175.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 141.46 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(216.00 mm, 228.00 mm): Symbol CL13 [C]
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(230.00 mm, 214.00 mm): Symbol LED12 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(230.00 mm, 214.00 mm): Symbol LED12 [LED_RGB]
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(274.00 mm, 158.00 mm): Symbol LED21 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(274.00 mm, 158.00 mm): Symbol LED21 [LED_RGB]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 146.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 169.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(216.00 mm, 231.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(294.92 mm, 116.19 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 211.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 182.19 mm): Symbol CL23 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 182.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 225.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(294.92 mm, 118.73 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(316.19 mm, 40.00 mm): Symbol TVS_SDA Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(316.19 mm, 40.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(294.92 mm, 121.27 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 174.54 mm): Symbol LED22 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 174.54 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(260.00 mm, 186.00 mm): Symbol CL23 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(294.92 mm, 123.81 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(294.92 mm, 123.81 mm): Symbol J_NFC Pin 1 [1, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 216.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 155.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(316.19 mm, 54.00 mm): Symbol TVS_SCL Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(316.19 mm, 54.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 230.54 mm): Symbol LED13 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(223.65 mm, 230.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 189.81 mm): Vertical Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(320.00 mm, 40.00 mm): Symbol TVS_SDA [TVS]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 160.54 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(300.00 mm, 120.00 mm): Symbol J_NFC [ConnHeader4]
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(274.00 mm, 172.00 mm): Symbol LED22 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(274.00 mm, 172.00 mm): Symbol LED22 [LED_RGB]
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(230.00 mm, 228.00 mm): Symbol LED13 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(230.00 mm, 228.00 mm): Symbol LED13 [LED_RGB]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 183.46 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(320.00 mm, 54.00 mm): Symbol TVS_SCL [TVS]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 196.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 196.19 mm): Symbol CL24 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(323.81 mm, 40.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 225.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 188.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 188.54 mm): Symbol LED23 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 169.46 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(260.00 mm, 200.00 mm): Symbol CL24 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(323.81 mm, 54.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(236.35 mm, 230.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 174.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 203.81 mm): Vertical Wire, length 2.54 mm
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(274.00 mm, 186.00 mm): Symbol LED23 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(274.00 mm, 186.00 mm): Symbol LED23 [LED_RGB]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 197.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 210.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 210.19 mm): Symbol CL25 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 183.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 202.54 mm): Symbol LED24 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 202.54 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(260.00 mm, 214.00 mm): Symbol CL25 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 188.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(260.00 mm, 217.81 mm): Vertical Wire, length 2.54 mm
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(274.00 mm, 200.00 mm): Symbol LED24 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(274.00 mm, 200.00 mm): Symbol LED24 [LED_RGB]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 211.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 197.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 216.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(267.65 mm, 216.54 mm): Symbol LED25 Pin 1 [VDD, Power input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 202.54 mm): Horizontal Wire, length 2.54 mm
+[footprint_link_issues]: Footprint 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' not found in library 'LED_SMD'
+    ; warning
+    @(274.00 mm, 214.00 mm): Symbol LED25 [LED_RGB]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(274.00 mm, 214.00 mm): Symbol LED25 [LED_RGB]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 211.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(280.35 mm, 216.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(470.00 mm, 76.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(470.00 mm, 76.19 mm): Symbol TH1 Pin 1 [Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(470.00 mm, 80.00 mm): Symbol TH1 [NTC]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(470.00 mm, 83.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(478.00 mm, 86.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(478.00 mm, 86.19 mm): Symbol R_NTC Pin 1 [Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(478.00 mm, 90.00 mm): Symbol R_NTC [R]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(478.00 mm, 93.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(491.19 mm, 50.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(491.19 mm, 50.00 mm): Symbol D_GREV Pin 1 [K, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(494.92 mm, 38.73 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(494.92 mm, 41.27 mm): Symbol J_BAT Pin 1 [1, Power output, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(494.92 mm, 41.27 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(495.00 mm, 50.00 mm): Symbol D_GREV [D]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(498.81 mm, 50.00 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(500.00 mm, 40.00 mm): Symbol J_BAT [ConnHeader2]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(494.92 mm, 120.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(494.92 mm, 120.00 mm): Symbol F1 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(508.00 mm, 46.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(508.00 mm, 46.19 mm): Symbol R_GREV Pin 1 [Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(508.00 mm, 50.00 mm): Symbol R_GREV [R]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(508.00 mm, 53.81 mm): Vertical Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(500.00 mm, 120.00 mm): Symbol F1 [Fuse]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(514.92 mm, 45.00 mm): Symbol Q_REV Pin 1 [G, Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(505.08 mm, 120.00 mm): Horizontal Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(520.00 mm, 45.00 mm): Symbol Q_REV [Q_PMOS]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(513.65 mm, 117.46 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(513.65 mm, 120.00 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(513.65 mm, 122.54 mm): Horizontal Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(513.65 mm, 122.54 mm): Symbol SW_PWR Pin 1 [1, Passive, Line]
+[footprint_link_issues]: Footprint 'SW_Slide_1P2T_SS12D00G4' not found in library 'Button_Switch_THT'
+    ; warning
+    @(520.00 mm, 120.00 mm): Symbol SW_PWR [SW_SPDT]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(520.00 mm, 120.00 mm): Symbol SW_PWR [SW_SPDT]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(540.00 mm, 66.19 mm): Symbol R_VBAT1 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(540.00 mm, 66.19 mm): Vertical Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(540.00 mm, 70.00 mm): Symbol R_VBAT1 [R]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(540.00 mm, 73.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(540.00 mm, 81.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(540.00 mm, 81.19 mm): Symbol R_VBAT2 Pin 1 [Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(540.00 mm, 85.00 mm): Symbol R_VBAT2 [R]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(540.00 mm, 88.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(550.00 mm, 73.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(550.00 mm, 73.19 mm): Symbol C_VBAT Pin 1 [Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(550.00 mm, 77.00 mm): Symbol C_VBAT [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(550.00 mm, 80.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(620.00 mm, 36.19 mm): Symbol C1 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(620.00 mm, 36.19 mm): Vertical Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(620.00 mm, 40.00 mm): Symbol C1 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(620.00 mm, 43.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(630.00 mm, 36.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(630.00 mm, 36.19 mm): Symbol C2 Pin 1 [Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(630.00 mm, 40.00 mm): Symbol C2 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(630.00 mm, 43.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(640.00 mm, 36.19 mm): Symbol C3 Pin 1 [Passive, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(640.00 mm, 36.19 mm): Vertical Wire, length 2.54 mm
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(640.00 mm, 40.00 mm): Symbol C3 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(640.00 mm, 43.81 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(650.00 mm, 36.19 mm): Vertical Wire, length 2.54 mm
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(650.00 mm, 36.19 mm): Symbol C4 Pin 1 [Passive, Line]
+[lib_symbol_issues]: The current configuration does not include the symbol library 'local'
+    ; warning
+    @(650.00 mm, 40.00 mm): Symbol C4 [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(650.00 mm, 43.81 mm): Vertical Wire, length 2.54 mm
+
+ ** ERC messages: 641  Errors 0  Warnings 641
+
+ ** Ignored checks:
+    - Global label only appears once in the schematic
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters

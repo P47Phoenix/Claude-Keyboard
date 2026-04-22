@@ -1891,3 +1891,183 @@ from 137 to 10.
 ## Cycle 8 status
 
 `PHASE-1-CYCLE-8: COMPLETE`
+
+# §Cycle 9 — 2026-04-22 (post-closure parity fix)
+
+Cycle 8 activated schematic-to-PCB UUID linkage, but ECE-1 had been
+running `kicad-cli pcb drc` **without** `--schematic-parity --severity-all`.
+When the user opened the KiCad 10 GUI and ran its default DRC, 411
+parity violations surfaced in categories the stripped-down CLI had
+silently hidden since Cycle 1: `net_conflict`,
+`footprint_symbol_mismatch`, `footprint_symbol_field_mismatch`,
+`missing_footprint`, `extra_footprint`. Four were real bugs; the rest
+were mechanical-only residuals.
+
+## §Workflow §DRC
+
+**All DRC runs from Cycle 9 onward MUST use:**
+
+```bash
+flatpak run --command=kicad-cli org.kicad.KiCad pcb drc \
+  --schematic-parity --severity-all \
+  --output <path> <pcb-path>
+```
+
+Rationale: without `--schematic-parity`, kicad-cli only reports
+DFM/geometric issues (clearance, hole, silk, courtyards) and misses
+the schematic-to-PCB consistency categories the KiCad 10 GUI surfaces
+by default. Specifically these four (all invisible pre-flag):
+
+| Category | What it catches |
+|---|---|
+| `net_conflict` | Pad net assignment in PCB disagrees with schematic |
+| `footprint_symbol_mismatch` | PCB footprint LIB_ID disagrees with schematic symbol's Footprint property |
+| `footprint_symbol_field_mismatch` | Field (e.g. LCSC) present on schematic symbol but missing on PCB footprint |
+| `missing_footprint` / `extra_footprint` | Ref in one but not the other |
+
+Similarly `--severity-all` is required so the CLI reports warnings (not
+just errors) -- every parity violation is emitted at warning severity.
+
+Cycles 1-7 were blind to all four categories because (a) the UUID
+linkage between schematic symbols and PCB footprints did not exist
+(Cycle 8 added it), so parity checks returned vacuous, and (b) even
+after Cycle 8, `kicad-cli pcb drc` defaults still omitted the flag.
+Rev-B and all future ECE-1 / adversarial review cycles use the flags
+above.
+
+## §Cycle 9 §EC11 pinout verification
+
+Authoritative reference: **LCSC C255515** (ZHENGHUA EC11E18244A5,
+pin-compatible Alps EC11E clone). Datasheet:
+<https://www.lcsc.com/datasheet/C255515.pdf> via product page
+<https://www.lcsc.com/product-detail/C255515.html>.
+
+Canonical Alps EC11E 5-pin THT + 2 mounting-lug pinout (viewed from
+the solder side, encoder shaft up):
+
+| Pin label | Function | KiCad stock `Rotary_Encoder.pretty` pad | Our `fp_ec11` pad |
+|---|---|---|---|
+| A | Encoder quadrature output A | `A` | `1` |
+| C | Encoder common (ground) | `C` | `2` |
+| B | Encoder quadrature output B | `B` | `3` |
+| D (S1) | Push-switch terminal 1 | `S1` | `4` |
+| E (S2) | Push-switch terminal 2 | `S2` | `5` |
+| M (left) | Mounting lug, ESD ground | `MP` | `MP1` |
+| M (right) | Mounting lug, ESD ground | `MP` | `MP2` |
+
+Physical layout: encoder quadrature pins (A/C/B) are on one side of
+the body in a 3-pin row with C in the center. Switch pins (D/E) are
+on the opposite side in a 2-pin row. Two mounting lugs flank the body
+between the two pin rows. Per M13 (Cycle 3), the mounting lugs are
+PTH and tied to GND for user-touch ESD dissipation.
+
+## §Cycle 9 §Fixes
+
+### B1 — EC1 schematic pinout (BLOCKER, 6x `net_conflict`)
+
+KiCad schematic Y-axis convention is down-positive; KiCad library
+symbol Y-axis is up-positive. The EC11 `sym_def` in `generate.py`
+listed pin 1 at lib y=+5.08 (meaning the pin renders at sheet
+y=center-5.08, i.e. ABOVE the symbol anchor), but the wire/global
+label emitter placed ENC_A at ly=center+5.08 (BELOW the anchor).
+Net result: wire labeled ENC_A connected to the pin at sheet
+y=center+5.08, which is pin 3 (B). Symmetrically ENC_B connected to
+pin 1 (A), ENC_SW connected to pin 5 (SW2), and GND connected to pin
+4 (SW1). The PCB side was correct; the schematic side was flipped.
+
+Fix: swapped the Y sign on all four EC11 pin definitions in the
+symbol library (pin 1 A now lib y=-5.08, pin 3 B now lib y=+5.08, pin
+4 SW1 now y=-5.08, pin 5 SW2 now y=+5.08). Added two more pins "MP1"
+and "MP2" to the symbol, both anchored at lib y=0 tied to GND via the
+EC11 emitter. Corresponding PCB pads "MP1"/"MP2" now have schematic
+counterparts, clearing the two "No corresponding pin in schematic"
+warnings.
+
+### B2 — Capacitor footprint LIB_ID mismatch (MAJOR, 116x)
+
+`fp_0402` hard-coded `Resistor_SMD:R_0402_1005Metric` for every 0402
+call -- pad geometry is identical, but KiCad parity-check treats the
+footprint LIB_IDs as distinct. Added a `kind="R"|"C"` parameter; all
+0402 capacitors (CL1..CL25, C_ENC1, C_VBAT1, C3, C4) now emit
+`Capacitor_SMD:C_0402_1005Metric`. Resistors (R1-R3, R_GREV, R_NTC,
+R_VBAT1, R_VBAT2) stay on `Resistor_SMD:R_0402_1005Metric`. The
+0805/0603/SOD-523 helpers were already correct.
+
+### B3 — LCSC + Description fields on PCB footprints (MAJOR, 127+127x)
+
+Schematic symbols carried `LCSC` and `Description` properties; PCB
+footprints had `LCSC` missing entirely and `Description` set to an
+empty string. KiCad 10 parity check treats any field on the schematic
+side as mandatory on the PCB side and flags both cases as
+`footprint_symbol_field_mismatch`. Two in-place patch scripts:
+
+  * `add_lcsc_property.py` — reads `bom.csv`, walks every footprint
+    on the PCB, injects a `(property "LCSC" ...)` block immediately
+    after the Description property. Stamped 126 footprints.
+  * `sync_descriptions.py` — reads each schematic symbol's
+    `Description`, copies it into the matching PCB footprint's
+    Description property (which generate.py left as `""`). Synced 127
+    footprints.
+
+`generate.py` was also updated so that `_smd_2pin` and the public
+0402 / 0603 / 0805 / SOD-523 helpers all accept an `lcsc` kwarg and
+emit the property, so future regenerations carry the field.
+
+### B2-extension — XIAO / J_BAT / J_NFC / SW_PWR / Q_REV / LED Y-flip (MAJOR, 151x)
+
+While the Cycle 9 brief specifically called out EC1 (B1), the same
+KiCad library-symbol-Y vs schematic-Y inversion bug was latent on six
+other symbols (`local:LED_RGB`, `local:ConnHeader2`,
+`local:ConnHeader4`, `local:SW_SPDT`, `local:Q_PMOS`,
+`local:XIAO_nRF52840`). 151 net_conflict warnings traced to these.
+Cycles 1-7's CLI DRC was blind to all of them; Cycle 8's UUID
+linkage made them visible to GUI parity DRC. Fix: flipped the Y signs
+in each affected `sym_def` so pin sheet positions align with the
+existing wire emitters. The XIAO symbol additionally needed its pin
+`(at)` X coord moved from +/-10.16 to +/-7.62 (= body_half_width +
+pin_length) so the wire start coincides with the pin's wire-end (the
+pre-Cycle 9 +/-10.16 placement put the wire endpoint 2.54 mm away
+from the pin -- KiCad silently disconnected the pin). The MCU's wire
+emitter was updated in lockstep so wires extend from the new (at)
+point.
+
+Net-side validation: every pin on EC1, J_BAT, J_NFC, SW_PWR, Q_REV,
+all 25 LEDs, and all 16 U1 pins now resolve to the intended net (see
+`pcb/_gen/autoroute/fix_ec11_pinmap.py` for the EC1 verification).
+
+### B4 — Reference drift (MAJOR, 1x `missing_footprint`)
+
+The 411-issue baseline only flagged `C5` (1 nF USB bulk cap) as
+missing -- a comment in `generate.py` noted it was deliberately
+retired from the PCB in Cycle 5 but the schematic emitter was not
+updated. Removed the C5 entry from the schematic's MCU-local decap
+list. No other `missing_footprint` or `extra_footprint` refs from
+drift; the 10 residual `extra_footprint` are all mechanical-only
+(fiducials, test points, mounting holes, back-pad jumper) and stay as
+documented Cycle 8 residuals.
+
+### §Cycle 9 §Validation results
+
+See `pcb/_gen/drc-cycle9.rpt` for the full report. Category counts
+before -> after (with parity flags):
+
+| Category | Cycle 8 baseline (parity flags ON) | Cycle 9 |
+|---|---:|---:|
+| `net_conflict` | 157 | **0** |
+| `footprint_symbol_mismatch` | 116 | **0** |
+| `footprint_symbol_field_mismatch` | 127 | **0** |
+| `missing_footprint` | 1 | **0** |
+| `extra_footprint` | 10 | 10 (mechanical residuals; Rev-B) |
+| Total parity issues | 411 | **10** |
+| `hole_clearance` | 0 | 0 (unchanged from C8) |
+| `shorting_items` | 0 | 0 (unchanged) |
+| `tracks_crossing` | 0 | 0 (unchanged) |
+| `clearance` | 0 | 0 (unchanged) |
+
+No regression on Cycle 8 clearance gates. The 10 residual
+`extra_footprint` are all mechanical-only (FID1-3, H1-4, J_XIAO_BP,
+TP1-2) -- Rev-B will add them as schematic symbols.
+
+## Cycle 9 status
+
+`PHASE-1-CYCLE-9: COMPLETE`

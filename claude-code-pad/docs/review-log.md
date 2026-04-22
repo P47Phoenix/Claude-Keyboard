@@ -1059,3 +1059,143 @@ Gate met:
 - `docs/review-log.md` (this entry)
 
 **Status:** `PHASE-1-CYCLE-8: COMPLETE`
+
+---
+
+## Standing workflow rules (Cycle 9)
+
+**DRC invocation:** every ECE-1 and adversarial-review cycle must run
+kicad-cli DRC as
+
+```
+flatpak run --command=kicad-cli org.kicad.KiCad pcb drc \
+  --schematic-parity --severity-all \
+  --output pcb/_gen/drc-<cycle>.rpt \
+  pcb/claude-code-pad.kicad_pcb
+```
+
+Without `--schematic-parity` the CLI silently skips the five
+schematic-to-PCB cross-check categories (`net_conflict`,
+`footprint_symbol_mismatch`, `footprint_symbol_field_mismatch`,
+`missing_footprint`, `extra_footprint`). Without `--severity-all` the
+CLI suppresses warning-level violations -- every parity finding is at
+warning severity. Cycles 1-7 missed 411 parity violations for this
+reason. See `pcb/DESIGN-NOTES.md` §Workflow §DRC.
+
+---
+
+## Cycle 9 — post-closure parity fix (2026-04-22)
+
+**Trigger:** user re-ran DRC in the flatpak KiCad 10 GUI after Cycle 8
+and reported 411 schematic-parity issues invisible to Cycles 1-8's
+kicad-cli invocations. Project Lead pre-triaged four real bugs + a
+workflow gap.
+
+### ECE-1 Cycle 9 work
+
+**Objective A -- workflow docs.** Updated `pcb/gerbers/README.md`,
+`pcb/DESIGN-NOTES.md` §Workflow §DRC, and this log so every future
+cycle invokes DRC with `--schematic-parity --severity-all`.
+
+**Fix B1 (BLOCKER) -- EC1 schematic pinout flip.** Root cause: KiCad
+library-symbol Y is up-positive but schematic Y is down-positive.
+`generate.py`'s EC11 `sym_def` used lib-up Y (+5.08 for pin 1), while
+the wire/global-label emitter used schematic-down Y for the same
+position -- so ENC_A ended up on pin 3 (B) and vice versa; same
+swap on pins 4/5 put ENC_SW on the GND lug and GND on the switch pin.
+The PCB footprint's net assignments were correct; the schematic was
+the offender. Fix: flipped Y signs on all four non-center EC11 symbol
+pins. Also added symbol pins `MP1` / `MP2` (both GND) so the PCB's
+mounting-lug pads (GND per Cycle 3 M13) have schematic counterparts.
+
+**Fix B2 (MAJOR) -- cap footprint LIB_ID mismatch (116x).** `fp_0402`
+unconditionally emitted `Resistor_SMD:R_0402_1005Metric`. Added a
+`kind="R"|"C"` parameter and routed 0402-cap callers
+(CL1..CL25, C_ENC1, C_VBAT1, C3, C4) through `kind="C"`. PCB
+patched in-place via `pcb/_gen/autoroute/fix_cap_footprints.py`.
+
+**Fix B3 (MAJOR) -- LCSC + Description fields missing on PCB
+(127+127x).** Schematic symbols carried both `LCSC` and `Description`
+properties; PCB footprints had `LCSC` absent and `Description` empty.
+KiCad 10 parity check flags both. Two scripts: `add_lcsc_property.py`
+(reads `bom.csv`, injects LCSC into 126 footprints) and
+`sync_descriptions.py` (copies the schematic Description into 127
+footprints). `generate.py` 0402/0603/0805/SOD-523 helpers also gained
+an `lcsc` kwarg so future regens carry the field.
+
+**Fix B2-extension (MAJOR) -- 6 more Y-flipped symbols (151x
+net_conflict).** While investigating B1 it became clear the same
+KiCad library-Y vs schematic-Y inversion bug was latent on
+`local:LED_RGB`, `local:ConnHeader2`, `local:ConnHeader4`,
+`local:SW_SPDT`, `local:Q_PMOS`, and `local:XIAO_nRF52840` --
+producing 151 `net_conflict` warnings invisible to pre-Cycle-8 CLI
+DRC. Flipped pin Y signs on each `sym_def`; for XIAO additionally
+moved pin (at) X from +/-10.16 to +/-7.62 (= body half-width + pin
+length) so wire endpoints coincide with pin (at) points. The wire
+emitter for U1 was updated in lockstep.
+
+**Fix B4 (MAJOR) -- missing footprint C5.** C5 was retired from the
+PCB in Cycle 5 (comment in `generate.py`) but the schematic emitter
+still produced it. Removed C5 from the schematic decap list. The ref
+suffix drift hinted at in the baseline brief (`C_ENC` vs `C_ENC1`)
+had already been resolved by Cycle 8's UUID linkage -- no rename
+was needed. The 10 residual `extra_footprint` are mechanical-only
+(FID1-3, H1-4, J_XIAO_BP, TP1-2) and carry forward as known Cycle 8
+residuals (Rev-B adds them as schematic symbols).
+
+### Cycle 9 DRC numbers
+
+Full parity DRC (`flatpak run ... pcb drc --schematic-parity --severity-all`):
+
+| Category | Cycle 8 baseline (parity flags ON) | Cycle 9 |
+|---|---:|---:|
+| `net_conflict` | 157 | **0** |
+| `footprint_symbol_mismatch` | 116 | **0** |
+| `footprint_symbol_field_mismatch` | 127 | **0** |
+| `missing_footprint` | 1 | **0** |
+| `extra_footprint` (mechanical only) | 10 | 10 |
+| Total parity issues | 411 | **10** |
+| `hole_clearance` | 0 | 0 (unchanged) |
+| `shorting_items` | 0 | 0 (unchanged) |
+| `tracks_crossing` | 0 | 0 (unchanged) |
+| `clearance` | 0 | 0 (unchanged) |
+
+Target met: all four parity bug classes cleared, no regression on
+Cycle 8 clearance gates. The 10 residual `extra_footprint` are all
+mechanical-only (FID1-3, H1-4, J_XIAO_BP, TP1-2) -- continuing
+Cycle 8 known residuals (Rev-B adds them as schematic symbols).
+
+### Files changed in Cycle 9
+
+- `pcb/_gen/generate.py` -- EC11 symbol Y-flip + MP1/MP2 pins;
+  `fp_0402` `kind` parameter; `lcsc` kwarg on all `_smd_2pin`-derived
+  helpers; LED / Header2 / Header4 / SW_SPDT / Q_PMOS / XIAO Y-flips;
+  XIAO pin (at) X moved from +/-10.16 to +/-7.62; `in_bom no` on DNP
+  symbols; SW_PWR + TH1 + U1 marked `is_dnp=True`; Value strings
+  aligned with PCB (LED "SK6812", J_NFC "NFC", J_BAT "JST-PH-2P", F1
+  "PTC_500mA", SW_PWR "SPDT", SW "MX_HS", switch Footprint changed to
+  inline `local:SW_Kailh_HotSwap_MX`); C5 retired; `main()` now
+  schematic-only by default (PCB / PRO / CPL preserved unless
+  `--full` is passed).
+- `pcb/_gen/autoroute/fix_ec11_pinmap.py` (new) -- validation stub
+  that runs kicad-cli netlist export and asserts EC1 pin->net map.
+- `pcb/_gen/autoroute/fix_cap_footprints.py` (new) -- 29 0402
+  capacitor LIB_ID rewrites in place (Resistor_SMD -> Capacitor_SMD).
+- `pcb/_gen/autoroute/add_lcsc_property.py` (new) -- 126 LCSC
+  properties stamped in place from `bom.csv`.
+- `pcb/_gen/autoroute/sync_descriptions.py` (new) -- 127 Description
+  fields synced from schematic to PCB in place.
+- `pcb/_gen/autoroute/rename_refs.py` (new) -- no-op for Cycle 9
+  (no remaining ref drift after Cycle 8); structure ready for
+  Rev-B re-use.
+- `pcb/claude-code-pad.kicad_sch` (regenerated; deterministic UUIDs
+  preserved -- Cycle 8 PCB UUID linkage intact).
+- `pcb/claude-code-pad.kicad_pcb` (in-place patches only -- routing
+  preserved: 1095 segments + 148 GND stitch vias unchanged).
+- `pcb/gerbers/*`, `pcb/cpl.csv` (regenerated; DNP exclusion
+  verified).
+- `pcb/_gen/drc-cycle9.rpt`, `pcb/_gen/erc-cycle9.rpt` (new).
+- `pcb/gerbers/README.md`, `pcb/DESIGN-NOTES.md` (Cycle 9 section +
+  workflow), `docs/review-log.md` (this entry).
+
+**Status:** `PHASE-1-CYCLE-9: COMPLETE`

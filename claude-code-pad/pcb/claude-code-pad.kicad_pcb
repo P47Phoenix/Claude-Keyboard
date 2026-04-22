@@ -208,7 +208,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "SPDT slide power switch (TH, SS-12D00G4)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -219,6 +219,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C8325"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f7cf0870-5526-51a5-ab7a-ce9cfe7a5417")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(path "/23bcb1ab-03d7-5de9-a943-76df8513fb49/d403a2de-7e1d-5ea1-86ee-53942477010c")
 		(attr through_hole exclude_from_pos_files exclude_from_bom dnp)
@@ -373,7 +380,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -384,6 +391,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c94de3f4-c485-55e3-8492-26c4a9a578ba")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -621,7 +635,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "NTC 10k axial THT for battery temperature"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -632,6 +646,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C14128"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d184331c-ee05-5816-a87f-0cc0744b9ad5")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(path "/23bcb1ab-03d7-5de9-a943-76df8513fb49/d7c5e279-34d4-52f4-af00-21fa71d4a289")
 		(attr through_hole exclude_from_pos_files exclude_from_bom dnp)
@@ -699,7 +720,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -710,6 +731,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9bbc8242-8fbf-5d13-bf9e-07a8d9b82ece")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -947,7 +975,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -958,6 +986,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ea48266f-a24d-555c-9b48-3444ae5abd48")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -1132,7 +1167,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1143,6 +1178,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "050459e3-46a4-5ee9-80ec-4de42b9b941e")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -1317,7 +1359,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1328,6 +1370,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fa8a37fa-0891-5932-b928-cb5019e6d7bf")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -1502,7 +1551,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1513,6 +1562,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "831c54e9-c47c-5588-bb07-a179f805d54d")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -1687,7 +1743,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1698,6 +1754,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fdd4ce13-c9ba-58e0-a656-922aadeb7b98")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -1872,7 +1935,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1883,6 +1946,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a821eb76-4fd0-5259-9207-c78a215c9e39")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -2057,7 +2127,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resettable fuse 500 mA hold / 1 A trip, 0805"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -2068,6 +2138,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C116170"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "23ec9ab5-12c4-5d8f-8628-3788f847b3e6")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -2181,7 +2258,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -2192,6 +2269,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3c8b494e-c184-5c69-b588-16ae34c691d7")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -2366,7 +2450,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -2377,6 +2461,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f0ae3d43-7036-5308-88db-946623a54c95")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -2551,7 +2642,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -2562,6 +2653,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2c4e3b01-adce-526c-a024-36087fa62b04")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -2852,7 +2950,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "F.Cu")
 		(uuid "775a1255-5f4e-5dfb-8d69-5a5b58b04bda")
 		(at 203 124)
@@ -2893,7 +2991,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Encoder SW debounce cap"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -2904,6 +3002,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2ec29cc2-12ce-513c-bdb4-9c1a58a21566")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -3017,7 +3122,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Seeed XIAO nRF52840 (direct-solder castellations)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -3028,6 +3133,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C2888140"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4dca24fe-7640-5775-aeee-f0e3bb905121")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -3279,7 +3391,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -3290,6 +3402,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "818b8578-1671-523a-bf71-7096ebaaa757")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -3527,7 +3646,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "PN532 NFC 4-pin I2C breakout (DNP)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -3625,7 +3744,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -3636,6 +3755,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6d917516-48a8-5a18-bb9e-2382594e2907")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -3810,7 +3936,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "EC11 rotary encoder with push-switch (DNP for PCBA)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -3821,6 +3947,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C255515"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c776dc6d-c242-5a7f-bc82-26c435568c1a")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(path "/23bcb1ab-03d7-5de9-a943-76df8513fb49/9a4816e9-cc45-5414-a543-07934ef4aaca")
 		(attr through_hole exclude_from_pos_files exclude_from_bom dnp)
@@ -3938,7 +4071,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -3949,6 +4082,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "27ef33a0-4e23-5838-bded-c48eb3b0d644")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -4123,7 +4263,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "ESD TVS on ENC_B (cathode->signal, anode->GND)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -4134,6 +4274,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C709011"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ed58f658-7e41-562f-859d-044c65dd6b5e")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -4247,7 +4394,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -4258,6 +4405,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e5fec043-eed7-5e05-a2e4-bfc79fa25d1e")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -4432,7 +4586,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -4443,6 +4597,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "990999c6-19b0-574f-8db4-e4181ef24c1a")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -4617,7 +4778,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -4628,6 +4789,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4b33988b-808d-5914-9a9f-eb440da07fe3")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -4802,7 +4970,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "NTC divider lower leg"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -4813,6 +4981,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C25804"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "88a5348a-b11a-5aca-80a7-766dd2a26398")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -4926,7 +5101,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -4937,6 +5112,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "57a23bf7-d5aa-5f28-8e84-fd09e2b2d236")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -5174,7 +5356,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -5185,6 +5367,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a549c1a5-de95-5c1a-bc2b-9ef381842df0")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -5359,7 +5548,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "ESD TVS on ENC_A (cathode->signal, anode->GND)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -5370,6 +5559,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C709011"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e34e356d-1f4c-5e03-b06f-9024e3850b65")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -5549,7 +5745,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Q_REV gate pull-down (to GND)"
 			(at 231.95 3.85 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -5560,6 +5756,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C25804"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c4a377c2-8ca3-5661-9551-0792cea5eec0")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 231.95 3.85 0)
@@ -5673,7 +5876,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -5684,6 +5887,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "addbc5eb-a8cd-50b8-955d-ab802905f53e")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -5858,7 +6068,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -5869,6 +6079,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "968eda76-fe45-56b7-991e-5165168f43eb")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -6043,7 +6260,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -6054,6 +6271,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b6f181b2-7d59-59c9-b677-aca4603337ad")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -6228,7 +6452,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LiPo JST-PH 2-pin battery connector (S2B-PH-SM4-TB)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -6239,6 +6463,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C295747"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "045172ab-02c5-58c6-b1b9-25b1831cd6b0")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -6346,7 +6577,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "ESD TVS on ENC_SW (cathode->signal, anode->GND)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -6357,6 +6588,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C709011"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a30defeb-7eee-5f1b-9b93-c174e2dd36c8")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -6587,7 +6825,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "P-FET reverse-polarity protection"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -6598,6 +6836,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C147581"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2fdbbed5-d858-54ab-ac25-b0ae12645066")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -6678,7 +6923,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Q_REV Vgs zener clamp (5V1)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -6689,6 +6934,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C8056"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3652dbba-cda7-5fa2-90a6-5136a3e229dd")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -6802,7 +7054,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -6813,6 +7065,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "18bbd8c8-ec15-5e3f-8fa5-bbc952c38ebb")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -6987,7 +7246,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -6998,6 +7257,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "eeabf003-60ec-5594-a8d7-71ddaa060844")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -7172,7 +7438,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -7183,6 +7449,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d52535e6-9234-5506-bd35-2ef340a4c6ca")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -7358,7 +7631,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -7369,6 +7642,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dece131b-63cb-5771-89ee-176b97a92b32")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -7542,7 +7822,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "04d97bbb-3796-5a6e-947b-d95db1eeea2d")
 		(at 172 124 90)
@@ -7584,7 +7864,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "VBAT ADC anti-alias cap"
 			(at 296 -48 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -7595,6 +7875,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "97ffa1d9-4049-5ca1-8fc5-f09a64a31b1a")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 296 -48 0)
@@ -7667,7 +7954,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "06d954ae-8cf4-59bf-b09f-c6d58cf6b101")
 		(at 153.5 217.3 90)
@@ -7709,7 +7996,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 370.725 63.725 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -7720,6 +8007,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b0ab87af-0ca9-5653-887b-cf66bc302583")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 370.725 63.725 0)
@@ -7792,7 +8086,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "07526bee-2190-5f0d-91bf-fe87eda6481e")
 		(at 172.55 198.25 90)
@@ -7834,7 +8128,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 370.725 25.625 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -7845,6 +8139,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "00248204-6d79-5be0-b20c-5c558389ae6b")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 370.725 25.625 0)
@@ -7959,7 +8260,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -7970,6 +8271,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9e5da9df-70d7-52d6-b964-c09adb2ea975")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -8134,7 +8442,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -8145,6 +8453,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4344cc4d-a72e-5411-a9d5-961700d82172")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -8360,7 +8675,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -8371,6 +8686,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "de6ccbe8-805b-5ab8-a8e7-9b3f07dc4542")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -8586,7 +8908,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "VBAT bulk (near XIAO BAT+ pad)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -8597,6 +8919,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C45783"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b2c5702b-3d16-5b3f-96aa-cea8d619ed0b")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -8669,7 +8998,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "16b6ae37-88ab-5831-806d-5ae6425b82e1")
 		(at 134.45 217.3 90)
@@ -8711,7 +9040,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 351.675 82.775 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -8722,6 +9051,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "98c80dbf-f611-5bdb-9bee-351f9f15419e")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 351.675 82.775 0)
@@ -8836,7 +9172,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -8847,6 +9183,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fe304b7d-388b-53da-959e-e1ed4d6ace95")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -9020,7 +9363,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "18dddf4d-b859-5b34-a951-e4153428c726")
 		(at 191.6 179.2 90)
@@ -9062,7 +9405,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 370.725 -12.475 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -9073,6 +9416,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "71e1b337-1f1b-5e2d-bc01-cfe9cb0f8d0a")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 370.725 -12.475 0)
@@ -9187,7 +9537,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -9198,6 +9548,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1719908f-4ccc-5139-8123-a128b14dd8f2")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -9362,7 +9719,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -9373,6 +9730,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9c44548f-4ac8-5fd7-aeaf-f1fc8dc0f609")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -9588,7 +9952,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -9599,6 +9963,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a2a561e0-077c-5a0c-9284-57df303b873c")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -9763,7 +10134,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -9774,6 +10145,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "73a2cb93-db38-5860-98db-11846e63c9ab")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -9896,7 +10274,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "23b79b6c-6ba6-554d-871a-4c76b4b5eb96")
 		(at 153.5 179.2 90)
@@ -9938,7 +10316,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 332.625 25.625 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -9949,6 +10327,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "54dce6c1-a300-5e04-8103-7d5c581d1a0a")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 332.625 25.625 0)
@@ -10063,7 +10448,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -10074,6 +10459,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "48926ca9-e554-5beb-adc7-a6f778960b6c")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -10289,7 +10681,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -10300,6 +10692,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8058bb83-b517-56ac-a735-45676967363e")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -10422,7 +10821,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "3229bdce-763d-5d1e-9512-58c688253196")
 		(at 153.5 141.1 90)
@@ -10464,7 +10863,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 294.525 -12.475 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -10475,6 +10874,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e2ff2402-9d99-58cd-aeb8-eea5e98a50e2")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 294.525 -12.475 0)
@@ -10547,7 +10953,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "34f84833-c2ee-57e8-b607-f8d0f0fd5fe2")
 		(at 153.5 160.15 90)
@@ -10589,7 +10995,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 313.575 6.575 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -10600,6 +11006,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a3e373d4-2267-521d-8031-7e6a37eb19c1")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 313.575 6.575 0)
@@ -10672,7 +11085,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "3598c429-e022-5240-b1eb-37b6cecda908")
 		(at 115.4 179.2 90)
@@ -10714,7 +11127,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 294.525 63.725 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -10725,6 +11138,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "50add6be-2d05-5dea-b499-662b2a7d460c")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 294.525 63.725 0)
@@ -10839,7 +11259,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "3V3 bulk (near XIAO 3V3 pin)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -10850,6 +11270,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C45783"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f40acba7-5e7d-56fc-ab87-556751ee1b8d")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -10964,7 +11391,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "ESD TVS on SDA (cathode->signal, anode->GND)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -10975,6 +11402,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C709011"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bdc9567f-8566-5711-8452-0ad6480ad680")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -11089,7 +11523,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -11100,6 +11534,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f6d2ec01-3355-5bd7-8c5b-30db80f8ecd4")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -11264,7 +11705,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -11275,6 +11716,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c253fc84-9dcf-56f3-acbe-8721a229527b")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -11490,7 +11938,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -11501,6 +11949,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dcc43390-9cd3-502e-a981-782b978546a2")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -11716,7 +12171,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -11727,6 +12182,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "834ba156-6657-53ea-a26a-e1b2de978cf9")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -11891,7 +12353,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "I2C SCL pull-up"
 			(at 279 -35 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -11902,6 +12364,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C25905"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9d4a503b-565d-563c-8375-aa62fd33cbde")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 279 -35 0)
@@ -12016,7 +12485,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -12027,6 +12496,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "131cd77b-6e41-50a7-88b2-74659f95dd67")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -12242,7 +12718,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -12253,6 +12729,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "614cd2f5-cd20-5632-a1a2-8b160b844d77")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -12375,7 +12858,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "5eef3f97-6bab-5f60-9231-84a5f4e7121a")
 		(at 172.55 179.2 90)
@@ -12417,7 +12900,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 351.675 6.575 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -12428,6 +12911,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "78b7278f-1a9a-51fd-8e77-57b6640e072e")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 351.675 6.575 0)
@@ -12542,7 +13032,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "VBAT ADC divider upper leg (1M)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -12553,6 +13043,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C22935"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "924af659-4ac1-5b06-9b1f-bf22f5b91563")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -12667,7 +13164,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -12678,6 +13175,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "97502ce5-9e55-5ec0-9094-2fdd9231d14e")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -12851,7 +13355,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "689b4431-4070-50e1-8c43-1cdd032599e4")
 		(at 191.6 198.25 90)
@@ -12893,7 +13397,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 389.775 6.575 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -12904,6 +13408,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "01e8cec5-45d1-56d3-9d2d-ac51b2e1eda2")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 389.775 6.575 0)
@@ -13018,7 +13529,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -13029,6 +13540,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "737f41aa-c71a-5954-bed8-49eece4651ce")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -13193,7 +13711,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -13204,6 +13722,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "974d4ff0-d745-5610-9fa2-fb6a470127ad")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -13419,7 +13944,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -13430,6 +13955,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5d0c26b4-c379-59bb-8f43-7cba110d830b")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -13645,7 +14177,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -13656,6 +14188,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "70d926d3-33aa-5214-87b3-8c88b1e80093")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -13820,7 +14359,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -13831,6 +14370,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "40bf117e-b71f-50b6-8372-f614657fcaa5")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -13995,7 +14541,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -14006,6 +14552,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1512df85-b11f-5f1c-93ce-9913fb5995ed")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -14179,7 +14732,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "76a785a2-8bfd-52de-956b-9f1af91b4651")
 		(at 147 122)
@@ -14221,7 +14774,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "3V3 decoupling"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -14232,6 +14785,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ad4836f0-4238-5a7f-b5f1-727070d3455e")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -14346,7 +14906,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -14357,6 +14917,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f206f74f-5fc3-5f4a-94be-543e925de93c")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -14572,7 +15139,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -14583,6 +15150,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d73797f5-4f53-5ec2-b1d0-46d9a3042cf5")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -14747,7 +15321,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "I2C SDA pull-up"
 			(at 276 -38 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -14758,6 +15332,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C25905"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7d6f06fb-bb7d-5d8e-93f9-510a021ce519")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 276 -38 0)
@@ -14872,7 +15453,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -14883,6 +15464,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "85c0b7a4-79fa-549d-9b34-553f9b2d27f8")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -15056,7 +15644,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "801056e7-0a6f-566a-ab89-06f93332f122")
 		(at 134.45 179.2 90)
@@ -15098,7 +15686,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 313.575 44.675 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -15109,6 +15697,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "efd71e82-7fda-5292-a125-6418aa0a129b")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 313.575 44.675 0)
@@ -15181,7 +15776,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "8221a4cd-9f81-5c7c-93f0-7986bb04fe57")
 		(at 115.4 141.1 90)
@@ -15223,7 +15818,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 256.425 25.625 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -15234,6 +15829,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a7eb3d09-fc22-55cb-92a4-abfcdbc9eeef")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 256.425 25.625 0)
@@ -15306,7 +15908,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "824c4d41-580d-535f-aa41-e6fa9858f7bd")
 		(at 172.55 160.15 90)
@@ -15348,7 +15950,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 332.625 -12.475 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -15359,6 +15961,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c1e07093-b53a-5e2d-b78e-85e58d1f7aec")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 332.625 -12.475 0)
@@ -15431,7 +16040,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "85a331a7-6a31-5fd6-8501-9141c8849054")
 		(at 134.45 141.1 90)
@@ -15473,7 +16082,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 275.475 6.575 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -15484,6 +16093,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "163a3903-9dea-5f53-953a-26131401807d")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 275.475 6.575 0)
@@ -15598,7 +16214,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -15609,6 +16225,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a808c578-e3e3-5313-ae6a-b9f6618ffbbc")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -15731,7 +16354,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "8b89e5b1-d02b-5bb7-9612-bff1b3d458c0")
 		(at 191.6 141.1 90)
@@ -15773,7 +16396,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 332.625 -50.575 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -15784,6 +16407,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e9bbd729-cc5f-519c-a44c-592cb5ff1a4e")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 332.625 -50.575 0)
@@ -15898,7 +16528,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -15909,6 +16539,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2ceb7a7b-8e1a-5e39-9dbf-5b9ce3621248")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -16073,7 +16710,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -16084,6 +16721,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "66933990-ca2d-5ce0-b947-c783ef8afc8a")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -16299,7 +16943,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -16310,6 +16954,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6fc36d21-33dc-5c0d-a074-3b24bf2cf96f")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -16432,7 +17083,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "97834fc0-85da-5b75-b1b2-fdab5e3ab7aa")
 		(at 191.6 160.15 90)
@@ -16474,7 +17125,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 351.675 -31.525 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -16485,6 +17136,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cd413fa2-6308-5266-ada4-301c91e422a7")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 351.675 -31.525 0)
@@ -16557,7 +17215,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "9d1c417b-71e6-511b-8653-c6f87a109b61")
 		(at 115.4 160.15 90)
@@ -16599,7 +17257,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 275.475 44.675 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -16610,6 +17268,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c6109c32-5a54-5f20-8df6-768133fdabc9")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 275.475 44.675 0)
@@ -16724,7 +17389,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -16735,6 +17400,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f69d8f98-c0bd-5faa-ae43-27b9ca810fd0")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -16899,7 +17571,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -16910,6 +17582,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2e521850-7175-5c32-8775-ec413dba42db")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -17032,7 +17711,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "a45d2bb9-d682-5236-9ca4-f871515ddd60")
 		(at 172.55 141.1 90)
@@ -17074,7 +17753,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 313.575 -31.525 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -17085,6 +17764,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "eb931ca8-0d85-5b50-839b-dc2e894c694c")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 313.575 -31.525 0)
@@ -17199,7 +17885,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -17210,6 +17896,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "989c1f51-24c7-5e89-af64-265d7fbd7f3e")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -17425,7 +18118,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "VBAT ADC divider lower leg (1M)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -17436,6 +18129,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C22935"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5d9a2e9a-de30-5c84-b814-c5c806518619")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -17550,7 +18250,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -17561,6 +18261,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "016b15d0-5225-5c78-b6e8-356bf1a71125")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -17776,7 +18483,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -17787,6 +18494,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "54b9c8af-e5f4-58cb-881e-265529161d73")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -17909,7 +18623,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "bd07b373-6d7c-5d0a-bc1a-c86530a24ffa")
 		(at 134.45 160.15 90)
@@ -17951,7 +18665,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 294.525 25.625 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -17962,6 +18676,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1756615d-2ab2-5529-a34a-fbe5a25773de")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 294.525 25.625 0)
@@ -18076,7 +18797,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -18087,6 +18808,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2f0996d2-4179-5569-bb78-3d2b1df1503c")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -18209,7 +18937,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "bdf4f002-be99-5134-958e-114e1d78a6b9")
 		(at 201.125 217.3 90)
@@ -18251,7 +18979,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 418.35 16.1 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -18262,6 +18990,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f5938c3a-6353-5b35-8d5b-6c2aca1285b7")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 418.35 16.1 0)
@@ -18376,7 +19111,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -18387,6 +19122,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f79de7d1-7c38-5f87-a611-4eedcd0cc3ec")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -18602,7 +19344,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -18613,6 +19355,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "674e7067-eddb-51a3-9278-30abcb823bc2")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -18828,7 +19577,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "ESD TVS on SCL (cathode->signal, anode->GND)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -18839,6 +19588,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C709011"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "587a24a4-1da4-5f88-b412-5fd31eccc27d")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -18953,7 +19709,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -18964,6 +19720,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a58c24c3-a034-56b5-8b59-d0511beade62")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -19179,7 +19942,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -19190,6 +19953,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "abfd473a-9487-5464-a90c-1d5236a29425")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -19312,7 +20082,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "cbdff731-d316-5f83-a00c-1c5ce63eff71")
 		(at 153.5 198.25 90)
@@ -19354,7 +20124,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 351.675 44.675 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -19365,6 +20135,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1cb12e4b-2359-58b9-828e-eef4a67471d2")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 351.675 44.675 0)
@@ -19479,7 +20256,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -19490,6 +20267,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3b9c7e9c-973e-59cf-b483-b39c196fdfc8")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -19654,7 +20438,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -19665,6 +20449,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b456a9cc-6865-5f72-a4a0-1c6646294706")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -19838,7 +20629,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "d0e2179c-9a6d-5d57-b9a5-32fe192435c3")
 		(at 134.45 198.25 90)
@@ -19880,7 +20671,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 332.625 63.725 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -19891,6 +20682,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3ad7dbce-30d9-528d-a1c9-9e401dd86817")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 332.625 63.725 0)
@@ -19963,7 +20761,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "d2f2d81d-79f7-5f54-b821-4ee5bdb6e478")
 		(at 172.55 217.3 90)
@@ -20005,7 +20803,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 389.775 44.675 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -20016,6 +20814,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "71e16a60-3529-597e-a2c5-0512f6802d1d")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 389.775 44.675 0)
@@ -20088,7 +20893,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "d5918d51-eea2-55be-ac34-09c17043ba9b")
 		(at 115.4 217.3 90)
@@ -20130,7 +20935,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 332.625 101.825 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -20141,6 +20946,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ddb53241-52b9-5aca-8922-9b37431f120d")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 332.625 101.825 0)
@@ -20213,7 +21025,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "d65d76a2-08e6-5426-bdd8-2c36d53aee6a")
 		(at 115.4 198.25 90)
@@ -20255,7 +21067,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "LED VDD decoupling"
 			(at 313.575 82.775 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -20266,6 +21078,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8bbc563c-acc6-5150-8da1-6b86644daaf5")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 313.575 82.775 0)
@@ -20380,7 +21199,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -20391,6 +21210,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ce8badb4-82d0-539d-9907-ea3e85a8e3c9")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -20555,7 +21381,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -20566,6 +21392,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d109d1da-6aa3-57b5-b743-c74a4e0f5ce8")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -20730,7 +21563,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -20741,6 +21574,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0b8df380-ca06-5f1d-ade2-e7ac63263c6f")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -20956,7 +21796,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -20967,6 +21807,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c5141a2a-b1ef-55bc-8f1c-0ca15ef42ef9")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)
@@ -21140,7 +21987,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Resistor_SMD:R_0402_1005Metric"
+	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "e6058029-27b5-5c00-b431-fa287ba255a2")
 		(at 147 111.38)
@@ -21182,7 +22029,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "USB 5V decoupling"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -21193,6 +22040,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "03064c6c-73c8-559e-863e-5ee8f49a6bbc")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 0 0 0)
@@ -21307,7 +22161,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -21318,6 +22172,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "92c92882-aefe-580c-9e15-f8659a6b331b")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -21482,7 +22343,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "RGB DIN series resistor"
 			(at 273 -41 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -21493,6 +22354,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C25744"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f8b64137-f6b3-50ef-8206-926d2072d426")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "0"
 			(at 273 -41 0)
@@ -21607,7 +22475,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Matrix diode"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -21618,6 +22486,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5b1c3678-c939-5738-bec3-849d5753abe6")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "180"
 			(at 0 0 0)
@@ -21782,7 +22657,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -21793,6 +22668,13 @@
 					(thickness 0.15)
 				)
 			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "87f5c2f7-4a2b-5eea-85dd-83a357e0dfb9")
+			(effects (font (size 1 1) (thickness 0.15)))
 		)
 		(property "JLCPCB Rotation" "-90"
 			(at 0 0 0)

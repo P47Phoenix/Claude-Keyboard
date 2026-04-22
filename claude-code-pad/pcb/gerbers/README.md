@@ -25,7 +25,20 @@ Cycle 3: the CPL command now uses `--exclude-dnp` so that EC1, J_NFC, U1,
 TH1 and SW_PWR (marked DNP in the BOM) are not listed in the fab CPL.
 This closes B-CPL-DNP.
 
+Cycle 9: **DRC must always be invoked with `--schematic-parity --severity-all`**.
+Without those flags, kicad-cli silently hides the schematic-to-PCB
+cross-check categories (`net_conflict`, `footprint_symbol_mismatch`,
+`footprint_symbol_field_mismatch`, `missing_footprint`,
+`extra_footprint`) that the KiCad 10 GUI shows by default. See
+`../DESIGN-NOTES.md` §Workflow §DRC for the rationale.
+
 ```bash
+# DRC (Cycle 9 canonical form -- parity + all severities)
+flatpak run --command=kicad-cli org.kicad.KiCad pcb drc \
+  --schematic-parity --severity-all \
+  --output /var/home/meconnelly/Documents/GitHub/Claude-Keyboard/claude-code-pad/pcb/_gen/drc.rpt \
+  /var/home/meconnelly/Documents/GitHub/Claude-Keyboard/claude-code-pad/pcb/claude-code-pad.kicad_pcb
+
 # Gerbers
 distrobox enter kicad -- kicad-cli pcb export gerbers \
   --output /var/home/meconnelly/Documents/GitHub/Claude-Keyboard/claude-code-pad/pcb/gerbers/ \
