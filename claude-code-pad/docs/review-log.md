@@ -957,3 +957,105 @@ Seven cycles, 29 unique BLOCKERs resolved, all safety paths addressed. Fab-ready
 
 
 
+
+---
+
+## Cycle 8 — post-closure surgical fix (2026-04-21)
+
+**Trigger:** User ran DRC in the flatpak KiCad 10 GUI (not the distrobox
+kicad-cli 9 that Cycles 1-7 used). GUI reported **296 violations**,
+including categories kicad-cli 9 did not surface:
+
+- **48x `hole_clearance`** (14 CRITICAL at 0.119 mm below JLCPCB 0.15
+  manufacturability floor; 34 MAJOR at 0.178 mm, above JLCPCB floor)
+- **137x `extra_footprint`** (schematic-to-PCB UUID linkage broken)
+- plus cosmetic entries
+
+Project Lead pre-triage classified fixes:
+
+| Severity | Finding | Fix |
+|---|---|---|
+| CRITICAL | 14 `hole_clearance` @ 0.119 mm on CL caps vs MX plate peg | Surgical 0.075 mm south move of all 25 caps |
+| MAJOR | 34 `hole_clearance` @ 0.178 mm on LED pads vs MX plate peg | JLCPCB-tier board-rule relaxation (0.25 -> 0.15 mm) |
+| MINOR | 137 `extra_footprint` (broken sch-PCB UUID link) | Patch 127 footprints with schematic paths; 10 mechanical remain |
+
+### ECE-1 Cycle 8 work
+
+**Fix 1 — CL cap repositioning (CRITICAL).**
+`pcb/_gen/autoroute/move_cl_caps.py` moves all 25 CL# caps from
+(kx-4, ky+1.5) to (kx-4, ky+1.575) -- a 0.075 mm south nudge. Pad-2
+NW-corner-to-left-peg clearance rises from 0.119 mm (below JLCPCB
+floor, guaranteed reject) to 0.172 mm (above 0.15 mm floor). The
+south shift is capped at 0.075 mm because any larger shift opens
+shorting_items/clearance violations against the +3V3 spine track at
+y=ky+2.0 (w=0.8 mm) sitting immediately south of pad-1.
+
+Four alternative positions were attempted and reverted:
+- (kx-5, ky+1.5): pad overlaps peg drill
+- (kx-4, ky+2.5): 76x shorts (pad-2 lands on old pad-1 coordinate)
+- (kx-3.5, ky+1.5): 57x shorts, 26x clearance
+- (kx-4, ky+1.8): 62x shorts, 56x clearance
+- (kx-4, ky+1.3) north shift: clearance geometry wrong direction,
+  pad overlaps peg (-0.004 mm)
+
+See `pcb/_gen/autoroute/move_cl_caps.py` in-file docstring for full
+geometric derivation of each rejection.
+
+**Fix 2 — LED pad clearance (MAJOR).**
+Chose rule-waiver (Option 2a) over geometric shift (Option 2b).
+Reasoning: reverse-mount SK6812MINI-E footprint pads at (kx-2.3,
+ky+1.45) and (kx+2.3, ky+1.45) are standard; JLCPCB produces them
+routinely at 0.178 mm hole-clearance. Moving LEDs outward would push
+them past the keycap light window.
+
+Implementation: first attempted a scoped `.kicad_dru` rule to relax
+hole_clearance only for LED+0402-cap pads against NPTHs. Discovered
+experimentally that KiCad 10's DRU engine treats the board's
+`min_hole_clearance` as a hard floor; custom rules can tighten but
+not loosen. Switched to relaxing the board rule itself:
+`claude-code-pad.kicad_pro` `min_hole_clearance`: 0.25 -> 0.15 (the
+JLCPCB basic-tier manufacturability floor). `min_clearance` (net
+spacing) and `min_hole_to_hole` unchanged.
+
+**Fix 3 — UUID linkage (STRETCH).**
+Surgical in-place patch: parsed `.kicad_sch` for reference->uuid
+mapping and schematic root UUID, then used pcbnew Python's
+`fp.SetPath(KIID_PATH("/sch_root/sym_uuid"))` to link each matching
+footprint. Result: 127 of 137 footprints now linked; 10 mechanical-
+only footprints (FID1-3, H1-4, J_XIAO_BP, TP1-2) legitimately remain
+unlinked (they belong in the PCB but not the schematic -- standard
+KiCad convention is to add them as schematic symbols, which is a
+Rev-B generator improvement).
+
+### Cycle 8 DRC numbers
+
+Flatpak kicad-cli 10.0.1 (same engine the user sees in the GUI):
+
+| | Cycle 7 baseline | Cycle 8 |
+|---|---:|---:|
+| `hole_clearance` | 40 (cli-10) / 48 (GUI) | **0** |
+| `shorting_items` | 0 | 0 |
+| `tracks_crossing` | 0 | 0 |
+| `clearance` | 0 | 0 |
+| `extra_footprint` (GUI) | 137 | **10** |
+| `unconnected_items` | 47 | 43 |
+| Total (cli-10) | 288 | **244** |
+
+Gate met:
+- `hole_clearance` 48 -> 0 (CRITICAL + MAJOR both closed)
+- `shorting_items` = 0 / `tracks_crossing` = 0 (no regressions)
+- Total violations 288 -> 244 (15 %), `extra_footprint` 137 -> 10 (93 %)
+
+### Files changed in Cycle 8
+
+- `pcb/_gen/autoroute/move_cl_caps.py` (new)
+- `pcb/claude-code-pad.kicad_pcb` (in-place: 25 caps moved, 4 zones
+  re-filled, 127 footprint paths linked)
+- `pcb/claude-code-pad.kicad_pro` (`min_hole_clearance` 0.25 -> 0.15)
+- `pcb/claude-code-pad.kicad_dru` (stub)
+- `pcb/_gen/drc-cycle8.rpt`, `pcb/_gen/drc-cycle8-parity.rpt`
+- `pcb/gerbers/*`, `pcb/cpl.csv` (regenerated)
+- `pcb/DESIGN-NOTES.md` (Cycle 8 section)
+- `docs/review-log.md` (this entry)
+
+**Status:** `PHASE-1-CYCLE-8: COMPLETE`

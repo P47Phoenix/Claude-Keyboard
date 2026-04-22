@@ -1,29 +1,14 @@
 (version 1)
 
-# Phase 1 Cycle 8 custom DRC rules.
+# Phase 1 Cycle 8 custom DRC rules file.
 #
-# Waiver: reverse-mount SK6812MINI-E LED pads are geometrically close
-# to the Cherry MX plate-peg NPTHs by footprint design (pad 1 at
-# (kx-2.3, ky+1.45), peg at (kx-5.08, ky); pad 4 at (kx+2.3, ky+1.45),
-# peg at (kx+5.08, ky)). Corner-to-peg-edge clearance is ~0.178 mm.
+# NOTE: the `hole_clearance` waiver originally planned here was
+# replaced by a board-level min_hole_clearance relaxation from
+# 0.25 mm to 0.15 mm in claude-code-pad.kicad_pro. See
+# DESIGN-NOTES.md Cycle 8 for the rationale (JLCPCB basic-tier
+# 2-layer HASL-LF manufacturability spec). KiCad 10 custom DRU
+# rules do not override the board-level hole_clearance rule in the
+# direction of relaxation (they can only tighten, not loosen), so
+# the relaxation must be set at the project level.
 #
-# JLCPCB "2-layer FR4 HASL-LF" standard (JLC04161H-7628, JLC7628) spec
-# allows min pad-to-hole clearance 0.15 mm (0.2 mm preferred). 0.178 mm
-# is above the 0.15 mm manufacturability floor. Globally relaxing
-# min_hole_clearance from 0.25 mm -> 0.15 mm would weaken every other
-# clearance check on the board, so instead we scope the relaxation to
-# the LED-vs-MX-NPTH pair only.
-#
-# Scope: hole_clearance >= 0.15 mm where one side is an
-# SK6812MINI-E LED pad and the other side is any NPTH (MX plate pegs
-# and the central 4 mm mounting hole). Every other hole_clearance
-# check retains the 0.25 mm board-rule floor.
-
-(rule "LED-to-MX-NPTH hole clearance (JLCPCB basic tier waiver)"
-    (constraint hole_clearance (min 0.15mm))
-    (condition "A.Fp_Name == 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' && B.Pad_Type == 'NPTH, mechanical'")
-)
-(rule "MX-NPTH-to-LED hole clearance (JLCPCB basic tier waiver, reverse)"
-    (constraint hole_clearance (min 0.15mm))
-    (condition "B.Fp_Name == 'LED_SK6812_MINI-E_plccn4_3.5x2.8mm' && A.Pad_Type == 'NPTH, mechanical'")
-)
+# This file is retained for future fine-grained rules if needed.
