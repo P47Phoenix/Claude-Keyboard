@@ -1,0 +1,23 @@
+# KiCad runtime
+*.lck
+~*.kicad_*.lck
+*.bak
+*-backups/
+fp-info-cache
+
+# VS Code Local History extension
+.history/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# OS / editor
+.DS_Store
+*.swp
+*~
+
+# Freerouting build artefacts produced in /tmp but occasionally copied in by mistake
+*.dsn.bak
+*.ses.bak

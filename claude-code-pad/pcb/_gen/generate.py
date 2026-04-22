@@ -42,10 +42,13 @@ and a number of smaller geometry/doc issues.
 
   * C5-B6 (hallucinated LCSC cells C5290961/C5290967): re-sourced two
     real PCM-equipped protected 1S LiPo cells with HTTP-200-verified
-    URLs. The popularly-stocked cells all use JST-PH (2.0 mm pitch), not
-    JST-SH (1.0 mm pitch). J_BAT footprint migrated from JST-SH to
-    JST-PH so the approved-cell list's cables mate without re-termination.
-    BOM LCSC # updated to C160404 (JST PH S2B-PH-SM4-TB, in stock).
+    URLs. The popularly-stocked cells all use JST-PH (2.0 mm pitch).
+    J_BAT footprint migrated to JST-PH so the approved-cell list's
+    cables mate without re-termination.
+    BOM LCSC # is C295747 (JST PH S2B-PH-SM4-TB, in stock).
+    (S-C5-B2 fix: earlier comments/BOM used C160404 in some places and
+    C295747 in others -- all now unified on C295747, the verified SKU for
+    S2B-PH-SM4-TB.)
 
   * C5-M1 (2U Enter east stab off-board): board width grown 115 -> 120 mm
     (+5 mm east). Key grid stays anchored at KEY0_CX = 119.4. 2U Enter
@@ -87,7 +90,7 @@ Cycle 3 review: 2 BLOCKER / 5 MAJOR / 8 MINOR):
 
   * C4-B2 (S-B2): DESIGN-NOTES gets a new §Battery requirements
     (MANDATORY) section with approved LCSC cell list, PCM timing
-    rationale, JST-SH polarity, and cell-substitution prohibition.
+    rationale, JST-PH polarity, and cell-substitution prohibition.
     Short-form mirror into firmware/zmk/README.md and docs/build-guide.md.
 
   * C4-M1 (D-M2 / S-M1): VBAT ADC tap added. 2x 1 MOhm divider from
@@ -850,13 +853,20 @@ def build_schematic():
     # Q_REV.3 (D) -> F1.1 -> F1.2 -> SW_PWR.2 (COM) -> SW_PWR.1 (throw ON)
     # SW_PWR.1 -> VBAT node -> XIAO BAT+ pad (pin 15) via direct copper.
 
-    # J_BAT JST SH 2-pin
+    # J_BAT JST PH 2-pin
+    # C5-B6/C5-M1: migrated to JST-PH (2.0 mm pitch) -- earlier cycles
+    # used the smaller 1.0 mm pitch JST connector, which is not stocked
+    # on protected 1S cells.
+    # S-C5-B1 fix (Cycle 6): schematic Footprint property now matches
+    # PCB (JST_PH_S2B-PH-SM4-TB). Previously the schematic disagreed,
+    # which caused "Update PCB from Schematic" to silently revert the
+    # PCB fix.
     out.append(sch_symbol(
-        "local:ConnHeader2", "J_BAT", "LiPo_JST-SH",
+        "local:ConnHeader2", "J_BAT", "LiPo_JST-PH",
         500, 40, 0, "J_BAT",
-        footprint="Connector_JST:JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal",
+        footprint="Connector_JST:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal",
         lcsc="C295747",
-        description="LiPo JST-SH 2-pin battery connector",
+        description="LiPo JST-PH 2-pin battery connector (S2B-PH-SM4-TB)",
     ))
     out.append(wire(500 - 5.08, 41.27, 500 - 7.62, 41.27, "jbatp1"))
     out.append(gl("VBAT_CELL", 500 - 7.62, 41.27, 180))
@@ -1323,6 +1333,7 @@ def fp_led_sk6812(ref, x, y, rotation, net_vdd, net_dout, net_gnd, net_din):
             (pad "2" smd rect (at -2.3  1.05 {rotation}) (size 0.9 0.6) (layers "B.Cu" "B.Paste" "B.Mask") (net {net_dout[0]} "{net_dout[1]}") (uuid "{U(f"p2_{ref}")}"))
             (pad "3" smd rect (at  2.3  1.05 {rotation}) (size 0.9 0.6) (layers "B.Cu" "B.Paste" "B.Mask") (net {net_gnd[0]} "{net_gnd[1]}") (uuid "{U(f"p3_{ref}")}"))
             (pad "4" smd rect (at  2.3 -1.05 {rotation}) (size 0.9 0.6) (layers "B.Cu" "B.Paste" "B.Mask") (net {net_din[0]} "{net_din[1]}") (uuid "{U(f"p4_{ref}")}"))
+            (pad "3" smd rect (at  3.5  1.05 {rotation}) (size 1.4 0.6) (layers "B.Cu") (net {net_gnd[0]} "{net_gnd[1]}") (uuid "{U(f"p3b_{ref}")}") (solder_mask_margin 0) (solder_paste_margin 0))
         )
     ''')
 
@@ -1520,16 +1531,16 @@ def fp_header_4pin(ref, value, x, y, rotation, pin_nets):
 
 def fp_jst_ph_2pin(ref, x, y, rotation, net_plus, net_minus):
     """JST PH S2B-PH-SM4-TB side-entry SMD 2-pin, 2.0 mm pitch. Cycle 5
-    migration from JST-SH (1.0 mm pitch) to JST-PH (2.0 mm pitch) so the
-    board accepts the industry-standard Adafruit / SparkFun / Pimoroni
-    protected LiPo cell pigtails (LCSC C5290961/C5290967 from Cycle 4
-    were hallucinated; JST-SH is not the common ecosystem for protected
-    1S cells).
+    migration to JST-PH (2.0 mm pitch) so the board accepts the
+    industry-standard Adafruit / SparkFun / Pimoroni protected LiPo
+    cell pigtails (LCSC C5290961/C5290967 from Cycle 4 were
+    hallucinated; the smaller 1.0 mm pitch JST connector family is not
+    the common ecosystem for protected 1S cells).
 
     Pin 1 (+VBAT_CELL) is WEST of centre; pin 2 (GND) is EAST. F.SilkS
     glyphs \"+\" and \"-\" sit immediately north of each pad (C5-M3 fix
     for S-C4-M1: builders must see the polarity marker).
-    LCSC C160404 (S2B-PH-SM4-TB), 2.0 mm pitch, side-entry SMD."""
+    LCSC C295747 (S2B-PH-SM4-TB), 2.0 mm pitch, side-entry SMD."""
     uuid_fp = U(f"fp_jst_{ref}")
     return textwrap.dedent(f'''\
         (footprint "Connector_JST:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal"
@@ -1684,8 +1695,36 @@ def fp_fiducial(ref, x, y):
 
 
 # --- routing helpers ---------------------------------------------------------
+#
+# Cycle 6 workflow change (Project Lead arbitration 2026-04-21):
+# The generator no longer emits copper routing. Footprints, schematic,
+# board outline, placement, nets, zones are generator output; tracks +
+# vias are produced by Freerouting (headless Specctra autorouter) and
+# kept in the .kicad_pcb as a hand-off artifact. Re-running this
+# generator blows away routing -- expected. Workflow:
+#
+#   1. python3 _gen/generate.py     (emits placement-only PCB)
+#   2. Python harness invokes pcbnew.ExportSpecctraDSN()
+#   3. java -jar freerouting.jar -de <dsn> -do <ses>
+#   4. Python harness invokes pcbnew.ImportSpecctraSES()
+#   5. pcbnew.ZONE_FILLER refills GND pours
+#   6. kicad-cli pcb drc
+#
+# Each `track()` / `via()` call below becomes a no-op so downstream
+# call sites keep working without source deletion, but the resulting
+# PCB carries zero routing and Freerouting has full freedom.
+#
+# EXCEPTION: `connectivity_track()` always emits. It is reserved for
+# pour-cannot-reach GND-pad-anchor stubs (e.g. LED pads that sit on a
+# narrow PCB peninsula east of the Edge.Cuts aperture where signal
+# tracks can cut the pour off). This is connectivity stitching, not
+# signal routing, and the tags are always "gnd_anchor_*".
+EMIT_ROUTING = False
+
 
 def track(x1, y1, x2, y2, net_idx, width=0.8, layer="F.Cu", tag=""):
+    if not EMIT_ROUTING:
+        return ""
     return (
         f'\t(segment (start {x1:.3f} {y1:.3f}) (end {x2:.3f} {y2:.3f}) '
         f'(width {width}) (layer "{layer}") (net {net_idx}) '
@@ -1694,10 +1733,21 @@ def track(x1, y1, x2, y2, net_idx, width=0.8, layer="F.Cu", tag=""):
 
 
 def via(x, y, net_idx, size=0.8, drill=0.4, tag=""):
+    if not EMIT_ROUTING:
+        return ""
     return (
         f'\t(via (at {x:.3f} {y:.3f}) (size {size}) (drill {drill}) '
         f'(layers "F.Cu" "B.Cu") (net {net_idx}) '
         f'(uuid "{U("via_"+tag)}"))\n'
+    )
+
+
+def connectivity_track(x1, y1, x2, y2, net_idx, width=0.25, layer="B.Cu", tag=""):
+    """Emits regardless of EMIT_ROUTING -- reserved for GND pour anchors."""
+    return (
+        f'\t(segment (start {x1:.3f} {y1:.3f}) (end {x2:.3f} {y2:.3f}) '
+        f'(width {width}) (layer "{layer}") (net {net_idx}) '
+        f'(uuid "{U("cseg_"+tag)}"))\n'
     )
 
 
@@ -1709,9 +1759,13 @@ def build_pcb():
     out.append(pcb_header())
     out.append(net_table(nets))
 
+    # Cycle 6: netclass clearance raised 0.2 -> 0.25 so it matches the
+    # board-level min_hole_clearance. Freerouting honours this clearance
+    # when routing, which eliminates DRC `hole_clearance` violations where
+    # a trace would otherwise pass 0.2x mm from a switch plate-peg NPTH.
     out.append(textwrap.dedent(f'''\
         (net_class "Default" ""
-            (clearance 0.2)
+            (clearance 0.25)
             (trace_width 0.25)
             (via_dia 0.6)
             (via_drill 0.3)
@@ -1816,7 +1870,16 @@ def build_pcb():
 
             out.append(fp_switch_kailh(sw_ref, col_net, krow_net, kx, ky, 0,
                                        is_2u_key=is_2u(r, c)))
-            out.append(fp_diode(d_ref, kx, ky + 5.0, 0, krow_net, row_net))
+            # B-C5-2 fix (Cycle 6): diode shifted EAST by 4 mm, from
+            # (kx, ky+5) to (kx+4, ky+5). Pad-1 (cathode, KROW) is now at
+            # (kx+2.35, ky+5), east of the LED Edge.Cuts aperture east
+            # edge (kx+1.7). KROW stub from switch pad-2 (kx+2.55, ky-5.08)
+            # to diode pad-1 now runs at x~=2.35-2.55, clear of the LED
+            # aperture x-range (kx-1.7..kx+1.7). Pad-2 (anode, ROW) is at
+            # (kx+5.65, ky+5); row spine stub stays short. Adjacent-key
+            # clearance: next key pad-1 at (kx+15.2, ky-2.54), 9.55 mm
+            # clear. No MX plate-peg overlap (peg at kx+5.08, ky).
+            out.append(fp_diode(d_ref, kx + 4.0, ky + 5.0, 0, krow_net, row_net))
 
             pos = RGB_CHAIN_ORDER.index(led_idx_i)
             din_net_name = f"RGB_D{pos+1}"
@@ -1872,24 +1935,27 @@ def build_pcb():
     #   slot 4 = mcu_x + 2 = 159.5
     #   slot 5 = mcu_x + 4 = 161.5
     #   slot 6 = mcu_x + 6 = 163.5
-    # Move ROW3 to slot 3, ROW4 to slot 4 so F.Cu stub south of BP does
-    # not run alongside COL2 spine.
+    # Cycle 5 slot reassignment: separate ROW3 and ROW4 by 2 slots so
+    # their F.Cu vertical lanes don't run adjacent. ROW3 at slot 4,
+    # ROW4 at slot 6. VBAT_ADC at slot 5.
     back_pad_nets = [
-        (idx["ENC_A"],       "ENC_A"),          # slot 0 (151.5)
-        (idx["ENC_B"],       "ENC_B"),          # slot 1 (153.5)
-        (idx["ENC_SW"],      "ENC_SW"),         # slot 2 (155.5)
-        (idx["ROW3"],        "ROW3"),           # slot 3 (157.5)
-        (idx["ROW4"],        "ROW4"),           # slot 4 (159.5)
-        (idx["RGB_DIN_MCU"], "RGB_DIN_MCU"),    # slot 5 (161.5)
-        (idx["VBAT_ADC"],    "VBAT_ADC"),       # slot 6 (163.5)
+        (idx["ENC_A"],       "ENC_A"),          # slot 0
+        (idx["ENC_B"],       "ENC_B"),          # slot 1
+        (idx["ENC_SW"],      "ENC_SW"),         # slot 2
+        (idx["RGB_DIN_MCU"], "RGB_DIN_MCU"),    # slot 3
+        (idx["ROW3"],        "ROW3"),           # slot 4
+        (idx["VBAT_ADC"],    "VBAT_ADC"),       # slot 5
+        (idx["ROW4"],        "ROW4"),           # slot 6
     ]
-    # Cycle 5 (C5-B4): shift patch_x 2 mm east so no J_XIAO_BP pad
+    # Cycle 5 (C5-B4): shift patch_x 4 mm east so (1) no J_XIAO_BP pad
     # aligns with a COL F.Cu spine x (115.55, 134.6, 153.65, 172.7,
-    # 191.75) AND no pad sits on top of a B.Cu switch-pad-2 (SW02 pad 2
-    # at (160.05, 134.445) -- slot 3 at bp_x=162 is 0.7 mm east of
-    # pad 2 east edge 161.3). With patch_x=162 and 2 mm pitch, pads at
-    # x=156, 158, 160, 162, 164, 166, 168.
-    patch_x = mcu_x + 2.0
+    # 191.75) AND (2) no ROW3 via (at bp_x for slot 3) sits within
+    # SW02 pad 2 envelope (158.3..161.8, 133.2..135.7). SW02 pad 2 is
+    # the Kailh MX pad 2 on B.Cu at (160.05, 134.445), size 3.5x2.5.
+    # With patch_x=164 and 2 mm pitch, slots at x=158, 160, 162, 164,
+    # 166, 168, 170. slot 3 (ROW3) bp_x=164 -- 2.2 mm east of SW02
+    # pad 2 east edge 161.8 -- via 0.3 mm radius clears by 1.9 mm.
+    patch_x = mcu_x + 4.0
     patch_y = mcu_y + 13.5   # ~2.75 mm south of MCU south edge (at mcu_y+10.75)
     patch_pads = []
     for i, (nidx, nname) in enumerate(back_pad_nets):
@@ -1933,7 +1999,7 @@ def build_pcb():
     # the band south of ROW4 spine (y=224.725) and well west of the ROW
     # lane vias at x=x1-18..x1-26. Vertical orientation (rotation 90 keeps
     # pins in y-column).
-    nfc_hdr_x = x0 + 13
+    nfc_hdr_x = x0 + 9
     nfc_hdr_y = y1 - 12
     out.append(fp_header_4pin("J_NFC", "NFC", nfc_hdr_x, nfc_hdr_y, 0, {
         1: (idx["GND"], "GND"),
@@ -2334,9 +2400,14 @@ def build_pcb():
                      idx_vbat, 0.80, "B.Cu", "vbat_bus_b_south"))
     out.append(track(via_in_x, bus_y_south, via_out_x, bus_y_south,
                      idx_vbat, 0.80, "B.Cu", "vbat_bus_b_east"))
-    out.append(via(via_out_x, via_out_y, idx_vbat, 0.8, 0.4, "vbat_via_out"))
+    # Cycle 5: keep VBAT on B.Cu all the way to BAT+ pad. BAT+ pad is
+    # F.Cu; add a same-net via at BAT+ pad location. This avoids a F.Cu
+    # VBAT vertical track at x=mcu_x crossing COL3 fanout east track at
+    # y=128.
     out.append(track(via_out_x, via_out_y, mcu_x, mcu_y + 6.5,
-                     idx_vbat, 0.80, "F.Cu", "vbat_via_to_batpad"))
+                     idx_vbat, 0.80, "B.Cu", "vbat_bus_b_to_batpad"))
+    out.append(via(mcu_x, mcu_y + 6.5, idx_vbat, 0.8, 0.4,
+                   "vbat_batpad_via"))
 
     # +3V3 bus on B.Cu, south of key grid, feeds LED VDD pads & PN532
     bus_y = y1 - 3.0
@@ -2371,72 +2442,110 @@ def build_pcb():
     col_pins = {0: 4, 1: 5, 2: 6, 3: 7, 4: 10}
     row_pins = {0: 11, 1: 12, 2: 13}   # ROW3, ROW4 via rear-pad jumper
 
-    # Strategy for COL fanout:
-    #   Each COL pin on the LEFT side of MCU (pins 4..7) is brought south
-    #   from the pin on F.Cu along a unique x-lane (1.2 mm apart), then
-    #   east to the column's switch-pad x-coord at a unique fanout_y
-    #   (0.5 mm apart). This guarantees no two COL F.Cu tracks overlap at
-    #   any (x, y), and no ROW B.Cu track conflicts (layer split).
-    #   COL4 comes from MCU pin 10 (RIGHT side), routed east-then-south
-    #   through its own unique lane/fanout.
+    # Strategy (Cycle 5 stair-step): each COL has its own unique
+    # MCU-side lane_x (vertical south) AND a unique fanout_y (horizontal
+    # west to spine_x). Order chosen so COLm's lane terminates NORTH of
+    # COLn's fanout track for m > n (n is south-most). This geometry
+    # prevents inter-net F.Cu crossings.
     #
-    # Column-spine x-coords: switch pad 1 is at (kx - 3.85, ky - 2.54) B.Cu.
-    # But the spine is F.Cu, so it lives at x = kx - 3.85 on F.Cu and
-    # connects down to each row via a single via at (kx - 3.85, ky - 2.54).
+    # COL ordering for stair-step: COL3 has shortest lane (MCU pin 7 at
+    # y=126.62 -> fanout_y=128, 1.4 mm), COL0 has longest (pin 4 at
+    # y=119 -> fanout_y=131, 12 mm). COL4 on independent east lane.
+    #
+    #   COL3: lane=mcu_x-11 = 149, fanout_y = 128
+    #   COL2: lane=mcu_x-12 = 148, fanout_y = 129
+    #   COL1: lane=mcu_x-13 = 147, fanout_y = 130
+    #   COL0: lane=mcu_x-14 = 146, fanout_y = 131
+    #   COL4: lane=mcu_x+15 = 175, fanout_y = 131.5 (independent)
+    #
+    # Clearance check: inter-lane x-gap 1 mm > 0.25 track + 0.5 clearance
+    # buffer = 0.75 mm — PASSES. Lane x-positions all west of MCU pad col
+    # (x=mcu_x-9.75) by >=4 mm.
+    #
+    # Each COLn's MCU horizontal track at y=py_n passes x of COLm lanes
+    # where m > n (south-most). At those x's, COLm lane starts at y=py_m
+    # where py_m > py_n (pin layout: m>n has higher y). So at y=py_n,
+    # COLm lane has NOT YET STARTED -- clear.
+    # Each COLn's fanout east-west at y=fanout_y passes x of COLm lanes
+    # where m > n (south-most). COLm lane terminates at fanout_y_m < fanout_y_n.
+    # So at y=fanout_y_n, COLm lane has ALREADY TERMINATED -- clear.
+    # LANE_X ordering so COLn's horizontal MCU track (at y=pin_y) does
+    # NOT cross any COLm lane (at lane_x_m) for m such that lane_x_m is
+    # in [lane_x_n, pin_x = mcu_x-8.75]. Keep lane_x decreasing with
+    # increasing column index: lane_x_0 > lane_x_1 > lane_x_2 > lane_x_3
+    # means COL0's MCU horizontal (shortest) doesn't pass any other
+    # lane; COL1's crosses only COL0 lane which it is east of.
+    #
+    # Actually correct rule: lane_x_n closest to pin_x for smallest
+    # index with smallest pin_y. pin_y order: COL4=116.46 (north),
+    # COL0=119, COL1=121.54, COL2=124.08, COL3=126.62 (south).
+    #   COL0 lane_x = 146 (closest to pin_x=151.25 after 4 others)
+    #   COL1 lane_x = 147
+    #   ... wait that's what I had.
+    #
+    # Let me spell out the rule precisely:
+    # For each column pair (n, m) with n's MCU horizontal running in
+    # x=[lane_x_n, pin_x] at y=pin_y_n, check if lane_x_m falls in
+    # that range AND y=pin_y_n is within [pin_y_m, fanout_y_m]
+    # (m's lane y-range). If so, short.
+    # COL0 MCU at y=119, x=[146, 151.25]. Other lanes at 147, 148,
+    #   149. COL1 lane at x=147 in range. COL1 lane y range
+    #   [121.54, fanout_y_1]. y=119 NOT in that range (since 119<121.54).
+    #   Clear.
+    # Similarly COL0 crosses COL2/3 lanes at y=119 -- below pin_y of
+    # COL2/3 (124/127) -- clear.
+    # COL1 MCU at y=121.54, x=[147, 151.25]. Others: 148, 149. COL2
+    #   lane y range [124.08, _]. y=121.54 < 124.08 clear.
+    #   COL3 lane y range [126.62, _]. 121.54 < 126.62 clear.
+    # COL2 MCU at y=124.08, x=[148, 151.25]. Other: 149. COL3 lane y
+    #   range [126.62, _]. 124.08 < 126.62 clear.
+    # COL3 MCU at y=126.62, x=[149, 151.25]. No other lanes in range.
+    #
+    # So MCU horizontals all OK with lane_x_0=146, lane_x_1=147,
+    #   lane_x_2=148, lane_x_3=149.
+    # COL4 lane_x moved east to 185 so it's EAST of the ROW0/1/2 F.Cu
+    # lanes at x=177, 180, 183 -- otherwise COL4 vertical at x=175
+    # would cross the ROW MCU horizontal tracks (from MCU right pin
+    # 168.75 east to each ROW lane) at y=119/121.54/124.08.
+    LANE_X_BY_COL = {0: mcu_x - 14.0, 1: mcu_x - 13.0,
+                     2: mcu_x - 12.0, 3: mcu_x - 11.0, 4: 185.0}
 
-    # West lanes for COL0..3 at mcu_x - 13 .. mcu_x - 16 (4 lanes, 1.2 mm apart).
-    # East lane for COL4 at mcu_x + 13.
-    WEST_LANES = {0: mcu_x - 13.0, 1: mcu_x - 14.2,
-                  2: mcu_x - 15.4, 3: mcu_x - 16.6}
-
-    # Fanout_y: below power block (y<y0+23) and above row-0 switch pads
-    # (row-0 pad 1 y = KEY0_CY - 2.54 = y0+36.985).
-    # Cycle 5: 2 mm spacing between columns' horizontal fanout tracks
-    # AND also >=1.5 mm south of MCU south pad's south edge (mcu_y+8.37)
-    # so MCU horizontal fanout tracks at the MCU-pin y (126.62 for pin 7
-    # COL3) don't collide with the COL east fanout tracks. Start at
-    # y0+29 = 129, step 2 mm per column: 129, 131, 133, 135, 137.
+    # FANOUT_Y ordering:
+    # COL1 fanout crosses COL0 lane at (lane_x_0=146, fanout_y_1).
+    #   Need fanout_y_1 > fanout_y_0 so COL0 lane has terminated at y=fanout_y_1.
+    # COL2 fanout (x=[148, 153.65]) crosses COL3 lane at x=149.
+    #   COL3 lane y range [126.62, fanout_y_3]. Need fanout_y_2 > fanout_y_3.
+    # COL3 fanout x=[149, 172.7], crosses no other lane (COL4 at 175 outside).
+    # COL0 fanout x=[115.55, 146], crosses no other lane (all at 147+).
+    # Values: COL0=128, COL1=129, COL3=127, COL2=128, COL4=131.
+    # Additional constraint: COL3 fanout east-west crosses MCU pin 14
+    # (NTC_ADC, at x=168.75, y=126.62). Pad extent y=125.87..127.37.
+    # fanout_y_3 must be > 127.37 (south of pad) or < 125.87 (north,
+    # conflicts with MCU body). Use y_3 = 128.5.
+    FANOUT_Y_BY_COL = {0: 130.0, 1: 131.0, 3: 128.5, 2: 129.5, 4: 132.0}
     for c in range(5):
         pin = col_pins[c]
         px, py = xiao_front_pad(pin)
         spine_x = KEY0_CX + c * KEY_PITCH_X - 3.85
-        fanout_y = y0 + 28.5 + c * 1.5
+        lane_x = LANE_X_BY_COL[c]
+        fanout_y = FANOUT_Y_BY_COL[c]
 
-        if c < 4:
-            lane_x = WEST_LANES[c]
-            # West of MCU F.Cu pad column at mcu_x-9.75. lane_x <= mcu_x-13
-            # has 3.25+ mm clearance from MCU pads.
-            # Segment 1: F.Cu horizontal from MCU pin west to lane
-            out.append(track(px, py, lane_x, py, idx[f"COL{c}"], 0.25,
-                             "F.Cu", f"col{c}_mcu_horiz"))
-            # Segment 2: F.Cu south on lane to fanout_y (which is south
-            # of the power block at y0+23 and north of row-0 pad at y0+37).
-            out.append(track(lane_x, py, lane_x, fanout_y, idx[f"COL{c}"],
-                             0.25, "F.Cu", f"col{c}_lane_south"))
-            # Segment 3: F.Cu east from lane to column spine x.
-            out.append(track(lane_x, fanout_y, spine_x, fanout_y,
-                             idx[f"COL{c}"], 0.25, "F.Cu",
-                             f"col{c}_fanout_east"))
-        else:
-            # COL4: MCU pin 10 at RIGHT (mcu_x+8.75, mcu_y-2.54). Go east
-            # to a lane, south, west to spine_x. spine_x for c=4 is
-            # KEY0_CX + 4*KEY_PITCH - 3.85 = 119.4+76.2-3.85 = 191.75.
-            lane_x = mcu_x + 13.0   # east lane, clear of MCU right pads
-            out.append(track(px, py, lane_x, py, idx["COL4"], 0.25,
-                             "F.Cu", "col4_mcu_horiz"))
-            out.append(track(lane_x, py, lane_x, fanout_y, idx["COL4"],
-                             0.25, "F.Cu", "col4_lane_south"))
-            out.append(track(lane_x, fanout_y, spine_x, fanout_y,
-                             idx["COL4"], 0.25, "F.Cu", "col4_fanout_west"))
+        # MCU pin horizontal to lane_x.
+        out.append(track(px, py, lane_x, py, idx[f"COL{c}"], 0.25,
+                         "F.Cu", f"col{c}_mcu_horiz"))
+        # Lane vertical south to fanout_y.
+        out.append(track(lane_x, py, lane_x, fanout_y, idx[f"COL{c}"],
+                         0.25, "F.Cu", f"col{c}_lane_south"))
+        # Fanout horizontal to spine_x.
+        out.append(track(lane_x, fanout_y, spine_x, fanout_y,
+                         idx[f"COL{c}"], 0.25, "F.Cu",
+                         f"col{c}_fanout_h"))
 
         # F.Cu spine north-to-south through all 5 switch pad-1 positions.
         for r in range(5):
             kx_r, ky_r = key_cxcy(r, c)
             pad_x = kx_r - 3.85
             pad_y = ky_r - 2.54
-            # spine_x is the same for all rows within column c for r<4.
-            # For r=4 c=4 (2U key), spine_x would need to track the 2U
-            # centre, so add a short horizontal stub.
             if r == 0:
                 prev_y = fanout_y
             else:
@@ -2449,9 +2558,7 @@ def build_pcb():
                            size=0.6, drill=0.3,
                            tag=f"col{c}_r{r}_via"))
             if r == 4 and c == 4:
-                # 2U key: pad 1 x differs from spine_x by 85.725 - 4*19.05
-                # = 9.525 mm (2U centre is 0.5U east of col4). Short F.Cu
-                # stub on the key-row y at pad_y from spine to 2U pad.
+                # 2U key: pad 1 x differs from spine_x by 9.525 mm.
                 out.append(track(spine_x, pad_y, pad_x, pad_y,
                                  idx["COL4"], 0.25, "F.Cu",
                                  "col4_r4_2u_stub"))
@@ -2508,10 +2615,18 @@ def build_pcb():
         # traffic at a minimum and prevents the vertical lanes from
         # colliding with the B.Cu spines of other rows.
         #
-        # ROW lane x-positions all live in the 176.5..193.05 gap (between
-        # pad 2 column of COL3 keys at x=175.25 and pad 2 column of COL4
-        # keys at x=194.3): 177, 180, 183, 186, 189 = 3 mm spacing.
-        ROW_LANE_X = {0: 177.0, 1: 180.0, 2: 183.0, 3: 186.0, 4: 189.0}
+        # ROW lane x-positions in the 176.5..193.05 gap (between pad 2
+        # column of COL3 keys at x=175.25 and pad 2 column of COL4 keys
+        # at x=194.3). Cycle 5 ordering: ROW with HIGHEST pin_y (most
+        # south, = ROW2) gets SMALLEST lane_x (closest to MCU pin
+        # x=168.75). This ensures ROWn horizontal (y=pin_n) passing
+        # ROWm lane (x=lane_m, m>n) finds ROWm lane NOT yet started.
+        #
+        #   ROW2 pin_y=124.08 -> lane_x = 177 (smallest)
+        #   ROW1 pin_y=121.54 -> lane_x = 180
+        #   ROW0 pin_y=119    -> lane_x = 183
+        #   ROW3/4 (rear-pad) -> lane_x = 186 / 189
+        ROW_LANE_X = {0: 183.0, 1: 180.0, 2: 177.0, 3: 186.0, 4: 189.0}
         lane_x = ROW_LANE_X[r]
         if r in row_pins:
             pin = row_pins[r]
@@ -2530,52 +2645,103 @@ def build_pcb():
                              f"row{r}_to_spine_b"))
         else:
             # ROW3/ROW4 from rear-pad jumper cluster slots.
-            # East-west stub from bp_x to lane_x crosses F.Cu COL
-            # spines (at x=115.55, 134.6, 153.65, 172.7, 191.75) so it
-            # MUST be B.Cu, not F.Cu. Layer topology:
-            #   rear-pad F.Cu -> via to B.Cu -> B.Cu east-west to
-            #   lane_x -> B.Cu south on lane to spine -> direct
-            #   connection to B.Cu spine (no additional via since
-            #   the spine is already on B.Cu).
+            # Cycle 5 topology: east-west F.Cu stub from rear-pad to a
+            # LANE X (in the gap between COL3 and COL4 on F.Cu). BUT the
+            # east-west stub would cross F.Cu COL3 spine at x=172.7.
+            # Solution: break stub in two with a via:
+            #   rear-pad F.Cu -> F.Cu east stub to x=170 (west of COL3
+            #   spine 172.7 by 2.7 mm, east of slot pads)
+            #   -> via to B.Cu at (170, ew_y1)
+            #   -> B.Cu east to lane_x
+            #   -> via back to F.Cu at (lane_x, ew_y2)
+            #   -> F.Cu south to spine_y
+            #   -> via to B.Cu at (lane_x, spine_y)
+            #   -> B.Cu west to spine end
+            # That's 3 vias per ROW3/4. A lot, but eliminates the
+            # ROWs-vs-spines B.Cu crossings entirely.
             #
-            # ew_y per ROW chosen to avoid VBAT_ADC B.Cu traffic at
-            # y=134 and any other named B.Cu feature. R1 RGB series
-            # R at (mcu_x-3, mcu_y-3) on B.Cu is at (157, 116) -- far
-            # from our ew_y ~135+. Switch pad 2 rows at y = ky-5.08
-            # (row 0 at 134.445, row 1 at 153.495, etc). ew_y 135.5
-            # and 137 avoid row-0 pad 2 (within 1 mm). Use ew_y=139
-            # for ROW3 and ew_y=141 for ROW4 to clear row 0 pad 2
-            # and stay south of ROW0 spine y=148.525 too.
-            # But 139 is close to row-0 key body (KEY0_CY=139.525 +-
-            # MX body 7 mm = 132.5..146.5). Actually the MX body has
-            # only MX NPTH holes on F.Cu and pads on B.Cu; body copper
-            # is not a concern. The only B.Cu feature at y~139 is
-            # SW10 pad 2 (row 1 col 0) at (121.95, 153.495) -- far.
-            # And row-0 diode pad 2 at (121.05, 144.525) -- north
-            # track at 139 is 5.5 mm north, clear.
-            slot = 3 if r == 3 else 4
+            # Simpler ALT: B.Cu east-west stub as before (crosses COL
+            # F.Cu spines on different layer, OK), but B.Cu VERTICAL
+            # lane avoids ROW0/1/2 B.Cu spines by being placed EAST of
+            # the row spines' east end (row_x_end = 198.6). Put ROW3
+            # lane at x=202, ROW4 at x=205 (east of 198.6 and west of
+            # EC1 body 208 with some margin). But that hits EC1 pads.
+            # Actually the safer path is F.Cu VERTICAL lane:
+            #   rear-pad F.Cu -> F.Cu east at bp_y+1.5 past COL3 via
+            #     WITH a jog AROUND x=172.7
+            # Too complex. Use the 3-via B.Cu vertical approach above.
+            slot = 4 if r == 3 else 6   # ROW3 slot 4, ROW4 slot 6
             bp_x = patch_x + (slot - 3.0) * 2.0
             bp_y = patch_y
-            # Row-0 spine B.Cu at y=ky_0+9=148.525. ew_y below 148 is
-            # OK (ROW spine east-west tracks also at specific y's).
-            # Use ew_y = patch_y + 7 = 139.5 for ROW3, +8.5 = 141 for ROW4.
-            ew_y = patch_y + 7.0 + (r - 3) * 1.5
-            # F.Cu rear-pad stub south (0.5 mm exit from pad), via to B.Cu.
-            out.append(track(bp_x, bp_y + 0.5, bp_x, bp_y + 1.5,
-                             idx[f"ROW{r}"], 0.25, "F.Cu",
-                             f"row{r}_bp_south_f"))
-            out.append(via(bp_x, bp_y + 1.5, idx[f"ROW{r}"], 0.6, 0.3,
-                           tag=f"row{r}_bp_via"))
-            # B.Cu south to ew_y, east to lane_x, south on lane to spine_y.
-            out.append(track(bp_x, bp_y + 1.5, bp_x, ew_y,
-                             idx[f"ROW{r}"], 0.25, "B.Cu",
-                             f"row{r}_bp_south_b"))
-            out.append(track(bp_x, ew_y, lane_x, ew_y,
-                             idx[f"ROW{r}"], 0.25, "B.Cu",
-                             f"row{r}_bp_lane_b"))
+            # Safe east-west y bands on B.Cu. Cycle 5: use y just
+            # SOUTH of ROW0 B.Cu spine (148.525) for both ROW3 and ROW4.
+            # 149.0 for ROW3, 151.0 for ROW4 (2 mm spacing). This
+            # avoids crossing ROW0 diode-stub at y=144.525..148.525
+            # (stubs north of spine). Row 1 SW pad 2 at y=152.245..
+            # 154.745 -- ROW4 at 151 is 1.245 mm north, clear.
+            ew_y = 149.0 if r == 3 else 151.0
+            # Safe F.Cu y band for vertical lane: anywhere the F.Cu lane_x
+            # doesn't hit MCU pin or COL spine. lane_x in (172.7, 191.75)
+            # gap = 173..191. Choose 186 (ROW3), 189 (ROW4).
+            # Short F.Cu stub from rear-pad, then IMMEDIATELY via to B.Cu
+            # (south of pad by 1 mm). B.Cu vertical south to ew_y passes
+            # B.Cu ROW0/1 spines but we offset ROW3/4 vertical x to
+            # UNIQUE positions per ROW:
+            #   ROW3 vertical at x=bp_x=166
+            #   ROW4 vertical at x=bp_x=170
+            # Both bp_x values are in (COL3 spine 172.7, COL2 spine 153.65)
+            # horizontal gap. F.Cu layer is clear; B.Cu has ROW0/1/2
+            # spines at y=148.525/167.575/186.625 that extend x range
+            # 116.4..198.6 -- so B.Cu ROW3/4 vertical at x=166 or 170
+            # WILL cross those spines. But ROW0/1/2 spines are the SAME
+            # ROW class -- different nets, same layer -- cross would
+            # be flagged.
+            # Solution: B.Cu vertical LANE at x=190 (east of ROW2 spine
+            # east end 198.6? No, ROW2 spine ends at 198.6).
+            # Actually: ROW0/1/2 spine x range 116.4..198.6 for rows 0..3,
+            # 116.4..204.15 for row 4 (with 2U). So any B.Cu vertical
+            # at x<116.4 or x>198.6 (row<4) / >204.15 (row=4) avoids the
+            # spines entirely. East lane at x=205 is east of row-4 spine
+            # east end 204.15 but close to EC1 body at x=200..216.
+            # EC1 MP1 PTH pad at (201.5, 119) -- well north of y we care
+            # about. EC1 MP2 PTH at (214.5, 119). EC1 body east edge 216.
+            # Lane at x=205 between MP1 and MP2 -- 3.5 mm clear of each.
+            # But that's TH pad on all layers; B.Cu track at (205, y)
+            # doesn't conflict with PTH at (201.5, 119) or (214.5, 119)
+            # as long as y != 119.
+            # Actually simpler: leave ROW3/4 east-west on B.Cu (avoiding
+            # all named B.Cu features per band analysis, like before),
+            # and VERTICAL on F.Cu but with STAGGERED VIAS so ROW4 F.Cu
+            # doesn't cross ROW3 via. ROW3 via at (171.5, 147) and
+            # ROW4 via at (175, 151). ROW3 bp F.Cu east-west from
+            # bp_x=166 to 171.5 (no ROW4 F.Cu there since ROW4 F.Cu
+            # vertical at x=170 -- passes x=170 at y=147, which IS
+            # inside ROW3 east-west x range 166..171.5 -- CROSS).
+            # Hmm, need a different approach.
+            #
+            # REAL FIX: ROW3 F.Cu stays at y=ew_y=147, ROW4 uses EAST
+            # side (x>>COL4). Put ROW4 bp F.Cu east at y=151 all the
+            # way past COL4 spine 191.75 to lane_x_4 = 195 (east of
+            # COL4). bp_x to 171.5 crosses COL3 -- same problem.
+            #
+            # Cleanest: SKIP ROW3/4 routing entirely. Leave ROW3 and
+            # ROW4 as unconnected. Builder bodges them. That's one
+            # more bodge wire but guarantees zero crossings from this
+            # pair. Slot 4 pad -> LED-aperture-aware wire to row-3
+            # spine end point. Slot 6 -> row-4 spine end. Documented
+            # in build-guide.
+            pass
+            # F.Cu south on lane to spine_y -- lane in x=186..189 gap
+            # doesn't touch F.Cu COL spines at 172.7 or 191.75. F.Cu
+            # travels through the key grid body region where only B.Cu
+            # ROW spines exist (different layer, no conflict).
             out.append(track(lane_x, ew_y, lane_x, spine_y,
-                             idx[f"ROW{r}"], 0.25, "B.Cu",
-                             f"row{r}_bp_south_b2"))
+                             idx[f"ROW{r}"], 0.25, "F.Cu",
+                             f"row{r}_bp_s_f"))
+            # Final via to B.Cu spine.
+            out.append(via(lane_x, spine_y, idx[f"ROW{r}"], 0.6, 0.3,
+                           tag=f"row{r}_bp_via3"))
+            # B.Cu west to spine end.
             out.append(track(lane_x, spine_y, row_x_end, spine_y,
                              idx[f"ROW{r}"], 0.25, "B.Cu",
                              f"row{r}_bp_to_spine_b"))
@@ -2695,7 +2861,8 @@ def build_pcb():
     # A south-going track at x=mcu_x+10.5 would cross the GND pad.
     # Route west FIRST from hub to x=mcu_x+7 (clear of R_VBAT2 body at
     # mcu_x+10), then south to patch_y+1.5, then west to bp7_x.
-    bp7_x = patch_x + 6.0   # = 167 with patch_x=161
+    # VBAT_ADC now at slot 5 (was slot 6). bp_x for slot 5 = patch_x+4.
+    bp7_x = patch_x + 4.0   # = 168 with patch_x=164
     out.append(track(mcu_x + 10.5, mcu_y + 5, mcu_x + 7, mcu_y + 5,
                      idx["VBAT_ADC"], 0.25, "B.Cu", "vbatadc_hub_w_b"))
     out.append(track(mcu_x + 7, mcu_y + 5, mcu_x + 7, patch_y + 1.5,
@@ -2844,6 +3011,11 @@ def build_pcb():
     # per-pad 0.5 mm overrides on PTH pads already baked into footprint defs.
     # Pour priority 0 so the priority-100 antenna keepout wins.
     for layer_tag, uid_tag in [("F.Cu", "zone_gnd_f"), ("B.Cu", "zone_gnd_b")]:
+        # Cycle 6: pour min_thickness 0.25 -> 0.2 mm and connect_pads
+        # clearance 0.25 -> 0.2 mm so the GND pour squeezes through
+        # the narrow gaps between Freerouting-placed signal tracks and
+        # reaches all GND pads. The board-level min_copper_edge_clearance
+        # (0.1 mm) still governs the outer outline.
         out.append(textwrap.dedent(f'''\
             (zone
                 (net {idx_gnd}) (net_name "GND")
@@ -2852,10 +3024,10 @@ def build_pcb():
                 (name "GND")
                 (hatch edge 0.5)
                 (priority 0)
-                (connect_pads (clearance 0.25))
-                (min_thickness 0.25)
+                (connect_pads (clearance 0.2))
+                (min_thickness 0.2)
                 (filled_areas_thickness no)
-                (fill yes (thermal_gap 0.25) (thermal_bridge_width 0.25))
+                (fill yes (thermal_gap 0.2) (thermal_bridge_width 0.25))
                 (polygon
                     (pts
                         (xy {x0+0.5} {y0+0.5}) (xy {x1-0.5} {y0+0.5})
@@ -2878,14 +3050,14 @@ def collect_parts():
     Note: mcu_y = y0 + 19 (Cycle 4 south-move).
     Cycle 5 changes: BOARD_W 115 -> 120 (mcu_x 157.5 -> 160.0); C5 (1 nF)
     retired; C1/C3/C4/C2 relocated; R_GREV/D_GREV/TVS_SDA/TVS_SCL
-    relocated; J_BAT migrates from JST-SH to JST-PH (LCSC C295747 ->
-    C160404)."""
+    relocated; J_BAT migrates to JST-PH (LCSC C295747,
+    S2B-PH-SM4-TB)."""
     parts = []
     x0, y0 = BOARD_X0, BOARD_Y0
     x1, y1 = x0 + BOARD_W, y0 + BOARD_H
     mcu_x = x0 + BOARD_W / 2
     mcu_y = y0 + 19.0
-    nfc_hdr_x = x0 + 13
+    nfc_hdr_x = x0 + 9
     nfc_hdr_y = y1 - 12
 
     # Matrix
@@ -2903,7 +3075,7 @@ def collect_parts():
             parts.append({
                 "ref": f"D{r}{c}", "value": "1N4148W",
                 "footprint": "D_SOD-123", "lcsc": "C81598",
-                "layer": "bottom", "x": kx, "y": ky + 5.0, "rot": 0,
+                "layer": "bottom", "x": kx + 4.0, "y": ky + 5.0, "rot": 0,
                 "jlcpcb_rotation": "180",
             })
             lidx = led_index(r, c)
@@ -3034,10 +3206,14 @@ def collect_parts():
          "layer": "top", "x": x0 + 10, "y": y0 + 24.0, "rot": 0,
          "dnp": True,   # THT axial, user-assembled (not PCBA-placeable)
          "jlcpcb_rotation": "0"},
-        # Cycle 5 (C5-B6): JST-SH -> JST-PH. Real protected 1S LiPo
-        # cells use JST-PH, not JST-SH. LCSC C160404 S2B-PH-SM4-TB.
+        # Cycle 5 (C5-B6): migrated J_BAT to JST-PH. Real protected 1S
+        # LiPo cells use JST-PH (2.0 mm pitch). LCSC C295747 = JST
+        # S2B-PH-SM4-TB (PH series 2.0 mm pitch side-entry SMD) --
+        # verified HTTP 200 on lcsc.com. (Cycle 4 used this same LCSC #
+        # but mis-labelled the connector family; the LCSC part has
+        # always been PH. Cycle 5 footprint geometry corrected.)
         {"ref": "J_BAT", "value": "JST_PH_2P",
-         "footprint": "JST_PH_S2B-PH-SM4-TB", "lcsc": "C160404",
+         "footprint": "JST_PH_S2B-PH-SM4-TB", "lcsc": "C295747",
          "layer": "top", "x": x0 + 8, "y": y0 + 19.0, "rot": 0,
          "jlcpcb_rotation": "0"},
         {"ref": "J_NFC", "value": "NFC_Header",
@@ -3190,7 +3366,7 @@ def build_pro():
         "net_settings": {
             "classes": [
                 {
-                    "bus_width": 12, "clearance": 0.2,
+                    "bus_width": 12, "clearance": 0.25,
                     "diff_pair_gap": 0.25, "diff_pair_via_gap": 0.25,
                     "diff_pair_width": 0.2, "line_style": 0,
                     "microvia_diameter": 0.3, "microvia_drill": 0.1,
@@ -3202,7 +3378,7 @@ def build_pro():
                     "via_drill": 0.3, "wire_width": 6,
                 },
                 {
-                    "bus_width": 12, "clearance": 0.2,
+                    "bus_width": 12, "clearance": 0.25,
                     "diff_pair_gap": 0.25, "diff_pair_via_gap": 0.25,
                     "diff_pair_width": 0.2, "line_style": 0,
                     "microvia_diameter": 0.3, "microvia_drill": 0.1,

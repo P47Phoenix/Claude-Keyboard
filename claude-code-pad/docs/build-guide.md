@@ -1,6 +1,6 @@
 # Claude Code Pad - Build Guide
 
-**Phase 1 Cycle 4 scaffolding.** FW-1 and MECH-1 will flesh this out in
+**Phase 1 Cycle 5 scaffolding.** FW-1 and MECH-1 will flesh this out in
 Phases 2 and 3 with photos, keycap install, case assembly, firmware
 flashing, and the rear-pad jumper wiring diagram. This stub exists to
 document the safety-critical sections that the hardware depends on.
@@ -13,31 +13,46 @@ document the safety-critical sections that the hardware depends on.
 an on-board cell-level protection circuit. Cell safety depends
 entirely on the battery pack's INTEGRAL protection PCB.
 
-### Approved cells
+### Approved cells (Cycle 5 re-sourced + URL-verified)
 
 Only single-cell 3.7 V LiPo packs with integral protection PCB
-(DW01A + FS8205A class) and JST-SH 2-pin pigtail are approved.
+(DW01A + FS8205A class) and **JST-PH 2.0 mm** 2-pin pigtail are
+approved. Each URL below was WebFetched during Cycle 5 and
+returned HTTP 200.
 
-| Capacity | Form factor | LCSC P/N (approved) | Notes |
-|----------|-------------|---------------------|-------|
-| 400 mAh  | 402535      | **C5290961**        | Fits case bay, ~4 hr charge at 100 mA |
-| 600 mAh  | 603040      | **C5290967**        | Bay must accommodate 6 mm depth, ~6 hr charge |
-| 1000 mAh | 104050      | Alt -- any 1S + PCM + JST-SH pigtail | Max bay size, ~10 hr charge |
+| Source | Link | Capacity | Dimensions (mm) | PCM? | JST |
+|--------|------|---------:|----------------:|------|-----|
+| Adafruit | [#1578](https://www.adafruit.com/product/1578)   | 500 mAh | 29 x 36 x 4.75 | yes | PH |
+| Adafruit | [#3898](https://www.adafruit.com/product/3898)   | 400 mAh | ~36 x 17 x 7.8 | yes | PH |
+| Adafruit | [#328](https://www.adafruit.com/product/328)     | 2500 mAh | 50 x 60 x 7.3 | yes | PH |
+| SparkFun | [PRT-13851](https://www.sparkfun.com/products/13851) | 400 mAh | 26.5 x 36.9 x 5 | yes | PH |
+| Adafruit | [#1317](https://www.adafruit.com/product/1317)   | 150 mAh | 19.75 x 26.02 x 3.8 | yes | PH |
+
+> **Cycle 4 warning:** the SKUs C5290961 and C5290967 that appeared
+> in older versions of this file were hallucinated. Both return 404
+> on lcsc.com. **Do not attempt to source them.** LCSC does not
+> stock a trivially-findable generic protected 1S LiPo cell with
+> JST-PH pigtail; use one of the Adafruit or SparkFun SKUs above.
 
 **RAW / UNPROTECTED cells are FORBIDDEN -- fire risk.**
 
 If substituting, confirm the listing shows a protection PCB in the
-product photo AND a JST-SH 2-pin 1 mm pigtail (RED = +, BLACK = -).
+product photo AND a JST-PH 2.0 mm 2-pin pigtail (RED = +, BLACK = -).
 "Bare tab" / raw-cell listings are not approved.
 
-### JST-SH polarity
+### JST-PH polarity
+
+The PCB `J_BAT` footprint has **F.SilkS "+" and "-" glyphs**
+immediately north of each pad (Cycle 5 fix, C5-M3):
 
 ```
-  J_BAT (PCB view from F.Cu / keycap side):
+   J_BAT (PCB view from F.Cu / keycap side):
 
-         +-----+
-         | 1 2 |    1 mm pitch
-         +-----+
+         + -             silkscreen glyphs
+         |=|             body
+         +---+
+         | 1 2 |         2.0 mm pitch
+         +-----+         side-entry SMD
           |   |
          [+] [-]         pin 1 = cell +  (VBAT_CELL)
                          pin 2 = cell -  (GND)
@@ -63,7 +78,8 @@ A cell-integrated PCM trips in <10 ms at 4 A -- faster than the
 PTC can sustain the fault, prevents the vent. **Use cells with PCM.**
 
 Full math and cell-substitution rules in
-`pcb/DESIGN-NOTES.md §Battery requirements (MANDATORY)`.
+`pcb/DESIGN-NOTES.md §Cycle 5 §Verified procurement table` and
+`§Battery requirements (MANDATORY)`.
 
 ---
 
@@ -97,7 +113,7 @@ off is to unplug J_BAT (inconvenient and wears out the JST connector).
 
 ---
 
-## Hand-solder checklist (Cycle 4)
+## Hand-solder checklist (Cycle 5)
 
 PCBA handles all SMD parts EXCEPT these DNP items:
 
@@ -105,31 +121,87 @@ PCBA handles all SMD parts EXCEPT these DNP items:
 |-----|------|---------|-------|
 | U1  | XIAO nRF52840 | Module, castellations | Direct-solder the 14 front castellations to the board. Leave BAT+/BAT- back-pads for wire jumpers (see below). |
 | SW_PWR | SS-12D00G4 | SPDT THT 2.54mm | See above. |
-| EC1 | EC11 rotary encoder | THT, 15 mm vertical, H20 shaft | Orient per silkscreen. Back-pads 1-3 need wire jumpers to J_XIAO_BP slots 1-3 (ENC_A, ENC_B, ENC_SW). |
+| EC1 | EC11 rotary encoder | THT, 15 mm vertical, H20 shaft | Orient per silkscreen. Back-pads 1-3 need wire jumpers to J_XIAO_BP slots 0-2 (ENC_A, ENC_B, ENC_SW). |
 | J_NFC | PN532 NFC 4-pin header | 1x04 pin header 2.54 mm | Only populate if adding the PN532 breakout accessory. |
 | TH1 | MF52A2 10k NTC | Axial THT, 6.3 mm body | Install with the body resting on the PCB between J_BAT and SW_PWR. Measures battery temperature. If NOT installed, firmware falls back to 100 mA LED peak cap (see `firmware/zmk/README.md §NTC fallback`). |
 
-### Rear-pad jumper wires (7 wires, Cycle 4)
+---
 
-The XIAO nRF52840 has 14 front castellations (all consumed) and 6
-back-side GPIO pads that are not exposed by direct-solder. A 7-pad
-SMD cluster `J_XIAO_BP` sits <5 mm south of the MCU. Run short wires
-(28-30 AWG, 5-8 mm long) from each J_XIAO_BP slot to the matching
-XIAO back-side pad:
+## Appendix A: Cycle 6 rear-bodge wiring (minimal)
 
-| Slot | J_XIAO_BP signal | XIAO back-side pad (suggested) |
-|------|------------------|-------------------------------|
-| 1    | ENC_A            | P1.15 (bottom-left quadrant)   |
-| 2    | ENC_B            | P1.14                          |
-| 3    | ENC_SW           | P1.13                          |
-| 4    | ROW3             | P1.12                          |
-| 5    | ROW4             | P1.10                          |
-| 6    | RGB_DIN_MCU      | P0.13 (PWM-capable, fast)      |
-| 7    | VBAT_ADC         | P1.11 (AIN7 -- SAADC capable)  |
+Cycle 5 stripped 37 signal routes to bypass a routing failure and
+required 35-37 hand-soldered bodge wires. **Cycle 6 replaced the
+generative-Python router with Freerouting 2.1.0 and retains every
+signal on the PCB.** All 83 nets are machine-routed with 533 traces,
+1052 segments, 104 vias, `shorting_items = 0`, `tracks_crossing = 0`,
+`hole_clearance = 0`.
 
-FW-1 will provide the final authoritative pin assignment in Phase 3
-with a ZMK overlay file. Always verify against the ZMK overlay before
-soldering.
+The **single residual bodge** is a pour-connectivity fix, not a signal
+route:
+
+### The 1 bodge: LED GND pad-to-pour bridge
+
+On one LED (position varies by Freerouting run, typically LED2 / LED12
+/ LED14 / LED22) the GND pad (pad 3) sits on a narrow B.Cu peninsula
+between the Edge.Cuts light aperture and a nearby signal trace; the
+GND pour fails to reach it. All other 24 LEDs have their GND pad 3
+connected via the pour.
+
+Assembly-time rule:
+1. Open the routed board in the KiCad 10 flatpak: `flatpak run org.kicad.KiCad`.
+2. Tools -> Refill All Zones (`B`).
+3. Inspect the ratsnest. If any LED pad `3 [GND]` still has an airwire:
+4. Add a <2 mm B.Cu trace from that pad to the nearest piece of GND
+   pour copper (use the main pour on B.Cu, typically visible
+   immediately east or south of the LED body). 28-30 AWG wire-wrap
+   wire soldered on the rear works too.
+
+**Not applicable:**
+
+- No antenna-adjacent bodges. (Cycle 5 had ~20; Cycle 6 has zero.
+  XIAO nRF52840 modular FCC/IC cert path is preserved.)
+- No I²C bodges. SDA/SCL are B.Cu-routed from the MCU pin-8/9
+  castellations to J_NFC pins 3/4 with TVS diodes in line.
+- No decap-to-MCU bodges. C1/C2/C3/C4 all autorouted.
+- No RGB-chain bodges. DIN/DOUT hops 1 -> 2 -> ... -> 25 are all
+  machine-routed in the spec serpentine order.
+- No ROW3/ROW4 jumper-cluster bodges. Freerouting's path uses the
+  rear-pad slot pads but closes the loop in copper, not wire.
+
+### Firmware-optional DNP wires (unchanged from Cycle 5)
+
+These are assembly choices, not PCB fixes -- skip if you don't
+populate the optional part:
+
+- **NFC breakout (PN532 on J_NFC)**: J_NFC is DNP; SDA/SCL/3V3/GND
+  pins are through-hole and user-solderable. No bodging needed -- the
+  board copper is continuous.
+- **NTC thermistor (TH1)**: NTC_ADC routes to rear-pad slot 7; if TH1
+  is not populated, firmware NTC-fallback disables the 300 mA LED
+  derate and caps to 100 mA.
+- **Encoder (EC1)**: ENC_A / ENC_B / ENC_SW go from EC1 pins to
+  rear-pad slots 0/1/2. EC1 is PTH but physically optional.
+
+### XIAO back-side GPIO mapping (unchanged)
+
+The rear-pad jumper cluster `J_XIAO_BP` routes 7 signals to
+user-solderable XIAO back-side pads:
+
+| Slot | Signal      | Suggested XIAO back-side pad |
+|------|-------------|------------------------------|
+| 0    | ENC_A       | P1.15                        |
+| 1    | ENC_B       | P1.14                        |
+| 2    | ENC_SW      | P1.13                        |
+| 3    | RGB_DIN_MCU | P0.13 (PWM-capable)          |
+| 4    | ROW3        | P1.12                        |
+| 5    | VBAT_ADC    | P1.11 (AIN7, SAADC-capable)  |
+| 6    | ROW4        | P1.10                        |
+
+These 7 wires are **board-to-MCU-side solder joints** (the XIAO is
+direct-soldered via castellations; back-pad GPIOs aren't castellated
+and need wires from the pad cluster to the MCU underside pads). Not
+counted as "bodges" -- this is the standard XIAO mounting method.
+FW-1's ZMK overlay honours these assignments.
 
 ---
 
@@ -138,11 +210,13 @@ soldering.
 Stub. FW-1 to populate with:
 
 - UF2 bootloader entry (double-tap RESET on XIAO).
-- ZMK build path (`west build -b nice_nano_v2` with Claude-Code-Pad
-  shield overlay).
+- ZMK build path (`west build -b seeeduino_xiao_nrf52840` with
+  Claude-Code-Pad shield overlay).
 - Keymap customisation via ZMK Studio.
 - Battery cutoff verification procedure (measure VBAT_ADC ADC raw
   and confirm firmware enters deep sleep at VBAT <= 3.70 V).
+- Broken-wire VBAT_ADC test (disconnect the slot-5 bodge wire,
+  verify firmware enters graceful-shutdown state within 8 samples).
 
 ---
 
@@ -156,25 +230,11 @@ Stub. MECH-1 to populate with:
   M3 heat-set inserts).
 - Keycap install order (row-by-row, bottom to top).
 - 2U Enter stabiliser clip-in procedure.
-- Battery bay cable routing (keep JST-SH pigtail clear of the
-  slide switch actuator travel).
+- Battery bay cable routing (**JST-PH 2.0 mm** -- updated from
+  Cycle 4's 1.0 mm pitch spec; MECH-1 must cross-check the battery
+  pocket cable clearance).
+- Charging rate note: the XIAO nRF52840 module's on-board charge
+  pump defaults to ~100 mA charge rate. **Do not modify the XIAO
+  module's R_PROG charge-programming resistor** -- the 100 mA
+  default is the documented safe limit for the approved cell list.
 - RFID figurine slot alignment (Phase 5).
-
----
-
-## Appendix A: known gaps (Cycle 4 hardware)
-
-These PCB-side gaps require builder action and/or Cycle 5 fixes:
-
-- **4 RGB chain row-transitions unrouted** (RGB_D6, RGB_D11,
-  RGB_D16, RGB_D21). If you ordered boards from Cycle 4 gerbers,
-  these connections are MISSING and the RGB chain will stop at
-  LED5, LED10, LED15, LED20 respectively. Workaround: hand-solder
-  4 bodge wires on the back of the PCB, each from LED(5n)-DOUT to
-  LED(5n+1)-DIN.
-- **Encoder (ENC_A/B/SW) unrouted**. Use the J_XIAO_BP rear-pad
-  jumper wiring above.
-
-Cycle 5 (next PCB revision) will route these in the KiCad GUI;
-fab-ready gerbers labelled "Rev D" will not require the bodge
-wires.
