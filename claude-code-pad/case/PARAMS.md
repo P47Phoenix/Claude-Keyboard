@@ -48,16 +48,21 @@ coupon-driven calibration procedure.
 
 | Parameter              | Default           | Purpose                                                    |
 | ---------------------- | ----------------- | ---------------------------------------------------------- |
-| `ENCODER_CENTRE`       | `(108.0, 19.0)`   | EC11 rotary-encoder centre (PCB footprint).                |
-| `ENCODER_KNOB_D`       | 10.0              | Knob access hole Ø in top plate.                           |
-| `XIAO_CENTRE`          | `(60.0, 19.0)`    | U1 centre (XIAO module).                                   |
-| `SWITCH_CENTRE`        | `(33.0, 19.0)`    | SPDT slide switch (SW_PWR1) centre.                        |
-| `JST_CENTRE`           | `(8.0, 19.0)`     | J_BAT1 JST-PH centre (cable exits -X).                     |
-| `NTC_CENTRE`           | `(10.0, 24.0)`    | TH1 NTC thermistor centre (needs thermal window).          |
-| `SWITCH_WINDOW_W`      | 8.0               | North-wall slide-switch access window width.               |
-| `SWITCH_WINDOW_H`      | 4.0               | Same, height.                                              |
-| `USBC_SLOT_W`          | 14.0              | North-wall USB-C plug-body clearance width.                |
-| `USBC_SLOT_H`          | 10.0              | Same, height (clears host-side plug boot).                 |
+| `ENCODER_CENTRE`           | `(108.0, 19.0)`   | EC11 rotary-encoder centre (PCB footprint).                                                |
+| `ENCODER_KNOB_D`           | 16.0              | Knob access hole Ø in top plate (Cycle 2: 10 → 16 for a 14 mm knob + 1 mm clearance).       |
+| `ENCODER_KNOB_PROTRUSION`  | 6.0               | Height the encoder knob extends above the top-plate top face.                               |
+| `ENCODER_PRESS_TRAVEL`     | 1.0               | EC11 tactile press-click axial travel clearance.                                            |
+| `XIAO_CENTRE`              | `(60.0, 19.0)`    | U1 centre (XIAO module).                                                                    |
+| `SWITCH_CENTRE`            | `(33.0, 19.0)`    | SPDT slide switch (SW_PWR1) centre.                                                         |
+| `JST_CENTRE`               | `(8.0, 19.0)`     | J_BAT1 JST-PH centre (cable exits -X).                                                      |
+| `NTC_CENTRE`               | `(10.0, 24.0)`    | TH1 NTC thermistor centre (thermal membrane, not through-hole — Cycle 2).                   |
+| `SWITCH_WINDOW_W`          | 12.0              | Cycle 2: 8 → 12 (MSS22AG15 slider body 11 mm + 1 mm clearance).                             |
+| `SWITCH_WINDOW_H`          | 6.0               | Cycle 2: 4 → 6 (actuator boss 5 mm + 1 mm clearance).                                        |
+| `USBC_SLOT_W`              | 15.0              | Cycle 2: 14 → 15 to clear host-cable boot (plug body 8.3, boot typical 11, target +3 pad).  |
+| `USBC_SLOT_H`              | 10.0              | Same (plug + boot).                                                                          |
+| `USBC_BRIDGE_W`            | 1.0               | Sacrificial mid-span bridge width (print-time aid, removed post-print).                     |
+| `USBC_BRIDGE_H`            | 2.0               | Sacrificial mid-span bridge height (centred in slot).                                       |
+| `USBC_EDGE_CHAMFER`        | 1.0               | 1 × 1 mm 45° external-edge chamfer on USB-C aperture for plug-boot lead-in.                 |
 
 ## Mounting holes (board-local)
 

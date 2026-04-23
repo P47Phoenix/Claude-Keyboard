@@ -79,17 +79,27 @@ STAB_WIRE_OFFSET_N = 2.3 # wire hole is 2.3 mm N of key centre
 
 # --- Encoder, switch, JST, NTC, XIAO (local frame) ---
 ENCODER_CENTRE = (108.0, 19.0)    # EC11 (abs 208,119 -> local 108,19)
-ENCODER_KNOB_D = 10.0             # knob access hole dia
+# Cycle 2 MAJOR #10: 14 mm Ø knob + 1 mm clearance + press-click axial travel
+ENCODER_KNOB_D = 16.0             # knob access hole dia
+ENCODER_KNOB_PROTRUSION = 6.0     # knob top sits 6 mm above top-plate top
+ENCODER_PRESS_TRAVEL = 1.0        # EC11 tactile-click axial travel clearance
 XIAO_CENTRE = (60.0, 19.0)        # U1 (abs 160,119 -> local 60,19)
 SWITCH_CENTRE = (33.0, 19.0)      # SW_PWR1 (abs 133,119 -> local 33,19)
 JST_CENTRE = (8.0, 19.0)          # J_BAT1 (abs 108,119 -> local 8,19)
 NTC_CENTRE = (10.0, 24.0)         # TH1 (abs 110,124 -> local 10,24)
 
-SWITCH_WINDOW_W = 8.0             # lever access slot
-SWITCH_WINDOW_H = 4.0
+# Cycle 2 MAJOR #9: slide-switch aperture sized to the MSS22AG15 slider body
+# (11 mm long x 5 mm tall actuator boss) with 1 mm clearance
+SWITCH_WINDOW_W = 12.0
+SWITCH_WINDOW_H = 6.0
 
-USBC_SLOT_W = 14.0                # plug-body clearance in top wall
+# Cycle 2 MAJOR #8 / MINOR #15: USB-C with sacrificial bridge + chamfer, and
+# 0.1 / 0.05 mm shrink-comp applied via _shrink() at cut time
+USBC_SLOT_W = 15.0                # plug-body + host-cable boot clearance
 USBC_SLOT_H = 10.0
+USBC_BRIDGE_W = 1.0               # sacrificial mid-span bridge (print-time, remove post)
+USBC_BRIDGE_H = 2.0
+USBC_EDGE_CHAMFER = 1.0           # 1 mm x 1 mm external-edge chamfer
 
 # --- Mounting holes (local frame, from PCB H1..H4) ---
 MOUNT_HOLES = [
@@ -387,20 +397,72 @@ def build_top_case() -> cq.Workplane:
     lip_bot_z = -PLATE_THICKNESS - TOP_LIP_DEPTH
 
     usbc_x_c = BOARD_OFFSET_X + USBC_NOTCH_X + USBC_NOTCH_W / 2
+    usb_w = _shrink(USBC_SLOT_W)
+    usb_h = _shrink(USBC_SLOT_H)
+    wall_span = (TOP_WALL_THICKNESS + TOP_LIP_CLEARANCE) * 3
     usb_aperture = (
         cq.Workplane("XY",
                      origin=(usbc_x_c, 0.0, lip_bot_z))
-        .box(_shrink(USBC_SLOT_W), (TOP_WALL_THICKNESS + TOP_LIP_CLEARANCE) * 3,
-             TOP_LIP_DEPTH + 0.2,
+        .box(usb_w, wall_span,
+             min(usb_h, TOP_LIP_DEPTH + 0.2),
              centered=(True, True, False))
     )
     body = body.cut(usb_aperture)
 
+    # Cycle 2 MAJOR #8: sacrificial bridge rib across the USB-C opening at
+    # mid-span -- a 1x2 mm bar that lets the slicer bridge cleanly on PETG.
+    # Builder snips it off before plugging in a USB-C cable for the first
+    # time. The bridge lives entirely within the lip-wall body (the lip's
+    # north wall spans Y = lip_outer_inset .. lip_outer_inset + TOP_WALL_THICKNESS),
+    # so it can never poke outside and collide with the bottom case.
+    lip_outer_inset = TOP_WALL_THICKNESS + TOP_LIP_CLEARANCE
+    bridge_y_min = lip_outer_inset
+    bridge_y_max = lip_outer_inset + TOP_WALL_THICKNESS
+    bridge_y_centre = (bridge_y_min + bridge_y_max) / 2
+    bridge_y_span = bridge_y_max - bridge_y_min
+    bridge_z_centre = lip_bot_z + min(usb_h, TOP_LIP_DEPTH + 0.2) / 2
+    usb_bridge = (
+        cq.Workplane("XY",
+                     origin=(usbc_x_c, bridge_y_centre,
+                             bridge_z_centre - USBC_BRIDGE_H / 2))
+        .box(USBC_BRIDGE_W, bridge_y_span, USBC_BRIDGE_H,
+             centered=(True, True, False))
+    )
+    body = body.union(usb_bridge)
+
+    # Cycle 2 MINOR #15: 1x1 mm 45 deg external-edge chamfer on the USB-C
+    # aperture outside, so the plug boot has a lead-in if the cable is at
+    # a slight angle to the case edge. Built as a loft from the nominal
+    # aperture at Y = 1 mm (inside the face) to a 1-mm-larger aperture at
+    # Y = 0 (face) so the outer edge is a 45-deg ramp.
+    chamfer_size = USBC_EDGE_CHAMFER
+    slot_h_cut = min(usb_h, TOP_LIP_DEPTH + 0.2)
+    chamfer_subtractor = (
+        cq.Workplane("XZ", origin=(usbc_x_c,
+                                    chamfer_size,
+                                    lip_bot_z + slot_h_cut / 2))
+        .rect(usb_w, slot_h_cut)
+        .workplane(offset=-chamfer_size)
+        .rect(usb_w + 2 * chamfer_size,
+              slot_h_cut + 2 * chamfer_size)
+        .loft(combine=True)
+    )
+    body = body.cut(chamfer_subtractor)
+
     swx, _ = _board_to_case(*SWITCH_CENTRE)
+    # Cycle 2 MAJOR #9: switch window Z centre computed from actuator height.
+    # The MSS22AG15 slider actuator boss is 5 mm tall above the switch body.
+    # The switch body sits at PCB top + 1 mm ride height; actuator boss
+    # centre is at PCB top + 1 + 2.5 = 3.5 mm above PCB. Plate underside is
+    # PLATE_TO_PCB_GAP = 5 mm above PCB, so lip bottom is -TOP_LIP_DEPTH
+    # below plate underside. Actuator centre Z (in top-case frame, Z=0 plate
+    # top): -PLATE_THICKNESS - (PLATE_TO_PCB_GAP - 3.5) = -plate - 1.5.
+    sw_actuator_z = -PLATE_THICKNESS - (PLATE_TO_PCB_GAP - 3.5)
+    sw_window_z_bot = sw_actuator_z - _shrink(SWITCH_WINDOW_H) / 2
     sw_win = (
         cq.Workplane("XY",
-                     origin=(swx, 0.0, lip_bot_z + 0.2))
-        .box(_shrink(SWITCH_WINDOW_W), (TOP_WALL_THICKNESS + TOP_LIP_CLEARANCE) * 3,
+                     origin=(swx, 0.0, sw_window_z_bot))
+        .box(_shrink(SWITCH_WINDOW_W), wall_span,
              _shrink(SWITCH_WINDOW_H),
              centered=(True, True, False))
     )
