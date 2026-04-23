@@ -353,7 +353,13 @@ def build_top_case() -> cq.Workplane:
         )
         body = body.cut(mx)
 
-    # 2U Enter stab slots + wire holes (shrinkage-compensated)
+    # 2U Enter stab slots + wire holes (shrinkage-compensated).
+    # Cycle 2 MINOR #19: build each stab as a UNION of rect + wire-hole
+    # circle BEFORE cutting from the plate. The wire hole and slot
+    # share a common outline in the Cherry plate-mount standard, so
+    # merging them first yields a single clean inner wire on the plate
+    # top face rather than two overlapping wires, which made STL
+    # viewers show a seam artefact at the merge point.
     ex, ey = _board_to_case(*ENTER_KEY_CENTRE)
     stab_w = _shrink(STAB_SLOT_W)
     stab_h = _shrink(STAB_SLOT_H)
@@ -364,7 +370,6 @@ def build_top_case() -> cq.Workplane:
             .rect(stab_w, stab_h)
             .extrude(cut_top - cut_bottom)
         )
-        body = body.cut(slot)
         wire = (
             cq.Workplane("XY",
                          origin=(ex + sign * STAB_OFFSET,
@@ -373,7 +378,8 @@ def build_top_case() -> cq.Workplane:
             .circle(stab_wire_d / 2)
             .extrude(cut_top - cut_bottom)
         )
-        body = body.cut(wire)
+        stab_aperture = slot.union(wire)
+        body = body.cut(stab_aperture)
 
     # Encoder knob access hole (shrinkage-compensated)
     ecx, ecy = _board_to_case(*ENCODER_CENTRE)

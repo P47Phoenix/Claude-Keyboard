@@ -47,10 +47,10 @@ Typical run takes ≈ 30 s on a modern laptop.
 - **Walls:** 4 perimeters at 0.4 mm nozzle (wall shells 1.6 mm; allows 2.0 mm
   sidewall to still be solid perimeter).
 - **Supports:** tree supports on the down-facing keycap pockets; none inside
-  the USB-C aperture (bridge it). Turn supports OFF inside the MX cutouts —
-  they're through features, no overhang.
-- **Expected print time:** ≈ 5–6 h.
-- **Expected filament:** ≈ 45 g.
+  the USB-C aperture (the sacrificial bridge handles that). Turn supports
+  OFF inside the MX cutouts — they're through features, no overhang.
+- **Expected print time:** ≈ 6–7 h (Cycle 2: plate 2.0 mm, larger corner R).
+- **Expected filament:** ≈ 35–45 g.
 
 ### Bottom case
 
