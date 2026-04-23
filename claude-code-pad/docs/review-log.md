@@ -1347,3 +1347,108 @@ full list. The repo diff is contained to `pcb/**` + new
 `pcb/_gen/autoroute/*.py` scripts.
 
 **Status:** `PHASE-1-CYCLE-11: COMPLETE (0 errors / 0 warnings, 1 documented waiver)`
+
+---
+
+## Phase 2 — Case design (MECH-1)
+
+### Cycle 1 — MECH-1 initial deliverables (2026-04-19)
+
+**Scope:** first-pass parametric case in CadQuery 2.7.0. Two-piece
+print-ready enclosure (top plate + bottom shell) mating with a 0.3 mm
+slip-fit lip and closed by 4× M3 screws into heat-set brass inserts in
+the bottom case. All geometry driven from parameters at the top of
+`case/claude-code-pad.py`; PCB positions copied from the authoritative
+`pcb/claude-code-pad.kicad_pcb` (H1..H4, J_BAT1, SW_PWR1, TH1, U1, EC1,
+USB-C notch).
+
+#### Files
+
+- `case/claude-code-pad.py` — 30 KB parametric CadQuery source with
+  `build_top_case()`, `build_bottom_case()`, `build_assembly()`, and a
+  `validate()` gate.
+- `case/top-case.stl` — 130 KB, plate-face-down print orientation.
+- `case/bottom-case.stl` — 225 KB, cavity-up print orientation.
+- `case/assembly.step` — 955 KB, includes top + bottom + placeholder
+  solids for PCB, battery, encoder, USB-C plug.
+- `case/README.md` — print instructions (layer height, infill %,
+  support policy), assembly sequence, heat-set insert procedure.
+- `case/PARAMS.md` — full parameter table with defaults and tuning
+  notes.
+
+#### Validation gate (executed on every build)
+
+1. **Top / bottom volumetric intersection: 0.000 mm³** (PASS — top lip
+   slips into bottom interior with 0.3 mm clearance per side).
+2. **Plate-top inner wire count: 32** (expect ≥ 32 — 25 MX + 2 merged
+   Cherry stab features + 1 encoder knob + 4 M3 clearance = 32).
+3. **MX centre count: 25** (PASS).
+
+Script prints `STATUS: READY_FOR_REVIEW` and exits 0 on PASS.
+
+#### Safety-requirement disposition (Phase 1 Cycle 3 MECH-1 inputs)
+
+- **Vent slots** — 2× 10 × 3 mm slots cut into the battery-bay floor
+  (see `VENT_SLOTS` parameter). Total open area 60 mm² per spec IEC 62133
+  thermal egress guidance.
+- **FR-4 divider** — 1.8 mm slide-fit slot on the north wall of the
+  battery-bay interior (`DIVIDER_SLOT_T`). Divider is user-supplied
+  (1.6 mm FR-4 sheet, 53.9 × 9.0 mm). `README.md` calls out that a PETG
+  divider is NOT UL-94-V0 and asks users to use FR-4 for production.
+- **JST-PH strain relief** — 2.5 × 4 mm cable pinch slot through the
+  bay's north wall + 2 mm Ø relief post 2.5 mm east and 2 mm south of
+  the exit. Cable wraps once around the post so a tug doesn't reach the
+  PCB JST pads.
+- **NTC thermal window** — 6 × 3 mm opening in the bay floor directly
+  above TH1 so the thermistor reads cell ambient without a PETG thermal
+  barrier.
+
+#### Antenna keepout (25 × 10.3 mm over XIAO nRF52840)
+
+Envelope (incl. 5 mm clearance): case-frame X = 42.5..77.5, Y =
+8.85..29.15. Runtime check (`_boss_violates_antenna_keepout`) confirms:
+
+- All 4× M3 insert bosses (H1..H4) lie OUTSIDE the envelope — all use
+  heat-set brass inserts.
+- All 4× PCB tray mid-edge standoffs are OUTSIDE the envelope.
+
+If a future PCB revision moves a boss into the envelope, the builder
+auto-demotes it to a 2.8 mm self-tap pilot (no metal insert), preserving
+RF match.
+
+#### Geometry summary (mm)
+
+- Case outer: 124.8 × 136.8 × ~12 (bottom case total) + 4 (top plate +
+  lip) = ~16 mm profile.
+- Plate thickness: 1.5 (MX switch clip spec).
+- Wall thickness: 2.0.
+- Bottom interior height: 10.0 (covers 3 mm PCB standoff + 1.6 mm FR4 +
+  5 mm MX switch body below plate; also accommodates 9 mm battery bay).
+- PCB fit clearance: 0.4 mm per side.
+- MX cutout: 14.00 mm nominal (pre-shrinkage).
+- Cherry 2U stab: slots 3.97 × 6.65 at ±11.9 mm + 3.05 Ø wire hole at
+  -2.3 mm N (merges with slot, canonical geometry).
+
+#### Print guidance (Creality K2 Plus, PETG)
+
+- Top case: plate-face-down, 0.16 mm layers, 60 % gyroid infill, 4
+  perimeters. Tree supports on keycap underside only; USB-C aperture
+  bridges. ~5–6 h, ~45 g.
+- Bottom case: cavity-up, 0.20 mm layers, 30 % gyroid infill, 3
+  perimeters. No supports (all overhangs ≤ 45°). ~7–8 h, ~90 g.
+
+#### Known gaps for RED-MECH / RED-COST
+
+- **OLED cutout** — not yet placed; firmware-side OLED module not pinned
+  in BOM.
+- **Snap-fit alternative** — current closure is 4× M3 screws only.
+- **Battery tape-pad recess** — called out in assembly but no geometry
+  yet.
+- **Figurine dock / RFID pocket** — Phase 5 scope.
+- **Print-on-bed test tolerance** — MX cutout is authored at 14.00 mm;
+  K2 Plus PETG shrink factor not empirically measured. Builder is
+  asked to reprint `KEY_CUTOUT = 14.10` if switches are sloppy.
+- **Top-wall USB-C / switch aperture bridging** — requires ≤ 10 mm
+  bridge without supports on PETG; not validated on actual printer yet.
+
+**Status:** `PHASE-2-CYCLE-1: READY_FOR_REVIEW`
