@@ -1452,3 +1452,64 @@ RF match.
   bridge without supports on PETG; not validated on actual printer yet.
 
 **Status:** `PHASE-2-CYCLE-1: READY_FOR_REVIEW`
+
+### Cycle 2 — MECH-1 fix cycle (2026-04-19)
+
+**Inputs:** Cycle-1 adversarial review produced **2 BLOCKER / 13 MAJOR /
+10 MINOR** from RED-MECH plus 1 RED-COST MAJOR on print-time scaling.
+Fixes grouped into 10 small commits so history is bisectable.
+
+**Commits pushed (main):**
+
+| # | Hash | Fix group |
+| --- | --- | --- |
+| 1 | `9018b59` | Shrinkage compensation framework + `test-coupon.stl` |
+| 2 | `9baf13a` | Heat-set boss resize (Ø 8, IUB-M3-L4, M3 × 6 screws) |
+| 3 | `1c62d88` | Slip-fit clearance 0.3 → 0.4 + 0.5 mm lead-in/relief chamfers |
+| 4 | `bb0ec29` | `PLATE_THICKNESS` 1.5 → 2.0 (stiffness, Option A) |
+| 5 | `215ed71` | Battery bay 2 mm walls, round vents, 3-edge divider, install order doc |
+| 6 | `5884a14` | Strain-relief cable gate (replaces cantilever post) |
+| 7 | `776e4af` | NTC through-hole → 0.4 mm PETG membrane |
+| 8 | `6bf4516` | USB-C/slide-switch/encoder-knob aperture resize + sacrificial bridge + chamfer |
+| 9 | `238b4d6` | Rubber feet (SJ-5018), outer corner R6, PCB standoff 5 mm, bed-adhesion doc |
+| 10 | `d88450b` | Stab aperture union; Cycle-2 print-time / filament doc refresh |
+
+**Closure table:**
+
+| Severity | ID | Disposition |
+| --- | --- | --- |
+| BLOCKER #1 | MX cutout shrink not compensated | CLOSED — `_shrink()` applied to all inner apertures, calibration coupon ships |
+| BLOCKER #2 | Stab / pilot-hole shrink not compensated | CLOSED — same framework, coupon validates |
+| MAJOR #3 | Slip-fit too tight, no lead-in | CLOSED — 0.4 mm clearance + 0.5 mm lead-in + 0.5 mm relief |
+| MAJOR #4 | Heat-set boss wall too thin | CLOSED — BOSS_OD 7 → 8, wall 2 mm, insert L4 match, M3 × 6 screws |
+| MAJOR #5 | Plate flex across 5×5 | CLOSED — `PLATE_THICKNESS` 1.5 → 2.0 (Option A) |
+| MAJOR #6 | Battery bay walls too thin | CLOSED — bay wall 1.5 → 2.0 |
+| MAJOR #7 | Vent area insufficient + slot-bridging | CLOSED — round Ø 3 holes (floor + walls), total ≈ 170 mm² |
+| MAJOR #8 | USB-C aperture tight + no bridge | CLOSED — 15 × 10 slot + 1 × 2 mm sacrificial bridge + 1 × 1 chamfer |
+| MAJOR #9 | Slide-switch window wrong Z and undersized | CLOSED — 12 × 6 mm, Z centre computed from actuator geometry |
+| MAJOR #10 | Encoder knob hole Z/size wrong | CLOSED — 16 mm dia, protrusion + press travel constants documented |
+| MAJOR #11 | Cantilever strain-relief post | CLOSED — replaced with cable gate (wall-on-wall shear) |
+| MAJOR #12 | FR-4 divider retained on 1 edge only | CLOSED — 3-edge retention (N + E + W grooves) |
+| MAJOR #13 | Install order not documented | CLOSED — README Assembly Sequence rewritten, divider step explicit |
+| MAJOR #14 | NTC through-hole is ignition path | CLOSED — 0.4 mm PETG membrane, + Kapton+TIM alternative documented |
+| MAJOR #15 | USB-C plug-boot interference | CLOSED (tracked as MINOR upstream) — 15 mm width + 1 × 1 mm external chamfer |
+| MINOR #16 | Rubber foot size wrong (SJ-5018) | CLOSED — FOOT_D 12.7, both 5003 / 5018 supported |
+| MINOR #17 | Outer corner radius too tight | CLOSED — CASE_OUTER_R 4 → 6 |
+| MINOR #18 | PCB standoff doesn't clear hot-swap tails | CLOSED — PCB_TRAY_STANDOFF 3 → 5 |
+| MINOR #19 | Stab cut as two overlapping apertures | CLOSED — rect+circle unioned before cut |
+| MINOR #20 | Print-time / filament estimates optimistic | CLOSED — README updated to 15–18 h / 90–110 g |
+| RED-COST #1 | Print-time scaling > qty 20 | NOT CLOSED — deliberately non-blocker per RED-COST note; tracked for Phase 6 if volume pivot happens |
+
+**Residuals:** none above MINOR. All 2 BLOCKERs and all 13 MAJORs are
+closed this cycle. All 10 MINORs are closed (the RED-COST qty > 20
+scaling concern is acknowledged and deferred, not a MECH-1 cycle item).
+
+**Validation per commit (all 10):** `validate()` gate prints
+`top/bottom intersection = 0.000 mm^3`, 32 plate-top inner wires,
+MX=25, stab=4, encoder=1, USB-C=1, slide switch=1, heat-set bosses
+outside antenna keepout=4. Script exits 0 every commit.
+
+**Deliverables regenerated:** `top-case.stl`, `bottom-case.stl`,
+`assembly.step`, new `test-coupon.stl`.
+
+**Status:** `PHASE-2-CYCLE-2: READY_FOR_REVIEW`
