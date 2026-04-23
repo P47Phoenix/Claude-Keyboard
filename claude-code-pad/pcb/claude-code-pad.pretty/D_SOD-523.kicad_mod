@@ -1,0 +1,133 @@
+(footprint "D_SOD-523"
+		(layer "F.Cu")
+		(descr "ESD9L3.3")
+		(tags "smd")
+		(property "Reference" "REF**"
+			(at 0 -1.3 0)
+			(layer "F.Fab")
+			(uuid "756bd073-c96a-5f48-9c9b-98cc02ab4538")
+			(effects
+				(font
+					(size 0.6 0.6)
+					(thickness 0.1)
+				)
+			)
+		)
+		(property "Value" "ESD9L3.3"
+			(at 0 1.3 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8e541782-5c87-5f18-b3a0-b59620fa5517")
+			(effects
+				(font
+					(size 0.6 0.6)
+					(thickness 0.1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "232abdde-df0d-579b-87f2-3609665b6d2c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "ESD TVS on ENC_B (cathode->signal, anode->GND)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c0f575fb-219c-5f56-804e-69af2af84909")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C709011"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ed58f658-7e41-562f-859d-044c65dd6b5e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "JLCPCB Rotation" "0"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a8202e9d-8f25-5eac-a4dc-626bb4ba3bb1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_line
+			(start -1.1 -0.5)
+			(end 1.1 -0.5)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(layer "F.CrtYd")
+			(uuid "f5752974-b65b-5e5c-9fa8-ddfa15bd164a")
+		)
+		(fp_line
+			(start -1.1 0.5)
+			(end -1.1 -0.5)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(layer "F.CrtYd")
+			(uuid "6ed5c75b-ede3-5ee7-9e11-8f51dadf312e")
+		)
+		(fp_line
+			(start 1.1 -0.5)
+			(end 1.1 0.5)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(layer "F.CrtYd")
+			(uuid "4b3ba33d-fe4f-55d6-94f1-d2eda502c01d")
+		)
+		(fp_line
+			(start 1.1 0.5)
+			(end -1.1 0.5)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(layer "F.CrtYd")
+			(uuid "fee56a0b-7805-5291-a6e3-41e5f0e5d8c3")
+		)
+		(pad "1" smd rect
+			(at -0.6 0)
+			(size 0.6 0.7)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net "ENC_B")
+			(uuid "1677dd6a-8ce2-5813-810e-22569e396753")
+		)
+		(pad "2" smd rect
+			(at 0.6 0)
+			(size 0.6 0.7)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net "GND")
+			(uuid "eaf6769e-3a5d-5b5a-9b9c-b64fbd4821e9")
+		)
+		(embedded_fonts no)
+	)

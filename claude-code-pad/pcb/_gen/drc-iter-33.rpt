@@ -1,0 +1,993 @@
+** Drc report for claude-code-pad.kicad_pcb **
+** Created on 2026-04-22T20:12:53 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 207 DRC violations **
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(174.2500 mm, 198.1250 mm): Pad 1 [+3V3] of LED19 on B.Cu
+    @(176.5500 mm, 196.6750 mm): NPTH pad of SW33
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(202.8250 mm, 217.1750 mm): Pad 1 [+3V3] of LED25 on B.Cu
+    @(205.1250 mm, 215.7250 mm): NPTH pad of SW44
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(136.1500 mm, 217.1750 mm): Pad 1 [+3V3] of LED22 on B.Cu
+    @(138.4500 mm, 215.7250 mm): NPTH pad of SW41
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(134.4500 mm, 159.6500 mm): Pad 2 [GND] of CL7 on B.Cu
+    @(133.3700 mm, 158.5750 mm): NPTH pad of SW11
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(115.4000 mm, 197.7500 mm): Pad 2 [GND] of CL16 on B.Cu
+    @(114.3200 mm, 196.6750 mm): NPTH pad of SW30
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(155.2000 mm, 179.0750 mm): Pad 1 [+3V3] of LED13 on B.Cu
+    @(157.5000 mm, 177.6250 mm): NPTH pad of SW22
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(174.2500 mm, 140.9750 mm): Pad 1 [+3V3] of LED4 on B.Cu
+    @(176.5500 mm, 139.5250 mm): NPTH pad of SW03
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(207.4250 mm, 217.1750 mm): Pad 4 [RGB_D25] of LED25 on B.Cu
+    @(205.1250 mm, 215.7250 mm): NPTH pad of SW44
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(191.6000 mm, 178.7000 mm): Pad 2 [GND] of CL15 on B.Cu
+    @(190.5200 mm, 177.6250 mm): NPTH pad of SW24
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(115.4000 mm, 140.6000 mm): Pad 2 [GND] of CL1 on B.Cu
+    @(114.3200 mm, 139.5250 mm): NPTH pad of SW00
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(178.8500 mm, 198.1250 mm): Pad 4 [RGB_D17] of LED19 on B.Cu
+    @(176.5500 mm, 196.6750 mm): NPTH pad of SW33
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(201.1250 mm, 216.8000 mm): Pad 2 [GND] of CL25 on B.Cu
+    @(200.0450 mm, 215.7250 mm): NPTH pad of SW44
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(193.3000 mm, 179.0750 mm): Pad 1 [+3V3] of LED15 on B.Cu
+    @(195.6000 mm, 177.6250 mm): NPTH pad of SW24
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(172.5500 mm, 140.6000 mm): Pad 2 [GND] of CL4 on B.Cu
+    @(171.4700 mm, 139.5250 mm): NPTH pad of SW03
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(155.2000 mm, 160.0250 mm): Pad 1 [+3V3] of LED8 on B.Cu
+    @(157.5000 mm, 158.5750 mm): NPTH pad of SW12
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(136.1500 mm, 140.9750 mm): Pad 1 [+3V3] of LED2 on B.Cu
+    @(138.4500 mm, 139.5250 mm): NPTH pad of SW01
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(178.8500 mm, 140.9750 mm): Pad 4 [RGB_D4] of LED4 on B.Cu
+    @(176.5500 mm, 139.5250 mm): NPTH pad of SW03
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(117.1000 mm, 198.1250 mm): Pad 1 [+3V3] of LED16 on B.Cu
+    @(119.4000 mm, 196.6750 mm): NPTH pad of SW30
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(159.8000 mm, 179.0750 mm): Pad 4 [RGB_D13] of LED13 on B.Cu
+    @(157.5000 mm, 177.6250 mm): NPTH pad of SW22
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(121.7000 mm, 198.1250 mm): Pad 4 [RGB_D20] of LED16 on B.Cu
+    @(119.4000 mm, 196.6750 mm): NPTH pad of SW30
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(117.1000 mm, 160.0250 mm): Pad 1 [+3V3] of LED6 on B.Cu
+    @(119.4000 mm, 158.5750 mm): NPTH pad of SW10
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(153.5000 mm, 140.6000 mm): Pad 2 [GND] of CL3 on B.Cu
+    @(152.4200 mm, 139.5250 mm): NPTH pad of SW02
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(193.3000 mm, 160.0250 mm): Pad 1 [+3V3] of LED10 on B.Cu
+    @(195.6000 mm, 158.5750 mm): NPTH pad of SW14
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(136.1500 mm, 179.0750 mm): Pad 1 [+3V3] of LED12 on B.Cu
+    @(138.4500 mm, 177.6250 mm): NPTH pad of SW21
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(190.5200 mm, 177.6250 mm): NPTH pad of SW24
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(159.8000 mm, 160.0250 mm): Pad 4 [RGB_D8] of LED8 on B.Cu
+    @(157.5000 mm, 158.5750 mm): NPTH pad of SW12
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(140.7500 mm, 140.9750 mm): Pad 4 [RGB_D2] of LED2 on B.Cu
+    @(138.4500 mm, 139.5250 mm): NPTH pad of SW01
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(197.9000 mm, 179.0750 mm): Pad 4 [RGB_D15] of LED15 on B.Cu
+    @(195.6000 mm, 177.6250 mm): NPTH pad of SW24
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(172.5500 mm, 178.7000 mm): Pad 2 [GND] of CL14 on B.Cu
+    @(171.4700 mm, 177.6250 mm): NPTH pad of SW23
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(140.7500 mm, 217.1750 mm): Pad 4 [RGB_D22] of LED22 on B.Cu
+    @(138.4500 mm, 215.7250 mm): NPTH pad of SW41
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(172.5500 mm, 159.6500 mm): Pad 2 [GND] of CL9 on B.Cu
+    @(171.4700 mm, 158.5750 mm): NPTH pad of SW13
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(134.4500 mm, 216.8000 mm): Pad 2 [GND] of CL22 on B.Cu
+    @(133.3700 mm, 215.7250 mm): NPTH pad of SW41
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(155.2000 mm, 198.1250 mm): Pad 1 [+3V3] of LED18 on B.Cu
+    @(157.5000 mm, 196.6750 mm): NPTH pad of SW32
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(155.2000 mm, 217.1750 mm): Pad 1 [+3V3] of LED23 on B.Cu
+    @(157.5000 mm, 215.7250 mm): NPTH pad of SW42
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(121.7000 mm, 160.0250 mm): Pad 4 [RGB_D10] of LED6 on B.Cu
+    @(119.4000 mm, 158.5750 mm): NPTH pad of SW10
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(117.1000 mm, 179.0750 mm): Pad 1 [+3V3] of LED11 on B.Cu
+    @(119.4000 mm, 177.6250 mm): NPTH pad of SW20
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(140.7500 mm, 179.0750 mm): Pad 4 [RGB_D12] of LED12 on B.Cu
+    @(138.4500 mm, 177.6250 mm): NPTH pad of SW21
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(153.5000 mm, 159.6500 mm): Pad 2 [GND] of CL8 on B.Cu
+    @(152.4200 mm, 158.5750 mm): NPTH pad of SW12
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(128.3000 mm, 119.0000 mm): NPTH pad of SW_PWR1
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(117.1000 mm, 140.9750 mm): Pad 1 [+3V3] of LED1 on B.Cu
+    @(119.4000 mm, 139.5250 mm): NPTH pad of SW00
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(197.9000 mm, 160.0250 mm): Pad 4 [RGB_D6] of LED10 on B.Cu
+    @(195.6000 mm, 158.5750 mm): NPTH pad of SW14
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(174.2500 mm, 160.0250 mm): Pad 1 [+3V3] of LED9 on B.Cu
+    @(176.5500 mm, 158.5750 mm): NPTH pad of SW13
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(136.1500 mm, 160.0250 mm): Pad 1 [+3V3] of LED7 on B.Cu
+    @(138.4500 mm, 158.5750 mm): NPTH pad of SW11
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(134.4500 mm, 140.6000 mm): Pad 2 [GND] of CL2 on B.Cu
+    @(133.3700 mm, 139.5250 mm): NPTH pad of SW01
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(174.2500 mm, 217.1750 mm): Pad 1 [+3V3] of LED24 on B.Cu
+    @(176.5500 mm, 215.7250 mm): NPTH pad of SW43
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(174.2500 mm, 179.0750 mm): Pad 1 [+3V3] of LED14 on B.Cu
+    @(176.5500 mm, 177.6250 mm): NPTH pad of SW23
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(117.1000 mm, 217.1750 mm): Pad 1 [+3V3] of LED21 on B.Cu
+    @(119.4000 mm, 215.7250 mm): NPTH pad of SW40
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(159.8000 mm, 217.1750 mm): Pad 4 [RGB_D23] of LED23 on B.Cu
+    @(157.5000 mm, 215.7250 mm): NPTH pad of SW42
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(115.4000 mm, 178.7000 mm): Pad 2 [GND] of CL11 on B.Cu
+    @(114.3200 mm, 177.6250 mm): NPTH pad of SW20
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(140.7500 mm, 160.0250 mm): Pad 4 [RGB_D9] of LED7 on B.Cu
+    @(138.4500 mm, 158.5750 mm): NPTH pad of SW11
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(159.8000 mm, 198.1250 mm): Pad 4 [RGB_D18] of LED18 on B.Cu
+    @(157.5000 mm, 196.6750 mm): NPTH pad of SW32
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(178.8500 mm, 160.0250 mm): Pad 4 [RGB_D7] of LED9 on B.Cu
+    @(176.5500 mm, 158.5750 mm): NPTH pad of SW13
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(152.4200 mm, 139.5250 mm): NPTH pad of SW02
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(190.5200 mm, 196.6750 mm): NPTH pad of SW34
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(191.6000 mm, 159.6500 mm): Pad 2 [GND] of CL10 on B.Cu
+    @(190.5200 mm, 158.5750 mm): NPTH pad of SW14
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(121.7000 mm, 179.0750 mm): Pad 4 [RGB_D11] of LED11 on B.Cu
+    @(119.4000 mm, 177.6250 mm): NPTH pad of SW20
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(171.4700 mm, 139.5250 mm): NPTH pad of SW03
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(133.3700 mm, 196.6750 mm): NPTH pad of SW31
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(171.4700 mm, 196.6750 mm): NPTH pad of SW33
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(121.7000 mm, 140.9750 mm): Pad 4 [RGB_D1] of LED1 on B.Cu
+    @(119.4000 mm, 139.5250 mm): NPTH pad of SW00
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(105.0000 mm, 228.0000 mm): NPTH pad of H3
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(178.8500 mm, 217.1750 mm): Pad 4 [RGB_D24] of LED24 on B.Cu
+    @(176.5500 mm, 215.7250 mm): NPTH pad of SW43
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(193.3000 mm, 198.1250 mm): Pad 1 [+3V3] of LED20 on B.Cu
+    @(195.6000 mm, 196.6750 mm): NPTH pad of SW34
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(191.6000 mm, 140.6000 mm): Pad 2 [GND] of CL5 on B.Cu
+    @(190.5200 mm, 139.5250 mm): NPTH pad of SW04
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(121.7000 mm, 217.1750 mm): Pad 4 [RGB_D21] of LED21 on B.Cu
+    @(119.4000 mm, 215.7250 mm): NPTH pad of SW40
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(153.5000 mm, 197.7500 mm): Pad 2 [GND] of CL18 on B.Cu
+    @(152.4200 mm, 196.6750 mm): NPTH pad of SW32
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(115.4000 mm, 159.6500 mm): Pad 2 [GND] of CL6 on B.Cu
+    @(114.3200 mm, 158.5750 mm): NPTH pad of SW10
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(197.9000 mm, 198.1250 mm): Pad 4 [RGB_D16] of LED20 on B.Cu
+    @(195.6000 mm, 196.6750 mm): NPTH pad of SW34
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(134.4500 mm, 178.7000 mm): Pad 2 [GND] of CL12 on B.Cu
+    @(133.3700 mm, 177.6250 mm): NPTH pad of SW21
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(178.8500 mm, 179.0750 mm): Pad 4 [RGB_D14] of LED14 on B.Cu
+    @(176.5500 mm, 177.6250 mm): NPTH pad of SW23
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(136.1500 mm, 198.1250 mm): Pad 1 [+3V3] of LED17 on B.Cu
+    @(138.4500 mm, 196.6750 mm): NPTH pad of SW31
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(172.5500 mm, 216.8000 mm): Pad 2 [GND] of CL24 on B.Cu
+    @(171.4700 mm, 215.7250 mm): NPTH pad of SW43
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(153.5000 mm, 178.7000 mm): Pad 2 [GND] of CL13 on B.Cu
+    @(152.4200 mm, 177.6250 mm): NPTH pad of SW22
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1716 mm)
+    Rule: board setup constraints hole; error
+    @(115.4000 mm, 216.8000 mm): Pad 2 [GND] of CL21 on B.Cu
+    @(114.3200 mm, 215.7250 mm): NPTH pad of SW40
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(140.7500 mm, 198.1250 mm): Pad 4 [RGB_D19] of LED17 on B.Cu
+    @(138.4500 mm, 196.6750 mm): NPTH pad of SW31
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(155.2000 mm, 140.9750 mm): Pad 1 [+3V3] of LED3 on B.Cu
+    @(157.5000 mm, 139.5250 mm): NPTH pad of SW02
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(159.8000 mm, 140.9750 mm): Pad 4 [RGB_D3] of LED3 on B.Cu
+    @(157.5000 mm, 139.5250 mm): NPTH pad of SW02
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(190.5200 mm, 177.6250 mm): NPTH pad of SW24
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(128.3000 mm, 119.0000 mm): NPTH pad of SW_PWR1
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(114.3200 mm, 196.6750 mm): NPTH pad of SW30
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(171.4700 mm, 139.5250 mm): NPTH pad of SW03
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(171.4700 mm, 196.6750 mm): NPTH pad of SW33
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(195.6000 mm, 177.6250 mm): NPTH pad of SW24
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(133.3700 mm, 196.6750 mm): NPTH pad of SW31
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(190.5200 mm, 196.6750 mm): NPTH pad of SW34
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(105.0000 mm, 228.0000 mm): NPTH pad of H3
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(152.4200 mm, 139.5250 mm): NPTH pad of SW02
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(137.7000 mm, 119.0000 mm): NPTH pad of SW_PWR1
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(176.5500 mm, 139.5250 mm): NPTH pad of SW03
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(176.5500 mm, 196.6750 mm): NPTH pad of SW33
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(138.4500 mm, 196.6750 mm): NPTH pad of SW31
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(195.6000 mm, 196.6750 mm): NPTH pad of SW34
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(157.5000 mm, 139.5250 mm): NPTH pad of SW02
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(114.3200 mm, 196.6750 mm): NPTH pad of SW30
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(195.6000 mm, 177.6250 mm): NPTH pad of SW24
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(171.4700 mm, 215.7250 mm): NPTH pad of SW43
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(103.0000 mm, 166.0000 mm): NPTH pad of TP1
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(200.6800 mm, 177.6250 mm): NPTH pad of SW24
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(119.4000 mm, 196.6750 mm): NPTH pad of SW30
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(176.5500 mm, 139.5250 mm): NPTH pad of SW03
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(176.5500 mm, 196.6750 mm): NPTH pad of SW33
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(138.4500 mm, 196.6750 mm): NPTH pad of SW31
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(157.5000 mm, 139.5250 mm): NPTH pad of SW02
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(195.6000 mm, 196.6750 mm): NPTH pad of SW34
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(152.4200 mm, 177.6250 mm): NPTH pad of SW22
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(181.6300 mm, 139.5250 mm): NPTH pad of SW03
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(171.4700 mm, 215.7250 mm): NPTH pad of SW43
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(181.6300 mm, 196.6750 mm): NPTH pad of SW33
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(103.0000 mm, 166.0000 mm): NPTH pad of TP1
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(143.5300 mm, 196.6750 mm): NPTH pad of SW31
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(162.5800 mm, 139.5250 mm): NPTH pad of SW02
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(119.4000 mm, 196.6750 mm): NPTH pad of SW30
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(200.6800 mm, 196.6750 mm): NPTH pad of SW34
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(176.5500 mm, 215.7250 mm): NPTH pad of SW43
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(171.4700 mm, 177.6250 mm): NPTH pad of SW23
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(152.4200 mm, 177.6250 mm): NPTH pad of SW22
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(181.6300 mm, 139.5250 mm): NPTH pad of SW03
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(124.4800 mm, 196.6750 mm): NPTH pad of SW30
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(181.6300 mm, 196.6750 mm): NPTH pad of SW33
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(143.5300 mm, 196.6750 mm): NPTH pad of SW31
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(162.5800 mm, 139.5250 mm): NPTH pad of SW02
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(200.6800 mm, 196.6750 mm): NPTH pad of SW34
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(157.5000 mm, 177.6250 mm): NPTH pad of SW22
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(152.4200 mm, 215.7250 mm): NPTH pad of SW42
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(133.3700 mm, 139.5250 mm): NPTH pad of SW01
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(176.5500 mm, 215.7250 mm): NPTH pad of SW43
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(171.4700 mm, 177.6250 mm): NPTH pad of SW23
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(114.3200 mm, 215.7250 mm): NPTH pad of SW40
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(124.4800 mm, 196.6750 mm): NPTH pad of SW30
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(133.3700 mm, 177.6250 mm): NPTH pad of SW21
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(133.3700 mm, 158.5750 mm): NPTH pad of SW11
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(157.5000 mm, 177.6250 mm): NPTH pad of SW22
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(152.4200 mm, 215.7250 mm): NPTH pad of SW42
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(181.6300 mm, 215.7250 mm): NPTH pad of SW43
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(176.5500 mm, 177.6250 mm): NPTH pad of SW23
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(133.3700 mm, 139.5250 mm): NPTH pad of SW01
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(162.5800 mm, 177.6250 mm): NPTH pad of SW22
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(157.5000 mm, 215.7250 mm): NPTH pad of SW42
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(114.3200 mm, 215.7250 mm): NPTH pad of SW40
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(133.3700 mm, 177.6250 mm): NPTH pad of SW21
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(138.4500 mm, 139.5250 mm): NPTH pad of SW01
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(133.3700 mm, 158.5750 mm): NPTH pad of SW11
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(181.6300 mm, 215.7250 mm): NPTH pad of SW43
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(176.5500 mm, 177.6250 mm): NPTH pad of SW23
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(162.5800 mm, 177.6250 mm): NPTH pad of SW22
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(193.3000 mm, 140.9750 mm): Pad 1 [+3V3] of LED5 on B.Cu
+    @(195.6000 mm, 139.5250 mm): NPTH pad of SW04
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1783 mm)
+    Rule: board setup constraints hole; error
+    @(197.9000 mm, 140.9750 mm): Pad 4 [RGB_D5] of LED5 on B.Cu
+    @(195.6000 mm, 139.5250 mm): NPTH pad of SW04
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(119.4000 mm, 215.7250 mm): NPTH pad of SW40
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(138.4500 mm, 177.6250 mm): NPTH pad of SW21
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(157.5000 mm, 215.7250 mm): NPTH pad of SW42
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(138.4500 mm, 158.5750 mm): NPTH pad of SW11
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(138.4500 mm, 139.5250 mm): NPTH pad of SW01
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(215.0000 mm, 228.0000 mm): NPTH pad of H4
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(181.6300 mm, 177.6250 mm): NPTH pad of SW23
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(162.5800 mm, 215.7250 mm): NPTH pad of SW42
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(143.5300 mm, 139.5250 mm): NPTH pad of SW01
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(119.4000 mm, 215.7250 mm): NPTH pad of SW40
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(138.4500 mm, 177.6250 mm): NPTH pad of SW21
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(138.4500 mm, 158.5750 mm): NPTH pad of SW11
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(162.5800 mm, 215.7250 mm): NPTH pad of SW42
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(215.0000 mm, 228.0000 mm): NPTH pad of H4
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(124.4800 mm, 215.7250 mm): NPTH pad of SW40
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(143.5300 mm, 139.5250 mm): NPTH pad of SW01
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(143.5300 mm, 177.6250 mm): NPTH pad of SW21
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(143.5300 mm, 158.5750 mm): NPTH pad of SW11
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(171.4700 mm, 158.5750 mm): NPTH pad of SW13
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(190.5200 mm, 139.5250 mm): NPTH pad of SW04
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(114.3200 mm, 158.5750 mm): NPTH pad of SW10
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(124.4800 mm, 215.7250 mm): NPTH pad of SW40
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(171.4700 mm, 158.5750 mm): NPTH pad of SW13
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(143.5300 mm, 158.5750 mm): NPTH pad of SW11
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(114.3200 mm, 177.6250 mm): NPTH pad of SW20
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(176.5500 mm, 158.5750 mm): NPTH pad of SW13
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(114.3200 mm, 158.5750 mm): NPTH pad of SW10
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(190.5200 mm, 139.5250 mm): NPTH pad of SW04
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(190.5200 mm, 158.5750 mm): NPTH pad of SW14
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(119.4000 mm, 158.5750 mm): NPTH pad of SW10
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(195.6000 mm, 139.5250 mm): NPTH pad of SW04
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(114.3200 mm, 177.6250 mm): NPTH pad of SW20
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(176.5500 mm, 158.5750 mm): NPTH pad of SW13
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(181.6300 mm, 158.5750 mm): NPTH pad of SW13
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(190.5200 mm, 158.5750 mm): NPTH pad of SW14
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(119.4000 mm, 177.6250 mm): NPTH pad of SW20
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(119.4000 mm, 158.5750 mm): NPTH pad of SW10
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(195.6000 mm, 139.5250 mm): NPTH pad of SW04
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(195.6000 mm, 158.5750 mm): NPTH pad of SW14
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(181.6300 mm, 158.5750 mm): NPTH pad of SW13
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(124.4800 mm, 158.5750 mm): NPTH pad of SW10
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(200.6800 mm, 139.5250 mm): NPTH pad of SW04
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(119.4000 mm, 177.6250 mm): NPTH pad of SW20
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(124.4800 mm, 177.6250 mm): NPTH pad of SW20
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(195.6000 mm, 158.5750 mm): NPTH pad of SW14
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(200.6800 mm, 139.5250 mm): NPTH pad of SW04
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(200.6800 mm, 158.5750 mm): NPTH pad of SW14
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(152.4200 mm, 196.6750 mm): NPTH pad of SW32
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(124.4800 mm, 177.6250 mm): NPTH pad of SW20
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(133.3700 mm, 215.7250 mm): NPTH pad of SW41
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(200.6800 mm, 158.5750 mm): NPTH pad of SW14
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(152.4200 mm, 196.6750 mm): NPTH pad of SW32
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(217.0000 mm, 166.0000 mm): NPTH pad of TP2
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1505 mm)
+    Rule: board setup constraints hole; error
+    @(133.3700 mm, 215.7250 mm): NPTH pad of SW41
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(217.0000 mm, 103.0000 mm): Pad 1 [<no net>] of FID2 on F.Cu
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(103.0000 mm, 103.0000 mm): Pad 1 [<no net>] of FID1 on F.Cu
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(110.0000 mm, 229.0000 mm): Pad 1 [<no net>] of FID3 on F.Cu
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[lib_footprint_issues]: Footprint 'Fiducial_1mm_Mask3mm' not found in library 'claude-code-pad'
+    Local override; warning
+    @(217.0000 mm, 103.0000 mm): Footprint FID2
+[lib_footprint_issues]: Footprint 'Fiducial_1mm_Mask3mm' not found in library 'claude-code-pad'
+    Local override; warning
+    @(103.0000 mm, 103.0000 mm): Footprint FID1
+[lib_footprint_issues]: Footprint 'Fiducial_1mm_Mask3mm' not found in library 'claude-code-pad'
+    Local override; warning
+    @(110.0000 mm, 229.0000 mm): Footprint FID3
+
+** Found 30 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(141.9500 mm, 143.0750 mm): Pad 3 [GND] of LED2 on B.Cu
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+
+** Found 10 Footprint errors **
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(217.0000 mm, 103.0000 mm): Footprint FID2
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(103.0000 mm, 166.0000 mm): Footprint TP1
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(103.0000 mm, 103.0000 mm): Footprint FID1
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(110.0000 mm, 229.0000 mm): Footprint FID3
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(103.5000 mm, 127.0000 mm): Footprint H1
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(105.0000 mm, 228.0000 mm): Footprint H3
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(215.0000 mm, 228.0000 mm): Footprint H4
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(217.0000 mm, 166.0000 mm): Footprint TP2
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(216.5000 mm, 127.0000 mm): Footprint H2
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(164.0000 mm, 132.5000 mm): Footprint J_XIAO_BP
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **

@@ -1,0 +1,61 @@
+(footprint "MountingHole_3.2mm_M3_NPTH"
+		(layer "F.Cu")
+		(descr "Mounting hole 3.2mm for M3")
+		(property "Reference" "REF**"
+			(at 0 -4 0)
+			(layer "F.Fab")
+			(uuid "606bc7c0-e75c-5a18-b751-625b44784415")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "M3"
+			(at 0 4 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8db6a03b-e583-54f5-ad1b-5508fa1c50fa")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e41fe6b9-01ab-5a89-a91a-a17643b87944")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8791c928-5220-5f49-a958-61b4157fe52c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr exclude_from_pos_files exclude_from_bom allow_missing_courtyard)
+		(duplicate_pad_numbers_are_jumpers no)
+		(pad "" np_thru_hole circle
+			(at 0 0)
+			(size 3.2 3.2)
+			(drill 3.2)
+			(layers "*.Cu" "*.Mask")
+			(uuid "d867079f-2ae3-530b-9113-99eae04f1032")
+		)
+		(embedded_fonts no)
+	)

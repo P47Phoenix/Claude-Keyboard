@@ -1,0 +1,111 @@
+(footprint "SW_Slide_1P2T_SS12D00G4"
+		(layer "F.Cu")
+		(descr "SPDT slide switch SS-12D00G4 (TH, 3 pins, 2.54 mm pitch)")
+		(tags "slide switch spdt SS12D00G4")
+		(property "Reference" "REF**"
+			(at 0 -4 0)
+			(layer "F.Fab")
+			(uuid "99120d6a-2745-5227-8d7f-61694f5c363d")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "SPDT"
+			(at 0 4 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a5c63880-1a75-5d19-a626-3b32a97356c7")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e415d360-4139-5738-b9be-5d3ed419e955")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "SPDT slide power switch (TH, SS-12D00G4)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "75f30c10-fa20-51dc-9428-3386e4d49bcb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C8325"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f7cf0870-5526-51a5-ab7a-ce9cfe7a5417")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr through_hole exclude_from_pos_files exclude_from_bom dnp)
+		(duplicate_pad_numbers_are_jumpers no)
+		(pad "" np_thru_hole circle
+			(at -4.7 0)
+			(size 1.5 1.5)
+			(drill 1.5)
+			(layers "*.Cu" "*.Mask")
+			(uuid "cfe76094-db1b-577a-a295-678fe3e0cf1b")
+		)
+		(pad "" np_thru_hole circle
+			(at 4.7 0)
+			(size 1.5 1.5)
+			(drill 1.5)
+			(layers "*.Cu" "*.Mask")
+			(uuid "db5d9eb7-9cc9-5a3e-86cf-a167ddae3ed9")
+		)
+		(pad "1" thru_hole oval
+			(at -2.54 0)
+			(size 1.5 1.5)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net "VBAT")
+			(thermal_bridge_width 0.5)
+			(uuid "4fd33eea-a555-5da0-9762-14fe8f1781e1")
+		)
+		(pad "2" thru_hole oval
+			(at 0 0)
+			(size 1.5 1.5)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net "VBAT_SW")
+			(thermal_bridge_width 0.5)
+			(uuid "f01776ee-e382-5d8f-9c12-588028b4e834")
+		)
+		(pad "3" thru_hole oval
+			(at 2.54 0)
+			(size 1.5 1.5)
+			(drill 0.9)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net "NC_SW")
+			(thermal_bridge_width 0.5)
+			(uuid "a82c159f-5738-5cb7-a9cb-2956f881803b")
+		)
+		(embedded_fonts no)
+	)

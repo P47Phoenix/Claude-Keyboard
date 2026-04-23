@@ -641,7 +641,7 @@ def build_schematic():
     out.append(sch_symbol(
         "local:XIAO_nRF52840", "U1", "XIAO_nRF52840",
         mcu_x, mcu_y, 0, "U1",
-        footprint="local:XIAO_nRF52840_Castellated",
+        footprint="claude-code-pad:XIAO_nRF52840_Castellated",
         lcsc="C2888140",
         description="Seeed XIAO nRF52840 (direct-solder castellations)",
         # Cycle 9: BOM marks U1 DNP (hand-installed via castellations);
@@ -717,8 +717,8 @@ def build_schematic():
             out.append(sch_symbol(
                 "local:SW_Push", sw_ref, "MX_HS",
                 sx, sy, 0, f"SW_{r}_{c}",
-                footprint=("local:SW_Kailh_HotSwap_MX_2U" if is_2u(r, c)
-                           else "local:SW_Kailh_HotSwap_MX"),
+                footprint=("claude-code-pad:SW_Kailh_HotSwap_MX_2U" if is_2u(r, c)
+                           else "claude-code-pad:SW_Kailh_HotSwap_MX"),
                 lcsc="C5184526",
                 description="MX hot-swap keyswitch (Keebio MX_Only_HS)",
             ))
@@ -731,7 +731,7 @@ def build_schematic():
             out.append(sch_symbol(
                 "local:D", d_ref, "1N4148W",
                 dx, dy, 0, f"D_{r}_{c}",
-                footprint="Diode_SMD:D_SOD-123",
+                footprint="claude-code-pad:D_SOD-123",
                 lcsc="C81598",
                 description="Matrix diode",
                 extra_props={"JLCPCB Rotation": "180"},
@@ -746,7 +746,7 @@ def build_schematic():
     out.append(sch_symbol(
         "local:R", "R1", "470",
         rgb_x0, rgb_y0, 0, "R1",
-        footprint="Resistor_SMD:R_0402_1005Metric",
+        footprint="claude-code-pad:R_0402_1005Metric",
         lcsc="C25744",
         description="RGB DIN series resistor",
     ))
@@ -763,7 +763,7 @@ def build_schematic():
             # Cycle 9 B2: align Value with PCB fp_led_sk6812 Value ("SK6812").
             "local:LED_RGB", f"LED{led_idx}", "SK6812",
             lx, ly, 0, f"LED_{led_idx}",
-            footprint="LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm",
+            footprint="claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm",
             lcsc="C5149201",
             description="Reverse-mount RGB LED (SK6812MINI-E)",
             extra_props={"JLCPCB Rotation": "-90"},
@@ -788,7 +788,7 @@ def build_schematic():
         out.append(sch_symbol(
             "local:C", cref, "100n",
             cx, cy, 0, f"C_LED_{led_idx}",
-            footprint="Capacitor_SMD:C_0402_1005Metric",
+            footprint="claude-code-pad:C_0402_1005Metric",
             lcsc="C1525",
             description="LED VDD decoupling",
         ))
@@ -803,7 +803,7 @@ def build_schematic():
         out.append(sch_symbol(
             "local:R", rref, "4k7",
             rx, ry, 0, rref,
-            footprint="Resistor_SMD:R_0402_1005Metric",
+            footprint="claude-code-pad:R_0402_1005Metric",
             lcsc="C25905",
             description=f"I2C {net} pull-up",
         ))
@@ -817,12 +817,12 @@ def build_schematic():
     #   cathode -> signal (pin 1 in schematic)
     #   anode   -> GND    (pin 2 in schematic)
     # Matched in local:TVS symbol below.
-    for i, (tref, net) in enumerate([("TVS_SDA", "SDA"), ("TVS_SCL", "SCL")]):
+    for i, (tref, net) in enumerate([("TVS_SDA1", "SDA"), ("TVS_SCL1", "SCL")]):
         tx, ty = 320, 40 + i * 14
         out.append(sch_symbol(
             "local:TVS", tref, "ESD9L3.3",
             tx, ty, 0, tref,
-            footprint="Diode_SMD:D_SOD-523",
+            footprint="claude-code-pad:D_SOD-523",
             lcsc="C709011",
             description=f"ESD TVS on {net} (cathode->signal, anode->GND)",
             extra_props={"JLCPCB Rotation": "0"},
@@ -837,9 +837,9 @@ def build_schematic():
     # NFC header
     out.append(sch_symbol(
         # Cycle 9 B2: align with PCB fp_header_4pin Value ("NFC").
-        "local:ConnHeader4", "J_NFC", "NFC",
-        300, 120, 0, "J_NFC",
-        footprint="Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+        "local:ConnHeader4", "J_NFC1", "NFC",
+        300, 120, 0, "J_NFC1",
+        footprint="claude-code-pad:PinHeader_1x04_P2.54mm_Vertical",
         lcsc="",
         description="PN532 NFC 4-pin I2C breakout (DNP)",
         is_dnp=True,
@@ -857,7 +857,7 @@ def build_schematic():
     out.append(sch_symbol(
         "local:EC11", "EC1", "EC11",
         40, 240, 0, "EC1",
-        footprint="Button_Switch_THT:RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm",
+        footprint="claude-code-pad:RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm",
         lcsc="C255515",
         description="EC11 rotary encoder with push-switch (DNP for PCBA)",
         is_dnp=True,
@@ -885,15 +885,15 @@ def build_schematic():
 
     # TVS on ENC_A, ENC_B, ENC_SW -- same polarity fix as SDA/SCL
     for i, (tref, net) in enumerate([
-        ("TVS_ENCA", "ENC_A"),
-        ("TVS_ENCB", "ENC_B"),
-        ("TVS_ENCSW", "ENC_SW"),
+        ("TVS_ENCA1", "ENC_A"),
+        ("TVS_ENCB1", "ENC_B"),
+        ("TVS_ENCSW1", "ENC_SW"),
     ]):
         tx, ty = 70, 230 + i * 8
         out.append(sch_symbol(
             "local:TVS", tref, "ESD9L3.3",
             tx, ty, 0, tref,
-            footprint="Diode_SMD:D_SOD-523",
+            footprint="claude-code-pad:D_SOD-523",
             lcsc="C709011",
             description=f"ESD TVS on {net} (cathode->signal, anode->GND)",
             extra_props={"JLCPCB Rotation": "0"},
@@ -905,9 +905,9 @@ def build_schematic():
 
     # Encoder debounce cap
     out.append(sch_symbol(
-        "local:C", "C_ENC", "100n",
-        20, 240, 0, "C_ENC",
-        footprint="Capacitor_SMD:C_0402_1005Metric",
+        "local:C", "C_ENC1", "100n",
+        20, 240, 0, "C_ENC1",
+        footprint="claude-code-pad:C_0402_1005Metric",
         lcsc="C1525",
         description="Encoder SW debounce cap",
     ))
@@ -931,9 +931,9 @@ def build_schematic():
     # PCB fix.
     out.append(sch_symbol(
         # Cycle 9 B2: align with PCB fp_jst_ph_2pin Value ("JST-PH-2P").
-        "local:ConnHeader2", "J_BAT", "JST-PH-2P",
-        500, 40, 0, "J_BAT",
-        footprint="Connector_JST:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal",
+        "local:ConnHeader2", "J_BAT1", "JST-PH-2P",
+        500, 40, 0, "J_BAT1",
+        footprint="claude-code-pad:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal",
         lcsc="C295747",
         description="LiPo JST-PH 2-pin battery connector (S2B-PH-SM4-TB)",
     ))
@@ -954,9 +954,9 @@ def build_schematic():
     #   D_GREV 5V1 zener clamps |Vgs| to protect gate oxide if cell voltage
     #   transiently exceeds ~5.1 V during charging.
     out.append(sch_symbol(
-        "local:Q_PMOS", "Q_REV", "DMG3415U-7",
-        520, 45, 0, "Q_REV",
-        footprint="Package_TO_SOT_SMD:SOT-23",
+        "local:Q_PMOS", "Q_REV1", "DMG3415U-7",
+        520, 45, 0, "Q_REV1",
+        footprint="claude-code-pad:SOT-23",
         lcsc="C147581",
         description="P-FET reverse-polarity protection",
         extra_props={"JLCPCB Rotation": "180"},
@@ -970,9 +970,9 @@ def build_schematic():
 
     # R_GREV 10k gate pull-down (GATE_REV -> GND)
     out.append(sch_symbol(
-        "local:R", "R_GREV", "10k",
-        508, 50, 0, "R_GREV",
-        footprint="Resistor_SMD:R_0402_1005Metric",
+        "local:R", "R_GREV1", "10k",
+        508, 50, 0, "R_GREV1",
+        footprint="claude-code-pad:R_0402_1005Metric",
         lcsc="C25804",
         description="Q_REV gate pull-down (to GND)",
     ))
@@ -983,9 +983,9 @@ def build_schematic():
 
     # D_GREV 5V1 zener (anode -> GATE_REV, cathode -> Source)
     out.append(sch_symbol(
-        "local:D", "D_GREV", "BZT52C5V1",
-        495, 50, 0, "D_GREV",
-        footprint="Diode_SMD:D_SOD-523",
+        "local:D", "D_GREV1", "BZT52C5V1",
+        495, 50, 0, "D_GREV1",
+        footprint="claude-code-pad:D_SOD-523",
         lcsc="C8056",
         description="Q_REV Vgs zener clamp (5V1)",
         extra_props={"JLCPCB Rotation": "0"},
@@ -1003,7 +1003,7 @@ def build_schematic():
         # Cycle 9 B2: align with PCB fp_ptc_0805 Value ("PTC_500mA").
         "local:Fuse", "F1", "PTC_500mA",
         500, 120, 0, "F1",
-        footprint="Fuse:Fuse_0805_2012Metric",
+        footprint="claude-code-pad:Fuse_0805_2012Metric",
         lcsc="C116170",
         description="Resettable fuse 500 mA hold / 1 A trip, 0805",
     ))
@@ -1017,9 +1017,9 @@ def build_schematic():
     # the other intentionally NC.
     out.append(sch_symbol(
         # Cycle 9 B2: align with PCB fp_spdt Value ("SPDT").
-        "local:SW_SPDT", "SW_PWR", "SPDT",
-        520, 120, 0, "SW_PWR",
-        footprint="Button_Switch_THT:SW_Slide_1P2T_SS12D00G4",
+        "local:SW_SPDT", "SW_PWR1", "SPDT",
+        520, 120, 0, "SW_PWR1",
+        footprint="claude-code-pad:SW_Slide_1P2T_SS12D00G4",
         lcsc="C8325",
         description="SPDT slide power switch (TH, SS-12D00G4)",
         # Cycle 9: BOM marks SW_PWR DNP (TH, hand-soldered).
@@ -1042,7 +1042,7 @@ def build_schematic():
     out.append(sch_symbol(
         "local:NTC", "TH1", "MF52A2_10k",
         470, 80, 0, "TH1",
-        footprint="Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+        footprint="claude-code-pad:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
         lcsc="C14128",
         # Cycle 9: BOM marks TH1 DNP (axial THT, hand-soldered).
         is_dnp=True,
@@ -1053,9 +1053,9 @@ def build_schematic():
     out.append(wire(470, 80 + 3.81, 470, 80 + 6.35, "th1p2"))
     out.append(gl("NTC_ADC", 470, 80 + 6.35, 270))
     out.append(sch_symbol(
-        "local:R", "R_NTC", "10k",
-        478, 90, 0, "R_NTC",
-        footprint="Resistor_SMD:R_0402_1005Metric",
+        "local:R", "R_NTC1", "10k",
+        478, 90, 0, "R_NTC1",
+        footprint="claude-code-pad:R_0402_1005Metric",
         lcsc="C25804",
         description="NTC divider lower leg",
     ))
@@ -1074,7 +1074,7 @@ def build_schematic():
     out.append(sch_symbol(
         "local:R", "R_VBAT1", "1M",
         540, 70, 0, "R_VBAT1",
-        footprint="Resistor_SMD:R_0402_1005Metric",
+        footprint="claude-code-pad:R_0402_1005Metric",
         lcsc="C22935",
         description="VBAT ADC divider upper leg (1M)",
     ))
@@ -1085,7 +1085,7 @@ def build_schematic():
     out.append(sch_symbol(
         "local:R", "R_VBAT2", "1M",
         540, 85, 0, "R_VBAT2",
-        footprint="Resistor_SMD:R_0402_1005Metric",
+        footprint="claude-code-pad:R_0402_1005Metric",
         lcsc="C22935",
         description="VBAT ADC divider lower leg (1M)",
     ))
@@ -1094,9 +1094,9 @@ def build_schematic():
     out.append(wire(540, 85 + 3.81, 540, 85 + 6.35, "rvbat2p2"))
     out.append(gl("GND", 540, 85 + 6.35, 270))
     out.append(sch_symbol(
-        "local:C", "C_VBAT", "100n",
-        550, 77, 0, "C_VBAT",
-        footprint="Capacitor_SMD:C_0402_1005Metric",
+        "local:C", "C_VBAT1", "100n",
+        550, 77, 0, "C_VBAT1",
+        footprint="claude-code-pad:C_0402_1005Metric",
         lcsc="C1525",
         description="VBAT ADC anti-alias cap",
     ))
@@ -1112,13 +1112,13 @@ def build_schematic():
     # `missing_footprint` in the Cycle 9 parity DRC.
     for i, (cref, val, net, lcsc, desc, fp) in enumerate([
         ("C1", "22u",  "+3V3", "C45783",
-         "3V3 bulk (near XIAO 3V3 pin)",  "Capacitor_SMD:C_0805_2012Metric"),
+         "3V3 bulk (near XIAO 3V3 pin)",  "claude-code-pad:C_0805_2012Metric"),
         ("C2", "22u",  "VBAT", "C45783",
-         "VBAT bulk (near XIAO BAT+ pad)", "Capacitor_SMD:C_0805_2012Metric"),
+         "VBAT bulk (near XIAO BAT+ pad)", "claude-code-pad:C_0805_2012Metric"),
         ("C3", "100n", "+3V3", "C1525",
-         "3V3 decoupling",                 "Capacitor_SMD:C_0402_1005Metric"),
+         "3V3 decoupling",                 "claude-code-pad:C_0402_1005Metric"),
         ("C4", "100n", "VUSB", "C1525",
-         "USB 5V decoupling",              "Capacitor_SMD:C_0402_1005Metric"),
+         "USB 5V decoupling",              "claude-code-pad:C_0402_1005Metric"),
     ]):
         cx = 620 + i * 10
         cy = 40
@@ -1345,7 +1345,7 @@ def fp_diode(ref, x, y, rotation, net_k, net_a):
     """1N4148W SOD-123 matrix diode on B.Cu. JLCPCB rotation +180 baked in."""
     uuid_fp = U(f"fp_d_{ref}")
     return textwrap.dedent(f'''\
-        (footprint "Diode_SMD:D_SOD-123"
+        (footprint "claude-code-pad:D_SOD-123"
             (layer "B.Cu")
             (uuid "{uuid_fp}")
             (at {x} {y} {rotation})
@@ -1381,7 +1381,7 @@ def fp_led_sk6812(ref, x, y, rotation, net_vdd, net_dout, net_gnd, net_din):
     the user-facing F.Cu side (under the keycap)."""
     uuid_fp = U(f"fp_led_{ref}")
     return textwrap.dedent(f'''\
-        (footprint "LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm"
+        (footprint "claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm"
             (layer "B.Cu")
             (uuid "{uuid_fp}")
             (at {x} {y} {rotation})
@@ -1464,7 +1464,7 @@ def fp_0402(ref, value, x, y, rotation, net_a, net_b, layer="F.Cu", dnp=False,
     or the Cycle 9 parity DRC flags `footprint_symbol_mismatch`. Default
     `kind="R"` preserves pre-Cycle-9 behaviour; pass `kind="C"` for
     capacitors (CL1..CL25, C3, C4, C_ENC1, C_VBAT1)."""
-    lib = "Capacitor_SMD:C_0402_1005Metric" if kind == "C" else "Resistor_SMD:R_0402_1005Metric"
+    lib = "claude-code-pad:C_0402_1005Metric" if kind == "C" else "claude-code-pad:R_0402_1005Metric"
     return _smd_2pin(lib, ref, value, x, y, rotation,
                      net_a, net_b, pad_size=(0.65, 0.7), pad_offset=0.5,
                      body_h=0.5, layer=layer, rotation_hint="0", dnp=dnp,
@@ -1478,13 +1478,13 @@ def fp_0603(ref, value, x, y, rotation, net_a, net_b, layer="F.Cu", lcsc=""):
 
 
 def fp_0805(ref, value, x, y, rotation, net_a, net_b, layer="F.Cu", lcsc=""):
-    return _smd_2pin("Capacitor_SMD:C_0805_2012Metric", ref, value, x, y, rotation,
+    return _smd_2pin("claude-code-pad:C_0805_2012Metric", ref, value, x, y, rotation,
                      net_a, net_b, pad_size=(1.1, 1.4), pad_offset=0.95,
                      body_h=1.0, layer=layer, rotation_hint="0", lcsc=lcsc)
 
 
 def fp_ptc_0805(ref, value, x, y, rotation, net_a, net_b, layer="F.Cu", lcsc=""):
-    return _smd_2pin("Fuse:Fuse_0805_2012Metric", ref, value, x, y, rotation,
+    return _smd_2pin("claude-code-pad:Fuse_0805_2012Metric", ref, value, x, y, rotation,
                      net_a, net_b, pad_size=(1.1, 1.4), pad_offset=0.95,
                      body_h=1.0, layer=layer, rotation_hint="0", lcsc=lcsc)
 
@@ -1494,7 +1494,7 @@ def fp_sod523(ref, value, x, y, rotation, net_k, net_a, layer="F.Cu",
     """ESD9L3.3 / BZT52 SOD-523. Pin 1 = cathode (on left at rotation 0),
     pin 2 = anode. Caller is responsible for passing (net_k, net_a) in
     (cathode, anode) order."""
-    return _smd_2pin("Diode_SMD:D_SOD-523", ref, value, x, y, rotation,
+    return _smd_2pin("claude-code-pad:D_SOD-523", ref, value, x, y, rotation,
                      net_k, net_a, pad_size=(0.6, 0.7), pad_offset=0.6,
                      body_h=0.5, layer=layer, rotation_hint="0", dnp=dnp,
                      lcsc=lcsc)
@@ -1506,7 +1506,7 @@ def fp_sot23_3(ref, value, x, y, rotation, nets, rotation_hint="0"):
     pin 3 upper-centre (pads all on F.Cu)."""
     uuid_fp = U(f"fp_{ref}")
     return textwrap.dedent(f'''\
-        (footprint "Package_TO_SOT_SMD:SOT-23"
+        (footprint "claude-code-pad:SOT-23"
             (layer "F.Cu")
             (uuid "{uuid_fp}")
             (at {x} {y} {rotation})
@@ -1564,7 +1564,7 @@ def fp_xiao_nrf52840(ref, x, y, rotation, pin_nets_front, pin_nets_bat):
         )
     pads_txt = "\n\t\t".join(pads)
     return textwrap.dedent(f'''\
-        (footprint "local:XIAO_nRF52840_Castellated"
+        (footprint "claude-code-pad:XIAO_nRF52840_Castellated"
             (layer "F.Cu")
             (uuid "{uuid_fp}")
             (at {x} {y} {rotation})
@@ -1606,7 +1606,7 @@ def fp_header_4pin(ref, value, x, y, rotation, pin_nets):
         )
     pads_txt = "\n\t\t".join(pads)
     return textwrap.dedent(f'''\
-        (footprint "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+        (footprint "claude-code-pad:PinHeader_1x04_P2.54mm_Vertical"
             (layer "F.Cu")
             (uuid "{uuid_fp}")
             (at {x} {y} {rotation})
@@ -1637,7 +1637,7 @@ def fp_jst_ph_2pin(ref, x, y, rotation, net_plus, net_minus):
     LCSC C295747 (S2B-PH-SM4-TB), 2.0 mm pitch, side-entry SMD."""
     uuid_fp = U(f"fp_jst_{ref}")
     return textwrap.dedent(f'''\
-        (footprint "Connector_JST:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal"
+        (footprint "claude-code-pad:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal"
             (layer "F.Cu")
             (uuid "{uuid_fp}")
             (at {x} {y} {rotation})
@@ -1671,7 +1671,7 @@ def fp_spdt(ref, x, y, rotation, net_p1, net_com, net_p3):
     Matches schematic local:SW_SPDT pin numbering. PTH w/ 0.5 mm thermal bridge."""
     uuid_fp = U(f"fp_spdt_{ref}")
     return textwrap.dedent(f'''\
-        (footprint "Button_Switch_THT:SW_Slide_1P2T_SS12D00G4"
+        (footprint "claude-code-pad:SW_Slide_1P2T_SS12D00G4"
             (layer "F.Cu")
             (uuid "{uuid_fp}")
             (at {x} {y} {rotation})
@@ -1696,7 +1696,7 @@ def fp_ec11(ref, x, y, rotation, nets, gnd_net):
     """EC11 THT w/ mounting lugs PTH tied to GND (M-EC11-GROUND)."""
     uuid_fp = U(f"fp_ec11_{ref}")
     return textwrap.dedent(f'''\
-        (footprint "Button_Switch_THT:RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm"
+        (footprint "claude-code-pad:RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm"
             (layer "F.Cu")
             (uuid "{uuid_fp}")
             (at {x} {y} {rotation})
@@ -1724,7 +1724,7 @@ def fp_ntc_axial(ref, x, y, rotation, net_a, net_b):
     Uses Resistor_THT:R_Axial_DIN0207 geometry."""
     uuid_fp = U(f"fp_ntc_{ref}")
     return textwrap.dedent(f'''\
-        (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+        (footprint "claude-code-pad:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
             (layer "F.Cu")
             (uuid "{uuid_fp}")
             (at {x} {y} {rotation})
@@ -1753,7 +1753,7 @@ def fp_mounting_hole(ref, x, y, grounded=False, gnd_net=None):
         pad = (f'(pad "" np_thru_hole circle (at 0 0) (size 3.2 3.2) (drill 3.2) '
                f'(layers "*.Cu" "*.Mask") (uuid "{U(f"mh_p_{ref}")}"))')
     return textwrap.dedent(f'''\
-        (footprint "MountingHole:MountingHole_3.2mm_M3"
+        (footprint "claude-code-pad:MountingHole_3.2mm_M3"
             (layer "F.Cu")
             (uuid "{uuid_fp}")
             (at {x} {y} 0)
@@ -1772,7 +1772,7 @@ def fp_mounting_hole(ref, x, y, grounded=False, gnd_net=None):
 def fp_fiducial(ref, x, y):
     uuid_fp = U(f"fp_fid_{ref}")
     return textwrap.dedent(f'''\
-        (footprint "Fiducial:Fiducial_1mm_Mask2mm"
+        (footprint "claude-code-pad:Fiducial_1mm_Mask2mm"
             (layer "F.Cu")
             (uuid "{uuid_fp}")
             (at {x} {y} 0)
@@ -1926,7 +1926,7 @@ def build_pcb():
         (x1 - 3, y0 + BOARD_H / 2),
     ]):
         out.append(textwrap.dedent(f'''\
-            (footprint "MountingHole:MountingHole_1.5mm"
+            (footprint "claude-code-pad:MountingHole_1.5mm"
                 (layer "F.Cu")
                 (uuid "{U(f"tp_{i}")}")
                 (at {tx} {ty} 0)
@@ -2062,7 +2062,7 @@ def build_pcb():
         )
     patch_pads_txt = "\n\t\t".join(patch_pads)
     out.append(textwrap.dedent(f'''\
-        (footprint "local:XIAO_BackPad_Jumper_1x7"
+        (footprint "claude-code-pad:XIAO_BackPad_Jumper_1x7"
             (layer "F.Cu")
             (uuid "{U("fp_bp_xiao")}")
             (at {patch_x} {patch_y} 0)
@@ -2099,7 +2099,7 @@ def build_pcb():
     # pins in y-column).
     nfc_hdr_x = x0 + 9
     nfc_hdr_y = y1 - 12
-    out.append(fp_header_4pin("J_NFC", "NFC", nfc_hdr_x, nfc_hdr_y, 0, {
+    out.append(fp_header_4pin("J_NFC1", "NFC", nfc_hdr_x, nfc_hdr_y, 0, {
         1: (idx["GND"], "GND"),
         2: (idx["+3V3"], "+3V3"),
         3: (idx["SDA"], "SDA"),
@@ -2114,10 +2114,10 @@ def build_pcb():
     # Place TVS on B.Cu east of the header (header is PTH so pads appear
     # both layers; B.Cu TVS uses the same net via PTH).
     # For fp_sod523: net_k (pin 1 = cathode) first, net_a (pin 2 = anode) second.
-    out.append(fp_sod523("TVS_SDA", "ESD9L3.3", nfc_hdr_x + 3, nfc_hdr_y + 1.27, 0,
+    out.append(fp_sod523("TVS_SDA1", "ESD9L3.3", nfc_hdr_x + 3, nfc_hdr_y + 1.27, 0,
                          (idx["SDA"], "SDA"),
                          (idx["GND"], "GND"), layer="B.Cu", lcsc="C709011"))
-    out.append(fp_sod523("TVS_SCL", "ESD9L3.3", nfc_hdr_x + 3, nfc_hdr_y + 3.81, 0,
+    out.append(fp_sod523("TVS_SCL1", "ESD9L3.3", nfc_hdr_x + 3, nfc_hdr_y + 3.81, 0,
                          (idx["SCL"], "SCL"),
                          (idx["GND"], "GND"), layer="B.Cu", lcsc="C709011"))
 
@@ -2131,14 +2131,14 @@ def build_pcb():
     #   JST(x0+8) -> Q_REV(x0+16) -> F1(x0+23) -> SW_PWR(x0+33)
     jbat_x = x0 + 8
     jbat_y = y0 + 19.0
-    out.append(fp_jst_sh_2pin("J_BAT", jbat_x, jbat_y, 0,
+    out.append(fp_jst_sh_2pin("J_BAT1", jbat_x, jbat_y, 0,
                               (idx["VBAT_CELL"], "VBAT_CELL"),
                               (idx["GND"], "GND")))
 
     # Q_REV SOT-23: pin1=G, pin2=S, pin3=D (Diodes DS31735 Rev.14 verified)
     qrev_x, qrev_y = x0 + 16, y0 + 19.0
     out.append(fp_sot23_3(
-        "Q_REV", "DMG3415U-7",
+        "Q_REV1", "DMG3415U-7",
         qrev_x, qrev_y, 0, {
             1: (idx["GATE_REV"], "GATE_REV"),     # Pin 1 = Gate
             2: (idx["VBAT_CELL"], "VBAT_CELL"),    # Pin 2 = Source (cell+)
@@ -2159,7 +2159,7 @@ def build_pcb():
     # corner at (qrev_x-0.95, qrev_y-0.6) west to (qrev_x-1.65, qrev_y-0.6)
     # = 0.7 mm on F.Cu. Total GATE_REV copper < 2.5 mm (pin 1 body
     # + stub + pad).
-    out.append(fp_0402("R_GREV", "10k", qrev_x - 1.95, qrev_y - 1.1, 90,
+    out.append(fp_0402("R_GREV1", "10k", qrev_x - 1.95, qrev_y - 1.1, 90,
                        (idx["GATE_REV"], "GATE_REV"),
                        (idx["GND"], "GND"), layer="F.Cu",
                        kind="R", lcsc="C25804"))
@@ -2189,7 +2189,7 @@ def build_pcb():
     # Net: D_GREV pad 2 -> straight west F.Cu (y=qrev_y-1.1) -> Q_REV
     # pin 1 -> west through to (qrev_x-1.95, qrev_y-1.1) -> north to
     # R_GREV pad 1 at (qrev_x-1.95, qrev_y-0.6). All GATE_REV, no cross.
-    out.append(fp_sod523("D_GREV", "BZT52C5V1", qrev_x + 2.5, qrev_y - 1.1, 0,
+    out.append(fp_sod523("D_GREV1", "BZT52C5V1", qrev_x + 2.5, qrev_y - 1.1, 0,
                          (idx["VBAT_CELL"], "VBAT_CELL"),    # cathode
                          (idx["GATE_REV"], "GATE_REV"),      # anode
                          layer="F.Cu", lcsc="C8056"))
@@ -2205,7 +2205,7 @@ def build_pcb():
     # SW_PWR SPDT slide (TH): pin1 -> VBAT (ON), pin2 -> VBAT_SW (COM),
     # pin3 -> NC_SW (OFF, floating)
     sw_x, sw_y = x0 + 33, y0 + 19.0
-    out.append(fp_spdt("SW_PWR", sw_x, sw_y, 0,
+    out.append(fp_spdt("SW_PWR1", sw_x, sw_y, 0,
                        (idx["VBAT"], "VBAT"),        # pin 1 -> VBAT (ON)
                        (idx["VBAT_SW"], "VBAT_SW"),  # pin 2 -> COM
                        (idx["NC_SW"], "NC_SW")))     # pin 3 -> NC
@@ -2220,7 +2220,7 @@ def build_pcb():
     out.append(fp_ntc_axial("TH1", ntc_x, ntc_y, 0,
                             (idx["+3V3"], "+3V3"),
                             (idx["NTC_ADC"], "NTC_ADC")))
-    out.append(fp_0402("R_NTC", "10k", ntc_x + 7, ntc_y, 0,
+    out.append(fp_0402("R_NTC1", "10k", ntc_x + 7, ntc_y, 0,
                        (idx["NTC_ADC"], "NTC_ADC"),
                        (idx["GND"], "GND"), layer="F.Cu",
                        kind="R", lcsc="C25804"))
@@ -2241,17 +2241,17 @@ def build_pcb():
     }, gnd_net=(idx["GND"], "GND")))
 
     # Encoder debounce cap + ESD TVS on ENC_A/B/SW -- TVS polarity fixed
-    out.append(fp_0402("C_ENC", "100n", enc_x - 5, enc_y + 5, 0,
+    out.append(fp_0402("C_ENC1", "100n", enc_x - 5, enc_y + 5, 0,
                        (idx["ENC_SW"], "ENC_SW"),
                        (idx["GND"], "GND"), layer="F.Cu",
                        kind="C", lcsc="C1525"))
-    out.append(fp_sod523("TVS_ENCA", "ESD9L3.3", enc_x - 4, enc_y - 5, 0,
+    out.append(fp_sod523("TVS_ENCA1", "ESD9L3.3", enc_x - 4, enc_y - 5, 0,
                          (idx["ENC_A"], "ENC_A"),
                          (idx["GND"], "GND"), layer="F.Cu", lcsc="C709011"))
-    out.append(fp_sod523("TVS_ENCB", "ESD9L3.3", enc_x, enc_y - 5, 0,
+    out.append(fp_sod523("TVS_ENCB1", "ESD9L3.3", enc_x, enc_y - 5, 0,
                          (idx["ENC_B"], "ENC_B"),
                          (idx["GND"], "GND"), layer="F.Cu", lcsc="C709011"))
-    out.append(fp_sod523("TVS_ENCSW", "ESD9L3.3", enc_x + 4, enc_y - 5, 0,
+    out.append(fp_sod523("TVS_ENCSW1", "ESD9L3.3", enc_x + 4, enc_y - 5, 0,
                          (idx["ENC_SW"], "ENC_SW"),
                          (idx["GND"], "GND"), layer="F.Cu", lcsc="C709011"))
 
@@ -2353,7 +2353,7 @@ def build_pcb():
                        (idx["VBAT_ADC"], "VBAT_ADC"),
                        (idx["GND"], "GND"), layer="B.Cu",
                        kind="R", lcsc="C22935"))
-    out.append(fp_0402("C_VBAT", "100n", mcu_x + 12, mcu_y + 5, 90,
+    out.append(fp_0402("C_VBAT1", "100n", mcu_x + 12, mcu_y + 5, 90,
                        (idx["VBAT_ADC"], "VBAT_ADC"),
                        (idx["GND"], "GND"), layer="B.Cu",
                        kind="C", lcsc="C1525"))
@@ -3227,11 +3227,11 @@ def collect_parts():
         # Cycle 5 (C5-B3): R_GREV adjacent to Q_REV pin 1, rot 90.
         # GATE_REV routed on B.Cu via three vias (same-net in-pad vias
         # at each F.Cu pad escape). Part installed (not DNP).
-        {"ref": "R_GREV", "value": "10k",
+        {"ref": "R_GREV1", "value": "10k",
          "footprint": "R_0402_1005Metric", "lcsc": "C25804",
          "layer": "top", "x": x0 + 14.05, "y": y0 + 17.9, "rot": 90,
          "jlcpcb_rotation": "0"},
-        {"ref": "R_NTC", "value": "10k",
+        {"ref": "R_NTC1", "value": "10k",
          "footprint": "R_0402_1005Metric", "lcsc": "C25804",
          "layer": "top", "x": x0 + 17, "y": y0 + 24.0, "rot": 0,
          "jlcpcb_rotation": "0"},
@@ -3264,21 +3264,21 @@ def collect_parts():
          "footprint": "R_0402_1005Metric", "lcsc": "C22935",
          "layer": "bottom", "x": mcu_x + 10, "y": mcu_y + 6, "rot": 0,
          "jlcpcb_rotation": "0"},
-        {"ref": "C_VBAT", "value": "100nF",
+        {"ref": "C_VBAT1", "value": "100nF",
          "footprint": "C_0402_1005Metric", "lcsc": "C1525",
          "layer": "bottom", "x": mcu_x + 12, "y": mcu_y + 5, "rot": 90,
          "jlcpcb_rotation": "0"},
-        {"ref": "C_ENC", "value": "100nF",
+        {"ref": "C_ENC1", "value": "100nF",
          "footprint": "C_0402_1005Metric", "lcsc": "C1525",
          "layer": "top", "x": x1 - 17, "y": y0 + 16, "rot": 0,
          "jlcpcb_rotation": "0"},
-        {"ref": "Q_REV", "value": "DMG3415U-7",
+        {"ref": "Q_REV1", "value": "DMG3415U-7",
          "footprint": "SOT-23", "lcsc": "C147581",
          "layer": "top", "x": x0 + 16, "y": y0 + 19.0, "rot": 0,
          "jlcpcb_rotation": "180"},
         # Cycle 5: D_GREV east of Q_REV pin 2, connected via VBAT_CELL
         # short F.Cu stub and GATE_REV B.Cu via.
-        {"ref": "D_GREV", "value": "BZT52C5V1",
+        {"ref": "D_GREV1", "value": "BZT52C5V1",
          "footprint": "D_SOD-523", "lcsc": "C8056",
          "layer": "top", "x": x0 + 18.5, "y": y0 + 17.9, "rot": 0,
          "jlcpcb_rotation": "0"},
@@ -3287,23 +3287,23 @@ def collect_parts():
          "layer": "top", "x": x0 + 23, "y": y0 + 19.0, "rot": 0,
          "jlcpcb_rotation": "0"},
         # Cycle 5 (C5-B2): TVS_SDA/SCL relocated within 4 mm of J_NFC.
-        {"ref": "TVS_SDA", "value": "ESD9L3.3",
+        {"ref": "TVS_SDA1", "value": "ESD9L3.3",
          "footprint": "D_SOD-523", "lcsc": "C709011",
          "layer": "bottom", "x": nfc_hdr_x + 3, "y": nfc_hdr_y + 1.27, "rot": 0,
          "jlcpcb_rotation": "0"},
-        {"ref": "TVS_SCL", "value": "ESD9L3.3",
+        {"ref": "TVS_SCL1", "value": "ESD9L3.3",
          "footprint": "D_SOD-523", "lcsc": "C709011",
          "layer": "bottom", "x": nfc_hdr_x + 3, "y": nfc_hdr_y + 3.81, "rot": 0,
          "jlcpcb_rotation": "0"},
-        {"ref": "TVS_ENCA", "value": "ESD9L3.3",
+        {"ref": "TVS_ENCA1", "value": "ESD9L3.3",
          "footprint": "D_SOD-523", "lcsc": "C709011",
          "layer": "top", "x": x1 - 16, "y": y0 + 14, "rot": 0,
          "jlcpcb_rotation": "0"},
-        {"ref": "TVS_ENCB", "value": "ESD9L3.3",
+        {"ref": "TVS_ENCB1", "value": "ESD9L3.3",
          "footprint": "D_SOD-523", "lcsc": "C709011",
          "layer": "top", "x": x1 - 12, "y": y0 + 14, "rot": 0,
          "jlcpcb_rotation": "0"},
-        {"ref": "TVS_ENCSW", "value": "ESD9L3.3",
+        {"ref": "TVS_ENCSW1", "value": "ESD9L3.3",
          "footprint": "D_SOD-523", "lcsc": "C709011",
          "layer": "top", "x": x1 - 8, "y": y0 + 14, "rot": 0,
          "jlcpcb_rotation": "0"},
@@ -3319,16 +3319,16 @@ def collect_parts():
         # verified HTTP 200 on lcsc.com. (Cycle 4 used this same LCSC #
         # but mis-labelled the connector family; the LCSC part has
         # always been PH. Cycle 5 footprint geometry corrected.)
-        {"ref": "J_BAT", "value": "JST_PH_2P",
+        {"ref": "J_BAT1", "value": "JST_PH_2P",
          "footprint": "JST_PH_S2B-PH-SM4-TB", "lcsc": "C295747",
          "layer": "top", "x": x0 + 8, "y": y0 + 19.0, "rot": 0,
          "jlcpcb_rotation": "0"},
-        {"ref": "J_NFC", "value": "NFC_Header",
+        {"ref": "J_NFC1", "value": "NFC_Header",
          "footprint": "PinHeader_1x04_P2.54mm", "lcsc": "",
          "layer": "top", "x": x0 + 13, "y": y1 - 12, "rot": 0,
          "dnp": True,
          "jlcpcb_rotation": "0"},
-        {"ref": "SW_PWR", "value": "SS-12D00G4",
+        {"ref": "SW_PWR1", "value": "SS-12D00G4",
          "footprint": "SW_Slide_SPDT_SS12D00G4", "lcsc": "C8325",
          "layer": "top", "x": x0 + 33, "y": y0 + 19.0, "rot": 0,
          "dnp": True,   # THT, user-assembled

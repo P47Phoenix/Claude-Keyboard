@@ -1,0 +1,133 @@
+(footprint "Fuse_0805_2012Metric"
+		(layer "F.Cu")
+		(descr "PTC_500mA")
+		(tags "smd")
+		(property "Reference" "REF**"
+			(at 0 -1.8 0)
+			(layer "F.Fab")
+			(uuid "e1c65d68-4b21-52b3-987a-40b878917b6c")
+			(effects
+				(font
+					(size 0.6 0.6)
+					(thickness 0.1)
+				)
+			)
+		)
+		(property "Value" "PTC_500mA"
+			(at 0 1.8 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1c5ea350-4f26-5990-840f-1bf0bdf247f7")
+			(effects
+				(font
+					(size 0.6 0.6)
+					(thickness 0.1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "33b896b1-1733-512d-948f-1f013069c36e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Resettable fuse 500 mA hold / 1 A trip, 0805"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8c796fac-de47-5b9d-a038-aef6ad6fc368")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116170"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "23ec9ab5-12c4-5d8f-8628-3788f847b3e6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "JLCPCB Rotation" "0"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "38771dca-c1fc-5a3a-b146-7347caf9c36e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_line
+			(start -1.45 -1)
+			(end 1.45 -1)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(layer "F.CrtYd")
+			(uuid "de3ea982-265c-5160-85d3-06bc1e318ea2")
+		)
+		(fp_line
+			(start -1.45 1)
+			(end -1.45 -1)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(layer "F.CrtYd")
+			(uuid "db0dcb15-cc7f-5dc2-910b-15d9fb69b636")
+		)
+		(fp_line
+			(start 1.45 -1)
+			(end 1.45 1)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(layer "F.CrtYd")
+			(uuid "48355e3a-75e2-552b-b363-0a16c55a1021")
+		)
+		(fp_line
+			(start 1.45 1)
+			(end -1.45 1)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(layer "F.CrtYd")
+			(uuid "7c1d4c16-3e85-5acb-8d5a-0cb259545723")
+		)
+		(pad "1" smd rect
+			(at -0.95 0)
+			(size 1.1 1.4)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net "VBAT_F")
+			(uuid "5e66db99-d916-5c0c-8d73-47d904aa037c")
+		)
+		(pad "2" smd rect
+			(at 0.95 0)
+			(size 1.1 1.4)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net "VBAT_SW")
+			(uuid "0086a6d7-acad-5bde-b85a-1f84dadd5077")
+		)
+		(embedded_fonts no)
+	)

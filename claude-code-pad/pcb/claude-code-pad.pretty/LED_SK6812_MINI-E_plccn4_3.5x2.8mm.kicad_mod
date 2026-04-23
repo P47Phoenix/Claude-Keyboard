@@ -1,0 +1,195 @@
+(footprint "LED_SK6812_MINI-E_plccn4_3.5x2.8mm"
+		(layer "B.Cu")
+		(descr "SK6812MINI-E reverse-mount RGB LED, 3.4 x 2.8 Edge.Cuts aperture")
+		(tags "led sk6812 rgb reverse-mount")
+		(property "Reference" "REF**"
+			(at 0 -3.2 0)
+			(layer "B.Fab")
+			(uuid "bedaa1ab-3b7c-5187-8245-18ef4f0dc4ee")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Value" "SK6812"
+			(at 0 3.2 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "8d501f2e-35ff-575e-aaa6-7dded194c9cc")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "31b29b03-1a33-5290-8f43-d76bfde599cf")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Reverse-mount RGB LED (SK6812MINI-E)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "4a20bce6-998f-5b59-86c7-3b683203b0d6")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C5149201"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dece131b-63cb-5771-89ee-176b97a92b32")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "JLCPCB Rotation" "-90"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "281bc220-ad62-535f-842a-a36ac968be2c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr smd allow_missing_courtyard)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_line
+			(start -1.7 -1.4)
+			(end 1.7 -1.4)
+			(stroke
+				(width 0.1)
+				(type default)
+			)
+			(layer "Edge.Cuts")
+			(uuid "a9e2026c-fefb-52d1-83fb-de9f7940f5f3")
+		)
+		(fp_line
+			(start -1.7 1.4)
+			(end -1.7 -1.4)
+			(stroke
+				(width 0.1)
+				(type default)
+			)
+			(layer "Edge.Cuts")
+			(uuid "d79ba05d-4033-5b30-a05c-04a5d4ac14c1")
+		)
+		(fp_line
+			(start 1.7 -1.4)
+			(end 1.7 1.4)
+			(stroke
+				(width 0.1)
+				(type default)
+			)
+			(layer "Edge.Cuts")
+			(uuid "26d75b92-41b7-579d-b69b-ac055de9b0f0")
+		)
+		(fp_line
+			(start 1.7 1.4)
+			(end -1.7 1.4)
+			(stroke
+				(width 0.1)
+				(type default)
+			)
+			(layer "Edge.Cuts")
+			(uuid "84943101-d8e1-5596-9a06-01699c9ca5eb")
+		)
+		(fp_line
+			(start -1.75 -1.4)
+			(end 1.75 -1.4)
+			(stroke
+				(width 0.1)
+				(type default)
+			)
+			(layer "B.Fab")
+			(uuid "a28b881c-1415-5370-80b7-05e255c6fe56")
+		)
+		(fp_line
+			(start -1.75 1.4)
+			(end -1.75 -1.4)
+			(stroke
+				(width 0.1)
+				(type default)
+			)
+			(layer "B.Fab")
+			(uuid "2fc3b728-62ee-5044-9a67-35b467db6df1")
+		)
+		(fp_line
+			(start 1.75 -1.4)
+			(end 1.75 1.4)
+			(stroke
+				(width 0.1)
+				(type default)
+			)
+			(layer "B.Fab")
+			(uuid "6ba89814-58a6-5301-81ba-b37b64362661")
+		)
+		(fp_line
+			(start 1.75 1.4)
+			(end -1.75 1.4)
+			(stroke
+				(width 0.1)
+				(type default)
+			)
+			(layer "B.Fab")
+			(uuid "66e7421a-e765-5711-9e07-488fe594e0cf")
+		)
+		(pad "1" smd rect
+			(at -2.3 -1.05)
+			(size 0.9 0.6)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(net "+3V3")
+			(uuid "666ac605-06c0-5a03-8928-ee55072e46e8")
+		)
+		(pad "2" smd rect
+			(at -2.3 1.05)
+			(size 0.9 0.6)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(net "RGB_D6")
+			(uuid "ad1bf51c-19b2-5f0a-9863-9a2cdf3cfed9")
+		)
+		(pad "3" smd rect
+			(at 2.3 1.05)
+			(size 0.9 0.6)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(net "GND")
+			(uuid "185ffb0b-868d-5903-8af3-ceeba1992ee6")
+		)
+		(pad "3" smd rect
+			(at 3.5 1.05)
+			(size 1.4 0.6)
+			(layers "B.Cu")
+			(net "GND")
+			(uuid "01aad857-5d2b-541c-b083-2e29a74ca078")
+		)
+		(pad "4" smd rect
+			(at 2.3 -1.05)
+			(size 0.9 0.6)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(net "RGB_D5")
+			(uuid "8a7a2c18-766d-5fb8-b7d0-cb0e80336f6f")
+		)
+		(embedded_fonts no)
+	)

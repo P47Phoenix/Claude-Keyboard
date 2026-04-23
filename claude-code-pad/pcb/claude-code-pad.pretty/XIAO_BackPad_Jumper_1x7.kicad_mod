@@ -1,0 +1,115 @@
+(footprint "XIAO_BackPad_Jumper_1x7"
+		(layer "F.Cu")
+		(descr "User-wired jumper pads to XIAO nRF52840 back-side GPIOs (<5 mm from MCU)")
+		(property "Reference" "REF**"
+			(at 0 -2 0)
+			(layer "F.Fab")
+			(uuid "62882cb9-e45e-5ef9-adad-f2bbd50a1ca8")
+			(effects
+				(font
+					(size 0.6 0.6)
+					(thickness 0.12)
+				)
+			)
+		)
+		(property "Value" "JUMPER"
+			(at 0 2 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4e76bb48-f382-551a-9731-580430be4838")
+			(effects
+				(font
+					(size 0.6 0.6)
+					(thickness 0.12)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a7ee472c-819f-5d0b-b387-ac31c60378d2")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "93867152-9938-5c73-adfb-fd801cb043d0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "JLCPCB Rotation" "0"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2fc4642d-7d3f-5171-aa08-54d0b47ddd45")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr smd exclude_from_pos_files exclude_from_bom allow_missing_courtyard)
+		(duplicate_pad_numbers_are_jumpers no)
+		(pad "1" smd rect
+			(at -6 0)
+			(size 1.5 1)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net "ENC_A")
+			(uuid "4e7e9cc1-dd71-5b7d-928b-47bdff617119")
+		)
+		(pad "2" smd rect
+			(at -4 0)
+			(size 1.5 1)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net "ENC_B")
+			(uuid "e47d266e-df8d-55ff-ab15-68133de38510")
+		)
+		(pad "3" smd rect
+			(at -2 0)
+			(size 1.5 1)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net "ENC_SW")
+			(uuid "1384f645-2150-5364-b5fb-7898fbcdf446")
+		)
+		(pad "4" smd rect
+			(at 0 0)
+			(size 1.5 1)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net "RGB_DIN_MCU")
+			(uuid "6d6adf8b-d08b-5f92-a259-f73e2fca3962")
+		)
+		(pad "5" smd rect
+			(at 2 0)
+			(size 1.5 1)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net "ROW3")
+			(uuid "6cfbbd61-7446-5b25-abfb-a9e6d179f267")
+		)
+		(pad "6" smd rect
+			(at 4 0)
+			(size 1.5 1)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net "VBAT_ADC")
+			(uuid "c4433abc-a2f5-5bf9-8717-ad46c5978fca")
+		)
+		(pad "7" smd rect
+			(at 6 0)
+			(size 1.5 1)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net "ROW4")
+			(uuid "5ef6bce2-bdbd-5c3e-b6e5-b845743b1e1d")
+		)
+		(embedded_fonts no)
+	)

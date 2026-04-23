@@ -1,0 +1,100 @@
+(footprint "SOT-23"
+		(layer "F.Cu")
+		(descr "SOT-23 3-pin")
+		(tags "SOT-23")
+		(property "Reference" "REF**"
+			(at 0 -2 0)
+			(layer "F.Fab")
+			(uuid "260e98c7-5623-5e53-816f-e0591ce35c6f")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.12)
+				)
+			)
+		)
+		(property "Value" "DMG3415U-7"
+			(at 0 2 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "873d977c-e83b-5f42-a415-6753f74a7dfa")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.12)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c8075d21-df20-54c2-9340-fd1261384a51")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "P-FET reverse-polarity protection"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0ef71717-1b61-5c8c-a121-513f387f2232")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C147581"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2fdbbed5-d858-54ab-ac25-b0ae12645066")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "JLCPCB Rotation" "180"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1e00db27-ecf0-5297-8ffe-0051e30bef14")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
+		(pad "1" smd rect
+			(at -0.95 -1.1)
+			(size 0.8 1)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net "GATE_REV")
+			(uuid "b6ddac1e-e2bf-505a-9806-a0bc043b8c05")
+		)
+		(pad "2" smd rect
+			(at 0.95 -1.1)
+			(size 0.8 1)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net "VBAT_CELL")
+			(uuid "b912ea79-cab0-5de4-9831-c6678d9d862c")
+		)
+		(pad "3" smd rect
+			(at 0 1.1)
+			(size 0.8 1)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net "VBAT_F")
+			(uuid "02ecb4bb-661a-5d02-9db1-e0ccb5f9a910")
+		)
+		(embedded_fonts no)
+	)

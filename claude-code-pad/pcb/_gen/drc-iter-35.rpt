@@ -1,0 +1,168 @@
+** Drc report for claude-code-pad.kicad_pcb **
+** Created on 2026-04-22T20:14:21 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 0 DRC violations **
+
+** Found 30 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(141.9500 mm, 143.0750 mm): Pad 3 [GND] of LED2 on B.Cu
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+
+** Found 10 Footprint errors **
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(217.0000 mm, 103.0000 mm): Footprint FID2
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(103.0000 mm, 166.0000 mm): Footprint TP1
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(103.0000 mm, 103.0000 mm): Footprint FID1
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(110.0000 mm, 229.0000 mm): Footprint FID3
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(103.5000 mm, 127.0000 mm): Footprint H1
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(105.0000 mm, 228.0000 mm): Footprint H3
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(215.0000 mm, 228.0000 mm): Footprint H4
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(217.0000 mm, 166.0000 mm): Footprint TP2
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(216.5000 mm, 127.0000 mm): Footprint H2
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(164.0000 mm, 132.5000 mm): Footprint J_XIAO_BP
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **

@@ -215,9 +215,9 @@ def stitch_pad(board, pad, targets, log):
     return True
 
 
-def grid_stitch(board, gnd_net: int, spacing_mm: float = 6.0,
+def grid_stitch(board, gnd_net: int, spacing_mm: float = 3.0,
                 via_diameter_mm: float = 0.8, via_drill_mm: float = 0.4,
-                min_sep_mm: float = 3.0,
+                min_sep_mm: float = 1.5,
                 edge_keepout_mm: float = 1.5) -> int:
     """Drop GND stitching vias on a regular grid across the board.
 
@@ -237,15 +237,23 @@ def grid_stitch(board, gnd_net: int, spacing_mm: float = 6.0,
     edge_iu = mm_to_iu(edge_keepout_mm)
 
     # Collect existing via/pad positions and track shapes to avoid.
+    # PTH pads get a tighter radius (to include their drill dimension)
+    # so the grid doesn't land within the 0.25 mm hole-to-hole clearance.
     existing = []
+    pth_holes = []  # (x, y, drill_iu)
     for trk in board.GetTracks():
         if isinstance(trk, pcbnew.PCB_VIA):
             p = trk.GetPosition()
             existing.append((p.x, p.y))
+            pth_holes.append((p.x, p.y, trk.GetDrillValue()))
     for fp in board.GetFootprints():
         for pad in fp.Pads():
             p = pad.GetPosition()
             existing.append((p.x, p.y))
+            ptype = pad.GetAttribute()
+            if ptype in (pcbnew.PAD_ATTRIB_PTH, pcbnew.PAD_ATTRIB_NPTH):
+                drill = pad.GetDrillSize().x
+                pth_holes.append((p.x, p.y, drill))
     # Per-layer non-GND track/via shapes for clearance checks against
     # candidate vias.
     non_gnd_shapes_fcu = []
@@ -323,7 +331,11 @@ def grid_stitch(board, gnd_net: int, spacing_mm: float = 6.0,
         if gnd_polys_fcu is None or gnd_polys_bcu is None:
             return False
         v = pcbnew.VECTOR2I(p[0], p[1])
-        return (gnd_polys_fcu.Contains(v) and gnd_polys_bcu.Contains(v))
+        # Accept a candidate position if GND pour covers EITHER F.Cu or
+        # B.Cu (cycle 11: was previously both-sides). With either-side
+        # coverage we can bridge a B.Cu island to the F.Cu pour even
+        # where the pour outlines don't both cover the same spot.
+        return (gnd_polys_fcu.Contains(v) or gnd_polys_bcu.Contains(v))
 
     def in_keepout(p):
         v = pcbnew.VECTOR2I(p[0], p[1])
@@ -347,6 +359,20 @@ def grid_stitch(board, gnd_net: int, spacing_mm: float = 6.0,
                 return True
         return False
 
+    hole_min_iu = mm_to_iu(0.25 + 0.02)  # hole-to-hole DRC + tiny slack
+    our_drill_iu = mm_to_iu(via_drill_mm)
+    our_drill_half = our_drill_iu // 2
+
+    def violates_hole_to_hole(p):
+        for hx, hy, hdrill in pth_holes:
+            dx = p[0] - hx
+            dy = p[1] - hy
+            # Centre-to-centre must be >= our_drill/2 + their_drill/2 + 0.25 mm.
+            min_center_dist = our_drill_half + hdrill // 2 + hole_min_iu
+            if dx * dx + dy * dy < min_center_dist * min_center_dist:
+                return True
+        return False
+
     added = 0
     # Staggered rows for better packing.
     y = y0 + edge_iu
@@ -358,7 +384,8 @@ def grid_stitch(board, gnd_net: int, spacing_mm: float = 6.0,
             if (not in_keepout(p)
                     and in_gnd_pour(p)
                     and not too_close_existing(p)
-                    and not too_close_nongnd(p)):
+                    and not too_close_nongnd(p)
+                    and not violates_hole_to_hole(p)):
                 via = pcbnew.PCB_VIA(board)
                 via.SetPosition(pcbnew.VECTOR2I(p[0], p[1]))
                 via.SetWidth(mm_to_iu(via_diameter_mm))

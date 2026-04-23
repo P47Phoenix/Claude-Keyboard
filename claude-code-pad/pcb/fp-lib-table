@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "claude-code-pad")(type "KiCad")(uri "${KIPRJMOD}/claude-code-pad.pretty")(options "")(descr "Project-local footprints for Claude Code Pad"))
+)

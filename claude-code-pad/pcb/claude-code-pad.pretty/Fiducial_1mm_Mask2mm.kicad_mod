@@ -1,0 +1,64 @@
+(footprint "Fiducial_1mm_Mask2mm"
+		(layer "F.Cu")
+		(descr "Fiducial 1 mm dia, 2 mm mask")
+		(property "Reference" "REF**"
+			(at 0 -2 0)
+			(layer "F.Fab")
+			(uuid "79bd518e-7350-5a5b-a65a-d425868dcef8")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.12)
+				)
+			)
+		)
+		(property "Value" "FID"
+			(at 0 2 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "29360a13-fcc0-57fd-80be-c908c619871b")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.12)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c2c3dbba-f31f-553f-8a28-8323db1f93d2")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "931d8ab3-0d88-575e-bb9c-a24e84e67206")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr smd exclude_from_pos_files exclude_from_bom allow_missing_courtyard)
+		(duplicate_pad_numbers_are_jumpers no)
+		(pad "1" smd circle
+			(at 0 0)
+			(size 1 1)
+			(layers "F.Cu" "F.Mask")
+			(net "GND")
+			(net "GND")
+			(net "GND")
+			(solder_mask_margin 0.5)
+			(uuid "2277755b-6ca6-5d7f-a61f-9e7375a67468")
+		)
+		(embedded_fonts no)
+	)

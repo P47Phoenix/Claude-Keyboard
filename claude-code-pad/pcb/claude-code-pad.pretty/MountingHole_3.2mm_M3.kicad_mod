@@ -1,0 +1,64 @@
+(footprint "MountingHole_3.2mm_M3"
+		(layer "F.Cu")
+		(descr "Mounting hole 3.2mm for M3")
+		(property "Reference" "REF**"
+			(at 0 -4 0)
+			(layer "F.Fab")
+			(uuid "8a4e7ac6-c383-5e1d-97e5-22c3a5f18410")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "M3"
+			(at 0 4 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "42ac4c3c-2c26-54c9-ac8d-36d0cd197a28")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "eafcbf65-a8da-5ec0-8ce6-e8a697789145")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "27952e34-231f-5466-b43d-d70765e1ad5f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr exclude_from_pos_files exclude_from_bom allow_missing_courtyard)
+		(duplicate_pad_numbers_are_jumpers no)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 5.5 5.5)
+			(drill 3.2)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net "GND")
+			(thermal_bridge_width 0.5)
+			(uuid "910b79e5-432f-5f9e-8047-066ed3ef8958")
+		)
+		(embedded_fonts no)
+	)

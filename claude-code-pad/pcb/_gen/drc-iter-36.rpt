@@ -1,0 +1,237 @@
+** Drc report for claude-code-pad.kicad_pcb **
+** Created on 2026-04-22T20:16:05 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 0 DRC violations **
+
+** Found 30 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(141.9500 mm, 143.0750 mm): Pad 3 [GND] of LED2 on B.Cu
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+
+** Found 33 Footprint errors **
+[footprint_symbol_mismatch]: Value (FID1) doesn't match symbol value (FID)
+    Local override; warning
+    @(103.0000 mm, 103.0000 mm): Footprint FID1
+[footprint_symbol_field_mismatch]: Field 'Description' differs (PCB: '', Schematic: 'Mechanical placeholder (no schematic connection)')
+    Local override; warning
+    @(103.0000 mm, 103.0000 mm): Footprint FID1
+[net_conflict]: No corresponding pin found in schematic
+    Local override; warning
+    @(103.0000 mm, 103.0000 mm): Pad 1 [GND] of FID1 on F.Cu
+[footprint_symbol_mismatch]: Value (FID2) doesn't match symbol value (FID)
+    Local override; warning
+    @(217.0000 mm, 103.0000 mm): Footprint FID2
+[footprint_symbol_field_mismatch]: Field 'Description' differs (PCB: '', Schematic: 'Mechanical placeholder (no schematic connection)')
+    Local override; warning
+    @(217.0000 mm, 103.0000 mm): Footprint FID2
+[net_conflict]: No corresponding pin found in schematic
+    Local override; warning
+    @(217.0000 mm, 103.0000 mm): Pad 1 [GND] of FID2 on F.Cu
+[footprint_symbol_mismatch]: Value (FID3) doesn't match symbol value (FID)
+    Local override; warning
+    @(110.0000 mm, 229.0000 mm): Footprint FID3
+[footprint_symbol_field_mismatch]: Field 'Description' differs (PCB: '', Schematic: 'Mechanical placeholder (no schematic connection)')
+    Local override; warning
+    @(110.0000 mm, 229.0000 mm): Footprint FID3
+[net_conflict]: No corresponding pin found in schematic
+    Local override; warning
+    @(110.0000 mm, 229.0000 mm): Pad 1 [GND] of FID3 on F.Cu
+[footprint_symbol_mismatch]: Value (H1) doesn't match symbol value (M3)
+    Local override; warning
+    @(103.5000 mm, 127.0000 mm): Footprint H1
+[footprint_symbol_field_mismatch]: Field 'Description' differs (PCB: '', Schematic: 'Mechanical placeholder (no schematic connection)')
+    Local override; warning
+    @(103.5000 mm, 127.0000 mm): Footprint H1
+[net_conflict]: No corresponding pin found in schematic
+    Local override; warning
+    @(103.5000 mm, 127.0000 mm): PTH pad 1 [GND] of H1
+[footprint_symbol_mismatch]: Value (H2) doesn't match symbol value (M3)
+    Local override; warning
+    @(216.5000 mm, 127.0000 mm): Footprint H2
+[footprint_symbol_field_mismatch]: Field 'Description' differs (PCB: '', Schematic: 'Mechanical placeholder (no schematic connection)')
+    Local override; warning
+    @(216.5000 mm, 127.0000 mm): Footprint H2
+[net_conflict]: No corresponding pin found in schematic
+    Local override; warning
+    @(216.5000 mm, 127.0000 mm): PTH pad 1 [GND] of H2
+[footprint_symbol_mismatch]: Value (H3) doesn't match symbol value (M3)
+    Local override; warning
+    @(105.0000 mm, 228.0000 mm): Footprint H3
+[footprint_symbol_field_mismatch]: Field 'Description' differs (PCB: '', Schematic: 'Mechanical placeholder (no schematic connection)')
+    Local override; warning
+    @(105.0000 mm, 228.0000 mm): Footprint H3
+[footprint_symbol_mismatch]: Value (H4) doesn't match symbol value (M3)
+    Local override; warning
+    @(215.0000 mm, 228.0000 mm): Footprint H4
+[footprint_symbol_field_mismatch]: Field 'Description' differs (PCB: '', Schematic: 'Mechanical placeholder (no schematic connection)')
+    Local override; warning
+    @(215.0000 mm, 228.0000 mm): Footprint H4
+[footprint_symbol_mismatch]: Value (J_XIAO_BP) doesn't match symbol value (JUMPER)
+    Local override; warning
+    @(164.0000 mm, 132.5000 mm): Footprint J_XIAO_BP
+[footprint_symbol_mismatch]: Footprint attributes don't match symbol: 'Exclude from bill of materials' settings differ
+    Local override; warning
+    @(164.0000 mm, 132.5000 mm): Footprint J_XIAO_BP
+[footprint_symbol_field_mismatch]: Field 'Description' differs (PCB: '', Schematic: 'Mechanical placeholder (no schematic connection)')
+    Local override; warning
+    @(164.0000 mm, 132.5000 mm): Footprint J_XIAO_BP
+[net_conflict]: No corresponding pin found in schematic
+    Local override; warning
+    @(158.0000 mm, 132.5000 mm): Pad 1 [ENC_A] of J_XIAO_BP on F.Cu
+[net_conflict]: No corresponding pin found in schematic
+    Local override; warning
+    @(160.0000 mm, 132.5000 mm): Pad 2 [ENC_B] of J_XIAO_BP on F.Cu
+[net_conflict]: No corresponding pin found in schematic
+    Local override; warning
+    @(162.0000 mm, 132.5000 mm): Pad 3 [ENC_SW] of J_XIAO_BP on F.Cu
+[net_conflict]: No corresponding pin found in schematic
+    Local override; warning
+    @(164.0000 mm, 132.5000 mm): Pad 4 [RGB_DIN_MCU] of J_XIAO_BP on F.Cu
+[net_conflict]: No corresponding pin found in schematic
+    Local override; warning
+    @(166.0000 mm, 132.5000 mm): Pad 5 [ROW3] of J_XIAO_BP on F.Cu
+[net_conflict]: No corresponding pin found in schematic
+    Local override; warning
+    @(168.0000 mm, 132.5000 mm): Pad 6 [VBAT_ADC] of J_XIAO_BP on F.Cu
+[net_conflict]: No corresponding pin found in schematic
+    Local override; warning
+    @(170.0000 mm, 132.5000 mm): Pad 7 [ROW4] of J_XIAO_BP on F.Cu
+[footprint_symbol_mismatch]: Value (TP1) doesn't match symbol value (TOOL)
+    Local override; warning
+    @(103.0000 mm, 166.0000 mm): Footprint TP1
+[footprint_symbol_field_mismatch]: Field 'Description' differs (PCB: '', Schematic: 'Mechanical placeholder (no schematic connection)')
+    Local override; warning
+    @(103.0000 mm, 166.0000 mm): Footprint TP1
+[footprint_symbol_mismatch]: Value (TP2) doesn't match symbol value (TOOL)
+    Local override; warning
+    @(217.0000 mm, 166.0000 mm): Footprint TP2
+[footprint_symbol_field_mismatch]: Field 'Description' differs (PCB: '', Schematic: 'Mechanical placeholder (no schematic connection)')
+    Local override; warning
+    @(217.0000 mm, 166.0000 mm): Footprint TP2
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **

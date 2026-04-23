@@ -1,0 +1,540 @@
+** Drc report for claude-code-pad.kicad_pcb **
+** Created on 2026-04-22T20:20:27 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 0 DRC violations **
+
+** Found 30 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(141.9500 mm, 143.0750 mm): Pad 3 [GND] of LED2 on B.Cu
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+
+** Found 134 Footprint errors **
+[footprint_symbol_mismatch]: claude-code-pad:C_0805_2012Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0805_2012Metric)
+    Local override; warning
+    @(147.0000 mm, 119.0000 mm): Footprint C1
+[footprint_symbol_mismatch]: claude-code-pad:C_0805_2012Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0805_2012Metric)
+    Local override; warning
+    @(163.0000 mm, 128.5000 mm): Footprint C2
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(147.0000 mm, 122.0000 mm): Footprint C3
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(147.0000 mm, 111.3800 mm): Footprint C4
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(115.4000 mm, 141.1000 mm): Footprint CL1
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(134.4500 mm, 141.1000 mm): Footprint CL2
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(153.5000 mm, 141.1000 mm): Footprint CL3
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(172.5500 mm, 141.1000 mm): Footprint CL4
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(191.6000 mm, 141.1000 mm): Footprint CL5
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(115.4000 mm, 160.1500 mm): Footprint CL6
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(134.4500 mm, 160.1500 mm): Footprint CL7
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(153.5000 mm, 160.1500 mm): Footprint CL8
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(172.5500 mm, 160.1500 mm): Footprint CL9
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(191.6000 mm, 160.1500 mm): Footprint CL10
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(115.4000 mm, 179.2000 mm): Footprint CL11
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(134.4500 mm, 179.2000 mm): Footprint CL12
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(153.5000 mm, 179.2000 mm): Footprint CL13
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(172.5500 mm, 179.2000 mm): Footprint CL14
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(191.6000 mm, 179.2000 mm): Footprint CL15
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(115.4000 mm, 198.2500 mm): Footprint CL16
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(134.4500 mm, 198.2500 mm): Footprint CL17
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(153.5000 mm, 198.2500 mm): Footprint CL18
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(172.5500 mm, 198.2500 mm): Footprint CL19
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(191.6000 mm, 198.2500 mm): Footprint CL20
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(115.4000 mm, 217.3000 mm): Footprint CL21
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(134.4500 mm, 217.3000 mm): Footprint CL22
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(153.5000 mm, 217.3000 mm): Footprint CL23
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(172.5500 mm, 217.3000 mm): Footprint CL24
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(201.1250 mm, 217.3000 mm): Footprint CL25
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(203.0000 mm, 124.0000 mm): Footprint C_ENC1
+[footprint_symbol_mismatch]: claude-code-pad:C_0402_1005Metric doesn't match footprint given by symbol (Capacitor_SMD:C_0402_1005Metric)
+    Local override; warning
+    @(172.0000 mm, 124.0000 mm): Footprint C_VBAT1
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(123.4000 mm, 144.5250 mm): Footprint D00
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(142.4500 mm, 144.5250 mm): Footprint D01
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(161.5000 mm, 144.5250 mm): Footprint D02
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(180.5500 mm, 144.5250 mm): Footprint D03
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(199.6000 mm, 144.5250 mm): Footprint D04
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(123.4000 mm, 163.5750 mm): Footprint D10
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(142.4500 mm, 163.5750 mm): Footprint D11
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(161.5000 mm, 163.5750 mm): Footprint D12
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(180.5500 mm, 163.5750 mm): Footprint D13
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(199.6000 mm, 163.5750 mm): Footprint D14
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(123.4000 mm, 182.6250 mm): Footprint D20
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(142.4500 mm, 182.6250 mm): Footprint D21
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(161.5000 mm, 182.6250 mm): Footprint D22
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(180.5500 mm, 182.6250 mm): Footprint D23
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(199.6000 mm, 182.6250 mm): Footprint D24
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(123.4000 mm, 201.6750 mm): Footprint D30
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(142.4500 mm, 201.6750 mm): Footprint D31
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(161.5000 mm, 201.6750 mm): Footprint D32
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(180.5500 mm, 201.6750 mm): Footprint D33
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(199.6000 mm, 201.6750 mm): Footprint D34
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(123.4000 mm, 220.7250 mm): Footprint D40
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(142.4500 mm, 220.7250 mm): Footprint D41
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(161.5000 mm, 220.7250 mm): Footprint D42
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(180.5500 mm, 220.7250 mm): Footprint D43
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-123 doesn't match footprint given by symbol (Diode_SMD:D_SOD-123)
+    Local override; warning
+    @(209.1250 mm, 220.7250 mm): Footprint D44
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-523 doesn't match footprint given by symbol (Diode_SMD:D_SOD-523)
+    Local override; warning
+    @(118.5000 mm, 117.9000 mm): Footprint D_GREV1
+[footprint_symbol_mismatch]: claude-code-pad:RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm doesn't match footprint given by symbol (Button_Switch_THT:RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm)
+    Local override; warning
+    @(208.0000 mm, 119.0000 mm): Footprint EC1
+[footprint_symbol_mismatch]: claude-code-pad:Fuse_0805_2012Metric doesn't match footprint given by symbol (Fuse:Fuse_0805_2012Metric)
+    Local override; warning
+    @(123.0000 mm, 119.0000 mm): Footprint F1
+[footprint_symbol_mismatch]: claude-code-pad:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal doesn't match footprint given by symbol (Connector_JST:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal)
+    Local override; warning
+    @(108.0000 mm, 119.0000 mm): Footprint J_BAT1
+[footprint_symbol_mismatch]: claude-code-pad:PinHeader_1x04_P2.54mm_Vertical doesn't match footprint given by symbol (Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical)
+    Local override; warning
+    @(109.0000 mm, 220.0000 mm): Footprint J_NFC1
+[net_conflict]: Pad net (ENC_A) doesn't match net given by schematic (unconnected-(J_XIAO_BP-Pad1))
+    Local override; warning
+    @(158.0000 mm, 132.5000 mm): Pad 1 [ENC_A] of J_XIAO_BP on F.Cu
+[net_conflict]: Pad net (ENC_B) doesn't match net given by schematic (unconnected-(J_XIAO_BP-Pad2))
+    Local override; warning
+    @(160.0000 mm, 132.5000 mm): Pad 2 [ENC_B] of J_XIAO_BP on F.Cu
+[net_conflict]: Pad net (ENC_SW) doesn't match net given by schematic (unconnected-(J_XIAO_BP-Pad3))
+    Local override; warning
+    @(162.0000 mm, 132.5000 mm): Pad 3 [ENC_SW] of J_XIAO_BP on F.Cu
+[net_conflict]: Pad net (RGB_DIN_MCU) doesn't match net given by schematic (unconnected-(J_XIAO_BP-Pad4))
+    Local override; warning
+    @(164.0000 mm, 132.5000 mm): Pad 4 [RGB_DIN_MCU] of J_XIAO_BP on F.Cu
+[net_conflict]: Pad net (ROW3) doesn't match net given by schematic (unconnected-(J_XIAO_BP-Pad5))
+    Local override; warning
+    @(166.0000 mm, 132.5000 mm): Pad 5 [ROW3] of J_XIAO_BP on F.Cu
+[net_conflict]: Pad net (VBAT_ADC) doesn't match net given by schematic (unconnected-(J_XIAO_BP-Pad6))
+    Local override; warning
+    @(168.0000 mm, 132.5000 mm): Pad 6 [VBAT_ADC] of J_XIAO_BP on F.Cu
+[net_conflict]: Pad net (ROW4) doesn't match net given by schematic (unconnected-(J_XIAO_BP-Pad7))
+    Local override; warning
+    @(170.0000 mm, 132.5000 mm): Pad 7 [ROW4] of J_XIAO_BP on F.Cu
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(119.4000 mm, 142.0250 mm): Footprint LED1
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(138.4500 mm, 142.0250 mm): Footprint LED2
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(157.5000 mm, 142.0250 mm): Footprint LED3
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(176.5500 mm, 142.0250 mm): Footprint LED4
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(195.6000 mm, 142.0250 mm): Footprint LED5
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(119.4000 mm, 161.0750 mm): Footprint LED6
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(138.4500 mm, 161.0750 mm): Footprint LED7
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(157.5000 mm, 161.0750 mm): Footprint LED8
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(176.5500 mm, 161.0750 mm): Footprint LED9
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(195.6000 mm, 161.0750 mm): Footprint LED10
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(119.4000 mm, 180.1250 mm): Footprint LED11
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(138.4500 mm, 180.1250 mm): Footprint LED12
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(157.5000 mm, 180.1250 mm): Footprint LED13
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(176.5500 mm, 180.1250 mm): Footprint LED14
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(195.6000 mm, 180.1250 mm): Footprint LED15
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(119.4000 mm, 199.1750 mm): Footprint LED16
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(138.4500 mm, 199.1750 mm): Footprint LED17
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(157.5000 mm, 199.1750 mm): Footprint LED18
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(176.5500 mm, 199.1750 mm): Footprint LED19
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(195.6000 mm, 199.1750 mm): Footprint LED20
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(119.4000 mm, 218.2250 mm): Footprint LED21
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(138.4500 mm, 218.2250 mm): Footprint LED22
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(157.5000 mm, 218.2250 mm): Footprint LED23
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(176.5500 mm, 218.2250 mm): Footprint LED24
+[footprint_symbol_mismatch]: claude-code-pad:LED_SK6812_MINI-E_plccn4_3.5x2.8mm doesn't match footprint given by symbol (LED_SMD:LED_SK6812_MINI-E_plccn4_3.5x2.8mm)
+    Local override; warning
+    @(205.1250 mm, 218.2250 mm): Footprint LED25
+[footprint_symbol_mismatch]: claude-code-pad:SOT-23 doesn't match footprint given by symbol (Package_TO_SOT_SMD:SOT-23)
+    Local override; warning
+    @(116.0000 mm, 119.0000 mm): Footprint Q_REV1
+[footprint_symbol_mismatch]: claude-code-pad:R_0402_1005Metric doesn't match footprint given by symbol (Resistor_SMD:R_0402_1005Metric)
+    Local override; warning
+    @(157.0000 mm, 116.0000 mm): Footprint R1
+[footprint_symbol_mismatch]: claude-code-pad:R_0402_1005Metric doesn't match footprint given by symbol (Resistor_SMD:R_0402_1005Metric)
+    Local override; warning
+    @(157.0000 mm, 119.0000 mm): Footprint R2
+[footprint_symbol_mismatch]: claude-code-pad:R_0402_1005Metric doesn't match footprint given by symbol (Resistor_SMD:R_0402_1005Metric)
+    Local override; warning
+    @(157.0000 mm, 122.0000 mm): Footprint R3
+[footprint_symbol_mismatch]: claude-code-pad:R_0402_1005Metric doesn't match footprint given by symbol (Resistor_SMD:R_0402_1005Metric)
+    Local override; warning
+    @(114.0500 mm, 117.9000 mm): Footprint R_GREV1
+[footprint_symbol_mismatch]: claude-code-pad:R_0402_1005Metric doesn't match footprint given by symbol (Resistor_SMD:R_0402_1005Metric)
+    Local override; warning
+    @(117.0000 mm, 124.0000 mm): Footprint R_NTC1
+[footprint_symbol_mismatch]: claude-code-pad:R_0402_1005Metric doesn't match footprint given by symbol (Resistor_SMD:R_0402_1005Metric)
+    Local override; warning
+    @(170.0000 mm, 123.0000 mm): Footprint R_VBAT1
+[footprint_symbol_mismatch]: claude-code-pad:R_0402_1005Metric doesn't match footprint given by symbol (Resistor_SMD:R_0402_1005Metric)
+    Local override; warning
+    @(170.0000 mm, 125.0000 mm): Footprint R_VBAT2
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(119.4000 mm, 139.5250 mm): Footprint SW00
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(138.4500 mm, 139.5250 mm): Footprint SW01
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(157.5000 mm, 139.5250 mm): Footprint SW02
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(176.5500 mm, 139.5250 mm): Footprint SW03
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(195.6000 mm, 139.5250 mm): Footprint SW04
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(119.4000 mm, 158.5750 mm): Footprint SW10
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(138.4500 mm, 158.5750 mm): Footprint SW11
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(157.5000 mm, 158.5750 mm): Footprint SW12
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(176.5500 mm, 158.5750 mm): Footprint SW13
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(195.6000 mm, 158.5750 mm): Footprint SW14
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(119.4000 mm, 177.6250 mm): Footprint SW20
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(138.4500 mm, 177.6250 mm): Footprint SW21
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(157.5000 mm, 177.6250 mm): Footprint SW22
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(176.5500 mm, 177.6250 mm): Footprint SW23
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(195.6000 mm, 177.6250 mm): Footprint SW24
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(119.4000 mm, 196.6750 mm): Footprint SW30
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(138.4500 mm, 196.6750 mm): Footprint SW31
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(157.5000 mm, 196.6750 mm): Footprint SW32
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(176.5500 mm, 196.6750 mm): Footprint SW33
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(195.6000 mm, 196.6750 mm): Footprint SW34
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(119.4000 mm, 215.7250 mm): Footprint SW40
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(138.4500 mm, 215.7250 mm): Footprint SW41
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(157.5000 mm, 215.7250 mm): Footprint SW42
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX)
+    Local override; warning
+    @(176.5500 mm, 215.7250 mm): Footprint SW43
+[footprint_symbol_mismatch]: claude-code-pad:SW_Kailh_HotSwap_MX_2U doesn't match footprint given by symbol (local:SW_Kailh_HotSwap_MX_2U)
+    Local override; warning
+    @(205.1250 mm, 215.7250 mm): Footprint SW44
+[footprint_symbol_mismatch]: claude-code-pad:SW_Slide_1P2T_SS12D00G4 doesn't match footprint given by symbol (Button_Switch_THT:SW_Slide_1P2T_SS12D00G4)
+    Local override; warning
+    @(133.0000 mm, 119.0000 mm): Footprint SW_PWR1
+[footprint_symbol_mismatch]: claude-code-pad:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal doesn't match footprint given by symbol (Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal)
+    Local override; warning
+    @(110.0000 mm, 124.0000 mm): Footprint TH1
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-523 doesn't match footprint given by symbol (Diode_SMD:D_SOD-523)
+    Local override; warning
+    @(204.0000 mm, 114.0000 mm): Footprint TVS_ENCA1
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-523 doesn't match footprint given by symbol (Diode_SMD:D_SOD-523)
+    Local override; warning
+    @(208.0000 mm, 114.0000 mm): Footprint TVS_ENCB1
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-523 doesn't match footprint given by symbol (Diode_SMD:D_SOD-523)
+    Local override; warning
+    @(212.0000 mm, 114.0000 mm): Footprint TVS_ENCSW1
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-523 doesn't match footprint given by symbol (Diode_SMD:D_SOD-523)
+    Local override; warning
+    @(112.0000 mm, 223.8100 mm): Footprint TVS_SCL1
+[footprint_symbol_mismatch]: claude-code-pad:D_SOD-523 doesn't match footprint given by symbol (Diode_SMD:D_SOD-523)
+    Local override; warning
+    @(112.0000 mm, 221.2700 mm): Footprint TVS_SDA1
+[footprint_symbol_mismatch]: claude-code-pad:XIAO_nRF52840_Castellated doesn't match footprint given by symbol (local:XIAO_nRF52840_Castellated)
+    Local override; warning
+    @(160.0000 mm, 119.0000 mm): Footprint U1
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **

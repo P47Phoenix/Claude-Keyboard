@@ -1,0 +1,154 @@
+(footprint "SW_Kailh_HotSwap_MX"
+		(layer "F.Cu")
+		(descr "Kailh MX hot-swap (Keebio MX_Only_HS geometry) + MX cutout")
+		(tags "keyboard kailh mx hotswap")
+		(property "Reference" "REF**"
+			(at 0 -9 0)
+			(layer "F.Fab")
+			(uuid "1290bff5-14d2-5350-821d-142375f143ae")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "MX_HS"
+			(at 0 9 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d553b4b4-b324-5481-8f72-3fbd2e389d19")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1015852a-3cda-5a2e-9d08-3c7da1dce97c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "MX hot-swap keyswitch (Keebio MX_Only_HS)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c219015f-73c4-5bb8-b4e9-596e256a4416")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C5184526"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c94de3f4-c485-55e3-8492-26c4a9a578ba")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "JLCPCB Rotation" "0"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "467b6a40-8139-5b68-837d-377d771fab28")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr smd allow_missing_courtyard)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_line
+			(start -7 -7)
+			(end 7 -7)
+			(stroke
+				(width 0.12)
+				(type default)
+			)
+			(layer "F.Fab")
+			(uuid "4a192f09-e23e-54ca-b73e-8ec441de71a6")
+		)
+		(fp_line
+			(start -7 7)
+			(end -7 -7)
+			(stroke
+				(width 0.12)
+				(type default)
+			)
+			(layer "F.Fab")
+			(uuid "0fe75806-2752-5746-92ca-aee85bb4029a")
+		)
+		(fp_line
+			(start 7 -7)
+			(end 7 7)
+			(stroke
+				(width 0.12)
+				(type default)
+			)
+			(layer "F.Fab")
+			(uuid "cad04b52-1c75-528b-a4ef-04d994ca0ee4")
+		)
+		(fp_line
+			(start 7 7)
+			(end -7 7)
+			(stroke
+				(width 0.12)
+				(type default)
+			)
+			(layer "F.Fab")
+			(uuid "e1c982d6-26f2-5c82-ba9c-8510ca5ccffd")
+		)
+		(pad "" np_thru_hole circle
+			(at -5.08 0)
+			(size 1.75 1.75)
+			(drill 1.75)
+			(layers "*.Cu" "*.Mask")
+			(uuid "c7a06406-79c0-5ff1-af41-408127761e03")
+		)
+		(pad "" np_thru_hole circle
+			(at 0 0)
+			(size 4 4)
+			(drill 4)
+			(layers "*.Cu" "*.Mask")
+			(uuid "f81da579-f7bd-5bf8-88e4-afb58cdb50ea")
+		)
+		(pad "" np_thru_hole circle
+			(at 5.08 0)
+			(size 1.75 1.75)
+			(drill 1.75)
+			(layers "*.Cu" "*.Mask")
+			(uuid "571a52ab-0687-5215-88dd-bf94dc98a9ad")
+		)
+		(pad "1" smd rect
+			(at -3.85 -2.54)
+			(size 3.5 2.5)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(net "COL3")
+			(uuid "3d23cbca-0760-585e-90b2-814b9cfb80ad")
+		)
+		(pad "2" smd rect
+			(at 2.55 -5.08)
+			(size 3.5 2.5)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(net "KROW23")
+			(uuid "1db68319-e525-5026-8b39-d12ef88c153b")
+		)
+		(embedded_fonts no)
+	)

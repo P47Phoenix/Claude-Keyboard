@@ -1,0 +1,134 @@
+(footprint "D_SOD-123"
+		(layer "B.Cu")
+		(descr "1N4148W diode SOD-123 (KiCad std)")
+		(tags "diode SOD-123")
+		(property "Reference" "REF**"
+			(at 0 -2.5 0)
+			(layer "B.Fab")
+			(uuid "1ad3a3bf-e5b5-56bf-95dc-f3605cd850dd")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 0 2.5 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "848adcdc-d1c4-5cde-9d6f-602af18c4e22")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "5492419c-9655-5311-a326-f9f7d833acd6")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Matrix diode"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "825149ba-e825-5085-9f49-f0bff5a6291a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9e5da9df-70d7-52d6-b964-c09adb2ea975")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "JLCPCB Rotation" "180"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "d64a9058-a5fa-5bb3-9599-44540de76696")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr smd allow_missing_courtyard)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_line
+			(start -2 -1.1)
+			(end 2 -1.1)
+			(stroke
+				(width 0.1)
+				(type default)
+			)
+			(layer "B.Fab")
+			(uuid "58f7e9ba-1444-5728-8474-e6a491bff172")
+		)
+		(fp_line
+			(start -2 1.1)
+			(end -2 -1.1)
+			(stroke
+				(width 0.1)
+				(type default)
+			)
+			(layer "B.Fab")
+			(uuid "bf3fe5b7-8545-59c6-a3d8-3d008b22741f")
+		)
+		(fp_line
+			(start 2 -1.1)
+			(end 2 1.1)
+			(stroke
+				(width 0.1)
+				(type default)
+			)
+			(layer "B.Fab")
+			(uuid "5162c57d-2cf8-551d-ba34-a8d49049d8fa")
+		)
+		(fp_line
+			(start 2 1.1)
+			(end -2 1.1)
+			(stroke
+				(width 0.1)
+				(type default)
+			)
+			(layer "B.Fab")
+			(uuid "1934f1c0-ff0f-5ee4-be53-a551b14b4de1")
+		)
+		(pad "1" smd rect
+			(at -1.65 0)
+			(size 1.2 1.4)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(net "KROW43")
+			(uuid "59253aca-352e-5821-a3db-1c8a4629a35c")
+		)
+		(pad "2" smd rect
+			(at 1.65 0)
+			(size 1.2 1.4)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(net "ROW4")
+			(uuid "45b27026-c627-5260-b719-76ea3c583f85")
+		)
+		(embedded_fonts no)
+	)

@@ -1,0 +1,645 @@
+** Drc report for claude-code-pad.kicad_pcb **
+** Created on 2026-04-22T19:43:34 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 107 DRC violations **
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(195.6000 mm, 139.5250 mm): NPTH pad of SW04
+    @(195.6000 mm, 142.0250 mm): Footprint LED5
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(195.6000 mm, 142.0250 mm): Footprint LED5
+    @(199.6000 mm, 144.5250 mm): Footprint D04
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(152.4200 mm, 215.7250 mm): NPTH pad of SW42
+    @(153.5000 mm, 217.3000 mm): Footprint CL23
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(171.4700 mm, 196.6750 mm): NPTH pad of SW33
+    @(172.5500 mm, 198.2500 mm): Footprint CL19
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(180.5500 mm, 220.7250 mm): Footprint D43
+    @(176.5500 mm, 218.2250 mm): Footprint LED24
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(176.5500 mm, 142.0250 mm): Footprint LED4
+    @(180.5500 mm, 144.5250 mm): Footprint D03
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(176.5500 mm, 139.5250 mm): NPTH pad of SW03
+    @(176.5500 mm, 142.0250 mm): Footprint LED4
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(119.4000 mm, 199.1750 mm): Footprint LED16
+    @(123.4000 mm, 201.6750 mm): Footprint D30
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(119.4000 mm, 196.6750 mm): NPTH pad of SW30
+    @(119.4000 mm, 199.1750 mm): Footprint LED16
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(171.4700 mm, 177.6250 mm): NPTH pad of SW23
+    @(172.5500 mm, 179.2000 mm): Footprint CL14
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(176.5500 mm, 177.6250 mm): NPTH pad of SW23
+    @(176.5500 mm, 180.1250 mm): Footprint LED14
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(133.3700 mm, 215.7250 mm): NPTH pad of SW41
+    @(134.4500 mm, 217.3000 mm): Footprint CL22
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(176.5500 mm, 161.0750 mm): Footprint LED9
+    @(180.5500 mm, 163.5750 mm): Footprint D13
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(176.5500 mm, 158.5750 mm): NPTH pad of SW13
+    @(176.5500 mm, 161.0750 mm): Footprint LED9
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(190.5200 mm, 177.6250 mm): NPTH pad of SW24
+    @(191.6000 mm, 179.2000 mm): Footprint CL15
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(138.4500 mm, 196.6750 mm): NPTH pad of SW31
+    @(138.4500 mm, 199.1750 mm): Footprint LED17
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(133.3700 mm, 196.6750 mm): NPTH pad of SW31
+    @(134.4500 mm, 198.2500 mm): Footprint CL17
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(142.4500 mm, 220.7250 mm): Footprint D41
+    @(138.4500 mm, 218.2250 mm): Footprint LED22
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(157.5000 mm, 196.6750 mm): NPTH pad of SW32
+    @(157.5000 mm, 199.1750 mm): Footprint LED18
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(157.5000 mm, 199.1750 mm): Footprint LED18
+    @(161.5000 mm, 201.6750 mm): Footprint D32
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(123.4000 mm, 144.5250 mm): Footprint D00
+    @(119.4000 mm, 142.0250 mm): Footprint LED1
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(180.5500 mm, 182.6250 mm): Footprint D23
+    @(176.5500 mm, 180.1250 mm): Footprint LED14
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(152.4200 mm, 177.6250 mm): NPTH pad of SW22
+    @(153.5000 mm, 179.2000 mm): Footprint CL13
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(205.1250 mm, 218.2250 mm): Footprint LED25
+    @(209.1250 mm, 220.7250 mm): Footprint D44
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(205.1250 mm, 215.7250 mm): NPTH pad of SW44
+    @(205.1250 mm, 218.2250 mm): Footprint LED25
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(119.4000 mm, 215.7250 mm): NPTH pad of SW40
+    @(119.4000 mm, 218.2250 mm): Footprint LED21
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(114.3200 mm, 215.7250 mm): NPTH pad of SW40
+    @(115.4000 mm, 217.3000 mm): Footprint CL21
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(152.4200 mm, 139.5250 mm): NPTH pad of SW02
+    @(153.5000 mm, 141.1000 mm): Footprint CL3
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(114.3200 mm, 177.6250 mm): NPTH pad of SW20
+    @(115.4000 mm, 179.2000 mm): Footprint CL11
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(119.4000 mm, 177.6250 mm): NPTH pad of SW20
+    @(119.4000 mm, 180.1250 mm): Footprint LED11
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(152.4200 mm, 158.5750 mm): NPTH pad of SW12
+    @(153.5000 mm, 160.1500 mm): Footprint CL8
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(138.4500 mm, 215.7250 mm): NPTH pad of SW41
+    @(138.4500 mm, 218.2250 mm): Footprint LED22
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(157.5000 mm, 158.5750 mm): NPTH pad of SW12
+    @(157.5000 mm, 161.0750 mm): Footprint LED8
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(157.5000 mm, 139.5250 mm): NPTH pad of SW02
+    @(157.5000 mm, 142.0250 mm): Footprint LED3
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(133.3700 mm, 177.6250 mm): NPTH pad of SW21
+    @(134.4500 mm, 179.2000 mm): Footprint CL12
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(138.4500 mm, 177.6250 mm): NPTH pad of SW21
+    @(138.4500 mm, 180.1250 mm): Footprint LED12
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(142.4500 mm, 144.5250 mm): Footprint D01
+    @(138.4500 mm, 142.0250 mm): Footprint LED2
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(190.5200 mm, 139.5250 mm): NPTH pad of SW04
+    @(191.6000 mm, 141.1000 mm): Footprint CL5
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(119.4000 mm, 158.5750 mm): NPTH pad of SW10
+    @(119.4000 mm, 161.0750 mm): Footprint LED6
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(119.4000 mm, 161.0750 mm): Footprint LED6
+    @(123.4000 mm, 163.5750 mm): Footprint D10
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(119.4000 mm, 180.1250 mm): Footprint LED11
+    @(123.4000 mm, 182.6250 mm): Footprint D20
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(152.4200 mm, 196.6750 mm): NPTH pad of SW32
+    @(153.5000 mm, 198.2500 mm): Footprint CL18
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(200.0450 mm, 215.7250 mm): NPTH pad of SW44
+    @(201.1250 mm, 217.3000 mm): Footprint CL25
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(176.5500 mm, 199.1750 mm): Footprint LED19
+    @(180.5500 mm, 201.6750 mm): Footprint D33
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(176.5500 mm, 196.6750 mm): NPTH pad of SW33
+    @(176.5500 mm, 199.1750 mm): Footprint LED19
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(195.6000 mm, 199.1750 mm): Footprint LED20
+    @(199.6000 mm, 201.6750 mm): Footprint D34
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(195.6000 mm, 196.6750 mm): NPTH pad of SW34
+    @(195.6000 mm, 199.1750 mm): Footprint LED20
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(190.5200 mm, 196.6750 mm): NPTH pad of SW34
+    @(191.6000 mm, 198.2500 mm): Footprint CL20
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(138.4500 mm, 199.1750 mm): Footprint LED17
+    @(142.4500 mm, 201.6750 mm): Footprint D31
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(199.6000 mm, 182.6250 mm): Footprint D24
+    @(195.6000 mm, 180.1250 mm): Footprint LED15
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(157.5000 mm, 142.0250 mm): Footprint LED3
+    @(161.5000 mm, 144.5250 mm): Footprint D02
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(195.6000 mm, 177.6250 mm): NPTH pad of SW24
+    @(195.6000 mm, 180.1250 mm): Footprint LED15
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(119.4000 mm, 218.2250 mm): Footprint LED21
+    @(123.4000 mm, 220.7250 mm): Footprint D40
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(114.3200 mm, 139.5250 mm): NPTH pad of SW00
+    @(115.4000 mm, 141.1000 mm): Footprint CL1
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(171.4700 mm, 158.5750 mm): NPTH pad of SW13
+    @(172.5500 mm, 160.1500 mm): Footprint CL9
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(133.3700 mm, 139.5250 mm): NPTH pad of SW01
+    @(134.4500 mm, 141.1000 mm): Footprint CL2
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(171.4700 mm, 215.7250 mm): NPTH pad of SW43
+    @(172.5500 mm, 217.3000 mm): Footprint CL24
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(176.5500 mm, 215.7250 mm): NPTH pad of SW43
+    @(176.5500 mm, 218.2250 mm): Footprint LED24
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(142.4500 mm, 163.5750 mm): Footprint D11
+    @(138.4500 mm, 161.0750 mm): Footprint LED7
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(190.5200 mm, 158.5750 mm): NPTH pad of SW14
+    @(191.6000 mm, 160.1500 mm): Footprint CL10
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(138.4500 mm, 139.5250 mm): NPTH pad of SW01
+    @(138.4500 mm, 142.0250 mm): Footprint LED2
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(114.3200 mm, 158.5750 mm): NPTH pad of SW10
+    @(115.4000 mm, 160.1500 mm): Footprint CL6
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(142.4500 mm, 182.6250 mm): Footprint D21
+    @(138.4500 mm, 180.1250 mm): Footprint LED12
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(171.4700 mm, 139.5250 mm): NPTH pad of SW03
+    @(172.5500 mm, 141.1000 mm): Footprint CL4
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(138.4500 mm, 158.5750 mm): NPTH pad of SW11
+    @(138.4500 mm, 161.0750 mm): Footprint LED7
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(133.3700 mm, 158.5750 mm): NPTH pad of SW11
+    @(134.4500 mm, 160.1500 mm): Footprint CL7
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(199.6000 mm, 163.5750 mm): Footprint D14
+    @(195.6000 mm, 161.0750 mm): Footprint LED10
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(157.5000 mm, 161.0750 mm): Footprint LED8
+    @(161.5000 mm, 163.5750 mm): Footprint D12
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(195.6000 mm, 158.5750 mm): NPTH pad of SW14
+    @(195.6000 mm, 161.0750 mm): Footprint LED10
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(119.4000 mm, 139.5250 mm): NPTH pad of SW00
+    @(119.4000 mm, 142.0250 mm): Footprint LED1
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(157.5000 mm, 180.1250 mm): Footprint LED13
+    @(161.5000 mm, 182.6250 mm): Footprint D22
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(157.5000 mm, 177.6250 mm): NPTH pad of SW22
+    @(157.5000 mm, 180.1250 mm): Footprint LED13
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(157.5000 mm, 215.7250 mm): NPTH pad of SW42
+    @(157.5000 mm, 218.2250 mm): Footprint LED23
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(157.5000 mm, 218.2250 mm): Footprint LED23
+    @(161.5000 mm, 220.7250 mm): Footprint D42
+[npth_inside_courtyard]: NPTH inside courtyard
+    Local override; error
+    @(114.3200 mm, 196.6750 mm): NPTH pad of SW30
+    @(115.4000 mm, 198.2500 mm): Footprint CL16
+[starved_thermal]: Thermal relief connection to zone incomplete (layer F.Cu; zone min spoke count 2; actual 1)
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(114.0500 mm, 117.4000 mm): Pad 2 [GND] of R_GREV1 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(103.0000 mm, 103.0000 mm): Pad 1 [<no net>] of FID1 on F.Cu
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(110.0000 mm, 229.0000 mm): Pad 1 [<no net>] of FID3 on F.Cu
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(217.0000 mm, 103.0000 mm): Pad 1 [<no net>] of FID2 on F.Cu
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(158.4250 mm, 129.4250 mm): Via [ENC_A] on F.Cu - B.Cu
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(178.2500 mm, 219.6250 mm): Segment of LED24 on Edge.Cuts
+    @(177.4500 mm, 219.6250 mm): Segment of D43 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(140.1500 mm, 219.6250 mm): Segment of LED22 on Edge.Cuts
+    @(139.3500 mm, 219.6250 mm): Segment of D41 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(121.1000 mm, 143.4250 mm): Segment of LED1 on Edge.Cuts
+    @(120.3000 mm, 143.4250 mm): Segment of D00 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(178.2500 mm, 181.5250 mm): Segment of LED14 on Edge.Cuts
+    @(177.4500 mm, 181.5250 mm): Segment of D23 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(206.8250 mm, 219.6250 mm): Segment of LED25 on Edge.Cuts
+    @(206.0250 mm, 219.6250 mm): Segment of D44 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(140.1500 mm, 143.4250 mm): Segment of LED2 on Edge.Cuts
+    @(139.3500 mm, 143.4250 mm): Segment of D01 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(121.1000 mm, 200.5750 mm): Segment of LED16 on Edge.Cuts
+    @(120.3000 mm, 200.5750 mm): Segment of D30 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(178.2500 mm, 200.5750 mm): Segment of LED19 on Edge.Cuts
+    @(177.4500 mm, 200.5750 mm): Segment of D33 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(178.2500 mm, 143.4250 mm): Segment of LED4 on Edge.Cuts
+    @(177.4500 mm, 143.4250 mm): Segment of D03 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(197.3000 mm, 200.5750 mm): Segment of LED20 on Edge.Cuts
+    @(196.5000 mm, 200.5750 mm): Segment of D34 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(197.3000 mm, 181.5250 mm): Segment of LED15 on Edge.Cuts
+    @(196.5000 mm, 181.5250 mm): Segment of D24 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(159.2000 mm, 143.4250 mm): Segment of LED3 on Edge.Cuts
+    @(158.4000 mm, 143.4250 mm): Segment of D02 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(121.1000 mm, 181.5250 mm): Segment of LED11 on Edge.Cuts
+    @(120.3000 mm, 181.5250 mm): Segment of D20 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(140.1500 mm, 162.4750 mm): Segment of LED7 on Edge.Cuts
+    @(139.3500 mm, 162.4750 mm): Segment of D11 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(197.3000 mm, 143.4250 mm): Segment of LED5 on Edge.Cuts
+    @(196.5000 mm, 143.4250 mm): Segment of D04 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(140.1500 mm, 181.5250 mm): Segment of LED12 on Edge.Cuts
+    @(139.3500 mm, 181.5250 mm): Segment of D21 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(159.2000 mm, 200.5750 mm): Segment of LED18 on Edge.Cuts
+    @(158.4000 mm, 200.5750 mm): Segment of D32 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(197.3000 mm, 162.4750 mm): Segment of LED10 on Edge.Cuts
+    @(196.5000 mm, 162.4750 mm): Segment of D14 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(140.1500 mm, 200.5750 mm): Segment of LED17 on Edge.Cuts
+    @(139.3500 mm, 200.5750 mm): Segment of D31 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(121.1000 mm, 219.6250 mm): Segment of LED21 on Edge.Cuts
+    @(120.3000 mm, 219.6250 mm): Segment of D40 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(178.2500 mm, 162.4750 mm): Segment of LED9 on Edge.Cuts
+    @(177.4500 mm, 162.4750 mm): Segment of D13 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(159.2000 mm, 181.5250 mm): Segment of LED13 on Edge.Cuts
+    @(158.4000 mm, 181.5250 mm): Segment of D22 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(121.1000 mm, 162.4750 mm): Segment of LED6 on Edge.Cuts
+    @(120.3000 mm, 162.4750 mm): Segment of D10 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(159.2000 mm, 219.6250 mm): Segment of LED23 on Edge.Cuts
+    @(158.4000 mm, 219.6250 mm): Segment of D42 on B.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(159.2000 mm, 162.4750 mm): Segment of LED8 on Edge.Cuts
+    @(158.4000 mm, 162.4750 mm): Segment of D12 on B.Silkscreen
+[text_height]: Text height out of range (board setup constraints silk text height min height 1.0000 mm; actual 0.8000 mm)
+    Rule: board setup constraints silk text height; warning
+    @(133.0000 mm, 115.0000 mm): Reference field of SW_PWR1
+[text_height]: Text height out of range (board setup constraints silk text height min height 1.0000 mm; actual 0.8000 mm)
+    Rule: board setup constraints silk text height; warning
+    @(110.0000 mm, 121.0000 mm): Reference field of TH1
+
+** Found 43 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(141.9500 mm, 143.0750 mm): Pad 3 [GND] of LED2 on B.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on F.Cu, priority 0
+    @(100.5000 mm, 100.5000 mm): Zone 'GND' [GND] on B.Cu, priority 0
+
+** Found 10 Footprint errors **
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(217.0000 mm, 103.0000 mm): Footprint FID2
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(103.0000 mm, 166.0000 mm): Footprint TP1
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(103.0000 mm, 103.0000 mm): Footprint FID1
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(110.0000 mm, 229.0000 mm): Footprint FID3
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(103.5000 mm, 127.0000 mm): Footprint H1
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(105.0000 mm, 228.0000 mm): Footprint H3
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(215.0000 mm, 228.0000 mm): Footprint H4
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(217.0000 mm, 166.0000 mm): Footprint TP2
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(216.5000 mm, 127.0000 mm): Footprint H2
+[extra_footprint]: Extra footprint
+    Local override; warning
+    @(164.0000 mm, 132.5000 mm): Footprint J_XIAO_BP
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **

@@ -1,0 +1,134 @@
+(footprint "C_0805_2012Metric"
+		(layer "B.Cu")
+		(descr "22u")
+		(tags "smd")
+		(property "Reference" "REF**"
+			(at 0 -1.8 0)
+			(layer "B.Fab")
+			(uuid "91767d36-2138-5ffb-b4bc-53e3ef044527")
+			(effects
+				(font
+					(size 0.6 0.6)
+					(thickness 0.1)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Value" "22u"
+			(at 0 1.8 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "0ace837e-5523-598d-9680-9ca8bfe2f1e9")
+			(effects
+				(font
+					(size 0.6 0.6)
+					(thickness 0.1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "6142509d-9b4d-5a86-b7fb-aaa7c62dec73")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "VBAT bulk (near XIAO BAT+ pad)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "699e43b7-e3ce-5915-927d-5027c8df3287")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C45783"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b2c5702b-3d16-5b3f-96aa-cea8d619ed0b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "JLCPCB Rotation" "0"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "6bbf9854-290a-5b9e-841a-0558ef83b3bc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_line
+			(start -1.45 -1)
+			(end 1.45 -1)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(layer "B.CrtYd")
+			(uuid "5496da1b-8f86-5311-8284-96ac0b4698ae")
+		)
+		(fp_line
+			(start -1.45 1)
+			(end -1.45 -1)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(layer "B.CrtYd")
+			(uuid "c9f423ff-ee27-584e-9328-3be9e2ef4a81")
+		)
+		(fp_line
+			(start 1.45 -1)
+			(end 1.45 1)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(layer "B.CrtYd")
+			(uuid "2ae597d4-dfef-5d5a-b65a-29b02d4e0414")
+		)
+		(fp_line
+			(start 1.45 1)
+			(end -1.45 1)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(layer "B.CrtYd")
+			(uuid "2b2b2d6a-a895-5b9e-9d19-b191c0401d85")
+		)
+		(pad "1" smd rect
+			(at -0.95 0)
+			(size 1.1 1.4)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(net "VBAT")
+			(uuid "40151924-87e0-594e-9676-83e00851ce12")
+		)
+		(pad "2" smd rect
+			(at 0.95 0)
+			(size 1.1 1.4)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(net "GND")
+			(uuid "e13416b3-1ee5-5f3c-a639-42731b53c545")
+		)
+		(embedded_fonts no)
+	)

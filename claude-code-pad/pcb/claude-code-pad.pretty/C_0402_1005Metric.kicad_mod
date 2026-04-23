@@ -1,0 +1,93 @@
+(footprint "C_0402_1005Metric"
+		(layer "F.Cu")
+		(descr "100n")
+		(tags "smd")
+		(property "Reference" "REF**"
+			(at 0 -1.3 0)
+			(layer "F.Fab")
+			(uuid "eb58e866-c818-55fb-86bc-3f955febba2e")
+			(effects
+				(font
+					(size 0.6 0.6)
+					(thickness 0.1)
+				)
+			)
+		)
+		(property "Value" "100n"
+			(at 0 1.3 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cf7571e1-c558-5b33-bb00-9a4653b7fd03")
+			(effects
+				(font
+					(size 0.6 0.6)
+					(thickness 0.1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1f69ed17-eb2d-52d2-9c94-0eda12a57b04")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Encoder SW debounce cap"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6ebac9f1-7a27-5dca-88eb-c47cb76661db")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2ec29cc2-12ce-513c-bdb4-9c1a58a21566")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "JLCPCB Rotation" "0"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d9e2f2f8-bf03-5b8f-ae16-26fdb26efd3a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr smd allow_missing_courtyard)
+		(duplicate_pad_numbers_are_jumpers no)
+		(pad "1" smd rect
+			(at -0.5 0)
+			(size 0.65 0.7)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net "ENC_SW")
+			(uuid "ebcf1cc2-7860-5893-8712-93a511b3a637")
+		)
+		(pad "2" smd rect
+			(at 0.5 0)
+			(size 0.65 0.7)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net "GND")
+			(uuid "528f69f1-1674-5518-8e60-e9c9f96725bc")
+		)
+		(embedded_fonts no)
+	)

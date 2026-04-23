@@ -1,0 +1,87 @@
+(footprint "R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(layer "F.Cu")
+		(descr "MF52A2 NTC 10k axial THT thermistor, 7.62 mm bend pitch")
+		(tags "ntc thermistor axial")
+		(property "Reference" "REF**"
+			(at 0 -3 0)
+			(layer "F.Fab")
+			(uuid "c821e63c-9d85-5e8d-b254-49d5b77416c4")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "MF52A2_10k"
+			(at 0 3 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c971bd0c-ec8b-5fd8-b525-a8fa336a3aea")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f720cda0-63b0-5d01-8676-ca2353733ba6")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "NTC 10k axial THT for battery temperature"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "021adb9f-86c5-52b9-af69-d10a150cf7a5")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C14128"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d184331c-ee05-5816-a87f-0cc0744b9ad5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr through_hole exclude_from_pos_files exclude_from_bom dnp)
+		(duplicate_pad_numbers_are_jumpers no)
+		(pad "1" thru_hole circle
+			(at -3.81 0)
+			(size 1.5 1.5)
+			(drill 0.8)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net "+3V3")
+			(thermal_bridge_width 0.5)
+			(uuid "b1385247-32c7-543c-9bfb-2c3848b7d662")
+		)
+		(pad "2" thru_hole circle
+			(at 3.81 0)
+			(size 1.5 1.5)
+			(drill 0.8)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net "NTC_ADC")
+			(thermal_bridge_width 0.5)
+			(uuid "ef04e41b-417b-5263-a056-95e9d18ac21f")
+		)
+		(embedded_fonts no)
+	)
