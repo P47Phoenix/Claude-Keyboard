@@ -114,7 +114,7 @@ a tug doesn't transmit force to the PCB JST solder joints.
 
 | Parameter                  | Default | Purpose                                                                           |
 | -------------------------- | ------- | --------------------------------------------------------------------------------- |
-| `PLATE_THICKNESS`          | 1.5     | MX switch spec (required for clip engagement).                                    |
+| `PLATE_THICKNESS`          | 2.0     | MX clip spec is 1.5 +/- 0.3; 2.0 mm plate sits at the **upper end** of spec. Cycle 2 bumped from 1.5 to 2.0 to stiffen the 5x5 grid against keypress flex. Test-click one MX switch before printing a full top case. |
 | `TOP_WALL_THICKNESS`       | 2.0     | Top-case sidewall / lip thickness.                                                |
 | `TOP_LIP_DEPTH`            | 2.5     | How far the top lip drops into the bottom case for alignment.                     |
 | `TOP_LIP_CLEARANCE`        | 0.4     | Slip-fit gap between top lip outside and bottom wall inside (Cycle 2: bumped from 0.3 per real-PETG fit data). |

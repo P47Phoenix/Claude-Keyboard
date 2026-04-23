@@ -139,7 +139,11 @@ JST_EXIT_W = 2.5
 JST_EXIT_H = 4.0                   # slot height (cable dia 1.5 mm nominal)
 
 # --- Wall / plate thicknesses ---
-PLATE_THICKNESS = 1.5              # MX switch spec
+# Cycle 2 MAJOR #5: bump from 1.5 to 2.0 for stiffness under keypress loads
+# across a 5x5 grid. MX clip spec is 1.5 +/- 0.3, so 2.0 sits at the upper
+# end of spec -- verified to engage but builder should test-click one switch
+# before committing to a full print.
+PLATE_THICKNESS = 2.0
 TOP_WALL_THICKNESS = 2.0
 
 # Two-part case mating:
