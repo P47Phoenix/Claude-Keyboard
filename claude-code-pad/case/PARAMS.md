@@ -137,7 +137,7 @@ cantilever). No wrap-around required.
 | `LIP_CHAMFER`              | 0.5     | 45 deg lead-in chamfer on the top-lip bottom outer edge, **and** matching relief chamfer on the bottom-case interior wall top edge. |
 | `BOTTOM_WALL_THICKNESS`    | 2.0     | Bottom-case sidewall thickness.                                                   |
 | `BOTTOM_FLOOR_THICKNESS`   | 2.0     | Bottom-case floor thickness.                                                      |
-| `PCB_TRAY_STANDOFF`        | 3.0     | PCB bottom sits 3 mm above floor (room for B.Cu parts and LED apertures).        |
+| `PCB_TRAY_STANDOFF`        | 5.0     | Cycle 2 MINOR #18: 3 → 5 to clear Kailh MX hot-swap socket tails (≈ 3.2 mm below PCB). Total case height rises correspondingly. |
 | `PLATE_TO_PCB_GAP`         | 5.0     | MX switch lower housing extends 5 mm below plate.                                 |
 | `BOTTOM_INTERIOR_HEIGHT`   | derived | `max(standoff + pcb + plate_gap, batt_bay_depth + 1)` — whichever is taller.     |
 | `BOTTOM_WALL_TOP_Z`        | derived | Mating-plane Z (top of bottom wall = bottom of top plate).                       |
@@ -162,10 +162,10 @@ bottoms in the insert's blind end).
 | `CASE_FIT_CLEARANCE`   | 0.4     | PCB-to-wall clearance per side.                                           |
 | `CASE_OUTER_W`         | derived | `BOARD_W + 2*(BOTTOM_WALL + CASE_FIT_CLEARANCE)` ≈ 124.8 mm.              |
 | `CASE_OUTER_H`         | derived | Same idiom for height ≈ 136.8 mm.                                         |
-| `CASE_OUTER_R`         | 4.0     | Outer corner fillet.                                                      |
-| `FOOT_D`               | 10.0    | Rubber-foot recess Ø on underside.                                        |
-| `FOOT_DEPTH`           | 1.0     | Recess depth.                                                             |
-| `FOOT_INSET`           | 8.0     | Recess centre inset from case corner.                                     |
+| `CASE_OUTER_R`         | 6.0     | Outer corner fillet (Cycle 2 MINOR #17: 4 → 6 for cool-down stress distribution and better hand-feel). |
+| `FOOT_D`               | 12.7    | Rubber-foot recess Ø. Default matches **3M SJ-5018** (12.7 × 1 mm). For the Cycle-1 **3M SJ-5003** (10 × 1 mm), set to 10.0 and `FOOT_INSET` to 8.0. |
+| `FOOT_DEPTH`           | 1.0     | Recess depth (both 5003 and 5018 are 1 mm tall).                          |
+| `FOOT_INSET`           | 9.0     | Recess centre inset from case corner (matched to `FOOT_D = 12.7`).        |
 
 ## Tuning tips
 

@@ -61,10 +61,13 @@ Typical run takes ≈ 30 s on a modern laptop.
 - **Layer height:** 0.2 mm.
 - **Infill:** 30 % gyroid. Bottom shell doesn't take keypress load.
 - **Walls:** 3 perimeters at 0.4 mm.
-- **Supports:** OFF. All overhangs are ≤ 45°; the battery-bay divider slot
-  and vent slots are bridgeable at 2 mm floor thickness.
-- **Expected print time:** ≈ 7–8 h.
-- **Expected filament:** ≈ 90 g.
+- **Supports:** OFF. All overhangs are ≤ 45°; the vent holes (Ø 3 mm)
+  and divider grooves are self-bridging at 2 mm floor thickness.
+- **Bed adhesion (K2 Plus):** **brim 5 mm, 85 °C bed, 235 °C hotend**
+  for first-layer grip. A 6 mm case corner radius (Cycle 2) helps avoid
+  the corner-lift failure mode; the brim covers the residual risk.
+- **Expected print time:** ≈ 9–11 h (Cycle 2 geometry).
+- **Expected filament:** ≈ 55–65 g.
 
 ### PETG shrinkage policy
 
@@ -178,8 +181,12 @@ a PETG-divider unit.
 
 ### Rubber feet
 
-Apply 4× 10 mm Ø × 1 mm self-adhesive bumpers into the corner recesses on
-the case underside. 3M Bumpon SJ-5003 or generic equivalent.
+Apply 4× self-adhesive bumpers into the corner recesses on the case
+underside. Cycle 2 default is **3M SJ-5018 (12.7 mm × 1 mm)** — the
+larger footprint grips desktops better and the 1 mm height matches the
+printed recess depth exactly. The Cycle 1 footprint for **3M SJ-5003
+(10 mm × 1 mm)** is still supported: set `FOOT_D = 10.0` and
+`FOOT_INSET = 8.0` in `claude-code-pad.py` before rebuilding the STL.
 
 ### Screws
 

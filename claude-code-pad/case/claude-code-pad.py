@@ -173,7 +173,9 @@ LIP_CHAMFER = 0.5                  # 45 deg lead-in / relief chamfer
 
 BOTTOM_WALL_THICKNESS = 2.0
 BOTTOM_FLOOR_THICKNESS = 2.0
-PCB_TRAY_STANDOFF = 3.0            # PCB bottom sits 3 mm above case floor (room for B.Cu parts / LEDs / reset)
+# Cycle 2 MINOR #18: 3 -> 5 to clear Kailh hot-swap socket tails (measured
+# 3.2 mm below PCB bottom on MX hotswap sockets). 5 mm leaves 1.8 mm margin.
+PCB_TRAY_STANDOFF = 5.0
 # Bottom interior height needs to cover: standoff(3) + PCB(1.6) + components (~5 mm
 # worst case TH parts below PCB bottom we don't care about -- PCB is at 3 mm off
 # floor, so 3 mm below PCB free for THT leads) + MX switch body to skirt bottom.
@@ -205,16 +207,19 @@ BOSS_HEIGHT = INSERT_DEPTH + 2.5   # 6.7 mm: insert depth + 2.5 mm solid PETG fl
 CASE_FIT_CLEARANCE = 0.4           # 0.2 mm per side PCB-to-wall
 CASE_OUTER_W = BOARD_W + 2 * (BOTTOM_WALL_THICKNESS + CASE_FIT_CLEARANCE)  # ~124.8 mm
 CASE_OUTER_H = BOARD_H + 2 * (BOTTOM_WALL_THICKNESS + CASE_FIT_CLEARANCE)  # ~136.8 mm
-CASE_OUTER_R = 4.0
+CASE_OUTER_R = 6.0                 # Cycle 2 MINOR #17: 4 -> 6 for cool-down stress
 
 # Shift so board local (0,0) maps to case-interior (CASE_WALL+fit, CASE_WALL+fit)
 BOARD_OFFSET_X = BOTTOM_WALL_THICKNESS + CASE_FIT_CLEARANCE
 BOARD_OFFSET_Y = BOTTOM_WALL_THICKNESS + CASE_FIT_CLEARANCE
 
 # --- Print / rubber feet ---
-FOOT_D = 10.0
+# Cycle 2 MINOR #16: default moved from 3M SJ-5003 (10 x 1 mm) to 3M SJ-5018
+# (12.7 x 1 mm) for better grip on desktops. Both variants documented in
+# README; swap FOOT_D / FOOT_DEPTH to match your chosen foot.
+FOOT_D = 12.7          # SJ-5018 default (SJ-5003 alternative = 10.0)
 FOOT_DEPTH = 1.0
-FOOT_INSET = 8.0
+FOOT_INSET = 9.0       # increased with FOOT_D so edge-clearance is preserved
 
 # ============================================================================
 # HELPERS
