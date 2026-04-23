@@ -137,13 +137,22 @@ start, step up 0.001.
 direct self-tap, **no metal insert** — metal within 5 mm of the nRF52840
 antenna detunes the RF match. See `PARAMS.md` §Antenna keepout.
 
-### FR-4 divider (optional but recommended)
+### FR-4 divider (required for fire-safety rating)
 
-Cut a 1.6 mm FR-4 sheet to 53.9 × 9.0 mm. Slide into the 1.8 mm slot on
-the north wall of the battery bay (groove runs E-W). This fire-isolates
-the cell from the PCB electronics per IEC 62133 guidance. If you cannot
-source FR-4, a printed PETG divider will pass structural requirement but
-NOT the UL-94-V0 flammability requirement.
+Cut a 1.6 mm FR-4 sheet to **53.9 × 9.0 mm**. Cycle 2 upgrades the slot
+to **3-edge retention**: grooves run along the bay's north, east, and
+west walls, each 1.8 mm wide × `DIVIDER_HEIGHT` (= `BATT_BAY_DEPTH`) tall.
+The card slides in from above, then bottoms on the bay floor; north,
+east, and west edges sit in the grooves so the divider can't pop out
+under cell swell.
+
+**Install order matters:** the divider must be placed **before** the
+top case is closed. Once the screws are home the bay is a closed box
+and the divider cannot be inserted. See "Assembly sequence" below.
+
+If you cannot source FR-4, a printed PETG divider passes the structural
+requirement but NOT the UL-94-V0 flammability requirement — do not ship
+a PETG-divider unit.
 
 ### Rubber feet
 
@@ -165,18 +174,23 @@ Hand-tighten: snug + 1/8 turn (≤ 0.8 N·m).
 ## Assembly sequence
 
 1. Press 4× M3 heat-set inserts into bottom-case bosses (see above).
-2. Slide FR-4 divider into battery-bay slot.
-3. Place LiPo cell in bay, route JST-PH cable through strain-relief slot
-   (cable wraps around the relief post once, exits through divider pinch).
+2. **Slide the FR-4 divider** into the 3-edge (N + E + W) battery-bay
+   slots. The divider MUST go in now — once the case is closed the
+   bay is a box and you can't reach the grooves.
+3. Place LiPo cell in bay, route JST-PH cable through strain-relief
+   gate (two-wall slot). The cable does not wrap around a post — it
+   passes straight through the gate.
 4. Plug JST-PH into J_BAT1 on the PCB.
-5. Lower the PCB onto the bosses / mid-edge standoffs. Check that TH1 sits
-   directly over the NTC thermal window in the bay floor.
-6. Clip MX switches into the top-case plate (already installed in the top
-   STL). Slide Cherry 2U stab into the Enter position; clip the wire.
-7. Drop the top case onto the bottom case — the lip slips into the bottom
-   interior with a 0.3 mm slip fit. MX switch pins should pass through the
-   PCB hot-swap sockets.
-8. Fasten 4× M3 screws.
+5. Lower the PCB onto the bosses / mid-edge standoffs. Check that TH1
+   sits directly over the NTC thermal membrane (0.4 mm PETG layer —
+   deliberate, not a hole) in the bay floor.
+6. Clip MX switches into the top-case plate (already installed in the
+   top STL). Slide Cherry 2U stab into the Enter position; clip the
+   wire.
+7. Drop the top case onto the bottom case — the 0.5 mm lead-in
+   chamfers let the 0.4 mm slip-fit lip land without snagging. MX
+   switch pins should pass through the PCB hot-swap sockets.
+8. Fasten 4× M3 × 6 mm screws (see §Screws — do NOT use M3 × 8).
 9. Press keycaps. Connect USB-C. Power on.
 
 ## Known gaps / review targets

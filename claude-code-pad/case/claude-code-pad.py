@@ -119,14 +119,20 @@ BATT_BAY_DEPTH = 7.0 + 2.0         # 9 mm (+2 mm vertical clearance)
 # to J_BAT through the divider slot.
 BATT_BAY_CENTRE = (30.0, 75.0)
 
-# Vent slots above battery (2 x  3 x 10 mm)
-VENT_SLOT_W = 10.0
-VENT_SLOT_H = 3.0
-# two slots straddling the bay's long axis, on the bottom case floor
-VENT_SLOTS = [
-    (BATT_BAY_CENTRE[0] - 10.0, BATT_BAY_CENTRE[1]),
-    (BATT_BAY_CENTRE[0] + 10.0, BATT_BAY_CENTRE[1]),
+# Vent geometry (Cycle 2 MAJOR #6/7): replace the 2x slot scheme with round
+# holes that bridge reliably on PETG and deliver >= 150 mm^2 total vent area.
+# 8x Ø3 circles on the bay floor (~56 mm^2) + 4x Ø3 circles through the
+# east and west bay walls into the case exterior sidewall (~28 mm^2 each).
+# Rough total area ~112 mm^2 through floor + 56 through walls = 168 mm^2.
+VENT_HOLE_D = 3.0
+# Floor vents -- 4x2 grid within the bay floor
+FLOOR_VENT_OFFSETS = [
+    (-15.0, -8.0), (-5.0, -8.0), (5.0, -8.0), (15.0, -8.0),
+    (-15.0, 8.0),  (-5.0, 8.0),  (5.0, 8.0),  (15.0, 8.0),
 ]
+# Wall vents -- 2 per east & west bay wall, staggered vertically
+WALL_VENT_Z = [BATT_BAY_DEPTH - 6.0, BATT_BAY_DEPTH - 2.5]
+WALL_VENT_Y_OFFSETS = [-8.0, 8.0]
 
 # FR-4 divider slot (1.6 mm FR-4 thickness, slide-fit groove -- 1.8 mm slot)
 DIVIDER_SLOT_T = 1.8
@@ -505,10 +511,11 @@ def build_bottom_case() -> cq.Workplane:
         )
         body = body.union(rib)
 
-    # Battery bay walls: 4 walls 1.5 mm thick, BATT_BAY_DEPTH high, around
+    # Battery bay walls: 4 walls 2.0 mm thick (Cycle 2 MAJOR #6: 1.5 -> 2.0
+    # for PETG bend stiffness under cell swell + UL flame retention), around
     # BATT_BAY_W x BATT_BAY_H centred on BATT_BAY_CENTRE (board-local -> case).
     bc_x, bc_y = _board_to_case(*BATT_BAY_CENTRE)
-    bay_wall_t = 1.5
+    bay_wall_t = 2.0
     bay_outer_w = BATT_BAY_W + 2 * bay_wall_t
     bay_outer_h = BATT_BAY_H + 2 * bay_wall_t
 
@@ -527,16 +534,37 @@ def build_bottom_case() -> cq.Workplane:
     bay_shell = bay_shell.cut(bay_cavity)
     body = body.union(bay_shell)
 
-    # Divider slot: 1.8 mm groove on the NORTH interior face of the bay
-    # (runs E-W, into the bay wall). Add it as a SUBTRACTION from the north
-    # wall of the bay interior.
-    divider_slot = (
+    # Divider slot: 1.8 mm groove on the NORTH, EAST, and WEST interior faces
+    # of the bay (Cycle 2 MAJOR #12: 3-edge retention so the FR-4 card can't
+    # pop out under cell swell). The north groove runs E-W; the east and west
+    # grooves run N-S, each extending from floor to DIVIDER_HEIGHT.
+    #
+    # Placement of the divider plane: same N position as before
+    # (BATT_BAY_H / 2 - DIVIDER_SLOT_T / 2 north of bay centre). Grooves cut
+    # DIVIDER_SLOT_T / 2 INTO each wall from the interior face.
+    divider_y = bc_y + BATT_BAY_H / 2 - DIVIDER_SLOT_T / 2
+    # North groove (E-W) -- extends into the north wall by full bay-wall_t
+    north_groove = (
         cq.Workplane("XY")
-        .rect(BATT_BAY_W, DIVIDER_SLOT_T)
+        .rect(BATT_BAY_W + 2 * bay_wall_t, DIVIDER_SLOT_T)
         .extrude(DIVIDER_HEIGHT)
-        .translate((bc_x, bc_y + BATT_BAY_H / 2 - DIVIDER_SLOT_T / 2, 0))
+        .translate((bc_x, divider_y, 0))
     )
-    body = body.cut(divider_slot)
+    body = body.cut(north_groove)
+    # East / west grooves (N-S) -- at the divider Y, cut through the east/west
+    # walls to hold the card edge-on.
+    for x_sign in (-1, 1):
+        side_groove = (
+            cq.Workplane("XY")
+            .rect(DIVIDER_SLOT_T, bay_wall_t * 2 + 0.1)
+            .extrude(DIVIDER_HEIGHT)
+            .translate((
+                bc_x + x_sign * (BATT_BAY_W / 2 + bay_wall_t / 2),
+                divider_y,
+                0,
+            ))
+        )
+        body = body.cut(side_groove)
 
     # JST cable exit / strain-relief pinch slot through the north bay wall
     jst_exit = (
@@ -557,16 +585,35 @@ def build_bottom_case() -> cq.Workplane:
     )
     body = body.union(relief_post)
 
-    # Vent slots on the battery bay FLOOR (bottom of case) -- egress
-    for (vx_b, vy_b) in VENT_SLOTS:
-        vx, vy = _board_to_case(vx_b, vy_b)
+    # Vents (Cycle 2 MAJOR #7): 8x Ø3 holes through the bay FLOOR + 4x Ø3
+    # holes through the east and west bay WALLS, for >=150 mm^2 total vent
+    # area. All apertures shrink-compensated so the cooled holes land at Ø3.
+    vent_d = _shrink(VENT_HOLE_D)
+    # Floor vents -- small round holes across the bay floor
+    for (dx, dy) in FLOOR_VENT_OFFSETS:
         vent = (
             cq.Workplane("XY")
-            .rect(VENT_SLOT_W, VENT_SLOT_H)
-            .extrude(BOTTOM_FLOOR_THICKNESS + 0.2)
-            .translate((vx, vy, -BOTTOM_FLOOR_THICKNESS - 0.1))
+            .circle(vent_d / 2)
+            .extrude(BOTTOM_FLOOR_THICKNESS + 0.3)
+            .translate((bc_x + dx, bc_y + dy,
+                        -BOTTOM_FLOOR_THICKNESS - 0.1))
         )
         body = body.cut(vent)
+    # Wall vents -- through east and west bay walls into the case sidewall.
+    # Bay east/west wall outer face is at bc_x +/- (BATT_BAY_W/2 + bay_wall_t).
+    # Cut a horizontal cylinder (axis along X) all the way through the wall.
+    for x_sign in (-1, 1):
+        wall_centre_x = bc_x + x_sign * (BATT_BAY_W / 2 + bay_wall_t / 2)
+        for z_level in WALL_VENT_Z:
+            for dy in WALL_VENT_Y_OFFSETS:
+                vent = (
+                    cq.Workplane("YZ", origin=(wall_centre_x,
+                                                bc_y + dy,
+                                                z_level))
+                    .circle(vent_d / 2)
+                    .extrude(bay_wall_t + 0.5, both=True)
+                )
+                body = body.cut(vent)
 
     # NTC thermal window: small 6 x 3 mm slot above the TH1 body so it reads
     # the battery-bay ambient directly (no cap of plastic between cell and NTC)

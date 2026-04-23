@@ -96,15 +96,23 @@ auto-demote them to self-tap.
 
 ## Safety features
 
-| Parameter          | Default        | Purpose                                                                  |
-| ------------------ | -------------- | ------------------------------------------------------------------------ |
-| `VENT_SLOT_W`      | 10.0           | Floor vent slot width.                                                   |
-| `VENT_SLOT_H`      | 3.0            | Floor vent slot height.                                                  |
-| `VENT_SLOTS`       | 2 × `(X, Y)`   | Positions of thermal egress slots in the battery-bay floor.              |
-| `DIVIDER_SLOT_T`   | 1.8            | Groove width for the 1.6 mm FR-4 divider (slide fit).                    |
-| `DIVIDER_HEIGHT`   | = `BATT_BAY_DEPTH` | Divider spans full bay depth.                                        |
-| `JST_EXIT_W`       | 2.5            | Width of the JST-PH cable pinch-slot in the divider.                     |
-| `JST_EXIT_H`       | 4.0            | Height of same.                                                          |
+| Parameter              | Default                 | Purpose                                                                  |
+| ---------------------- | ----------------------- | ------------------------------------------------------------------------ |
+| `VENT_HOLE_D`          | 3.0                     | Cycle-2 vent geometry: round holes (Ø 3) in place of Cycle-1 slots (bridging failure mode on PETG). |
+| `FLOOR_VENT_OFFSETS`   | 8 × `(dx, dy)`          | 4×2 grid of Ø 3 holes in the bay floor (~56 mm²).                         |
+| `WALL_VENT_Z`          | `[D-6.0, D-2.5]`         | Z heights for wall vents (relative to floor, D = `BATT_BAY_DEPTH`).       |
+| `WALL_VENT_Y_OFFSETS`  | `[-8.0, 8.0]`            | Y offsets for wall-vent pairs, giving 4 holes per east/west wall.         |
+| `DIVIDER_SLOT_T`       | 1.8                     | Groove width for the 1.6 mm FR-4 divider (slide fit).                    |
+| `DIVIDER_HEIGHT`       | = `BATT_BAY_DEPTH`      | Divider spans full bay depth.                                            |
+| Divider retention      | 3-edge (N + E + W)      | Cycle-2 MAJOR #12: grooves on all three walls, not just north.            |
+| `JST_EXIT_W`           | 2.5                     | Width of the JST-PH cable pinch-slot in the divider.                     |
+| `JST_EXIT_H`           | 4.0                     | Height of same.                                                          |
+| Battery-bay wall thickness | 2.0 mm              | Cycle-2 MAJOR #6: 1.5 → 2.0 for stiffness + UL flame-retention margin.    |
+
+**Total vent area:** floor 8 × π (1.5)² ≈ 57 mm² + walls 4 × π (1.5)² ≈
+28 mm² per side × 2 sides = 56 mm² → ≈ 113 mm² through floor + walls
+combined. With the FR-4 divider in place, the through-divider path adds
+more egress if the divider includes builder-drilled weep holes.
 
 Strain-relief post: 2 mm Ø cylinder inside the bay, 2.5 mm east and
 2.0 mm south of the cable exit — the JST-PH cable wraps once around it so
