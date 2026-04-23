@@ -169,11 +169,16 @@ BOTTOM_INTERIOR_HEIGHT = max(BOTTOM_INTERIOR_HEIGHT, BATT_BAY_DEPTH + 1.0)
 BOTTOM_WALL_TOP_Z = BOTTOM_INTERIOR_HEIGHT   # mating plane Z (case frame)
 BOTTOM_CASE_TOTAL_H = BOTTOM_FLOOR_THICKNESS + BOTTOM_INTERIOR_HEIGHT
 
-# --- Heat-set insert bosses (M3 x L4-L5 brass, IUB-M3-L4, 4.1 mm insertion dia, tapered pilot) ---
-INSERT_DIA = 4.1                   # heat-set pilot dia for M3 brass insert (L4 typical)
-INSERT_DEPTH = 5.0
-BOSS_OD = 7.0                      # outer diameter of boss (wall 1.45 mm around insert)
-BOSS_HEIGHT = INSERT_DEPTH + 1.0
+# --- Heat-set insert bosses (M3, CNC-Kitchen IUB-M3-L4 brass, 4 mm long) ----
+# Cycle 2 MAJOR #4: bump wall around insert to 2.0 mm for PETG fracture safety.
+# Insert dia 4.0 nominal (brass knurl pre-flow); pilot is _shrink()ed at cut
+# time so the cooled pilot lands at 4.0 mm. Insert depth 4.2 mm > IUB-M3-L4 4.0
+# gives 0.2 mm float before the insert bottoms out, accepting normal print Z
+# variance without pushing a hot insert against a hard stop.
+INSERT_DIA = 4.0                   # pilot Ø (nominal, pre-shrinkage)
+INSERT_DEPTH = 4.2                 # pilot depth (mates IUB-M3-L4, 4 mm long, + 0.2 mm float)
+BOSS_OD = 8.0                      # outer Ø of boss (2.0 mm wall around insert)
+BOSS_HEIGHT = INSERT_DEPTH + 2.5   # 6.7 mm: insert depth + 2.5 mm solid PETG floor
 
 # --- Case outline (board + wall + fit clearance) ---
 CASE_FIT_CLEARANCE = 0.4           # 0.2 mm per side PCB-to-wall

@@ -110,16 +110,27 @@ tight), bracket with new `COUPON_SHRINK_STEPS` values and repeat — e.g.
 
 ### Heat-set insert procedure (bottom case, 4× M3 brass inserts)
 
-1. Chuck an M3 heat-set insert (CNC-Kitchen IUB-M3-L4 or equivalent, 4.1 mm
-   pilot dia, L = 4.0 mm) onto a soldering iron tip rated for inserts.
-2. Set iron to **240 °C**.
-3. Seat the insert into each boss pilot (BOSS_OD 7 mm, pilot 4.1 mm,
-   INSERT_DEPTH 5 mm). Press DOWN until the insert's flange is flush with
-   the boss top. **Do not push past flush** — PETG flows and you'll bury the
-   insert.
-4. Withdraw the iron; let the insert cool for 30 s before disturbing.
-5. Check thread by running an M3 screw in by hand — it should turn in
+1. Chuck an M3 heat-set insert (CNC-Kitchen IUB-M3-L4 or equivalent, 4.0 mm
+   knurl Ø, L = 4.0 mm) onto a soldering iron tip rated for inserts.
+2. Set iron to **240 °C** (PETG flow temp — above glass transition but
+   below decomposition; aim for a 3–5 s press, not a 10 s press).
+3. Seat the insert into each boss pilot (BOSS_OD 8 mm, pilot Ø 4.0 mm nominal,
+   INSERT_DEPTH 4.2 mm). Press straight DOWN under the insert's own weight
+   + a light 1–2 N assist — DO NOT lean. Stop when the insert flange is
+   flush with the boss top.
+4. **Torque guidance:** no torque applied during insertion — hand-press only.
+   After the insert cools, the M3 screw pull-out strength is ≈ 4 N·m in
+   PETG; budget screw torque ≤ 0.8 N·m (snug + 1/8 turn).
+5. Withdraw the iron cleanly (straight up, don't wiggle); let the boss
+   cool for 30 s.
+6. Check thread by running an M3 screw in by hand — it should turn in
    smoothly with no cross-thread.
+
+**Pilot hole is shrinkage-compensated:** the CAD authors the hole at
+`INSERT_DIA * (1 + SHRINK_COMPENSATION)` so the cooled pilot lands at
+4.0 mm. If the insert goes in too loose (spinning with light torque),
+step `SHRINK_COMPENSATION` down 0.001 and reprint; if it refuses to
+start, step up 0.001.
 
 **Exception:** bosses within the antenna keepout envelope (5 mm around the
 25 × 10.3 mm XIAO antenna patch) are printed as 2.8 mm pilot holes for
@@ -141,8 +152,15 @@ the case underside. 3M Bumpon SJ-5003 or generic equivalent.
 
 ### Screws
 
-4× M3 × 8 mm countersunk or pan-head machine screws. Thread into the heat-
-set inserts from the top case side. Hand-tighten + 1/8 turn.
+4× **M3 × 6 mm** countersunk or pan-head machine screws. Thread into
+the heat-set inserts from the top case side. Stack consumes ≈ plate
+(1.5) + lip landing (2.5) = 4.0 mm ahead of the insert; M3 × 6 leaves
+2 mm of thread engagement inside the IUB-M3-L4 (4 mm long) — the
+remainder is spare. **Do not use M3 × 8** — it bottoms in the insert's
+blind end before the head lands, so the joint clamps on the screw
+point rather than the head.
+
+Hand-tighten: snug + 1/8 turn (≤ 0.8 N·m).
 
 ## Assembly sequence
 

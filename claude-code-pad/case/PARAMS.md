@@ -129,10 +129,14 @@ a tug doesn't transmit force to the PCB JST solder joints.
 
 | Parameter       | Default | Purpose                                                                 |
 | --------------- | ------- | ----------------------------------------------------------------------- |
-| `INSERT_DIA`    | 4.1     | Pilot Ø for M3 brass heat-set insert (CNC Kitchen IUB-M3-L4).           |
-| `INSERT_DEPTH`  | 5.0     | Pilot depth.                                                            |
-| `BOSS_OD`       | 7.0     | Boss outer Ø (1.45 mm wall around insert).                              |
-| `BOSS_HEIGHT`   | 6.0     | Boss total height above floor.                                          |
+| `INSERT_DIA`    | 4.0     | Pilot Ø for M3 brass heat-set insert (CNC Kitchen IUB-M3-L4 nominal, pre-shrinkage). Shrink-compensated at cut time. |
+| `INSERT_DEPTH`  | 4.2     | Pilot depth = IUB-M3-L4 length (4.0 mm) + 0.2 mm float so the insert never hard-stops on the pilot floor. |
+| `BOSS_OD`       | 8.0     | Boss outer Ø (**2.0 mm** wall around insert, Cycle-2 uprating of the 1.45 mm Cycle-1 wall — PETG fractures at 1.45 mm with knurl-induced hoop stress). |
+| `BOSS_HEIGHT`   | 6.7     | `INSERT_DEPTH + 2.5` — 2.5 mm solid PETG floor under the insert.        |
+
+Matching screw: **M3 × 6 mm** (plate 1.5 + lip 2.5 landed = ~4 mm of
+clamped material ahead of the insert, so M3 × 8 over-inserts and
+bottoms in the insert's blind end).
 
 ## Case outer geometry + feet
 
