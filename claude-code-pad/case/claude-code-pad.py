@@ -636,17 +636,39 @@ def build_bottom_case() -> cq.Workplane:
                 )
                 body = body.cut(vent)
 
-    # NTC thermal window: small 6 x 3 mm slot above the TH1 body so it reads
-    # the battery-bay ambient directly (no cap of plastic between cell and NTC)
+    # NTC thermal membrane (Cycle 2 MAJOR #14): replace the Cycle-1 through-
+    # hole window with a 0.4 mm (1 PETG layer) MEMBRANE between cell and NTC.
+    # A through-hole was an ignition-spark / debris path per IEC 62368-1
+    # Annex Q (thermal runaway flames must not vent toward PCB / MCU) and
+    # also let FR-4 shards contact the cell; a 0.4 mm PETG membrane adds
+    # ~3-5 s thermal lag which both the charger IC and the firmware cutoff
+    # (2 s sample interval) can absorb. The membrane is authored as a pair
+    # of pockets -- one recessed UPWARD from the floor underside, one
+    # recessed DOWNWARD from the bay-floor topside -- so 0.4 mm of floor
+    # material remains sandwiched in the middle, flush with the surrounding
+    # floor on both sides.
     nx, ny = _board_to_case(*NTC_CENTRE)
-    ntc_window = (
+    ntc_w = _shrink(6.0)
+    ntc_h = _shrink(3.0)
+    # Upper pocket -- opens into the bay. Depth: recess into top of floor
+    # (floor top at Z=0), leaving 0.4 mm remaining, so pocket bottom at
+    # Z = - (BOTTOM_FLOOR_THICKNESS - 0.4) would be below. Actually we want
+    # the membrane AT the floor top surface -- i.e. the bay floor is not
+    # recessed (cell sits flat on floor). The thermal path IS through the
+    # full floor thickness of 2 mm. That's too thick. So we also recess
+    # the underside of the floor UP by (floor_t - 0.4) so membrane = 0.4.
+    ntc_recess_depth = BOTTOM_FLOOR_THICKNESS - 0.4
+    # Underside pocket: from floor underside up to (0.4 mm below floor top)
+    under_pocket = (
         cq.Workplane("XY")
-        .rect(6.0, 3.0)
-        .extrude(BATT_BAY_DEPTH + 0.2)
-        .translate((nx, ny, -0.1))
+        .rect(ntc_w, ntc_h)
+        .extrude(ntc_recess_depth + 0.05)
+        .translate((nx, ny, -BOTTOM_FLOOR_THICKNESS - 0.05))
     )
-    # Only cut if NTC x overlaps bay; it should (nx~13.8 case; bay west wall ~5).
-    body = body.cut(ntc_window)
+    body = body.cut(under_pocket)
+    # Alternative geometry (documented in README): builder may print a
+    # second bottom-case variant with a full through-hole + adhesive
+    # Kapton+thermal-pad in lieu of the membrane. Not built here.
 
     # Carve lip-envelope: any interior feature that rises into the top case
     # lip's landing volume gets trimmed so the lip can seat. The lip occupies

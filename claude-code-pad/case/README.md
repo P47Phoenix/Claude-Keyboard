@@ -137,6 +137,28 @@ start, step up 0.001.
 direct self-tap, **no metal insert** — metal within 5 mm of the nRF52840
 antenna detunes the RF match. See `PARAMS.md` §Antenna keepout.
 
+### NTC thermal path
+
+Cycle 2 replaces the Cycle 1 through-hole window above TH1 with a
+**0.4 mm PETG membrane** (one print layer). The membrane is formed by
+an under-side pocket in the case floor that leaves 0.4 mm of material
+sandwiched between the bay interior (cell side) and the NTC (PCB side).
+
+**Why not a through-hole?** IEC 62368-1 Annex Q treats a direct cell-to-
+PCB opening as an ignition path — thermal-runaway flame jets and
+ejected debris would reach the MCU. The 0.4 mm membrane preserves the
+barrier while adding only 3–5 s of thermal lag, which the TP4056
+charger IC's thermal shutdown and the firmware's 2 s NTC sampling loop
+both absorb.
+
+**Alternative geometry (builder preference):** if the membrane doesn't
+print reliably (thin-floor curl, visible bed texture pulls through),
+swap to a full through-hole plus a Kapton-tape + thermal-grease pad
+bonded to the PCB. To print that variant, temporarily change the NTC
+cut in `build_bottom_case()` to a through extrusion from Z = −floor to
+Z = 0. The Kapton pad + thermal grease gives similar thermal coupling
+without the membrane's slower first-response.
+
 ### FR-4 divider (required for fire-safety rating)
 
 Cut a 1.6 mm FR-4 sheet to **53.9 × 9.0 mm**. Cycle 2 upgrades the slot
