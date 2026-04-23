@@ -3,6 +3,21 @@
 All parameters live at the top of `claude-code-pad.py`. Tweak and re-run
 to regenerate the STL / STEP outputs. Dimensions in millimetres.
 
+## Shrinkage compensation (Cycle 2)
+
+| Parameter             | Default                | Purpose                                                              |
+| --------------------- | ---------------------- | -------------------------------------------------------------------- |
+| `SHRINK_COMPENSATION` | 0.005                  | Factor by which every INNER cutout is upscaled so the cooled part lands on nominal. 0.5 % is a K2-Plus / PETG baseline — **calibrate per-printer / per-filament**. |
+| `COUPON_SHRINK_STEPS` | `[0.003, 0.005, 0.007]` | Three row-wise shrink values baked into `test-coupon.stl` so a single print reveals which value clips MX switches cleanly. |
+
+The compensation is applied via `_shrink(nominal)` to: MX cutouts, 2U
+stab slots + wire holes, the encoder knob hole, M3 clearance holes in
+the plate, the USB-C slot, the slide-switch window, and the heat-set
+insert pilot holes. It is **not** applied to outer shells or wall
+thicknesses (outer walls shrink inward — scaling the shell up would
+make the case oversized). See `README.md` §Print calibration for the
+coupon-driven calibration procedure.
+
 ## Board constants (read from PCB Edge.Cuts, aux origin = 100, 100)
 
 | Parameter          | Default | Purpose                                                       |

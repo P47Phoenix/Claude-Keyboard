@@ -17,6 +17,7 @@ surface of the bottom-case FLOOR, i.e. the interior of the bottom shell.
 | `top-case.stl`        | Print-ready top plate (1.5 mm) + 2.5 mm slip-fit lip, with MX cutouts, 2U stab, USB-C, encoder.    |
 | `bottom-case.stl`     | Print-ready bottom tray — 2 mm walls/floor, 4× M3 heat-set bosses, battery bay, vents, feet.       |
 | `assembly.step`       | Full STEP assembly: top + bottom + placeholder PCB/battery/encoder/USB-C for Fusion 360 checking. |
+| `test-coupon.stl`     | 90 × 90 mm shrinkage-calibration coupon — 3 × 3 MX cutouts at 3 different compensation values.    |
 | `PARAMS.md`           | Table of all exposed CadQuery parameters with defaults and what they control.                     |
 
 ## Build
@@ -67,10 +68,43 @@ Typical run takes ≈ 30 s on a modern laptop.
 
 ### PETG shrinkage policy
 
-MX cutouts are authored at 14.00 mm nominal. PETG shrinkage is 0.4–0.8 %
-depending on colour and brand, so the printed cutout will be 13.89–13.94 mm.
-If your MX switches are sloppy, tweak `KEY_CUTOUT` up to 14.10 mm and
-reprint; if they're too tight, sand corners lightly with a flat needle file.
+Cycle 2 introduces a true compensation framework instead of the Cycle 1
+"manually bump the nominal if switches are sloppy" hack.
+
+`SHRINK_COMPENSATION` (default **0.005**) is applied via `_shrink()` to
+every inner aperture: MX cutouts, 2U stab slots + wire holes, encoder
+knob hole, M3 clearance holes, USB-C slot, slide-switch window, and the
+heat-set insert pilot holes. The 0.005 (0.5 %) default is an empirical
+K2 Plus / PETG baseline — **calibrate for your own printer and filament
+before printing the full case.**
+
+### Print calibration (test coupon)
+
+`case/test-coupon.stl` is a small 90 × 90 × 1.5 mm plate with a 3 × 3
+grid of MX-switch cutouts. The three **rows** each use a different
+compensation from `COUPON_SHRINK_STEPS = [0.003, 0.005, 0.007]`:
+
+- **North row (top of print)** — 0.3 % compensation (14.042 mm authored)
+- **Middle row**              — 0.5 % compensation (14.070 mm authored) — **default**
+- **South row (bottom)**      — 0.7 % compensation (14.098 mm authored)
+
+Procedure:
+
+1. Print `test-coupon.stl` flat on the bed with identical slicer settings
+   to the real case (PETG, 0.16 mm layer height, 60 % infill, 235 °C
+   hotend, 85 °C bed, brim on).
+2. Drop an MX switch into each cell.
+3. Identify the row whose switches clip with a firm click but slide in
+   without forcing. Columns are identical within a row — you're judging
+   rows, not columns.
+4. If middle row is best: leave `SHRINK_COMPENSATION = 0.005`. If north:
+   drop to 0.003. If south: raise to 0.007.
+5. Re-run `case/.venv/bin/python case/claude-code-pad.py` to regenerate
+   STLs with the calibrated value, then print the real case.
+
+If none of the three rows is acceptable (e.g. all too loose or all too
+tight), bracket with new `COUPON_SHRINK_STEPS` values and repeat — e.g.
+`[0.008, 0.010, 0.012]` if the 0.7 % row was still sloppy.
 
 ## Post-processing
 

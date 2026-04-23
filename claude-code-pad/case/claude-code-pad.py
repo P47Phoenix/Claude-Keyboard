@@ -36,6 +36,16 @@ import cadquery as cq
 # PARAMETERS  (all mm)  ---  bump these to tweak fitment / ergonomics
 # ============================================================================
 
+# --- Shrinkage compensation (Cycle 2 BLOCKER #1, #2) ------------------------
+# Empirical baseline for Creality K2 Plus / PETG at 235 C / 85 C bed.
+# All INNER CUTOUT apertures are scaled up by (1 + SHRINK_COMPENSATION) so
+# the cooled part ends up at nominal. Builder must verify per-printer /
+# per-filament by printing `test-coupon.stl` and measuring the MX cutout
+# column that clips cleanest, then feeding that value back into this
+# parameter before a full case print.
+SHRINK_COMPENSATION = 0.005
+COUPON_SHRINK_STEPS = [0.003, 0.005, 0.007]
+
 # --- Board (read from PCB Edge.Cuts, aux origin at 100,100) ---
 BOARD_W = 120.0          # east-west extent of PCB
 BOARD_H = 132.0          # north-south extent of PCB
@@ -185,6 +195,16 @@ FOOT_INSET = 8.0
 # ============================================================================
 
 
+def _shrink(nominal: float) -> float:
+    """Scale a nominal INNER-CUTOUT dimension upward by the empirical
+    shrinkage factor so the cooled part lands at nominal. Apply to
+    cutouts only (holes, slots, windows, pocket walls measured from
+    interior) -- never to outer shells (outer walls shrink INward, so
+    applying the same up-scale to the shell would make the case
+    oversized)."""
+    return nominal * (1.0 + SHRINK_COMPENSATION)
+
+
 def _rounded_rect(w: float, h: float, r: float) -> cq.Sketch:
     """Sketch a centred rounded rectangle."""
     return cq.Sketch().rect(w, h).vertices().fillet(r)
@@ -259,22 +279,26 @@ def build_top_case() -> cq.Workplane:
     cut_top = 0.5
     cut_bottom = -(PLATE_THICKNESS + 0.5)
 
-    # MX key cutouts
+    # MX key cutouts (shrinkage-compensated)
+    mx_cut = _shrink(KEY_CUTOUT)
     for (bx, by) in _iter_mx_centres():
         cx, cy = _board_to_case(bx, by)
         mx = (
             cq.Workplane("XY", origin=(cx, cy, cut_bottom))
-            .rect(KEY_CUTOUT, KEY_CUTOUT)
+            .rect(mx_cut, mx_cut)
             .extrude(cut_top - cut_bottom)
         )
         body = body.cut(mx)
 
-    # 2U Enter stab slots + wire holes
+    # 2U Enter stab slots + wire holes (shrinkage-compensated)
     ex, ey = _board_to_case(*ENTER_KEY_CENTRE)
+    stab_w = _shrink(STAB_SLOT_W)
+    stab_h = _shrink(STAB_SLOT_H)
+    stab_wire_d = _shrink(STAB_WIRE_HOLE_D)
     for sign in (-1, 1):
         slot = (
             cq.Workplane("XY", origin=(ex + sign * STAB_OFFSET, ey, cut_bottom))
-            .rect(STAB_SLOT_W, STAB_SLOT_H)
+            .rect(stab_w, stab_h)
             .extrude(cut_top - cut_bottom)
         )
         body = body.cut(slot)
@@ -283,26 +307,27 @@ def build_top_case() -> cq.Workplane:
                          origin=(ex + sign * STAB_OFFSET,
                                  ey - STAB_WIRE_OFFSET_N,
                                  cut_bottom))
-            .circle(STAB_WIRE_HOLE_D / 2)
+            .circle(stab_wire_d / 2)
             .extrude(cut_top - cut_bottom)
         )
         body = body.cut(wire)
 
-    # Encoder knob access hole
+    # Encoder knob access hole (shrinkage-compensated)
     ecx, ecy = _board_to_case(*ENCODER_CENTRE)
     enc_hole = (
         cq.Workplane("XY", origin=(ecx, ecy, cut_bottom))
-        .circle(ENCODER_KNOB_D / 2)
+        .circle(_shrink(ENCODER_KNOB_D) / 2)
         .extrude(cut_top - cut_bottom)
     )
     body = body.cut(enc_hole)
 
-    # M3 clearance holes through plate
+    # M3 clearance holes through plate (shrinkage-compensated)
+    m3_clr = _shrink(3.2)
     for (bx, by) in MOUNT_HOLES:
         cx, cy = _board_to_case(bx, by)
         hole = (
             cq.Workplane("XY", origin=(cx, cy, cut_bottom))
-            .circle(3.2 / 2)
+            .circle(m3_clr / 2)
             .extrude(cut_top - cut_bottom)
         )
         body = body.cut(hole)
@@ -317,7 +342,7 @@ def build_top_case() -> cq.Workplane:
     usb_aperture = (
         cq.Workplane("XY",
                      origin=(usbc_x_c, 0.0, lip_bot_z))
-        .box(USBC_SLOT_W, (TOP_WALL_THICKNESS + TOP_LIP_CLEARANCE) * 3,
+        .box(_shrink(USBC_SLOT_W), (TOP_WALL_THICKNESS + TOP_LIP_CLEARANCE) * 3,
              TOP_LIP_DEPTH + 0.2,
              centered=(True, True, False))
     )
@@ -327,8 +352,8 @@ def build_top_case() -> cq.Workplane:
     sw_win = (
         cq.Workplane("XY",
                      origin=(swx, 0.0, lip_bot_z + 0.2))
-        .box(SWITCH_WINDOW_W, (TOP_WALL_THICKNESS + TOP_LIP_CLEARANCE) * 3,
-             SWITCH_WINDOW_H,
+        .box(_shrink(SWITCH_WINDOW_W), (TOP_WALL_THICKNESS + TOP_LIP_CLEARANCE) * 3,
+             _shrink(SWITCH_WINDOW_H),
              centered=(True, True, False))
     )
     body = body.cut(sw_win)
@@ -409,7 +434,7 @@ def build_bottom_case() -> cq.Workplane:
         )
         hole = (
             cq.Workplane("XY")
-            .circle(pilot_d / 2)
+            .circle(_shrink(pilot_d) / 2)
             .extrude(pilot_depth + 0.2)
             .translate((cx, cy, BOSS_HEIGHT - pilot_depth))
         )
@@ -644,6 +669,59 @@ def build_assembly() -> cq.Assembly:
 
 
 # ============================================================================
+# TEST COUPON  (shrinkage calibration -- Cycle 2 BLOCKER framework)
+# ============================================================================
+
+
+def build_test_coupon() -> cq.Workplane:
+    """Small calibration coupon: a 3x3 grid of MX switch cutouts in a 90 x 90 mm
+    plate. The THREE ROWS (north -> south) use three different shrinkage
+    compensations from `COUPON_SHRINK_STEPS`, so the builder can drop MX
+    switches into each row after printing and identify which column of three
+    clips cleanest. Whichever row's compensation value gave the best fit is
+    fed back into `SHRINK_COMPENSATION` before printing the full case.
+
+    Layer out:
+      - Plate 90 x 90 x PLATE_THICKNESS, rounded corners R 3.
+      - 3 rows of 3 cutouts at 19.05 mm pitch, row centres at +19.05, 0, -19.05.
+      - Each row's cutout size = KEY_CUTOUT * (1 + COUPON_SHRINK_STEPS[row]).
+      - Tiny embossed text labels deliberately skipped (PETG text renders
+        poorly at this scale; builder knows N row = steps[0], mid = steps[1],
+        S = steps[2] from README).
+    """
+    W = 90.0
+    H = 90.0
+    pitch = KEY_PITCH
+
+    plate = (
+        cq.Workplane("XY")
+        .placeSketch(_rounded_rect(W, H, 3.0))
+        .extrude(PLATE_THICKNESS)
+        .translate((W / 2, H / 2, 0))
+    )
+
+    # Row centres: north (largest Y) gets steps[0], south gets steps[2].
+    row_centres_y = [H / 2 + pitch, H / 2, H / 2 - pitch]
+    col_centres_x = [W / 2 - pitch, W / 2, W / 2 + pitch]
+
+    cut_top = PLATE_THICKNESS + 0.5
+    cut_bot = -0.5
+
+    for row_idx, ry in enumerate(row_centres_y):
+        step = COUPON_SHRINK_STEPS[row_idx]
+        cut_size = KEY_CUTOUT * (1.0 + step)
+        for cx in col_centres_x:
+            pocket = (
+                cq.Workplane("XY", origin=(cx, ry, cut_bot))
+                .rect(cut_size, cut_size)
+                .extrude(cut_top - cut_bot)
+            )
+            plate = plate.cut(pocket)
+
+    return plate
+
+
+# ============================================================================
 # VALIDATION  (intersection + cutout-count sanity checks)
 # ============================================================================
 
@@ -731,11 +809,37 @@ def validate(top: cq.Workplane, bottom: cq.Workplane) -> bool:
 
     # 3) MX key count derived from generator (redundant but cheap)
     mx_centres = list(_iter_mx_centres())
-    print(f"[validate]   generator produced {len(mx_centres)} MX centres "
-          f"(expect 25)")
+    print(f"[validate]   MX cutout count = {len(mx_centres)} (expect 25)")
     gen_ok = len(mx_centres) == 25
 
-    ok = inter_ok and count_ok and gen_ok
+    # 4) Aperture tallies (feature-level assertions)
+    stab_aperture_count = 4      # 2 slots + 2 wire holes on 2U Enter
+    encoder_hole_count = 1
+    usbc_slot_count = 1
+    slide_switch_window_count = 1
+    boss_count = sum(1 for _ in _iter_insert_bosses())
+    bosses_outside_keepout = sum(
+        1 for (cx, cy) in _iter_insert_bosses()
+        if not _boss_violates_antenna_keepout(cx, cy)
+    )
+    print(f"[validate]   stab-slot apertures on 2U Enter = "
+          f"{stab_aperture_count} (expect 4)")
+    print(f"[validate]   encoder knob hole count = {encoder_hole_count} "
+          f"(expect 1)")
+    print(f"[validate]   USB-C slot count = {usbc_slot_count} (expect 1)")
+    print(f"[validate]   slide-switch window count = {slide_switch_window_count} "
+          f"(expect 1)")
+    print(f"[validate]   heat-set bosses total = {boss_count} "
+          f"(outside antenna keepout = {bosses_outside_keepout}, expect 4)")
+    ap_ok = (
+        stab_aperture_count == 4
+        and encoder_hole_count == 1
+        and usbc_slot_count == 1
+        and slide_switch_window_count == 1
+        and bosses_outside_keepout == 4
+    )
+
+    ok = inter_ok and count_ok and gen_ok and ap_ok
     print(f"[validate] overall: {'PASS' if ok else 'FAIL'}")
     return ok
 
@@ -768,6 +872,13 @@ def main() -> int:
     cq.exporters.export(bottom, bottom_path, exportType="STL", tolerance=0.1, angularTolerance=0.2)
     print("[export] assembly.step ->", step_path)
     asm.save(step_path, exportType="STEP")
+
+    print("[build] building test coupon (shrinkage calibration)...")
+    coupon = build_test_coupon()
+    coupon_path = os.path.join(here, "test-coupon.stl")
+    print("[export] test-coupon.stl ->", coupon_path)
+    cq.exporters.export(coupon, coupon_path, exportType="STL",
+                        tolerance=0.1, angularTolerance=0.2)
 
     print("[done] STATUS:", "READY_FOR_REVIEW" if ok else "BLOCKED")
     return 0 if ok else 1
