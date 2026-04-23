@@ -114,9 +114,12 @@ auto-demote them to self-tap.
 combined. With the FR-4 divider in place, the through-divider path adds
 more egress if the divider includes builder-drilled weep holes.
 
-Strain-relief post: 2 mm Ø cylinder inside the bay, 2.5 mm east and
-2.0 mm south of the cable exit — the JST-PH cable wraps once around it so
-a tug doesn't transmit force to the PCB JST solder joints.
+**Strain relief (Cycle 2 MAJOR #11): cable gate.** The Cycle 1 Ø 2 mm
+cantilever post is gone. In its place: a pair of 2 mm-thick PETG walls
+standing 6 mm tall inside the bay, 2 mm apart, directly behind the
+cable exit. The JST-PH cable passes BETWEEN the walls so any pull-out
+force is resisted as wall-on-wall SHEAR (much stiffer than a 2 mm
+cantilever). No wrap-around required.
 
 ## Wall / plate / mating geometry
 

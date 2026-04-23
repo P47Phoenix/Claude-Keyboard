@@ -566,24 +566,45 @@ def build_bottom_case() -> cq.Workplane:
         )
         body = body.cut(side_groove)
 
-    # JST cable exit / strain-relief pinch slot through the north bay wall
+    # JST cable exit / strain-relief gate (Cycle 2 MAJOR #11): replace the
+    # cantilever relief post with a two-wall "cable gate". Two 2 mm-thick
+    # walls form a 2 mm-wide slot through which the JST-PH cable passes.
+    # The cable is pinched in SHEAR between the two walls (and between the
+    # walls and the inner face of the north bay wall when seated), so tug-
+    # out load is carried as wall-on-wall shear, not cantilever.
+    gate_gap = JST_EXIT_W          # cable slot width (unchanged, 2.5 mm)
+    gate_wall_t = 2.0              # wall thickness per side of the gate
+    gate_height = 6.0              # gate wall height above floor
+    gate_y = bc_y + BATT_BAY_H / 2 - bay_wall_t - 1.0   # just inside north wall
+    gate_cx = bc_x - BATT_BAY_W / 4                     # aligned with cable exit
+
+    # Cable exit through the north bay wall -- still a pinch slot, but now
+    # sits directly behind the gate
     jst_exit = (
         cq.Workplane("XY")
-        .box(JST_EXIT_W, bay_wall_t * 2 + 0.5, JST_EXIT_H,
+        .box(_shrink(JST_EXIT_W), bay_wall_t * 2 + 0.5, _shrink(JST_EXIT_H),
              centered=(True, True, False))
-        .translate((bc_x - BATT_BAY_W / 4, bc_y + BATT_BAY_H / 2 + bay_wall_t / 2, BATT_BAY_DEPTH - JST_EXIT_H - 1.0))
+        .translate((gate_cx,
+                    bc_y + BATT_BAY_H / 2 + bay_wall_t / 2,
+                    BATT_BAY_DEPTH - JST_EXIT_H - 1.0))
     )
     body = body.cut(jst_exit)
 
-    # Strain-relief post: small cylinder 2 mm dia just past the exit hole,
-    # inside the bay, so the cable routes around it
-    relief_post = (
-        cq.Workplane("XY")
-        .circle(1.0)
-        .extrude(BATT_BAY_DEPTH - 1.0)
-        .translate((bc_x - BATT_BAY_W / 4 + 2.5, bc_y + BATT_BAY_H / 2 - 2.0, 0))
-    )
-    body = body.union(relief_post)
+    # Two gate walls, east + west of the cable path
+    for x_sign in (-1, 1):
+        gate_wall = (
+            cq.Workplane("XY")
+            .box(gate_wall_t,
+                 bay_wall_t + 1.5,
+                 gate_height,
+                 centered=(True, True, False))
+            .translate((
+                gate_cx + x_sign * (gate_gap / 2 + gate_wall_t / 2),
+                gate_y,
+                0,
+            ))
+        )
+        body = body.union(gate_wall)
 
     # Vents (Cycle 2 MAJOR #7): 8x Ø3 holes through the bay FLOOR + 4x Ø3
     # holes through the east and west bay WALLS, for >=150 mm^2 total vent
