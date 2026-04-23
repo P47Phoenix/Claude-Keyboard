@@ -148,7 +148,8 @@ TOP_WALL_THICKNESS = 2.0
 #               that drops into the bottom interior for alignment
 # This keeps the two solids from volumetrically intersecting.
 TOP_LIP_DEPTH = 2.5                # how far the top lip drops into bottom
-TOP_LIP_CLEARANCE = 0.3            # slip fit (0.3 mm around lip -> inner cavity)
+TOP_LIP_CLEARANCE = 0.4            # slip fit (Cycle 2 MAJOR #3: 0.3 -> 0.4 mm)
+LIP_CHAMFER = 0.5                  # 45 deg lead-in / relief chamfer
 
 BOTTOM_WALL_THICKNESS = 2.0
 BOTTOM_FLOOR_THICKNESS = 2.0
@@ -277,6 +278,38 @@ def build_top_case() -> cq.Workplane:
         .translate((outer_w / 2, outer_h / 2, -PLATE_THICKNESS - TOP_LIP_DEPTH - 0.1))
     )
     lip = lip.cut(lip_hollow)
+
+    # Cycle 2 MAJOR #3: 0.5 mm x 45 deg lead-in chamfer on lip bottom outer edge.
+    # Cut a rectangular ring of increasing outward offset at Z = lip_bottom so the
+    # bottom outer corner becomes a 45-deg ramp. Use a boolean subtraction with a
+    # wedge-shaped solid rather than edge-chamfer (more robust on hollow rings).
+    lip_bot_z = -PLATE_THICKNESS - TOP_LIP_DEPTH
+    chamfer_outer_w = lip_w + 2 * LIP_CHAMFER
+    chamfer_outer_h = lip_h + 2 * LIP_CHAMFER
+    # Frustum subtractor: large outer-envelope box minus inner pyramid that
+    # leaves exactly the 45-deg ramp on the outer lip corner.
+    outer_block = (
+        cq.Workplane("XY")
+        .rect(chamfer_outer_w, chamfer_outer_h)
+        .extrude(LIP_CHAMFER + 0.2)
+        .translate((outer_w / 2, outer_h / 2, lip_bot_z - 0.1))
+    )
+    # The "ramp keeper" is the lip's outer silhouette offset by a 45-deg taper
+    # over LIP_CHAMFER height. We build it as a pair of rectangles lofted.
+    ramp_pts_bottom_w = lip_w
+    ramp_pts_bottom_h = lip_h
+    ramp = (
+        cq.Workplane("XY")
+        .workplane(offset=0.0)
+        .rect(ramp_pts_bottom_w, ramp_pts_bottom_h)
+        .workplane(offset=LIP_CHAMFER)
+        .rect(ramp_pts_bottom_w + 2 * LIP_CHAMFER,
+              ramp_pts_bottom_h + 2 * LIP_CHAMFER)
+        .loft(combine=True)
+        .translate((outer_w / 2, outer_h / 2, lip_bot_z))
+    )
+    chamfer_cutter = outer_block.cut(ramp)
+    lip = lip.cut(chamfer_cutter)
 
     body = plate.union(lip)
 
@@ -570,6 +603,40 @@ def build_bottom_case() -> cq.Workplane:
     )
     lip_envelope = lip_env_outer.cut(lip_env_inner)
     body = body.cut(lip_envelope)
+
+    # Cycle 2 MAJOR #3: 0.5 mm x 45 deg relief chamfer at TOP of the bottom
+    # interior wall. Widens the opening at the mating plane so the top lip
+    # doesn't collide with a tight-edge interior wall during initial seating.
+    # Build as a tapered loft: the relief is a ring-shaped solid that extends
+    # inward (toward case centre) from the existing inner wall, fully at the
+    # top and tapering to zero at LIP_CHAMFER below the top.
+    inner_w = CASE_OUTER_W - 2 * BOTTOM_WALL_THICKNESS
+    inner_h = CASE_OUTER_H - 2 * BOTTOM_WALL_THICKNESS
+    relief_top_z = BOTTOM_WALL_TOP_Z
+    relief_bot_z = BOTTOM_WALL_TOP_Z - LIP_CHAMFER
+    # Cutter: at Z=relief_bot_z the opening matches current interior; at
+    # Z=relief_top_z the opening has grown by LIP_CHAMFER per side.
+    relief_cutter = (
+        cq.Workplane("XY")
+        .workplane(offset=0.0)
+        .rect(inner_w, inner_h)
+        .workplane(offset=LIP_CHAMFER)
+        .rect(inner_w + 2 * LIP_CHAMFER, inner_h + 2 * LIP_CHAMFER)
+        .loft(combine=True)
+        .translate((CASE_OUTER_W / 2, CASE_OUTER_H / 2, relief_bot_z))
+    )
+    # Limit the cutter so it only affects the wall ring (not the PCB-tray
+    # volume we already hollowed): the lofted solid is already bounded by
+    # the widening rectangle, but we keep only the band between bottom-wall
+    # inner silhouette and the lip envelope outer silhouette.
+    band_keeper = (
+        cq.Workplane("XY")
+        .rect(CASE_OUTER_W, CASE_OUTER_H)
+        .extrude(LIP_CHAMFER + 0.1)
+        .translate((CASE_OUTER_W / 2, CASE_OUTER_H / 2, relief_bot_z - 0.05))
+    )
+    relief_cutter = relief_cutter.intersect(band_keeper)
+    body = body.cut(relief_cutter)
 
     # Rubber-foot recesses (4x, corners, on the UNDERSIDE of the floor)
     for (fx, fy) in [

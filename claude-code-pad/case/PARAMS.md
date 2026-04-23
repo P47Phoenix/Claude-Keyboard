@@ -117,7 +117,8 @@ a tug doesn't transmit force to the PCB JST solder joints.
 | `PLATE_THICKNESS`          | 1.5     | MX switch spec (required for clip engagement).                                    |
 | `TOP_WALL_THICKNESS`       | 2.0     | Top-case sidewall / lip thickness.                                                |
 | `TOP_LIP_DEPTH`            | 2.5     | How far the top lip drops into the bottom case for alignment.                     |
-| `TOP_LIP_CLEARANCE`        | 0.3     | Slip-fit gap between top lip outside and bottom wall inside.                      |
+| `TOP_LIP_CLEARANCE`        | 0.4     | Slip-fit gap between top lip outside and bottom wall inside (Cycle 2: bumped from 0.3 per real-PETG fit data). |
+| `LIP_CHAMFER`              | 0.5     | 45 deg lead-in chamfer on the top-lip bottom outer edge, **and** matching relief chamfer on the bottom-case interior wall top edge. |
 | `BOTTOM_WALL_THICKNESS`    | 2.0     | Bottom-case sidewall thickness.                                                   |
 | `BOTTOM_FLOOR_THICKNESS`   | 2.0     | Bottom-case floor thickness.                                                      |
 | `PCB_TRAY_STANDOFF`        | 3.0     | PCB bottom sits 3 mm above floor (room for B.Cu parts and LED apertures).        |
