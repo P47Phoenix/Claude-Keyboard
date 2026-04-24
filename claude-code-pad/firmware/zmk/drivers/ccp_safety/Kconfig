@@ -6,20 +6,26 @@ menuconfig CCP_BATTERY_GUARD
 	depends on ADC && ZMK_RGB_UNDERGLOW
 	default n
 	help
-	  Samples VBAT via the nRF52840 SAADC every 10 s, enforces the
-	  3.70 V (LEDs-on) / 3.50 V (LEDs-off) graceful-shutdown cutoff
+	  Samples VBAT via the nRF52840 SAADC and enforces the
+	  3.80 V (LEDs-on) / 3.50 V (LEDs-off) graceful-shutdown cutoff
 	  from firmware/zmk/README.md, and derates the RGB underglow
-	  linearly from 3.90 V -> 3.70 V. Implements broken-wire detection
-	  per the same README (variance > 100 mV or step > 0.3 V over 8
-	  consecutive samples -> same shutdown path as 3.50 V undervolt).
+	  linearly from 4.00 V -> 3.80 V. Implements broken-wire detection
+	  per the same README (max-deviation > 100 mV or step > 0.3 V over
+	  two consecutive 8-sample windows -> same shutdown path).
 
 if CCP_BATTERY_GUARD
 
 config CCP_BATTERY_GUARD_SAMPLE_INTERVAL_MS
 	int "VBAT sample interval (ms)"
-	default 10000
+	default 250
+	range 50 2000
 	help
-	  10 s default. Shorter intervals waste cell capacity on ADC.
+	  Sample cadence for VBAT_ADC. Phase 3 Cycle 2 brought this down
+	  from 10 s to 250 ms per RED-SAFETY SF-B3: the nRF52840 brownout
+	  at 1.7 V plus 400 mV LDO ESR sag can traverse the cutoff band
+	  faster than a 10 s poll. 250 ms catches any plausible cell-sag
+	  event within one cycle while still drawing negligible average
+	  current at ~50 uA per burst sample.
 
 config CCP_BATTERY_GUARD_STACK_SIZE
 	int "Battery guard work stack size"
@@ -30,7 +36,9 @@ config CCP_BATTERY_GUARD_INIT_PRIORITY
 	default 91
 	help
 	  Runs AFTER the WS2812 / ZMK RGB driver (priority 90) so it can
-	  register a brightness clamp as soon as RGB is up.
+	  register a brightness clamp as soon as RGB is up. Kept as a
+	  plain int (not GPIO_INIT_PRIORITY + N) because the SYS_INIT
+	  group is APPLICATION, which runs after all driver init phases.
 
 endif # CCP_BATTERY_GUARD
 
@@ -39,24 +47,46 @@ menuconfig CCP_THERMAL_GUARD
 	depends on ADC && ZMK_RGB_UNDERGLOW
 	default n
 	help
-	  Samples NTC_ADC at boot and every 30 s. If the reading is outside
+	  Samples NTC_ADC at boot and every 2 s. If the reading is outside
 	  0.1 V .. 3.1 V (broken-wire / floating pin) OR if the decoded
-	  temperature exceeds 60 degC, clamps the effective RGB cap to
-	  100 mA (~33 % of the 300 mA Annex Q cap) per
-	  firmware/zmk/README.md §Hard Requirement: NTC fallback.
+	  temperature exceeds CCP_THERMAL_GUARD_OVERTEMP_C, clamps the
+	  effective RGB cap to 100 mA (~33 % of the 300 mA Annex Q cap)
+	  per firmware/zmk/README.md §Hard Requirement: NTC fallback.
 
 if CCP_THERMAL_GUARD
 
 config CCP_THERMAL_GUARD_SAMPLE_INTERVAL_MS
 	int "NTC sample interval (ms)"
-	default 30000
+	default 2000
+	range 500 30000
+	help
+	  Phase 3 Cycle 2 drops this from 30 s to 2 s so that the TTL
+	  watchdog in the cap registry (2 * sample interval) triggers
+	  fail-dark within 4 s of any guard-thread hang.
 
 config CCP_THERMAL_GUARD_OVERTEMP_C
 	int "RGB-derate trigger temperature (degC)"
-	default 60
+	default 50
+	range 30 90
+	help
+	  Phase 3 Cycle 2 dropped the default from 60 degC to 50 degC
+	  (SF-M9). The NTC in this PCB revision is co-located with the
+	  LDO on the XIAO, not the cell; the correlation factor to cell
+	  surface is unverified. A 10 degC cushion keeps the cell well
+	  below the 60 degC IEC 62133-2 onset threshold even under the
+	  worst-case measurement-delta scenario.
 
 config CCP_THERMAL_GUARD_INIT_PRIORITY
 	int "Thermal guard init priority"
 	default 92
 
 endif # CCP_THERMAL_GUARD
+
+config CCP_RGB_INIT_SAFE
+	bool "Pre-RGB-driver GPIO LOW hook (DIN pre-drive)"
+	depends on ZMK_RGB_UNDERGLOW
+	default y
+	help
+	  Drives RGB_DIN_MCU (P0.06) LOW at SYS_INIT priority 45 before
+	  the WS2812 driver initialises, so the LEDs cannot see garbage
+	  on DIN at power-on.

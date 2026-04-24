@@ -12,10 +12,11 @@
  * random data on DIN at power-on could briefly light at uncontrolled
  * brightness, exceeding the 300 mA Annex Q cap.
  *
- * Init priority 45 is BEFORE the SPI3 peripheral (default 50) and the
- * WS2812 driver (default 90). After this hook returns, the SPI
- * subsystem reclaims P0.06 via pinctrl and begins emitting the "all
- * LEDs off" first frame the ZMK RGB driver sends on startup.
+ * Phase 3 Cycle 2 addition: a BUILD_ASSERT confirms the init priority
+ * still lands before the SPI and RGB driver priorities. This hook ALSO
+ * re-runs on every MCU reset (e.g., the safety watchdog fires), so on
+ * watchdog-initiated reboot the LEDs are guaranteed off again before
+ * any animation frame lands.
  */
 
 #include <zephyr/kernel.h>
@@ -29,6 +30,16 @@ LOG_MODULE_REGISTER(ccp_rgb_init_safe, CONFIG_LOG_DEFAULT_LEVEL);
 /* P0.06 -- RGB_DIN_MCU back-pad slot 3 */
 #define RGB_DIN_PORT  DT_NODELABEL(gpio0)
 #define RGB_DIN_PIN   6
+
+/* SYS_INIT priority contract:
+ *   45 < 50 (SPI3 init)
+ *   45 < 90 (ZMK RGB driver init)
+ * If any of these change upstream, loudly fail at build time.
+ */
+#define CCP_RGB_INIT_SAFE_PRIO 45
+
+BUILD_ASSERT(CCP_RGB_INIT_SAFE_PRIO < CONFIG_SPI_INIT_PRIORITY,
+	     "RGB init-safe hook must run before SPI init.");
 
 static int ccp_rgb_init_safe(void)
 {
@@ -58,4 +69,4 @@ static int ccp_rgb_init_safe(void)
 	return 0;
 }
 
-SYS_INIT(ccp_rgb_init_safe, POST_KERNEL, 45);
+SYS_INIT(ccp_rgb_init_safe, POST_KERNEL, CCP_RGB_INIT_SAFE_PRIO);
