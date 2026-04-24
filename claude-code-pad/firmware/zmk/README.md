@@ -1,9 +1,14 @@
-# Claude Code Pad - ZMK firmware scaffolding
+# Claude Code Pad - ZMK firmware
 
-**Phase 1 Cycle 5 placeholder.** ECE-1 owns the PCB through Phase 1;
-FW-1 will populate this directory with the full ZMK device tree overlay
-and keymap in Phase 3. This stub exists to document the Hard Requirements
-that the hardware design depends on.
+**Phase 3 Cycle 1 (FW-1).** The Hard Requirements below are the
+hardware-design contract that this firmware implements. Every clause
+is traceable to a specific IEC / regulatory rule; see the review log
+for the full chain of custody.
+
+Phase 3 C1 added: shield tree under `boards/shields/claude_code_pad/`,
+safety drivers under `drivers/ccp_safety/`, builder wire guide in
+`BODGE-MAP.md`, and QMK alternate scaffold one level up in
+`../qmk/`.
 
 ---
 
@@ -223,3 +228,102 @@ must hand-solder during assembly. Priority order:
 6. **Encoder (3 wires)** -- EC1 A/B/SW to rear-pad slots 0/1/2.
 
 Full photo guide in `docs/build-guide.md §Appendix A`.
+
+---
+
+## Phase 3 C1 addendum: NTC_ADC pin move
+
+Cycle 5 landed NTC_ADC on MCU pin 14 (D10 / P1.15). P1.15 is **not**
+SAADC-capable on the nRF52840; firmware Cycle 1 moves NTC_ADC to MCU
+pin 5 (D1 / P0.03 / AIN1) and shifts COL1 from D1 to D10. See
+`BODGE-MAP.md` for the bodge-wire delta.
+
+---
+
+## Building
+
+### Prerequisites
+
+- Python 3.10+, `west`, Zephyr SDK (toolchain). Quick install:
+  ```bash
+  pipx install west
+  # or:  brew install west
+  wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.17.0/zephyr-sdk-0.17.0_linux-x86_64.tar.xz
+  tar xf zephyr-sdk-0.17.0_linux-x86_64.tar.xz -C ~
+  cd ~/zephyr-sdk-0.17.0 && ./setup.sh
+  ```
+- ZMK pulls the Zephyr tree itself via `west update`.
+
+### Clone + init
+
+```bash
+mkdir -p ~/zmk-ccp && cd ~/zmk-ccp
+git clone https://github.com/<you>/Claude-Keyboard src/ccp
+west init -l src/ccp/claude-code-pad/firmware/zmk/config
+west update
+west zephyr-export
+pip install -r zephyr/scripts/requirements-base.txt
+```
+
+### Build
+
+```bash
+cd ~/zmk-ccp
+west build -s zmk/app -b seeeduino_xiao_ble \
+    -- -DSHIELD=claude_code_pad \
+       -DZMK_EXTRA_MODULES="$PWD/src/ccp/claude-code-pad/firmware/zmk"
+```
+
+Output UF2: `build/zephyr/zmk.uf2`.
+
+### Flash (UF2 bootloader)
+
+1. Double-tap the RESET button on the XIAO nRF52840. It enumerates as
+   `XIAO-BOOT` USB mass storage.
+2. Copy `build/zephyr/zmk.uf2` to that drive.
+3. The board reboots and enumerates as `Claude Code Pad` (USB HID +
+   BLE).
+
+### First-boot checklist
+
+Observe the ZMK log over USB CDC (CONFIG_ZMK_USB_LOGGING=y in a debug
+build) or over RTT:
+
+```
+[INF] ccp_rgb_init_safe: RGB_DIN_MCU pre-driven LOW
+[INF] zmk_rgb_underglow: inited
+[INF] ccp_battery_guard: VBAT=<mV> cap=<n> leds_cut=0
+[INF] ccp_thermal_guard: NTC <mV> -> <degC> cap=100
+```
+
+If the thermal guard reports `cap=33` persistently, the NTC bodge is
+missing or the thermistor is not installed -- the 100 mA fallback cap
+is in effect and **this is intentional**. See `BODGE-MAP.md` to fix.
+
+### Troubleshooting
+
+- **"board seeeduino_xiao_ble not found"** -- the west manifest did
+  not pull the Zephyr tree containing the Seeed XIAO BLE definition.
+  Run `west update` again; verify `~/zmk-ccp/zephyr/boards/arm/
+  seeeduino_xiao_ble/` exists.
+- **"shield claude_code_pad not found"** -- `ZMK_EXTRA_MODULES` is not
+  pointing at the firmware/zmk directory of your checkout, or the
+  path contains spaces and is not quoted.
+- **BLE won't pair, or pairs then drops immediately** -- clear the
+  pairing table: tap the BT layer (C2 work adds a dedicated binding;
+  for now re-flash after deleting `/lfs1/settings/bt` via the ZMK
+  studio tool) then re-pair. On Linux hosts, delete the bond on the
+  host side too (`bluetoothctl remove <mac>`).
+- **All 25 LEDs flash bright-white on boot** -- the pre-init GPIO
+  hook failed; the LEDs saw garbage on DIN. Verify in the log that
+  `[INF] ccp_rgb_init_safe: RGB_DIN_MCU pre-driven LOW` appeared
+  before any RGB driver line. If absent, rebuild with a clean cache.
+
+### Validation gate for local / CI builds
+
+```bash
+# ERC-equivalent: Kconfig sanity
+west build -t menuconfig   # should open clean, no unresolved symbols
+# Static analysis (if installed)
+west build -t clang-analyzer
+```
