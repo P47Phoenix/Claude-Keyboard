@@ -129,19 +129,21 @@ BATT_BAY_DEPTH = 7.0 + 2.0         # 9 mm (+2 mm vertical clearance)
 # to J_BAT through the divider slot.
 BATT_BAY_CENTRE = (30.0, 75.0)
 
-# Vent geometry (Cycle 2 MAJOR #6/7): replace the 2x slot scheme with round
-# holes that bridge reliably on PETG and deliver >= 150 mm^2 total vent area.
-# 8x Ø3 circles on the bay floor (~56 mm^2) + 4x Ø3 circles through the
-# east and west bay walls into the case exterior sidewall (~28 mm^2 each).
-# Rough total area ~112 mm^2 through floor + 56 through walls = 168 mm^2.
+# Vent geometry (Cycle 3 MAJOR #5 correction): Cycle-2 docs claimed
+# 168-170 mm^2 of vent area but the actual count was 16 x Ø3 holes =
+# ~113 mm^2 -- well short of the 150 mm^2 MECH-1 target. Add 4 more
+# floor vents (12 total) and 2 more per wall (6 per wall = 12 wall
+# vents), for 24 x Ø3 = 24 * pi * 1.5^2 = 169.6 mm^2 total.
 VENT_HOLE_D = 3.0
-# Floor vents -- 4x2 grid within the bay floor
+# Floor vents -- 4x3 grid within the bay floor (12 holes)
 FLOOR_VENT_OFFSETS = [
-    (-15.0, -8.0), (-5.0, -8.0), (5.0, -8.0), (15.0, -8.0),
-    (-15.0, 8.0),  (-5.0, 8.0),  (5.0, 8.0),  (15.0, 8.0),
+    (-15.0, -10.0), (-5.0, -10.0), (5.0, -10.0), (15.0, -10.0),
+    (-15.0, 0.0),   (-5.0, 0.0),   (5.0, 0.0),   (15.0, 0.0),
+    (-15.0, 10.0),  (-5.0, 10.0),  (5.0, 10.0),  (15.0, 10.0),
 ]
-# Wall vents -- 2 per east & west bay wall, staggered vertically
-WALL_VENT_Z = [BATT_BAY_DEPTH - 6.0, BATT_BAY_DEPTH - 2.5]
+# Wall vents -- 3 Z levels per east & west bay wall, staggered vertically
+# (Cycle 3: added mid-Z row to bring wall-vent total from 8 to 12).
+WALL_VENT_Z = [BATT_BAY_DEPTH - 6.5, BATT_BAY_DEPTH - 4.25, BATT_BAY_DEPTH - 2.0]
 WALL_VENT_Y_OFFSETS = [-8.0, 8.0]
 
 # FR-4 divider slot (1.6 mm FR-4 thickness, slide-fit groove -- 1.8 mm slot)

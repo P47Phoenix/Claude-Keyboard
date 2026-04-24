@@ -104,9 +104,9 @@ auto-demote them to self-tap.
 | Parameter              | Default                 | Purpose                                                                  |
 | ---------------------- | ----------------------- | ------------------------------------------------------------------------ |
 | `VENT_HOLE_D`          | 3.0                     | Cycle-2 vent geometry: round holes (Ø 3) in place of Cycle-1 slots (bridging failure mode on PETG). |
-| `FLOOR_VENT_OFFSETS`   | 8 × `(dx, dy)`          | 4×2 grid of Ø 3 holes in the bay floor (~56 mm²).                         |
-| `WALL_VENT_Z`          | `[D-6.0, D-2.5]`         | Z heights for wall vents (relative to floor, D = `BATT_BAY_DEPTH`).       |
-| `WALL_VENT_Y_OFFSETS`  | `[-8.0, 8.0]`            | Y offsets for wall-vent pairs, giving 4 holes per east/west wall.         |
+| `FLOOR_VENT_OFFSETS`   | 12 × `(dx, dy)`         | 4×3 grid of Ø 3 holes in the bay floor (~85 mm²). Cycle 3: 8 → 12 to lift total vent area over the 150 mm² target. |
+| `WALL_VENT_Z`          | `[D-6.5, D-4.25, D-2.0]` | Three Z heights for wall vents (relative to floor, D = `BATT_BAY_DEPTH`). Cycle 3: 2 → 3 levels. |
+| `WALL_VENT_Y_OFFSETS`  | `[-8.0, 8.0]`            | Y offsets for wall-vent pairs, giving 6 holes per east/west wall (12 total walls).    |
 | `DIVIDER_SLOT_T`       | 1.8                     | Groove width for the 1.6 mm FR-4 divider (slide fit).                    |
 | `DIVIDER_HEIGHT`       | = `BATT_BAY_DEPTH`      | Divider spans full bay depth.                                            |
 | Divider retention      | 3-edge (N + E + W)      | Cycle-2 MAJOR #12: grooves on all three walls, not just north.            |
@@ -114,10 +114,16 @@ auto-demote them to self-tap.
 | `JST_EXIT_H`           | 4.0                     | Height of same.                                                          |
 | Battery-bay wall thickness | 2.0 mm              | Cycle-2 MAJOR #6: 1.5 → 2.0 for stiffness + UL flame-retention margin.    |
 
-**Total vent area:** floor 8 × π (1.5)² ≈ 57 mm² + walls 4 × π (1.5)² ≈
-28 mm² per side × 2 sides = 56 mm² → ≈ 113 mm² through floor + walls
-combined. With the FR-4 divider in place, the through-divider path adds
-more egress if the divider includes builder-drilled weep holes.
+**Total vent area (Cycle 3 corrected):** floor 12 × π (1.5)² ≈ 85 mm² +
+walls 6 × π (1.5)² ≈ 42 mm² per side × 2 sides = 85 mm² →
+≈ 170 mm² through floor + walls combined (well above the 150 mm²
+MECH-1 target). With the FR-4 divider in place, the through-divider
+path adds more egress if the divider includes builder-drilled weep
+holes.
+
+Cycle 2 numerics were incorrect (claimed 168 mm², actual = 113 mm² at
+that geometry -- 16 × 7.07 mm² ≈ 113). Cycle 3 increased vent count
+from 16 → 24 to reach the documented area.
 
 **Strain relief (Cycle 2 MAJOR #11): cable gate.** The Cycle 1 Ø 2 mm
 cantilever post is gone. In its place: a pair of 2 mm-thick PETG walls
