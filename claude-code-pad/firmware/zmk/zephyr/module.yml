@@ -1,0 +1,5 @@
+build:
+  cmake: drivers/ccp_safety
+  kconfig: drivers/ccp_safety/Kconfig
+  settings:
+    board_root: .

@@ -1,0 +1,62 @@
+# Copyright (c) 2026 Claude Code Pad project
+# SPDX-License-Identifier: MIT
+
+menuconfig CCP_BATTERY_GUARD
+	bool "Claude Code Pad battery guard (VBAT monitoring + undervolt cutoff)"
+	depends on ADC && ZMK_RGB_UNDERGLOW
+	default n
+	help
+	  Samples VBAT via the nRF52840 SAADC every 10 s, enforces the
+	  3.70 V (LEDs-on) / 3.50 V (LEDs-off) graceful-shutdown cutoff
+	  from firmware/zmk/README.md, and derates the RGB underglow
+	  linearly from 3.90 V -> 3.70 V. Implements broken-wire detection
+	  per the same README (variance > 100 mV or step > 0.3 V over 8
+	  consecutive samples -> same shutdown path as 3.50 V undervolt).
+
+if CCP_BATTERY_GUARD
+
+config CCP_BATTERY_GUARD_SAMPLE_INTERVAL_MS
+	int "VBAT sample interval (ms)"
+	default 10000
+	help
+	  10 s default. Shorter intervals waste cell capacity on ADC.
+
+config CCP_BATTERY_GUARD_STACK_SIZE
+	int "Battery guard work stack size"
+	default 1024
+
+config CCP_BATTERY_GUARD_INIT_PRIORITY
+	int "Battery guard init priority"
+	default 91
+	help
+	  Runs AFTER the WS2812 / ZMK RGB driver (priority 90) so it can
+	  register a brightness clamp as soon as RGB is up.
+
+endif # CCP_BATTERY_GUARD
+
+menuconfig CCP_THERMAL_GUARD
+	bool "Claude Code Pad thermal guard (NTC monitoring + RGB cap fallback)"
+	depends on ADC && ZMK_RGB_UNDERGLOW
+	default n
+	help
+	  Samples NTC_ADC at boot and every 30 s. If the reading is outside
+	  0.1 V .. 3.1 V (broken-wire / floating pin) OR if the decoded
+	  temperature exceeds 60 degC, clamps the effective RGB cap to
+	  100 mA (~33 % of the 300 mA Annex Q cap) per
+	  firmware/zmk/README.md §Hard Requirement: NTC fallback.
+
+if CCP_THERMAL_GUARD
+
+config CCP_THERMAL_GUARD_SAMPLE_INTERVAL_MS
+	int "NTC sample interval (ms)"
+	default 30000
+
+config CCP_THERMAL_GUARD_OVERTEMP_C
+	int "RGB-derate trigger temperature (degC)"
+	default 60
+
+config CCP_THERMAL_GUARD_INIT_PRIORITY
+	int "Thermal guard init priority"
+	default 92
+
+endif # CCP_THERMAL_GUARD

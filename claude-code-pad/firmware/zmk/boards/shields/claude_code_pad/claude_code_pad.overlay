@@ -146,6 +146,68 @@
  * NOTE: not wired into default keymap transform (would require 26
  * bindings). See C2 TODO in review-log.
  */
+/*
+ * -------- RGB WS2812 (SK6812MINI-E) strip --------------------------------
+ *
+ * 25 LEDs chained serpentine. DIN (via R1 470 Ohm series) from MCU
+ * RGB_DIN_MCU -> back-pad slot 3 -> P0.06 (nRF52840 SPI3 MOSI capable).
+ *
+ * Using nRF52840 SPI3 @ 4 MHz -- ZMK's default WS2812 shim encodes each
+ * colour bit as 3 SPI bits (0b100=0, 0b110=1), yielding the standard
+ * 1.25 us bit period the SK6812 wants (0.35/0.8 us T0H/T0L,
+ * 0.7/0.6 us T1H/T1L). A single 30-byte transfer per frame at ~40 FPS
+ * worst-case keeps BLE throughput unaffected.
+ *
+ * CRITICAL: &led_strip.status must be "okay" AFTER the GPIO is driven
+ * LOW in init (see ccp_safety driver ccp_rgb_init_safe.c). ZMK does
+ * this correctly in its default bring-up (GPIO configured before
+ * spi_configure). We still enforce the pre-driver GPIO-LOW step via
+ * a SYS_INIT hook at POST_KERNEL priority 50 (runs before the
+ * ZMK RGB driver's priority 90).
+ */
+&pinctrl {
+	spi3_ccp_default: spi3_ccp_default {
+		group1 {
+			psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
+		};
+	};
+	spi3_ccp_sleep: spi3_ccp_sleep {
+		group1 {
+			psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
+			low-power-enable;
+		};
+	};
+};
+
+&spi3 {
+	compatible = "nordic,nrf-spim";
+	status = "okay";
+	pinctrl-0 = <&spi3_ccp_default>;
+	pinctrl-1 = <&spi3_ccp_sleep>;
+	pinctrl-names = "default", "sleep";
+
+	led_strip: ws2812@0 {
+		compatible = "worldsemi,ws2812-spi";
+		label = "WS2812";
+		reg = <0>;
+		spi-max-frequency = <4000000>;
+		chain-length = <25>;
+		spi-one-frame = <0x70>;
+		spi-zero-frame = <0x40>;
+		color-mapping = <
+			LED_COLOR_ID_GREEN
+			LED_COLOR_ID_RED
+			LED_COLOR_ID_BLUE
+		>;
+	};
+};
+
+/ {
+	chosen {
+		zmk,underglow = &led_strip;
+	};
+};
+
 &i2c0 {
 	status = "okay";
 	compatible = "nordic,nrf-twi";
