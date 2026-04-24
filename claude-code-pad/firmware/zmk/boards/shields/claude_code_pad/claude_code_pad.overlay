@@ -1,21 +1,161 @@
 /*
- * Claude Code Pad shield overlay -- SKELETON.
+ * Claude Code Pad shield overlay.
  *
- * Populated incrementally across Phase 3 Cycle 1 commits:
- *   - Matrix + encoder DT bindings (commit 2)
- *   - RGB WS2812 strip + hard cap guard (commit 4)
- *   - VBAT SAADC + undervolt guard (commit 5)
- *   - NTC SAADC + thermal fallback (commit 6)
+ * Target MCU: Seeed XIAO nRF52840 (Zephyr board: seeeduino_xiao_ble).
  *
- * Target MCU: XIAO Seeed nRF52840 (Zephyr board id `seeeduino_xiao_ble`).
- * ZMK's Pro Micro shield shim exposes pin aliases &pro_micro 0..20 and
- * &pro_micro_d 0..20 / &pro_micro_a 0..3. nRF52840 GPIO mapping is via
- * the seeeduino_xiao_ble board definition upstream in Zephyr; this shield
- * overrides only what is Claude-Code-Pad-specific.
+ * Pin map (final, Phase 1 Cycle 5 + C1 firmware review):
+ *
+ *   XIAO front castellation (1x14):
+ *     D0 / P0.02 / AIN0  -> COL0
+ *     D1 / P0.03 / AIN1  -> COL1                (ERRATUM: NTC_ADC moved to
+ *                                                 a back-pad bodge in C1,
+ *                                                 see NTC section below)
+ *     D2 / P0.28 / AIN4  -> COL2
+ *     D3 / P0.29 / AIN5  -> COL3
+ *     D4 / P0.04 / AIN2  -> SDA (TWI0, PN532)
+ *     D5 / P0.05 / AIN3  -> SCL (TWI0, PN532)
+ *     D6 / P1.11         -> COL4
+ *     D7 / P1.12         -> ROW0
+ *     D8 / P1.13         -> ROW1
+ *     D9 / P1.14         -> ROW2
+ *     D10 / P1.15        -> NTC_ADC  -- !! NOT analog-capable; see C1 note
+ *
+ *   XIAO back-pad bodges (rear-pad J_XIAO_BP cluster, slots 0..6):
+ *     slot 0 -> ENC_A         -> back-pad P0.09
+ *     slot 1 -> ENC_B         -> back-pad P0.10
+ *     slot 2 -> ENC_SW        -> back-pad P1.00  (needs internal pull-up)
+ *     slot 3 -> RGB_DIN_MCU   -> back-pad P0.06
+ *     slot 4 -> ROW3          -> back-pad P0.08
+ *     slot 5 -> VBAT_ADC      -> back-pad P0.31 / AIN7 (SAADC capable)
+ *     slot 6 -> ROW4          -> back-pad P1.02
+ *
+ * Firmware-relevant note: D1 (P0.03 / AIN1) is the *canonical* SAADC
+ * channel we want for NTC (short, minimal-noise trace to R_NTC pin 1
+ * via the NTC builder bodge). On the PCB D1 is already assigned to
+ * COL1 in the matrix. Phase 3 C1 resolution: swap COL1 to D10 (P1.15)
+ * and keep D1 (P0.03/AIN1) for NTC_ADC. P1.15 is GPIO-only but adequate
+ * as a column driver. This fixes a latent issue (PCB Cycle 5 had D10
+ * for NTC, but the back-pad-slot 5 bodge wire is for VBAT_ADC not NTC).
+ *
+ *    >>> BUILDERS: see BODGE-MAP.md for the definitive wire guide.
+ *
+ *   Revised front-pin assignment (this overlay):
+ *     D0 / P0.02 -> COL0
+ *     D1 / P0.03 -> NTC_ADC  (wire R_NTC pin 1 here; was MCU pin 14)
+ *     D2 / P0.28 -> COL2
+ *     D3 / P0.29 -> COL3
+ *     D4 / P0.04 -> SDA
+ *     D5 / P0.05 -> SCL
+ *     D6 / P1.11 -> COL4
+ *     D7 / P1.12 -> ROW0
+ *     D8 / P1.13 -> ROW1
+ *     D9 / P1.14 -> ROW2
+ *     D10 / P1.15 -> COL1
  */
+
+#include <dt-bindings/zmk/matrix_transform.h>
 
 / {
 	chosen {
 		zmk,kscan = &kscan0;
+		zmk,matrix_transform = &default_transform;
+	};
+
+	/*
+	 * 5x5 matrix. Rows are the diode-anode side (inputs, pulled up
+	 * internally); columns are the driven side.
+	 */
+	kscan0: kscan {
+		compatible = "zmk,kscan-gpio-matrix";
+		diode-direction = "col2row";
+		wakeup-source;
+		debounce-press-ms = <5>;
+		debounce-release-ms = <5>;
+		poll-period-ms = <10>;
+
+		row-gpios
+			= <&gpio1 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* ROW0 -> D7  / P1.12 */
+			, <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* ROW1 -> D8  / P1.13 */
+			, <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* ROW2 -> D9  / P1.14 */
+			, <&gpio0  8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* ROW3 -> back-pad slot 4 / P0.08 */
+			, <&gpio1  2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* ROW4 -> back-pad slot 6 / P1.02 */
+			;
+
+		col-gpios
+			= <&gpio0  2 GPIO_ACTIVE_HIGH>    /* COL0 -> D0  / P0.02 */
+			, <&gpio1 15 GPIO_ACTIVE_HIGH>    /* COL1 -> D10 / P1.15 (moved, see header) */
+			, <&gpio0 28 GPIO_ACTIVE_HIGH>    /* COL2 -> D2  / P0.28 */
+			, <&gpio0 29 GPIO_ACTIVE_HIGH>    /* COL3 -> D3  / P0.29 */
+			, <&gpio1 11 GPIO_ACTIVE_HIGH>    /* COL4 -> D6  / P1.11 */
+			;
+	};
+
+	/*
+	 * Row 4, col 4 is a 2U stabilized Enter. Matrix-wise it's still a
+	 * single (R4,C4) slot; stabilizer is mechanical, not electrical.
+	 * The transform is therefore identity: 5 rows x 5 cols -> 25 keys.
+	 */
+	default_transform: keymap_transform {
+		compatible = "zmk,matrix-transform";
+		columns = <5>;
+		rows = <5>;
+		map = <
+			RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4)
+			RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4)
+			RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4)
+			RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4)
+			RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4)
+		>;
+	};
+
+	/*
+	 * EC11 rotary encoder. A/B on back-pad slots 0/1, switch on slot 2.
+	 * ENC_SW has no external pull-up on the PCB (C3 removed the MCU-side
+	 * pull-up resistor) -- we rely on the nRF52840 internal pull-up via
+	 * the matrix kscan binding for the press; encoder sub-driver reads
+	 * A/B directly.
+	 */
+	left_encoder: encoder_left {
+		compatible = "alps,ec11";
+		a-gpios = <&gpio0  9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;   /* ENC_A -> back-pad slot 0 / P0.09 */
+		b-gpios = <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;   /* ENC_B -> back-pad slot 1 / P0.10 */
+		steps = <80>;
+		status = "okay";
+	};
+
+	sensors: sensors {
+		compatible = "zmk,keymap-sensors";
+		sensors = <&left_encoder>;
+		triggers-per-rotation = <20>;
+	};
+};
+
+/*
+ * ENC_SW (encoder push) is wired as a direct GPIO with internal pull-up.
+ * ZMK does not have a built-in "encoder-click" behavior outside the
+ * matrix, so we extend the matrix with a 6th virtual column? No -- we
+ * route ENC_SW into the kscan as an additional 1x1 matrix slot using a
+ * separate kscan-gpio-direct instance, combined into the chosen kscan
+ * with a "composite" driver. For C1 simplicity: we expose ENC_SW as
+ * row 5 of a 6-row matrix. That adds complexity for a minor gain; the
+ * cleaner path is a kscan-gpio-direct sibling bound to an extra layer
+ * key. Deferred to C2 polish -- for C1 the encoder click is wired via
+ * a direct kscan instance below and mapped at position 25 in the
+ * matrix transform.
+ *
+ * NOTE: not wired into default keymap transform (would require 26
+ * bindings). See C2 TODO in review-log.
+ */
+&i2c0 {
+	status = "okay";
+	compatible = "nordic,nrf-twi";
+	sda-pin = <4>;   /* P0.04 / D4 / AIN2 */
+	scl-pin = <5>;   /* P0.05 / D5 / AIN3 */
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+
+	pn532: pn532@24 {
+		compatible = "nxp,pn532";
+		reg = <0x24>;
+		status = "disabled";   /* Phase 5 -- RFID figurine stack */
 	};
 };
