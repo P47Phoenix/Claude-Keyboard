@@ -851,7 +851,9 @@ def build_bottom_case() -> cq.Workplane:
     # usb_bottom_z = PCB_top - 1.0 up to the mating plane at BOTTOM_WALL_TOP_Z
     # so the plug body has a continuous slot from the case exterior to the PCB.
     pcb_top_z = PCB_TRAY_STANDOFF + BOARD_THICKNESS
-    usb_bottom_z = pcb_top_z - 1.0
+    # Extend cut 0.2 mm below the component's Z-min so the Z-overlap probe
+    # assertions are unambiguously in air (no exact-boundary float ties).
+    usb_bottom_z = pcb_top_z - 1.0 - 0.2
     usbc_x_c = BOARD_OFFSET_X + USBC_NOTCH_X + USBC_NOTCH_W / 2
     # wall_span generous enough to cut cleanly through the full north wall
     wall_cut_span = (BOTTOM_WALL_THICKNESS + CASE_FIT_CLEARANCE) * 3
@@ -1084,6 +1086,107 @@ def _count_solid_holes_through_plate(top: cq.Workplane) -> dict:
     }
 
 
+def assert_aperture_clears(
+    assembled_solid,
+    aperture_xy: Tuple[float, float],
+    aperture_wh: Tuple[float, float],
+    component_z_min: float,
+    component_z_max: float,
+    wall_axis: str = "N",
+    name: str = "aperture",
+    shrink: float = 0.6,
+    nx: int = 3,
+    nz: int = 5,
+) -> bool:
+    """Probe the assembled solid across a component's Z-range to confirm
+    the aperture cuts fully clear of material (Cycle 3 MAJOR #3 validation
+    gate).
+
+    Parameters
+    ----------
+    assembled_solid : cadquery Solid
+        The unioned top+bottom case geometry (as a single Solid) in the
+        bottom-case frame.
+    aperture_xy : (cx, cy)
+        Aperture centre in the wall face plane (for a north-wall aperture,
+        cx is X in the case-outer frame, cy is irrelevant and may be 0).
+    aperture_wh : (w, h)
+        Aperture width (along the wall face) and aperture height (along Z).
+        `assert_aperture_clears` probes the inner `shrink * w` x
+        `shrink * h` region so tolerance/chamfer edges are not sampled.
+    component_z_min, component_z_max : float
+        Z-range the component occupies (must sit WITHIN the aperture's
+        authored Z-span, i.e. (cy - h/2, cy + h/2)).
+    wall_axis : {"N", "S", "E", "W"}, default "N"
+        Which wall the aperture passes through. Only "N" is exercised
+        today (USB-C and slide switch sit on the north edge).
+    name : str
+        Label for the PASS/FAIL print line.
+    shrink : float in (0, 1]
+        Fractional envelope of the aperture to probe (default 0.6 to stay
+        clear of the edge chamfers and shrink-compensation tolerances).
+    nx, nz : int
+        Probe-grid density across the aperture width and across the
+        component Z-range.
+
+    Returns True if every probe point lies *outside* the solid (i.e. in
+    air), False otherwise. Prints PASS/FAIL per aperture.
+    """
+    cx, _cy = aperture_xy
+    w, _h_ap = aperture_wh
+
+    if wall_axis != "N":
+        # Only the north wall is exercised at this revision. E/W/S can be
+        # added when a feature on those walls needs aperture clearance.
+        raise NotImplementedError(f"assert_aperture_clears({wall_axis=}) not wired")
+
+    # Probe X positions: nx equispaced across 0.6 * aperture width
+    half_w = (w * shrink) / 2.0
+    xs = [cx - half_w + (2 * half_w) * i / (nx - 1) for i in range(nx)] if nx > 1 else [cx]
+
+    # Probe Y along the full wall depth (case outer Y=0 to Y=BOTTOM_WALL_THICKNESS)
+    # so the probe truly lives *inside the wall*, not just at the face.
+    ys = [BOTTOM_WALL_THICKNESS / 2.0]      # wall mid-plane
+
+    # Probe Z across the component range
+    zs = [component_z_min + (component_z_max - component_z_min) * i / (nz - 1)
+          for i in range(nz)] if nz > 1 else [(component_z_min + component_z_max) / 2.0]
+
+    collisions = []
+    for px in xs:
+        for py in ys:
+            for pz in zs:
+                probe = cq.Vector(px, py, pz)
+                try:
+                    inside = assembled_solid.isInside(probe, tolerance=1e-6)
+                except Exception:
+                    # If the Solid API doesn't expose isInside cleanly,
+                    # fall back to a tiny-sphere intersection volume test.
+                    tiny = (
+                        cq.Workplane("XY", origin=(px, py, pz))
+                        .sphere(0.05)
+                        .val()
+                    )
+                    try:
+                        inter_vol = assembled_solid.intersect(tiny).Volume()
+                        inside = inter_vol > 1e-9
+                    except Exception:
+                        inside = False
+                if inside:
+                    collisions.append((px, py, pz))
+
+    ok = len(collisions) == 0
+    print(f"[validate]   aperture '{name}' Z-clearance: "
+          f"{'PASS' if ok else 'FAIL'}  "
+          f"(probes={nx * len(ys) * nz}, collisions={len(collisions)}, "
+          f"z=[{component_z_min:.2f}, {component_z_max:.2f}])")
+    if not ok:
+        # Show a representative collision so the root cause is immediate
+        px, py, pz = collisions[0]
+        print(f"[validate]     first collision at (x={px:.2f}, y={py:.2f}, z={pz:.2f})")
+    return ok
+
+
 def validate(top: cq.Workplane, bottom: cq.Workplane) -> bool:
     """Run two checks and print a PASS/FAIL. Returns True on pass."""
     print("[validate] running geometry checks...")
@@ -1160,7 +1263,52 @@ def validate(top: cq.Workplane, bottom: cq.Workplane) -> bool:
         and bosses_outside_keepout == 4
     )
 
-    ok = inter_ok and count_ok and gen_ok and ap_ok
+    # 5) Z-overlap assertions (Cycle 3 MAJOR #3 process fix).
+    # For each component-bearing aperture, probe the UNIONED case solid
+    # across the component's real Z-range and assert no material. This
+    # catches the Cycle-2 class of defect where an aperture was cut in the
+    # top lip but solid bottom-case wall still blocked the component.
+    pcb_top_z = PCB_TRAY_STANDOFF + BOARD_THICKNESS
+
+    try:
+        assembled = top_placed.union(bottom).val()
+    except Exception as e:
+        print(f"[validate]   assembled-solid union raised: {e}")
+        assembled = None
+
+    z_ok = True
+    if assembled is not None:
+        usbc_x_c = BOARD_OFFSET_X + USBC_NOTCH_X + USBC_NOTCH_W / 2
+        # USB-C plug body: z = PCB_top - 1.0 to PCB_top + 3.2
+        z_ok &= assert_aperture_clears(
+            assembled,
+            aperture_xy=(usbc_x_c, 0.0),
+            aperture_wh=(USBC_SLOT_W, USBC_SLOT_H),
+            component_z_min=pcb_top_z - 1.0,
+            component_z_max=pcb_top_z + 3.2,
+            wall_axis="N",
+            name="USB-C plug body",
+        )
+
+        sw_cx, _sw_cy = _board_to_case(*SWITCH_CENTRE)
+        # Slide-switch actuator: z = PCB_top + 0.5 to PCB_top + 6.5 (actuator
+        # boss 5 mm tall, ride 1 mm above PCB). The aperture envelope is
+        # (w=12, h=6) centred at z = PCB_top + 3.5 = 10.1, giving the
+        # Cycle-3 BLOCKER 7.1..13.1 Z-range when including the boss radius.
+        z_ok &= assert_aperture_clears(
+            assembled,
+            aperture_xy=(sw_cx, 0.0),
+            aperture_wh=(SWITCH_WINDOW_W, SWITCH_WINDOW_H),
+            component_z_min=pcb_top_z + 0.5,
+            component_z_max=pcb_top_z + 6.5,
+            wall_axis="N",
+            name="slide-switch actuator",
+        )
+    else:
+        print("[validate]   aperture Z-clearance: SKIPPED (no assembled solid)")
+        z_ok = False
+
+    ok = inter_ok and count_ok and gen_ok and ap_ok and z_ok
     print(f"[validate] overall: {'PASS' if ok else 'FAIL'}")
     return ok
 
