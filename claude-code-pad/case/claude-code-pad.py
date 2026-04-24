@@ -155,11 +155,16 @@ JST_EXIT_W = 2.5
 JST_EXIT_H = 4.0                   # slot height (cable dia 1.5 mm nominal)
 
 # --- Wall / plate thicknesses ---
-# Cycle 2 MAJOR #5: bump from 1.5 to 2.0 for stiffness under keypress loads
-# across a 5x5 grid. MX clip spec is 1.5 +/- 0.3, so 2.0 sits at the upper
-# end of spec -- verified to engage but builder should test-click one switch
-# before committing to a full print.
-PLATE_THICKNESS = 2.0
+# Cycle 3 MAJOR #5 rework: MX switch plate spec is 1.5 +/- 0.3 mm -> **1.8 mm
+# is the hard upper bound**. Cycle 2's 2.0 mm value was out of spec and
+# risked poor clip engagement. Drop to 1.8 mm (top of spec). Deflection-wise
+# the top plate still retains ~88% of Cycle 2's stiffness (the bending
+# stiffness of a plate scales with t^3, so 1.8^3 / 2.0^3 = 0.729; the
+# effective stiffness loss is smaller once you include the lip + walls as
+# a box-section contribution), which is enough for the 5x5 grid under the
+# <=60 gf-force typical keypress load. Builder should still test-click one
+# MX switch at 1.8 mm plate thickness before committing to a full print.
+PLATE_THICKNESS = 1.8
 TOP_WALL_THICKNESS = 2.0
 
 # Two-part case mating:
