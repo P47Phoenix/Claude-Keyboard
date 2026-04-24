@@ -106,7 +106,7 @@ auto-demote them to self-tap.
 | `VENT_HOLE_D`          | 3.0                     | Cycle-2 vent geometry: round holes (Ø 3) in place of Cycle-1 slots (bridging failure mode on PETG). |
 | `FLOOR_VENT_OFFSETS`   | 12 × `(dx, dy)`         | 4×3 grid of Ø 3 holes in the bay floor (~85 mm²). Cycle 3: 8 → 12 to lift total vent area over the 150 mm² target. |
 | `WALL_VENT_Z`          | `[D-6.5, D-4.25, D-2.0]` | Three Z heights for wall vents (relative to floor, D = `BATT_BAY_DEPTH`). Cycle 3: 2 → 3 levels. |
-| `WALL_VENT_Y_OFFSETS`  | `[-8.0, 8.0]`            | Y offsets for wall-vent pairs, giving 6 holes per east/west wall (12 total walls).    |
+| `WALL_VENT_Y_OFFSETS`  | `[-8.0, 8.0]`            | Y offsets for wall-vent pairs, giving 6 holes per east/west wall (12 wall vents total across both walls).    |
 | `DIVIDER_SLOT_T`       | 1.8                     | Groove width for the 1.6 mm FR-4 divider (slide fit).                    |
 | `DIVIDER_HEIGHT`       | = `BATT_BAY_DEPTH`      | Divider spans full bay depth.                                            |
 | Divider retention      | 3-edge (N + E + W)      | Cycle-2 MAJOR #12: grooves on all three walls, not just north.            |

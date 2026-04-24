@@ -325,7 +325,7 @@ def build_top_case() -> cq.Workplane:
     lip_h = outer_h - 2 * (TOP_WALL_THICKNESS + TOP_LIP_CLEARANCE)
     lip_r = max(outer_r - (TOP_WALL_THICKNESS + TOP_LIP_CLEARANCE), 1.0)
 
-    # Plate: full footprint, 1.5 mm thick, top at Z=0
+    # Plate: full footprint, PLATE_THICKNESS mm thick, top at Z=0
     plate = (
         cq.Workplane("XY")
         .placeSketch(_rounded_rect(outer_w, outer_h, outer_r))
