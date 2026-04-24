@@ -1,0 +1,79 @@
+# Copyright (c) 2026 Claude Code Pad project
+# SPDX-License-Identifier: MIT
+#
+# Devicetree binding for the Claude Code Pad combined safety node.
+#
+# Exposes two ADC channels (VBAT divider + NTC), the divider ratio
+# needed to recover the cell voltage, and the NTC thermistor B-value
+# and series-pull-up resistance used by ccp_thermal_guard.
+
+description: |
+  Claude Code Pad ccp-safety aggregator node. Provides the SAADC
+  channel handles (vbat, ntc) and the scaling constants the safety
+  driver suite needs to convert raw ADC readings to millivolts-at-cell
+  (for VBAT) and degC (for NTC). Not a real hardware block -- a
+  zephyr,device-subsystem-less glue node that holds the runtime
+  constants in one place so they are reviewable in DT rather than
+  scattered as #defines across the driver C code.
+
+compatible: "claude-code-pad,ccp-safety"
+
+include: base.yaml
+
+properties:
+  io-channels:
+    type: phandle-array
+    required: true
+    description: |
+      Ordered SAADC channel references. Index 0 is the VBAT divider
+      tap, index 1 is the NTC divider tap. io-channel-names must
+      include "vbat" and "ntc" aligned with this order.
+
+  io-channel-names:
+    type: string-array
+    required: true
+    description: |
+      Must be exactly ["vbat", "ntc"] in that order. The driver
+      suite looks up channels by name but also requires the index
+      ordering for DT_SPEC_GET_BY_IDX compatibility.
+
+  vbat-divider-ohms:
+    type: array
+    required: true
+    description: |
+      Two-element array [R_high_ohm, R_low_ohm] describing the VBAT
+      resistor divider. The ADC pin sits at the centre tap; cell
+      voltage is recovered by (R_high + R_low) / R_low. For the
+      Claude Code Pad both legs are 1 MOhm -> multiplier 2.
+
+  ntc-beta-k:
+    type: int
+    required: true
+    description: |
+      NTC thermistor B-constant in Kelvin. MF52 10 kOhm B=3950 is
+      the stocked part; this property lets substitutes be swapped
+      in without driver rebuild.
+
+  ntc-pullup-ohms:
+    type: int
+    required: true
+    description: |
+      Series resistor on the low side of the NTC divider (R_NTC).
+      10 kOhm nominal -- swapping to 100 kOhm extends the sensitive
+      range into colder temperatures but requires a driver cap
+      recalc.
+
+  ntc-nominal-ohms:
+    type: int
+    default: 10000
+    description: |
+      NTC resistance at nominal temperature (typically 10 kOhm at
+      25 degC). Used together with ntc-beta-k in the B-parameter
+      equation.
+
+  ntc-nominal-temp-k:
+    type: int
+    default: 298
+    description: |
+      Nominal temperature (in Kelvin) at which ntc-nominal-ohms
+      applies. 298 K = 25 degC. Integer-rounded from 298.15.

@@ -3,8 +3,12 @@ id: claude_code_pad
 name: Claude Code Pad (25-key macropad)
 type: shield
 url: https://github.com/michaelconnelly/Claude-Keyboard
-requires:
-  - pro_micro
+# The shield targets the Seeed XIAO nRF52840 directly via raw
+# &gpio0 / &gpio1 references, not via the Pro-Micro interconnect
+# adapter. Listing `requires: [pro_micro]` (as Cycle 1 did) was
+# wrong -- ZMK's shield loader would refuse to bind this shield
+# to a non-Pro-Micro interconnect. Leave requires empty so the
+# shield binds against any board exposing gpio0 + gpio1 + spi3.
 features:
   - keys
   - encoder
