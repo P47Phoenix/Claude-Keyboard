@@ -14,7 +14,7 @@ surface of the bottom-case FLOOR, i.e. the interior of the bottom shell.
 | File                  | Purpose                                                                                           |
 | --------------------- | ------------------------------------------------------------------------------------------------- |
 | `claude-code-pad.py`  | Parametric CadQuery source. Run directly to build all artefacts.                                  |
-| `top-case.stl`        | Print-ready top plate (1.5 mm) + 2.5 mm slip-fit lip, with MX cutouts, 2U stab, USB-C, encoder.    |
+| `top-case.stl`        | Print-ready top plate (1.8 mm) + 2.5 mm slip-fit lip, with MX cutouts, 2U stab, USB-C, encoder.    |
 | `bottom-case.stl`     | Print-ready bottom tray — 2 mm walls/floor, 4× M3 heat-set bosses, battery bay, vents, feet.       |
 | `assembly.step`       | Full STEP assembly: top + bottom + placeholder PCB/battery/encoder/USB-C for Fusion 360 checking. |
 | `test-coupon.stl`     | 90 × 90 mm shrinkage-calibration coupon — 3 × 3 MX cutouts at 3 different compensation values.    |
@@ -49,7 +49,7 @@ Typical run takes ≈ 30 s on a modern laptop.
 - **Supports:** tree supports on the down-facing keycap pockets; none inside
   the USB-C aperture (the sacrificial bridge handles that). Turn supports
   OFF inside the MX cutouts — they're through features, no overhang.
-- **Expected print time:** ≈ 6–7 h (Cycle 2: plate 2.0 mm, larger corner R).
+- **Expected print time:** ≈ 6–7 h (Cycle 3: plate 1.8 mm within MX spec, larger corner R from Cycle 2).
 - **Expected filament:** ≈ 35–45 g.
 
 ### Bottom case
@@ -83,7 +83,8 @@ before printing the full case.**
 
 ### Print calibration (test coupon)
 
-`case/test-coupon.stl` is a small 90 × 90 × 1.5 mm plate with a 3 × 3
+`case/test-coupon.stl` is a small 90 × 90 mm plate (`PLATE_THICKNESS`, default
+1.8 mm — tracks the top-case value) with a 3 × 3
 grid of MX-switch cutouts. The three **rows** each use a different
 compensation from `COUPON_SHRINK_STEPS = [0.003, 0.005, 0.007]`:
 

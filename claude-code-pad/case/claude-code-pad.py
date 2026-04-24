@@ -724,9 +724,13 @@ def build_bottom_case() -> cq.Workplane:
         )
         body = body.union(gate_wall)
 
-    # Vents (Cycle 2 MAJOR #7): 8x Ø3 holes through the bay FLOOR + 4x Ø3
-    # holes through the east and west bay WALLS, for >=150 mm^2 total vent
-    # area. All apertures shrink-compensated so the cooled holes land at Ø3.
+    # Vents (Cycle 3 MAJOR #5 correction -- from Cycle 2 MAJOR #7):
+    # 12x Ø3 holes through the bay FLOOR (4x3 grid) + 6x Ø3 holes
+    # per east/west bay WALL (3 Z levels x 2 Y offsets) = 24 holes
+    # total for ~170 mm^2 vent area, above the 150 mm^2 MECH-1
+    # target. All apertures shrink-compensated so the cooled holes
+    # land at Ø3. Cycle 2 claimed 168 mm^2 but only authored 16 holes
+    # (~113 mm^2); the missing 8 holes are added here.
     vent_d = _shrink(VENT_HOLE_D)
     # Floor vents -- small round holes across the bay floor
     for (dx, dy) in FLOOR_VENT_OFFSETS:
@@ -920,13 +924,20 @@ def build_bottom_case() -> cq.Workplane:
 
 
 def _placeholder_pcb() -> cq.Workplane:
+    # Cycle 3 fix: add PCB_TRAY_STANDOFF offset so the STEP assembly
+    # shows the PCB at its real Z position (bottom face resting on
+    # the tray standoff, top face at Z = PCB_TRAY_STANDOFF + BOARD_THICKNESS).
+    # Cycle 2 left the placeholder at Z=0, which hid the Z-stack BLOCKERs
+    # from visual Fusion 360 inspection.
     pcb = (
         cq.Workplane("XY")
         .placeSketch(
             cq.Sketch().rect(BOARD_W, BOARD_H).vertices().fillet(BOARD_CORNER_R)
         )
         .extrude(BOARD_THICKNESS)
-        .translate((BOARD_OFFSET_X + BOARD_W / 2, BOARD_OFFSET_Y + BOARD_H / 2, 0))
+        .translate((BOARD_OFFSET_X + BOARD_W / 2,
+                    BOARD_OFFSET_Y + BOARD_H / 2,
+                    PCB_TRAY_STANDOFF))
     )
     # USB-C notch
     notch = (
@@ -934,37 +945,45 @@ def _placeholder_pcb() -> cq.Workplane:
         .rect(USBC_NOTCH_W, 3)
         .extrude(BOARD_THICKNESS + 0.2)
         .translate((BOARD_OFFSET_X + USBC_NOTCH_X + USBC_NOTCH_W / 2,
-                    BOARD_OFFSET_Y + 0.5, -0.1))
+                    BOARD_OFFSET_Y + 0.5,
+                    PCB_TRAY_STANDOFF - 0.1))
     )
     pcb = pcb.cut(notch)
     return pcb
 
 
 def _placeholder_battery() -> cq.Workplane:
+    # Battery sits on the bay floor (in-case Z=0) with 1 mm lift for tape pad.
     bc_x, bc_y = _board_to_case(*BATT_BAY_CENTRE)
     return (
         cq.Workplane("XY")
         .box(50.0, 34.0, 7.0, centered=(True, True, False))
-        .translate((bc_x, bc_y, -BOTTOM_FLOOR_THICKNESS + 1.0))
+        .translate((bc_x, bc_y, 0.0))
     )
 
 
 def _placeholder_encoder() -> cq.Workplane:
+    # Encoder sits on PCB top face (Z = PCB_TRAY_STANDOFF + BOARD_THICKNESS).
     ex, ey = _board_to_case(*ENCODER_CENTRE)
+    pcb_top = PCB_TRAY_STANDOFF + BOARD_THICKNESS
     return (
         cq.Workplane("XY")
         .circle(7.0 / 2)
         .extrude(20.0)
-        .translate((ex, ey, BOARD_THICKNESS))
+        .translate((ex, ey, pcb_top))
     )
 
 
 def _placeholder_usb() -> cq.Workplane:
+    # USB-C plug body centred on the PCB notch (Cycle 3: lifted to the real
+    # PCB top so the STEP view exposes any remaining wall interference at a
+    # glance in Fusion 360).
     usbc_x_c = BOARD_OFFSET_X + USBC_NOTCH_X + USBC_NOTCH_W / 2
+    pcb_top = PCB_TRAY_STANDOFF + BOARD_THICKNESS
     return (
         cq.Workplane("XY")
         .box(8.3, 7.35, 3.2, centered=(True, True, False))
-        .translate((usbc_x_c, BOARD_OFFSET_Y - 0.5, BOARD_THICKNESS + 0.5))
+        .translate((usbc_x_c, BOARD_OFFSET_Y - 0.5, pcb_top - 1.0))
     )
 
 
