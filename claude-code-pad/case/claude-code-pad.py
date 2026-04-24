@@ -866,6 +866,27 @@ def build_bottom_case() -> cq.Workplane:
         wall_face_coord=0.0,
     )
 
+    # Slide-switch window (Cycle 3 BLOCKER fix): the top-case's cut only
+    # reaches down to Z = 9.1 (lip top), but the MSS22AG15 actuator boss
+    # extends down to Z = PCB_top + 1.0 - (WINDOW_H/2 - 2.5) = 7.1 in the
+    # bottom-case frame (actuator centre = PCB_top + 3.5 = 10.1,
+    # half-height = 3.0). Cut a matching aperture through the bottom-case
+    # north wall so the switch actuator has continuous clearance.
+    swx, _sw_unused = _board_to_case(*SWITCH_CENTRE)
+    sw_actuator_centre_z = pcb_top_z + 3.5           # 10.1 in bottom-case frame
+    sw_window_half_h = _shrink(SWITCH_WINDOW_H) / 2
+    sw_z_bot = sw_actuator_centre_z - sw_window_half_h
+    body = _cut_wall_aperture(
+        body,
+        center_x=swx,
+        width=_shrink(SWITCH_WINDOW_W),
+        z_bot=sw_z_bot,
+        z_top=BOTTOM_WALL_TOP_Z + 0.1,    # overshoot into lip-envelope cut
+        wall_axis="N",
+        wall_span=wall_cut_span,
+        wall_face_coord=0.0,
+    )
+
     # Rubber-foot recesses (4x, corners, on the UNDERSIDE of the floor)
     for (fx, fy) in [
         (FOOT_INSET, FOOT_INSET),
