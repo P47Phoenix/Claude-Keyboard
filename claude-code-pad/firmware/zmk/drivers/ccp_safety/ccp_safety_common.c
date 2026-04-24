@@ -156,13 +156,36 @@ bool ccp_safety_is_latched(void)
 	return l;
 }
 
+#if defined(CONFIG_ZTEST)
+/*
+ * Test-only reset hook. The ztest runner interleaves tests in an
+ * undefined order and needs to rewind the global cap-registry state
+ * between each test. Not exported in ccp_safety.h; tests include it
+ * via a local extern decl.
+ */
+void ccp_safety_test_reset(void);
+void ccp_safety_test_reset(void)
+{
+	k_mutex_lock(&cap_mutex, K_FOREVER);
+	graceful_shutdown_latched = false;
+	for (int i = 0; i < CCP_CAP_NSOURCES; i++) {
+		caps[i].cap = 0;
+		caps[i].ttl_ms = 0;
+		caps[i].last_set_mono_ms = 0;
+	}
+	k_mutex_unlock(&cap_mutex);
+}
+#endif
+
 /* ---------------- graceful shutdown ---------------------------------- */
 
+#if defined(CONFIG_BT)
 static void disconnect_cb(struct bt_conn *conn, void *data)
 {
 	ARG_UNUSED(data);
 	(void)bt_conn_disconnect(conn, BT_HCI_ERR_REMOTE_POWER_OFF);
 }
+#endif
 
 void ccp_safety_graceful_shutdown(const char *reason)
 {

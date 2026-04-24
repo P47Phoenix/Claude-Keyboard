@@ -1,0 +1,13 @@
+# Copyright (c) 2026 Claude Code Pad project
+# SPDX-License-Identifier: MIT
+
+tests:
+  ccp_safety.cap_registry:
+    platform_allow:
+      - native_sim
+      - native_sim/native/64
+      - native_posix
+    tags:
+      - safety
+      - ccp_safety
+    harness: ztest
