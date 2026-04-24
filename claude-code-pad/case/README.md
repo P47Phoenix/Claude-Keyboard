@@ -192,11 +192,16 @@ printed recess depth exactly. The Cycle 1 footprint for **3M SJ-5003
 
 4× **M3 × 6 mm** countersunk or pan-head machine screws. Thread into
 the heat-set inserts from the top case side. Stack consumes ≈ plate
-(1.5) + lip landing (2.5) = 4.0 mm ahead of the insert; M3 × 6 leaves
-2 mm of thread engagement inside the IUB-M3-L4 (4 mm long) — the
-remainder is spare. **Do not use M3 × 8** — it bottoms in the insert's
-blind end before the head lands, so the joint clamps on the screw
-point rather than the head.
+(1.8) + lip landing (2.5) = **4.3 mm** ahead of the insert; M3 × 6
+leaves **1.7 mm** of thread engagement inside the IUB-M3-L4 (4 mm
+long) — the remainder is spare. **Do not use M3 × 8** — it bottoms
+in the insert's blind end before the head lands, so the joint clamps
+on the screw point rather than the head.
+
+(Cycle 3 updated the stack math after PLATE_THICKNESS moved 2.0 → 1.8
+to sit within Cherry MX plate spec. Clamp stack went 4.0 → 4.3 mm;
+thread engagement went 2.0 → 1.7 mm -- still ≥ one full M3 pitch
+(0.5 mm) of engagement and well inside the insert body.)
 
 Hand-tighten: snug + 1/8 turn (≤ 0.8 N·m).
 

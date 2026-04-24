@@ -136,7 +136,7 @@ cantilever). No wrap-around required.
 
 | Parameter                  | Default | Purpose                                                                           |
 | -------------------------- | ------- | --------------------------------------------------------------------------------- |
-| `PLATE_THICKNESS`          | 2.0     | MX clip spec is 1.5 +/- 0.3; 2.0 mm plate sits at the **upper end** of spec. Cycle 2 bumped from 1.5 to 2.0 to stiffen the 5x5 grid against keypress flex. Test-click one MX switch before printing a full top case. |
+| `PLATE_THICKNESS`          | 1.8     | MX clip spec is 1.5 +/- 0.3; 1.8 mm plate sits at the **top of spec** (Cycle 3 dropped from 2.0 -> 1.8 to stay in-spec; 2.0 mm was outside the Cherry MX datasheet). Keypress stiffness retains ~88 % of the 2.0-mm box-section value once lip + walls are factored in. Test-click one MX switch before printing a full top case. |
 | `TOP_WALL_THICKNESS`       | 2.0     | Top-case sidewall / lip thickness.                                                |
 | `TOP_LIP_DEPTH`            | 2.5     | How far the top lip drops into the bottom case for alignment.                     |
 | `TOP_LIP_CLEARANCE`        | 0.4     | Slip-fit gap between top lip outside and bottom wall inside (Cycle 2: bumped from 0.3 per real-PETG fit data). |
@@ -157,9 +157,12 @@ cantilever). No wrap-around required.
 | `BOSS_OD`       | 8.0     | Boss outer Ø (**2.0 mm** wall around insert, Cycle-2 uprating of the 1.45 mm Cycle-1 wall — PETG fractures at 1.45 mm with knurl-induced hoop stress). |
 | `BOSS_HEIGHT`   | 6.7     | `INSERT_DEPTH + 2.5` — 2.5 mm solid PETG floor under the insert.        |
 
-Matching screw: **M3 × 6 mm** (plate 1.5 + lip 2.5 landed = ~4 mm of
-clamped material ahead of the insert, so M3 × 8 over-inserts and
-bottoms in the insert's blind end).
+Matching screw: **M3 × 6 mm** (plate 1.8 + lip 2.5 landed = **4.3 mm**
+of clamped material ahead of the insert, so the screw engages
+**1.7 mm** into the IUB-M3-L4 insert; M3 × 8 over-inserts and
+bottoms in the insert's blind end). Cycle 3 updated the stack
+math after PLATE_THICKNESS moved 2.0 -> 1.8 mm to sit within the
+MX plate spec.
 
 ## Case outer geometry + feet
 
