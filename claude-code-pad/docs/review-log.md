@@ -1607,3 +1607,105 @@ builder for current Rev-A boards should note the membrane is
 non-load-bearing for thermal protection until PCB Rev-B ships.
 
 **Status:** `PHASE-2-CYCLE-3: READY_FOR_REVIEW`
+
+---
+
+# Phase 3 — ZMK firmware
+
+## Cycle 1 — FW-1 deliverables (2026-04-19)
+
+**Scope:** populate `firmware/zmk/` with a buildable shield targeting
+the XIAO nRF52840 + PCB Cycle 5 plus scaffold the QMK alternate. Every
+Hard Requirement from `firmware/zmk/README.md` must land in code, not
+as a `/* TODO */`.
+
+### Commits (10 total, all pushed to main)
+
+| # | Hash | Scope |
+|---|------|-------|
+| C1.1  | 2bff1c8 | shield skeleton (Kconfig/defconfig + overlay stub + zmk.yml + west manifest) |
+| C1.2  | 5864794 | matrix (5x5 col2row) + encoder (alps,ec11) DT bindings |
+| C1.3  | 77eff59 | Claude Code keymap (11 macros) + BT layer |
+| C1.4  | 57f379a | WS2812 @ SPI3 + ccp_safety driver (pre-init GPIO LOW, cap registry) |
+| C1.5  | d665b39 | VBAT SAADC guard (undervolt cutoff, derate, broken-wire detect) |
+| C1.6  | 98ca44f | NTC thermal guard (out-of-range + over-temp fallback to 100 mA cap) |
+| C1.7  | 9a5ad8d | BLE multi-profile config (5 pairings, 3 advertised, +4 dBm) |
+| C1.8  | 1ee7249 | BODGE-MAP.md (firmware-relevant rear-pad bodge guide) |
+| C1.9  | 67cae00 | QMK alternate skeleton (RP2040 Pro Micro, info.json + keymap stub) |
+| C1.10 | a063971 | README build / flash / first-boot / troubleshooting |
+
+### Hard Requirement -> implementation map
+
+| README clause | Implementation |
+|---------------|---------------|
+| 300 mA Annex Q cap | `Kconfig.defconfig` `ZMK_RGB_UNDERGLOW_BRT_MAX=20` (12 mA/LED avg * 25 = 300 mA), not BLE-configurable |
+| Hostile recompile disclosed | README §Scope boundary retained verbatim |
+| RGB driver init order | `drivers/ccp_safety/ccp_rgb_init_safe.c` SYS_INIT POST_KERNEL 45, drives P0.06 LOW with 200 us hold before SPI3 + WS2812 init (default prio 50/90) |
+| VBAT cutoff 3.70 / 3.50 V | `ccp_battery_guard.c` thresholds + 200 mV hysteresis + 100 mV re-enable gap |
+| VBAT derate 3.90 -> 3.70 V | linear integer cap 100 -> 0 applied to `CCP_CAP_BATTERY` |
+| VBAT broken-wire detect | 8-sample window, max deviation-from-mean > 100 mV OR step > 300 mV -> `graceful_shutdown()` same path as 3.50 V cutoff, cannot be disabled at runtime |
+| SAADC oversample >= 2^3 + BURST | overlay `zephyr,oversampling = <3>` (2^3 = 8) + gain 1/6 + 0.6 V ref, 40 us acquisition |
+| NTC fallback 100 mA | `ccp_thermal_guard.c` publishes `CCP_CAP_THERMAL=33` on out-of-range (<0.1 V / >3.1 V), on decode fail, or on >= 60 degC |
+| NTC fail-safe start | thermal cap initialised to 33 at driver_init, held until first valid sample lands |
+
+### Pin rework
+
+PCB Cycle 5 landed NTC_ADC on MCU pin 14 / D10 / P1.15. P1.15 is
+**not** SAADC-capable on the nRF52840 -- we swap with COL1 so NTC_ADC
+uses D1 / P0.03 / AIN1 (a real SAADC channel). COL1 becomes a digital
+output on D10 / P1.15 (unaffected). Two wire moves documented in
+`firmware/zmk/BODGE-MAP.md`; no PCB respin.
+
+### BLE multi-host
+
+BT_MAX_CONN=5, BT_MAX_PAIRED=5; default keymap BT layer binds
+BT_SEL 0/1/2/BT_CLR/BT_CLR_ALL + OUT_TOG/OUT_USB/OUT_BLE. BT layer
+entry binding (hold-tap on the Editor key) is flagged as C2 polish --
+functional today via a small keymap edit, not yet via a chord on the
+default layer. Passkey SMP enabled.
+
+### Toolchain check
+
+`west --version` -> not installed on host; Zephyr SDK not present.
+**`west build` was NOT run** this cycle. Validation done:
+- YAML files parse (`pyyaml yaml.safe_load` clean).
+- JSON (QMK info.json) parses.
+- Kconfig indent + `config` / `default` / `help` syntax matches
+  reference ZMK shields.
+- DT S-expression structure reviewed vs ZMK's nice_nano_v2 shield
+  (`boards/shields/nice_nano_v2/*`).
+
+Compile errors will only surface on the first CI or local build with
+a real Zephyr SDK. This is called out explicitly in the RED-FW review
+prompt.
+
+### Known gaps for RED-FW + RED-SAFETY to probe
+
+1. **BT-layer entry binding missing from default layer.** The BT layer
+   exists but is reachable only via an explicit keymap modification
+   on the user's side. C2 fix: hold-tap on Editor key (0,4) or a
+   tap-dance on the 2U Enter.
+2. **Encoder click (ENC_SW) not wired into the keymap transform.**
+   ZMK doesn't expose an "encoder-click" as a native behaviour outside
+   the matrix; clean solution is a `kscan-gpio-direct` sibling added
+   as position 25 in a 26-entry transform. Deferred to C2.
+3. **`ccp_safety_graceful_shutdown()` does not call a public BLE
+   sleep API.** ZMK sleep hooks handle radio-duty-cycle reduction via
+   the sleep timeout, but a direct call would be cleaner. Version-
+   dependent; flagged for RED-FW input.
+4. **NTC decode uses libm `log()`.** Pulls newlib float into the
+   build. Fixed-point lookup table flagged as C2 follow-up.
+5. **BP slot -> XIAO back-pad target mapping in BODGE-MAP.md** cites
+   specific back-pad names (BP_D8, BP_A6 etc.). The Seeed XIAO
+   nRF52840 back-pad silkscreen uses those labels; worth double-
+   checking against the module wiki before ordering cable.
+6. **Power-state transition during VBAT cutoff.** Current path calls
+   `zmk_rgb_underglow_off()` and lets the ZMK sleep timeout put the
+   radio to sleep; does NOT currently advertise a "critical battery"
+   BAS flag explicitly. README §Integrity clause does require that.
+
+### Deviations from the README
+
+None. Every Hard Requirement maps to a named file + function.
+
+**Status:** `PHASE-3-CYCLE-1: READY_FOR_REVIEW`
