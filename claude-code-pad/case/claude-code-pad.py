@@ -256,6 +256,44 @@ def _iter_mx_centres() -> Iterable[Tuple[float, float]]:
                 yield (cx, ry)
 
 
+def _cut_wall_aperture(
+    solid: cq.Workplane,
+    center_x: float,
+    width: float,
+    z_bot: float,
+    z_top: float,
+    wall_axis: str = "N",
+    wall_span: float = 6.0,
+    wall_face_coord: float = 0.0,
+) -> cq.Workplane:
+    """Cut a rectangular aperture through a case wall (Cycle 3 BLOCKER fix).
+
+    Cuts a box of (width × wall_span × (z_top - z_bot)) through `solid`,
+    centred at (center_x, wall_face_coord) on the wall face and extending
+    from Z = z_bot to Z = z_top in the solid's own frame.
+
+    `wall_axis="N"` treats the wall as the north (+Y) wall, so the cut
+    box is oriented with its short axis along Y and passes through the
+    full wall thickness (given a generous `wall_span`).
+
+    Introduced in Phase 2 Cycle 3 so that USB-C and slide-switch
+    apertures can be cut on *both* the top-case (through the lip) and
+    the bottom-case (through the north sidewall) with a single
+    geometry path. This closes the Cycle 2 BLOCKER where the cuts
+    landed only in the top lip (z = 9.1..11.6 in the bottom-case frame)
+    while the actual plug body and actuator stick DOWN into the
+    bottom-wall Z range.
+    """
+    assert wall_axis == "N", "Only north-wall cuts implemented (USB-C and slide switch sit on the north edge)."
+    assert z_top > z_bot, f"z_top ({z_top}) must be greater than z_bot ({z_bot})."
+    height = z_top - z_bot
+    aperture = (
+        cq.Workplane("XY", origin=(center_x, wall_face_coord, z_bot))
+        .box(width, wall_span, height, centered=(True, True, False))
+    )
+    return solid.cut(aperture)
+
+
 # ============================================================================
 # TOP CASE
 # ============================================================================
@@ -804,6 +842,29 @@ def build_bottom_case() -> cq.Workplane:
     )
     relief_cutter = relief_cutter.intersect(band_keeper)
     body = body.cut(relief_cutter)
+
+    # --- North-wall apertures (Cycle 3 BLOCKER fix) --------------------------
+    # The top case's USB-C aperture only reaches Z = 9.1..11.6 (lip range).
+    # The actual USB-C plug body on the PCB sits at Z = PCB_top - 1.0 .. PCB_top + 3.2
+    # = 5.6 .. 9.8, so 5.6..9.1 is blocked by the solid bottom-case north wall.
+    # Cut the aperture through the bottom-case north wall from
+    # usb_bottom_z = PCB_top - 1.0 up to the mating plane at BOTTOM_WALL_TOP_Z
+    # so the plug body has a continuous slot from the case exterior to the PCB.
+    pcb_top_z = PCB_TRAY_STANDOFF + BOARD_THICKNESS
+    usb_bottom_z = pcb_top_z - 1.0
+    usbc_x_c = BOARD_OFFSET_X + USBC_NOTCH_X + USBC_NOTCH_W / 2
+    # wall_span generous enough to cut cleanly through the full north wall
+    wall_cut_span = (BOTTOM_WALL_THICKNESS + CASE_FIT_CLEARANCE) * 3
+    body = _cut_wall_aperture(
+        body,
+        center_x=usbc_x_c,
+        width=_shrink(USBC_SLOT_W),
+        z_bot=usb_bottom_z,
+        z_top=BOTTOM_WALL_TOP_Z + 0.1,     # overshoot into the lip-envelope cut
+        wall_axis="N",
+        wall_span=wall_cut_span,
+        wall_face_coord=0.0,
+    )
 
     # Rubber-foot recesses (4x, corners, on the UNDERSIDE of the floor)
     for (fx, fy) in [
