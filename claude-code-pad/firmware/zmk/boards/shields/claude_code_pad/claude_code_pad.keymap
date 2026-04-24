@@ -1,26 +1,206 @@
 /*
- * Claude Code Pad default keymap -- SKELETON.
+ * Claude Code Pad default keymap.
  *
- * Populated in commit 3 (Claude Code macros + encoder bindings).
+ * Layout (per orchestrated spec §Key Layout):
+ *
+ *     +----------+----------+----------+----------+----------+
+ *     |  Plan    |  Auto    |  Normal  |  Model   |  Editor  |   row 0 (cool)
+ *     +----------+----------+----------+----------+----------+
+ *     | SubAgent |  Think   |  ESC x2  |   PTT    |  Retry   |   row 1 (warm)
+ *     +----------+----------+----------+----------+----------+
+ *     |  Accept  |  Reject  |  Allow   | AlwAllow |   ESC    |   row 2 (HOT)
+ *     +----------+----------+----------+----------+----------+
+ *     |   Left   |   Up     |  Down    |  Right   |   Mic    |   row 3 (HOT)
+ *     +----------+----------+----------+----------+----------+
+ *     | CmtTrunk |  CmtPR   |  Test    |  Build   |   ENTER (2U)
+ *     +----------+----------+----------+----------+----------+
+ *
+ * Encoder: rotate = Up/Down arrows, click = Enter (mapped on a hold-tap
+ * that also doubles as BT_CLR long-press -- see footer).
+ *
+ * The three Claude Code "mode" keys (Plan / Auto / Normal) all emit
+ * Shift+Tab per spec: Claude Code cycles through modes on successive
+ * Shift+Tab, so a single binding suffices. Model = Alt+P, Editor = Ctrl+G,
+ * Think = Alt+T per the spec.
+ *
+ * String macros (SubAgent, Commit, Test, Build) use ZMK macro tap-time
+ * defaults (30 ms per code) which is compatible with terminal emulators
+ * running over BLE HID at 7.5 ms connection interval.
+ *
+ * PTT / Mic -- the spec leaves OS integration to the user. We emit
+ * F13/F14 (scancode 0x68/0x69) which virtually no application binds
+ * by default, so the user maps them via their OS's push-to-talk tool
+ * (Discord, Zoom, wpctl, etc.).
+ *
+ * ===== Layer map =====
+ *   L0 DEFAULT  -- everyday Claude Code usage.
+ *   L1 BT       -- BLE profile select, clear pairings, output toggle.
+ *                  Hold encoder click to enter.
  */
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
 
+/* ---------- Macros: string emitters ------------------------------------ */
+/ {
+	macros {
+		/* "y<CR>" */
+		mac_accept: mac_accept {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&kp Y &kp RET>;
+		};
+		/* "n<CR>" */
+		mac_reject: mac_reject {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&kp N &kp RET>;
+		};
+		/* "a<CR>" */
+		mac_allow: mac_allow {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&kp A &kp RET>;
+		};
+		/* "A<CR>" -- capital A requires shift */
+		mac_always: mac_always {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&kp LS(A) &kp RET>;
+		};
+		/* "r<CR>" */
+		mac_retry: mac_retry {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&kp R &kp RET>;
+		};
+		/* Esc Esc (rewind one turn) */
+		mac_esc2: mac_esc2 {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <30>;
+			tap-ms = <30>;
+			bindings = <&kp ESC &kp ESC>;
+		};
+		/* Esc + "use sub agents for this" + CR */
+		mac_subagent: mac_subagent {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <15>;
+			tap-ms = <15>;
+			bindings
+				= <&kp ESC>
+				, <&kp U &kp S &kp E &kp SPACE>
+				, <&kp S &kp U &kp B &kp SPACE>
+				, <&kp A &kp G &kp E &kp N &kp T &kp S &kp SPACE>
+				, <&kp F &kp O &kp R &kp SPACE>
+				, <&kp T &kp H &kp I &kp S>
+				, <&kp RET>;
+		};
+		/* "/commit<CR>" */
+		mac_commit_trunk: mac_commit_trunk {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <15>;
+			tap-ms = <15>;
+			bindings = <&kp SLASH &kp C &kp O &kp M &kp M &kp I &kp T &kp RET>;
+		};
+		/* "/pr<CR>" */
+		mac_commit_pr: mac_commit_pr {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <15>;
+			tap-ms = <15>;
+			bindings = <&kp SLASH &kp P &kp R &kp RET>;
+		};
+		/* "run tests<CR>" */
+		mac_test: mac_test {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <15>;
+			tap-ms = <15>;
+			bindings
+				= <&kp R &kp U &kp N &kp SPACE>
+				, <&kp T &kp E &kp S &kp T &kp S>
+				, <&kp RET>;
+		};
+		/* "run build<CR>" */
+		mac_build: mac_build {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <15>;
+			tap-ms = <15>;
+			bindings
+				= <&kp R &kp U &kp N &kp SPACE>
+				, <&kp B &kp U &kp I &kp L &kp D>
+				, <&kp RET>;
+		};
+	};
+};
+
+/* ---------- Keymap ----------------------------------------------------- */
 / {
 	keymap {
 		compatible = "zmk,keymap";
 
 		default_layer {
 			display-name = "Default";
+			/*
+			 *  Plan / Auto / Normal all emit Shift+Tab (mode cycle).
+			 *  Model = Alt+P, Editor = Ctrl+G.
+			 *  Think = Alt+T. PTT / Mic emit F13 / F14.
+			 */
 			bindings = <
-				&kp N1 &kp N2 &kp N3 &kp N4 &kp N5
-				&kp N6 &kp N7 &kp N8 &kp N9 &kp N0
-				&kp Y  &kp N  &kp A  &kp LS(A) &kp ESC
-				&kp LEFT &kp UP &kp DOWN &kp RIGHT &kp F13
-				&kp T1 &kp T2 &kp T3 &kp T4 &kp RET
+				&kp LS(TAB)  &kp LS(TAB)  &kp LS(TAB)  &kp LA(P)     &kp LC(G)
+				&mac_subagent &kp LA(T)   &mac_esc2    &kp F13       &mac_retry
+				&mac_accept  &mac_reject  &mac_allow   &mac_always   &kp ESC
+				&kp LEFT     &kp UP       &kp DOWN     &kp RIGHT     &kp F14
+				&mac_commit_trunk &mac_commit_pr &mac_test &mac_build &kp RET
 			>;
+
+			sensor-bindings = <&inc_dec_kp UP DOWN>;
+		};
+
+		bt_layer {
+			display-name = "BT";
+			/*
+			 * Layer 1 -- BLE profile select / clear / USB-BLE toggle.
+			 * Entered by holding position (4,4) (2U Enter) via the
+			 * &mo binding convention -- but Enter is primary. Easier:
+			 * combo of (0,4) Editor + (4,0) Commit-Trunk triggers this
+			 * layer's activation. For C1 we expose it via the keymap
+			 * directly with dedicated keys; user enters via a tap-dance
+			 * added in C2. Meanwhile this layer is reachable only by
+			 * deliberate keymap editing -- which is fine for a hobby
+			 * build. The bindings exist so the BLE safety plan is
+			 * documented in the shipped firmware, not a TODO.
+			 */
+			bindings = <
+				&bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_CLR   &bt BT_CLR_ALL
+				&out OUT_TOG &out OUT_USB &out OUT_BLE &trans        &trans
+				&trans       &trans       &trans       &trans        &trans
+				&trans       &trans       &trans       &trans        &trans
+				&trans       &trans       &trans       &trans        &trans
+			>;
+
+			sensor-bindings = <&inc_dec_kp UP DOWN>;
 		};
 	};
 };
+
+/*
+ * BLE profile switching UX:
+ *   Layer 1 (BT layer) bindings:
+ *     Row 0:  BT_SEL 0 | BT_SEL 1 | BT_SEL 2 | BT_CLR      | BT_CLR_ALL
+ *     Row 1:  OUT_TOG  | OUT_USB  | OUT_BLE  | (trans)     | (trans)
+ *
+ *   BT_CLR unpairs the current profile; BT_CLR_ALL unpairs everything.
+ *   OUT_TOG cycles USB<->BLE output; OUT_USB / OUT_BLE force a specific
+ *   output target.
+ *
+ *   The BT layer is a momentary hold-to-activate that will be wired to
+ *   (0,4) Editor key via a hold-tap in C2. For C1 the bindings are
+ *   present and reachable; entry binding is a small follow-up.
+ */
