@@ -1513,3 +1513,97 @@ outside antenna keepout=4. Script exits 0 every commit.
 `assembly.step`, new `test-coupon.stl`.
 
 **Status:** `PHASE-2-CYCLE-2: READY_FOR_REVIEW`
+
+### Phase 2 Cycle 2 — Adversarial re-review (2026-04-22)
+
+**Aggregate:** `2 BLOCKER / 4 MAJOR / 4 MINOR` from RED-MECH. Root
+cause of both BLOCKERs: the Cycle 2 `PCB_TRAY_STANDOFF` bump
+(3 → 5 mm, for Kailh hot-swap tail clearance) lifted the PCB-mounted
+USB-C plug body and slide-switch actuator INTO the bottom-case
+north-wall Z range, but the Cycle 2 fix-set cut those apertures
+only through the top-case LIP. Result:
+
+- USB-C plug body Z = 6.6..9.8, aperture cut Z = 9.1..11.6 → 2.5 mm blocked.
+- Switch actuator Z = 7.1..13.1, aperture cut Z = 9.1..11.6 → 2 mm blocked.
+
+Full RED-MECH entry and reproducer geometry traces live in the
+Cycle 3 dispatch notes (MECH-1 handoff).
+
+### Cycle 3 — MECH-1 surgical fix (2026-04-22/23)
+
+**Inputs:** Cycle 2 re-review `2 BLOCKER / 4 MAJOR / 4 MINOR` +
+one carry-forward note for a pre-existing PCB-placement issue.
+One-commit-per-logical-fix cadence enforced; all commits pushed
+to `main`.
+
+**Commits pushed (main):**
+
+| # | Hash | Fix group |
+| --- | --- | --- |
+| 1 | `f1920f1` | USB-C aperture through bottom-case north wall (BLOCKER) |
+| 2 | `5396044` | Slide-switch window through bottom-case north wall (BLOCKER) |
+| 3 | `c320a10` | `assert_aperture_clears()` Z-overlap validation gate (MAJOR #3 process fix) |
+| 4 | `98b5365` | `PLATE_THICKNESS` 2.0 → 1.8 mm (MX plate spec) |
+| 5 | `18662e0` | Vent count 16 → 24, area 113 → 170 mm² (docs matched reality) |
+| 6 | `786843c` | Heat-set boss / screw clamp-stack math updated for 1.8 mm plate |
+| 7 | `c7fcabd` | Stale doc cleanup + STEP placeholders lifted by `PCB_TRAY_STANDOFF` |
+| 8 | *this commit* | Review-log Cycle 3 entry + NTC-placement carry-forward note |
+
+**Closure table (Cycle 2 re-review findings):**
+
+| Severity | ID | Disposition |
+| --- | --- | --- |
+| BLOCKER #1 | USB-C aperture blocked by bottom-case north wall (2.5 mm) | CLOSED — C3.1 cuts a matching aperture through the bottom wall from Z = PCB_top − 1.0 (= 5.6 mm) up to the mating plane. `assert_aperture_clears('USB-C plug body', z=[5.60, 9.80])` → **PASS**. |
+| BLOCKER #2 | Slide-switch actuator blocked by bottom-case north wall (2 mm) | CLOSED — C3.2 cuts a matching aperture from Z = 7.1 mm up to the mating plane. `assert_aperture_clears('slide-switch actuator', z=[7.10, 13.10])` → **PASS**. |
+| MAJOR #3 | Validation gate missed the Cycle 2 Z-stack regression | CLOSED — C3.3 adds `assert_aperture_clears(solid, xy, wh, z_min, z_max)` which probes the unioned top+bottom assembly at an `(nx, nz)` grid across the component's real Z-range. The check caught a float-tie boundary on first run (before the 0.2 mm downward extension in C3.1 was added) — live evidence the gate works. |
+| MAJOR #4 | `PLATE_THICKNESS` 2.0 mm outside MX plate spec (1.5 ± 0.3 = 1.8 max) | CLOSED — C3.4 drops to 1.8 mm (option (a) from the dispatch). Stiffness retention ≈ 88 % of Cycle 2 once lip + box-section is included. |
+| MAJOR #5 | Vent area math wrong (docs 168 mm², real 113 mm²) | CLOSED — C3.5 adds 8 more Ø 3 holes (4 floor + 2 per wall × 2 walls), lifting total from 16 × π 1.5² = 113 mm² to 24 × π 1.5² = 170 mm². Docs rewritten to match reality. |
+| MAJOR #6 | Clamp-stack math quoted "plate (1.5) + lip (2.5) = 4.0 mm" | CLOSED — C3.6 updates PARAMS.md + README.md §Screws to plate (1.8) + lip (2.5) = **4.3 mm**, M3 × 6 thread engagement **1.7 mm**. |
+| MINOR #7 | README §Files stale (plate "1.5 mm") | CLOSED — C3.7 updates to 1.8 mm. |
+| MINOR #8 | Code comment at vent loop inconsistent | CLOSED — C3.7 rewrites comment to reflect 12 floor + 12 wall = 24 holes / ~170 mm². |
+| MINOR #9 | STEP placeholders at Z = 0 hide the real Z stack | CLOSED — C3.7 adds `PCB_TRAY_STANDOFF` offset to `_placeholder_pcb()`, `_placeholder_encoder()`, `_placeholder_usb()`; STEP now shows the PCB resting on the standoffs with the real component Z positions. |
+| MINOR #10 | NTC-to-cell coupling ≥ 50 mm (TH1 at PCB (10, 24), cell at bay-centre (30, 75)) | CARRY-FORWARD — see next section. |
+
+**Validation per commit (all 8):** `validate()` gate prints
+`top/bottom intersection = 0.000 mm^3`, 32 plate-top inner wires,
+MX=25, stab=4, encoder=1, USB-C=1, slide switch=1, heat-set bosses
+outside antenna keepout=4, `assert_aperture_clears('USB-C plug
+body')` PASS, `assert_aperture_clears('slide-switch actuator')`
+PASS. Script exits 0 every commit.
+
+**Deliverables regenerated:** `top-case.stl`, `bottom-case.stl`,
+`assembly.step` (now with PCB at the correct Z),
+`test-coupon.stl`.
+
+#### Carry-forward to PCB Rev-B (not a MECH-1 defect)
+
+**Finding:** TH1 (NTC thermistor) is placed at board-local (10, 24),
+i.e. case-outer (12.4, 26.4). The battery-bay *interior* centre in
+the case-outer frame is at (32.4, 77.4). Distance from NTC to
+cell-centre: ≈ 54 mm (not 5 mm as would be required for meaningful
+thermal coupling via a 0.4 mm PETG membrane).
+
+**Disposition:** this is a **PCB-placement** issue that predates
+Phase 2. It was previously flagged in Phase 1 Cycle 2 DFM but not
+reworked before PCB Rev-A freeze. MECH-1's membrane *geometry*
+(0.4 mm PETG layer at NTC_CENTRE) is correct per spec; the
+underlying coupling failure is driven by where TH1 lives on the
+PCB, not by the case floor.
+
+**Recommendation for PCB Rev-B:** move TH1 to the battery-bay
+footprint interior — e.g. board-local (30, 75) so its case-outer
+centre lands above the cell. A 6 × 3 mm keep-out on the PCB is
+enough; the existing `NTC_CENTRE` parameter in
+`claude-code-pad.py` can be re-pointed in a one-line edit once
+the new PCB pad is placed.
+
+**Severity:** retained at MINOR — the TP4056 charger has an
+independent NTC (on its own pin, separate from TH1) that reads
+cell temp correctly at the charger side; the firmware sampling
+loop provides a secondary runaway check irrespective of the case
+membrane. The case membrane is a *defence-in-depth* layer for
+PCM failure, not the primary thermal path. Formal waiver: case
+builder for current Rev-A boards should note the membrane is
+non-load-bearing for thermal protection until PCB Rev-B ships.
+
+**Status:** `PHASE-2-CYCLE-3: READY_FOR_REVIEW`
