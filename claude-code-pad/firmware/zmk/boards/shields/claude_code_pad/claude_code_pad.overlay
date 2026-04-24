@@ -208,6 +208,60 @@
 	};
 };
 
+/*
+ * -------- SAADC channels: VBAT_ADC, NTC_ADC ------------------------------
+ *
+ * VBAT_ADC = VBAT / 2 (2x 1 MOhm divider) on back-pad slot 5 -> P0.31 /
+ * AIN7. 100 nF ADC cap at the centre tap. Source impedance ~500 kOhm
+ * -- SAADC OVERSAMPLE>=2^3 (8 samples) + BURST mode required per
+ * firmware/zmk/README.md §Hard Requirement: Battery Cutoff Voltage.
+ *
+ * NTC_ADC on D1 / P0.03 / AIN1 after the Phase 3 C1 pin rework (see
+ * header). 10 kOhm MF52 NTC divided against 10 kOhm R_NTC to GND,
+ * high-side-connected to +3V3.
+ *
+ * Both channels use the internal 0.6 V reference with gain 1/6 giving
+ * full-scale 3.6 V -- adequate for 3.3 V rails.
+ */
+&adc {
+	status = "okay";
+
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	vbat_adc_ch: channel@7 {
+		reg = <7>;
+		zephyr,gain = "ADC_GAIN_1_6";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME(ADC_ACQ_TIME_MICROSECONDS, 40)>;
+		zephyr,input-positive = <NRF_SAADC_AIN7>;   /* P0.31 */
+		zephyr,resolution = <12>;
+		zephyr,oversampling = <3>;   /* 2^3 = 8 samples, BURST */
+	};
+
+	ntc_adc_ch: channel@1 {
+		reg = <1>;
+		zephyr,gain = "ADC_GAIN_1_6";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME(ADC_ACQ_TIME_MICROSECONDS, 40)>;
+		zephyr,input-positive = <NRF_SAADC_AIN1>;   /* P0.03 / D1 */
+		zephyr,resolution = <12>;
+		zephyr,oversampling = <3>;
+	};
+};
+
+/ {
+	ccp_safety: ccp_safety {
+		compatible = "claude-code-pad,ccp-safety";
+		io-channels = <&adc 7>, <&adc 1>;
+		io-channel-names = "vbat", "ntc";
+		vbat-divider-ohms = <1000000 1000000>;
+		ntc-beta-k = <3950>;
+		ntc-pullup-ohms = <10000>;
+		status = "okay";
+	};
+};
+
 &i2c0 {
 	status = "okay";
 	compatible = "nordic,nrf-twi";
