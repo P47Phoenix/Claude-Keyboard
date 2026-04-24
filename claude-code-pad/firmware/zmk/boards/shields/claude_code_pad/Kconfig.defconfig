@@ -97,7 +97,9 @@ config ZMK_KSCAN_DEBOUNCE_RELEASE_MS
 #
 # -------- HID / USB -------------------------------------------------------
 #
-config ZMK_HID_REPORT_TYPE_NKRO
-	default y
+# ZMK_HID_REPORT_TYPE_NKRO is a Kconfig *choice* symbol; it cannot be
+# selected or defaulted from a shield defconfig. Set it explicitly in
+# claude_code_pad.conf where a plain `CONFIG_ZMK_HID_REPORT_TYPE_NKRO=y`
+# picks the choice member.
 
 endif # SHIELD_CLAUDE_CODE_PAD

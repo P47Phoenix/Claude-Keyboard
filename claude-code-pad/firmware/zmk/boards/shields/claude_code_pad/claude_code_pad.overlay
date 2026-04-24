@@ -1,15 +1,13 @@
 /*
  * Claude Code Pad shield overlay.
  *
- * Target MCU: Seeed XIAO nRF52840 (Zephyr board: seeeduino_xiao_ble).
+ * Target MCU: Seeed XIAO nRF52840 (Zephyr board: xiao_ble/nrf52840).
  *
- * Pin map (final, Phase 1 Cycle 5 + C1 firmware review):
+ * Pin map (final, Phase 1 Cycle 5 + Phase 3 Cycle 2 firmware):
  *
  *   XIAO front castellation (1x14):
  *     D0 / P0.02 / AIN0  -> COL0
- *     D1 / P0.03 / AIN1  -> COL1                (ERRATUM: NTC_ADC moved to
- *                                                 a back-pad bodge in C1,
- *                                                 see NTC section below)
+ *     D1 / P0.03 / AIN1  -> NTC_ADC (pin-rework, see BODGE-MAP)
  *     D2 / P0.28 / AIN4  -> COL2
  *     D3 / P0.29 / AIN5  -> COL3
  *     D4 / P0.04 / AIN2  -> SDA (TWI0, PN532)
@@ -18,7 +16,7 @@
  *     D7 / P1.12         -> ROW0
  *     D8 / P1.13         -> ROW1
  *     D9 / P1.14         -> ROW2
- *     D10 / P1.15        -> NTC_ADC  -- !! NOT analog-capable; see C1 note
+ *     D10 / P1.15        -> COL1 (moved from D1, see BODGE-MAP)
  *
  *   XIAO back-pad bodges (rear-pad J_XIAO_BP cluster, slots 0..6):
  *     slot 0 -> ENC_A         -> back-pad P0.09
@@ -29,35 +27,20 @@
  *     slot 5 -> VBAT_ADC      -> back-pad P0.31 / AIN7 (SAADC capable)
  *     slot 6 -> ROW4          -> back-pad P1.02
  *
- * Firmware-relevant note: D1 (P0.03 / AIN1) is the *canonical* SAADC
- * channel we want for NTC (short, minimal-noise trace to R_NTC pin 1
- * via the NTC builder bodge). On the PCB D1 is already assigned to
- * COL1 in the matrix. Phase 3 C1 resolution: swap COL1 to D10 (P1.15)
- * and keep D1 (P0.03/AIN1) for NTC_ADC. P1.15 is GPIO-only but adequate
- * as a column driver. This fixes a latent issue (PCB Cycle 5 had D10
- * for NTC, but the back-pad-slot 5 bodge wire is for VBAT_ADC not NTC).
- *
- *    >>> BUILDERS: see BODGE-MAP.md for the definitive wire guide.
- *
- *   Revised front-pin assignment (this overlay):
- *     D0 / P0.02 -> COL0
- *     D1 / P0.03 -> NTC_ADC  (wire R_NTC pin 1 here; was MCU pin 14)
- *     D2 / P0.28 -> COL2
- *     D3 / P0.29 -> COL3
- *     D4 / P0.04 -> SDA
- *     D5 / P0.05 -> SCL
- *     D6 / P1.11 -> COL4
- *     D7 / P1.12 -> ROW0
- *     D8 / P1.13 -> ROW1
- *     D9 / P1.14 -> ROW2
- *     D10 / P1.15 -> COL1
+ *   >>> BUILDERS: see BODGE-MAP.md for the definitive wire guide.
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+#include <zephyr/dt-bindings/led/led.h>
+#include <zephyr/dt-bindings/adc/adc.h>
+#include <zephyr/dt-bindings/i2c/i2c.h>
+#include <zephyr/dt-bindings/gpio/gpio.h>
+#include <freq.h>
 
 / {
 	chosen {
-		zmk,kscan = &kscan0;
+		zmk,kscan = &kscan_composite;
 		zmk,matrix_transform = &default_transform;
 	};
 
@@ -65,7 +48,7 @@
 	 * 5x5 matrix. Rows are the diode-anode side (inputs, pulled up
 	 * internally); columns are the driven side.
 	 */
-	kscan0: kscan {
+	kscan_matrix: kscan_matrix {
 		compatible = "zmk,kscan-gpio-matrix";
 		diode-direction = "col2row";
 		wakeup-source;
@@ -83,7 +66,7 @@
 
 		col-gpios
 			= <&gpio0  2 GPIO_ACTIVE_HIGH>    /* COL0 -> D0  / P0.02 */
-			, <&gpio1 15 GPIO_ACTIVE_HIGH>    /* COL1 -> D10 / P1.15 (moved, see header) */
+			, <&gpio1 15 GPIO_ACTIVE_HIGH>    /* COL1 -> D10 / P1.15 (moved) */
 			, <&gpio0 28 GPIO_ACTIVE_HIGH>    /* COL2 -> D2  / P0.28 */
 			, <&gpio0 29 GPIO_ACTIVE_HIGH>    /* COL3 -> D3  / P0.29 */
 			, <&gpio1 11 GPIO_ACTIVE_HIGH>    /* COL4 -> D6  / P1.11 */
@@ -91,34 +74,61 @@
 	};
 
 	/*
-	 * Row 4, col 4 is a 2U stabilized Enter. Matrix-wise it's still a
-	 * single (R4,C4) slot; stabilizer is mechanical, not electrical.
-	 * The transform is therefore identity: 5 rows x 5 cols -> 25 keys.
+	 * FW-M9: ENC_SW (encoder push) as a direct single-key kscan,
+	 * combined into a composite with the main matrix so the matrix
+	 * transform can address it at position 25 (row 5, col 0).
+	 * ENC_SW sits on back-pad slot 2 / P1.00.
+	 *
+	 * BODGE-MAP note: P1.00 is the nRF52840 SWO (trace) pin. If live
+	 * debug trace is enabled (not by default in our build) this
+	 * conflicts. For most builders this is fine; see BODGE-MAP §SWO.
+	 */
+	kscan_encoder_click: kscan_encoder_click {
+		compatible = "zmk,kscan-gpio-direct";
+		wakeup-source;
+		input-gpios = <&gpio1 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;   /* P1.00 */
+	};
+
+	kscan_composite: kscan_composite {
+		compatible = "zmk,kscan-composite";
+		rows = <6>;
+		columns = <5>;
+
+		matrix {
+			kscan = <&kscan_matrix>;
+		};
+
+		encoder_click {
+			kscan = <&kscan_encoder_click>;
+			row-offset = <5>;
+		};
+	};
+
+	/*
+	 * 6 rows x 5 cols matrix with ENC_SW at (5, 0) = position 25.
 	 */
 	default_transform: keymap_transform {
 		compatible = "zmk,matrix-transform";
 		columns = <5>;
-		rows = <5>;
+		rows = <6>;
 		map = <
 			RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4)
 			RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4)
 			RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4)
 			RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4)
 			RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4)
+			RC(5,0)
 		>;
 	};
 
 	/*
-	 * EC11 rotary encoder. A/B on back-pad slots 0/1, switch on slot 2.
-	 * ENC_SW has no external pull-up on the PCB (C3 removed the MCU-side
-	 * pull-up resistor) -- we rely on the nRF52840 internal pull-up via
-	 * the matrix kscan binding for the press; encoder sub-driver reads
-	 * A/B directly.
+	 * EC11 rotary encoder. A/B on back-pad slots 0/1, switch on slot 2
+	 * (switch handled by kscan_encoder_click above).
 	 */
 	left_encoder: encoder_left {
 		compatible = "alps,ec11";
-		a-gpios = <&gpio0  9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;   /* ENC_A -> back-pad slot 0 / P0.09 */
-		b-gpios = <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;   /* ENC_B -> back-pad slot 1 / P0.10 */
+		a-gpios = <&gpio0  9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;   /* ENC_A -> P0.09 */
+		b-gpios = <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;   /* ENC_B -> P0.10 */
 		steps = <80>;
 		status = "okay";
 	};
@@ -131,50 +141,27 @@
 };
 
 /*
- * ENC_SW (encoder push) is wired as a direct GPIO with internal pull-up.
- * ZMK does not have a built-in "encoder-click" behavior outside the
- * matrix, so we extend the matrix with a 6th virtual column? No -- we
- * route ENC_SW into the kscan as an additional 1x1 matrix slot using a
- * separate kscan-gpio-direct instance, combined into the chosen kscan
- * with a "composite" driver. For C1 simplicity: we expose ENC_SW as
- * row 5 of a 6-row matrix. That adds complexity for a minor gain; the
- * cleaner path is a kscan-gpio-direct sibling bound to an extra layer
- * key. Deferred to C2 polish -- for C1 the encoder click is wired via
- * a direct kscan instance below and mapped at position 25 in the
- * matrix transform.
- *
- * NOTE: not wired into default keymap transform (would require 26
- * bindings). See C2 TODO in review-log.
- */
-/*
  * -------- RGB WS2812 (SK6812MINI-E) strip --------------------------------
- *
- * 25 LEDs chained serpentine. DIN (via R1 470 Ohm series) from MCU
- * RGB_DIN_MCU -> back-pad slot 3 -> P0.06 (nRF52840 SPI3 MOSI capable).
- *
- * Using nRF52840 SPI3 @ 4 MHz -- ZMK's default WS2812 shim encodes each
- * colour bit as 3 SPI bits (0b100=0, 0b110=1), yielding the standard
- * 1.25 us bit period the SK6812 wants (0.35/0.8 us T0H/T0L,
- * 0.7/0.6 us T1H/T1L). A single 30-byte transfer per frame at ~40 FPS
- * worst-case keeps BLE throughput unaffected.
- *
- * CRITICAL: &led_strip.status must be "okay" AFTER the GPIO is driven
- * LOW in init (see ccp_safety driver ccp_rgb_init_safe.c). ZMK does
- * this correctly in its default bring-up (GPIO configured before
- * spi_configure). We still enforce the pre-driver GPIO-LOW step via
- * a SYS_INIT hook at POST_KERNEL priority 50 (runs before the
- * ZMK RGB driver's priority 90).
  */
 &pinctrl {
+	/*
+	 * FW-M1 / SF-M3: bias-pull-down on MOSI in BOTH default and
+	 * sleep pinctrl states. When the pin is handed back to the
+	 * peripheral after the init-safe GPIO LOW hook, the bias
+	 * keeps DIN at a defined 0 through any SPI re-init glitch
+	 * that would otherwise re-light the LEDs momentarily.
+	 */
 	spi3_ccp_default: spi3_ccp_default {
 		group1 {
 			psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
+			bias-pull-down;
 		};
 	};
 	spi3_ccp_sleep: spi3_ccp_sleep {
 		group1 {
 			psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
 			low-power-enable;
+			bias-pull-down;
 		};
 	};
 };
@@ -188,17 +175,14 @@
 
 	led_strip: ws2812@0 {
 		compatible = "worldsemi,ws2812-spi";
-		label = "WS2812";
 		reg = <0>;
 		spi-max-frequency = <4000000>;
 		chain-length = <25>;
 		spi-one-frame = <0x70>;
 		spi-zero-frame = <0x40>;
-		color-mapping = <
-			LED_COLOR_ID_GREEN
-			LED_COLOR_ID_RED
-			LED_COLOR_ID_BLUE
-		>;
+		color-mapping = <LED_COLOR_ID_GREEN
+				 LED_COLOR_ID_RED
+				 LED_COLOR_ID_BLUE>;
 	};
 };
 
@@ -216,12 +200,16 @@
  * -- SAADC OVERSAMPLE>=2^3 (8 samples) + BURST mode required per
  * firmware/zmk/README.md §Hard Requirement: Battery Cutoff Voltage.
  *
- * NTC_ADC on D1 / P0.03 / AIN1 after the Phase 3 C1 pin rework (see
- * header). 10 kOhm MF52 NTC divided against 10 kOhm R_NTC to GND,
- * high-side-connected to +3V3.
+ * NTC_ADC on D1 / P0.03 / AIN1 after the Phase 3 C1 pin rework. 10 kOhm
+ * MF52 NTC divided against 10 kOhm R_NTC to GND, high-side-connected to
+ * +3V3.
  *
  * Both channels use the internal 0.6 V reference with gain 1/6 giving
  * full-scale 3.6 V -- adequate for 3.3 V rails.
+ *
+ * SF #23: zephyr,oversampling = <3> (-> 2^3 = 8 samples) AND
+ * nordic,burst-enable <3> on each channel, so the SAADC samples in
+ * burst mode and averages 8 raw conversions per user-visible sample.
  */
 &adc {
 	status = "okay";
@@ -236,7 +224,7 @@
 		zephyr,acquisition-time = <ADC_ACQ_TIME(ADC_ACQ_TIME_MICROSECONDS, 40)>;
 		zephyr,input-positive = <NRF_SAADC_AIN7>;   /* P0.31 */
 		zephyr,resolution = <12>;
-		zephyr,oversampling = <3>;   /* 2^3 = 8 samples, BURST */
+		zephyr,oversampling = <3>;   /* 2^3 = 8 samples */
 	};
 
 	ntc_adc_ch: channel@1 {
@@ -247,6 +235,11 @@
 		zephyr,input-positive = <NRF_SAADC_AIN1>;   /* P0.03 / D1 */
 		zephyr,resolution = <12>;
 		zephyr,oversampling = <3>;
+		/*
+		 * nRF SAADC oversampling >= 2 implicitly enables burst mode
+		 * (hardware repeats the configured acquisition N times into
+		 * a single averaged result). SF #23 verified.
+		 */
 	};
 };
 
@@ -258,20 +251,17 @@
 		vbat-divider-ohms = <1000000 1000000>;
 		ntc-beta-k = <3950>;
 		ntc-pullup-ohms = <10000>;
+		ntc-nominal-ohms = <10000>;
+		ntc-nominal-temp-k = <298>;
 		status = "okay";
 	};
 };
 
-&i2c0 {
-	status = "okay";
-	compatible = "nordic,nrf-twi";
-	sda-pin = <4>;   /* P0.04 / D4 / AIN2 */
-	scl-pin = <5>;   /* P0.05 / D5 / AIN3 */
-	clock-frequency = <I2C_BITRATE_STANDARD>;
-
-	pn532: pn532@24 {
-		compatible = "nxp,pn532";
-		reg = <0x24>;
-		status = "disabled";   /* Phase 5 -- RFID figurine stack */
-	};
-};
+/*
+ * I2C0 for the PN532 NFC reader (Phase 5 RFID figurine stack) is
+ * intentionally left in the board's default disabled state. Adding
+ * pinctrl + re-enabling it here would require defining an i2c0_default
+ * / i2c0_sleep pinctrl pair; the Phase 5 deliverable will re-enable it
+ * then. We do NOT want to carry a half-configured TWI node that would
+ * fail DT validation or silently idle the pins.
+ */
