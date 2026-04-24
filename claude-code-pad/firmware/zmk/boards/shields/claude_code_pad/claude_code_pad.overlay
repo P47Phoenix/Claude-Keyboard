@@ -1,0 +1,21 @@
+/*
+ * Claude Code Pad shield overlay -- SKELETON.
+ *
+ * Populated incrementally across Phase 3 Cycle 1 commits:
+ *   - Matrix + encoder DT bindings (commit 2)
+ *   - RGB WS2812 strip + hard cap guard (commit 4)
+ *   - VBAT SAADC + undervolt guard (commit 5)
+ *   - NTC SAADC + thermal fallback (commit 6)
+ *
+ * Target MCU: XIAO Seeed nRF52840 (Zephyr board id `seeeduino_xiao_ble`).
+ * ZMK's Pro Micro shield shim exposes pin aliases &pro_micro 0..20 and
+ * &pro_micro_d 0..20 / &pro_micro_a 0..3. nRF52840 GPIO mapping is via
+ * the seeeduino_xiao_ble board definition upstream in Zephyr; this shield
+ * overrides only what is Claude-Code-Pad-specific.
+ */
+
+/ {
+	chosen {
+		zmk,kscan = &kscan0;
+	};
+};

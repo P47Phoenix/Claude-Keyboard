@@ -1,0 +1,27 @@
+# west manifest for the Claude Code Pad user build.
+#
+# Usage:
+#   mkdir -p ~/zmk-ccp && cd ~/zmk-ccp
+#   git clone https://github.com/<you>/Claude-Keyboard src/ccp
+#   west init -l src/ccp/claude-code-pad/firmware/zmk/config
+#   west update
+#   west build -s zmk/app -b seeeduino_xiao_ble -- -DSHIELD=claude_code_pad \
+#       -DZMK_EXTRA_MODULES="$PWD/src/ccp/claude-code-pad/firmware/zmk"
+#
+# The last -DZMK_EXTRA_MODULES flag is what lets ZMK find our shield
+# definition under boards/shields/claude_code_pad/ without having to
+# clone the shield into zmk/app/boards/shields/ itself.
+
+manifest:
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+
+  projects:
+    - name: zmk
+      remote: zmkfirmware
+      revision: main
+      import: app/west.yml
+
+  self:
+    path: config

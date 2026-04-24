@@ -1,0 +1,103 @@
+# Copyright (c) 2026 Claude Code Pad project
+# SPDX-License-Identifier: MIT
+#
+# Shield-level defaults for the Claude Code Pad (XIAO nRF52840, 5x5 matrix,
+# EC11 encoder, 25x SK6812MINI-E, PN532 NFC over TWI, VBAT/NTC SAADC).
+
+if SHIELD_CLAUDE_CODE_PAD
+
+config ZMK_KEYBOARD_NAME
+	default "Claude Code Pad"
+
+#
+# -------- Power / brownout ------------------------------------------------
+#
+# Sleep timeout: 10 min idle -> deep-sleep to preserve cell capacity
+# between Claude Code sessions. Undervolt cutoff is additionally enforced
+# by the ccp_battery_guard driver (see claude_code_pad.conf).
+#
+config ZMK_IDLE_SLEEP_TIMEOUT
+	default 600000
+
+config ZMK_SLEEP
+	default y
+
+#
+# -------- BLE multi-host --------------------------------------------------
+#
+# Three profiles keeps the keymap bindings tidy (BT_SEL 0/1/2) and still
+# covers workstation + laptop + phone. Raising to 5 slots (BT_MAX_CONN)
+# covers 3 active profiles + 1 LE shell + 1 headroom.
+#
+config BT_MAX_CONN
+	default 5
+
+config BT_MAX_PAIRED
+	default 5
+
+config ZMK_BLE
+	default y
+
+config ZMK_USB
+	default y
+
+#
+# -------- RGB underglow ---------------------------------------------------
+#
+# CRITICAL: BRT_MAX is the firmware hard cap per IEC 62368-1 Annex Q.
+#
+# 25 LEDs x 60 mA full-white = 1500 mA peak (LDO rating 600 mA, Annex Q
+# PS2 cap 300 mA).
+# 300 mA / 25 LEDs = 12 mA average per LED.
+# 12 mA / 60 mA(full) = 20 %. -> BRT_MAX = 20.
+#
+# Ordinary thermal conditions only. ccp_battery_guard derates this further
+# on low VBAT, and ccp_thermal_guard hard-caps to BRT_MAX=7 (~100 mA total)
+# when NTC_ADC is out-of-range per IEC 62368-1 Annex Q fallback rules.
+#
+# Keep START_BRT < BRT_MAX so boot does not momentarily exceed the cap.
+#
+config ZMK_RGB_UNDERGLOW
+	default y
+
+config ZMK_RGB_UNDERGLOW_BRT_MIN
+	default 0
+
+config ZMK_RGB_UNDERGLOW_BRT_MAX
+	default 20
+
+config ZMK_RGB_UNDERGLOW_BRT_START
+	default 10
+
+config ZMK_RGB_UNDERGLOW_BRT_STEP
+	default 2
+
+config ZMK_RGB_UNDERGLOW_ON_START
+	default y
+
+config ZMK_RGB_UNDERGLOW_AUTO_OFF_IDLE
+	default y
+
+config ZMK_RGB_UNDERGLOW_AUTO_OFF_USB
+	default n
+
+#
+# -------- Matrix ----------------------------------------------------------
+#
+# 5x5 direct-wired through 1N4148W diodes (K->row). Rows are inputs, cols
+# are the driven side. 5 ms debounce tracks the SK6812MINI frame period
+# comfortably and is below the HID 8 ms polling floor.
+#
+config ZMK_KSCAN_DEBOUNCE_PRESS_MS
+	default 5
+
+config ZMK_KSCAN_DEBOUNCE_RELEASE_MS
+	default 5
+
+#
+# -------- HID / USB -------------------------------------------------------
+#
+config ZMK_HID_REPORT_TYPE_NKRO
+	default y
+
+endif # SHIELD_CLAUDE_CODE_PAD

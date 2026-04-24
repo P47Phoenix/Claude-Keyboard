@@ -1,0 +1,13 @@
+file_format: "1"
+id: claude_code_pad
+name: Claude Code Pad (25-key macropad)
+type: shield
+url: https://github.com/michaelconnelly/Claude-Keyboard
+requires:
+  - pro_micro
+features:
+  - keys
+  - encoder
+  - underglow
+siblings:
+  - claude_code_pad

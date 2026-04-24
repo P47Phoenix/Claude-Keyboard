@@ -1,0 +1,5 @@
+# Copyright (c) 2026 Claude Code Pad project
+# SPDX-License-Identifier: MIT
+
+config SHIELD_CLAUDE_CODE_PAD
+	def_bool $(shields_list_contains,claude_code_pad)
