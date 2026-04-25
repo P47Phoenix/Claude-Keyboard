@@ -219,10 +219,16 @@ correlation error. Rev-B relocates the NTC to a cell-contact
 position.
 
 **Cycle 2 rate-of-change sanity (SF-M10):** a decoded temperature
-delta > 5 degC/sample OR a temperature outside the [-10 .. +70 degC]
-plausibility band forces the 100 mA fallback regardless of the
-absolute reading. Catches a partially-shorted divider that reads
-in-range but with nonsense physics.
+delta **> 5 degC per sample** (at the 2 s default
+`CONFIG_CCP_THERMAL_GUARD_SAMPLE_INTERVAL_MS` cadence -> ~2.5 degC/s)
+OR a temperature outside the [-10 .. +70 degC] plausibility band
+forces the 100 mA fallback regardless of the absolute reading. The
+limit is expressed in degC-per-sample so that a user who tightens
+the sample interval (e.g. to 500 ms) automatically tightens the
+real-time rate-limit (5 degC / 0.5 s = 10 degC/s) -- which matches
+the increased confidence available from faster sampling. Catches a
+partially-shorted divider that reads in-range but with nonsense
+physics.
 
 **Cycle 2 floating-pin probe (FW-M6):** on the first in-range
 reading after any out-of-range sample, firmware briefly drives the

@@ -47,7 +47,15 @@ LOG_MODULE_REGISTER(ccp_thermal_guard, CONFIG_LOG_DEFAULT_LEVEL);
 
 #define NTC_TEMP_PLAUS_MIN_C (-10)
 #define NTC_TEMP_PLAUS_MAX_C (70)
-#define NTC_RATE_LIMIT_C     5       /* degC / sample */
+/*
+ * NTC_RATE_LIMIT_C is degC PER SAMPLE, not per second. At the default
+ * 2 s sample interval this translates to ~2.5 degC/s, which is well
+ * above any plausible LDO-to-NTC thermal time constant (the AP2112K
+ * + the 0805 NTC have a combined first-order tau of ~3 s under still
+ * air). README §Thermal section calls out the per-second equivalent
+ * for builders tuning CCP_THERMAL_GUARD_SAMPLE_INTERVAL_MS.
+ */
+#define NTC_RATE_LIMIT_C     5       /* degC / sample (~2.5 degC/s @ 2 s) */
 
 static const struct adc_dt_spec ntc_spec =
 	ADC_DT_SPEC_GET_BY_IDX(DT_NODELABEL(ccp_safety), 1);

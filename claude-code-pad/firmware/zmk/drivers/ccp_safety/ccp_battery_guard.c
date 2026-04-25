@@ -159,8 +159,26 @@ static void vbat_work_handler(struct k_work *work)
 	ARG_UNUSED(work);
 
 	if (ccp_safety_is_latched()) {
-		/* Nothing to do -- just reschedule to keep the WDT happy
-		 * until the aggregator decides to reset.
+		/*
+		 * Phase 3 Cycle 3 (RED-SAFETY MINOR doc reconciliation):
+		 *
+		 * Returning WITHOUT rescheduling is intentional. The WDT
+		 * aggregator (ccp_safety_common.c::wdt_aggregator) requires
+		 * BOTH guards to flip their pet bit before feeding the
+		 * hardware WDT. Once we latch and stop petting, the aggregator
+		 * stops feeding within one WDT_CHECK_INTERVAL_MS, and the
+		 * 4 s WDT window then triggers a SoC reset.
+		 *
+		 * That reset path is the user-facing recovery: the bootloader
+		 * re-runs ccp_rgb_init_safe (RGB DIN pre-driven LOW), then the
+		 * guards re-init from a clean fail-dark state. If the cell
+		 * voltage has recovered (e.g. user plugged in USB) the latch
+		 * clears organically; if not, the guards trip again and the
+		 * reset cycle repeats until power is removed.
+		 *
+		 * Net effect: latch -> no further SAADC bursts, no more
+		 * battery work-queue churn, just wait for the WDT to do its
+		 * job. We do NOT reschedule here.
 		 */
 		return;
 	}
