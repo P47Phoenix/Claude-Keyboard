@@ -1988,3 +1988,29 @@ respectively.
 needed. The MAJOR was closed with a real implementation + ztest
 coverage; all 8 MINORs were closed in code or documentation; both
 hard gates (`west build`, ztest 10/10) remain green.
+
+---
+
+## Project scope close-out (2026-04-23)
+
+**Phases 5 + 6 retired by Project Lead + human decision.**
+
+- **Phase 5 (RFID figurine):** retired. PN532 NFC header + I²C pull-ups remain on the PCB (Phase 1 deliverable); firmware can add tag-read behavior in a future cycle without a board respin.
+- **Phase 6 (integration review):** retired. Cross-phase consistency checks normally done by UX-1 in Phase 6 were done inline by the Project Lead during Phase 1–3 cycles. Bench verification of safety thresholds is deferred to physical hardware bring-up per `docs/safety-verification.md`.
+
+**Carried to physical bring-up (no agent cycle required):**
+- Bench-verify safety thresholds: VBAT cutoff at 3.50 V/3.80 V, NTC over-temp at 50 °C, WDT reset < 2.5 s, broken-wire latch < 1 s, BLE Pairing-Failed PDU codes.
+- Full assembly per `docs/build-guide.md` (mandatory protected LiPo cell, ~35-wire bodge harness with twisted COL1, FR-4 divider, NTC bodge).
+- First-pair UX: Fn+BT0 hold-3s opens 60 s bondable window.
+
+**Carried to future Rev-B (if needed):**
+- NTC adjacent to cell (currently ~54 mm away).
+- COL1 + NTC native PCB routes (no swap bodge).
+- Optional 4-layer stackup for cleaner GND pour.
+
+### Project state: DESIGN-COMPLETE
+
+- PCB: fab-ready gerbers + BOM + CPL (`pcb/gerbers/`)
+- Case: print-ready STL + STEP + parametric source (`case/`)
+- Firmware: working UF2 + build log + ztest log (`firmware/zmk/build-artifacts/`)
+- Build guide + safety verification plan (`docs/`)
