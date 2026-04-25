@@ -1709,3 +1709,193 @@ prompt.
 None. Every Hard Requirement maps to a named file + function.
 
 **Status:** `PHASE-3-CYCLE-1: READY_FOR_REVIEW`
+
+## Phase 3 — Cycle 1 Adversarial review — RED-FW (2026-04-21)
+
+Verdict: `4 BLOCKER / 14 MAJOR / 5 MINOR` — Compile gate: NO.
+
+**Root cause:** Cycle 1 never ran `west build`. Four of the BLOCKERs
+were caught by structural review before any code execution.
+
+BLOCKERs:
+- FW-B1: `claude_code_pad.zmk.yml` lists `requires: [pro_micro]` --
+  shield uses raw `&gpio0`/`&gpio1`, not the Pro-Micro adapter.
+- FW-B2: README says VBAT_ADC is on `P1.11 / AIN7`. Wrong.
+  P1.x are NOT SAADC-capable on nRF52840; AIN7 is on P0.31.
+- FW-B3: overlay declares `compatible = "claude-code-pad,ccp-safety"`
+  with no DT bindings file backing it. Build will fail at DT
+  validation.
+- FW-B4: `zephyr/module.yml` is missing `dts_root: .`; the binding
+  file (when added) won't be found.
+
+MAJORs (representative):
+- FW-M1 / #5: SPI3 pinctrl re-attaches MOSI to peripheral without
+  bias, undoing the GPIO-LOW pre-init.
+- FW-M2 / #6: thermal_guard reschedules forever after graceful
+  shutdown latch.
+- FW-M3 / #7: ADC `*2` de-divide happens before
+  `adc_raw_to_millivolts_dt` error check.
+- FW-M5 / #9: `log()` pulls newlib float; LUT preferred.
+- FW-M7 / #11: NKRO over BLE is a separate Kconfig from USB NKRO
+  (this turned out to be wrong; ZMK 4.1+ has a single choice
+  symbol).
+- FW-M9 / #14: encoder click (ENC_SW) not wired into the matrix
+  transform.
+- FW-M10 / #15: `west.yml` revision: main not pinned.
+- FW-M11 / #16: never ran `west build`.
+- FW-M12 / #17: SYS_INIT priority hard-coded; should be guarded
+  by BUILD_ASSERT against CONFIG_SPI_INIT_PRIORITY.
+- FW-M13 / #18: COL1 bodge (D1->D10) crosstalk risk; needs twist
+  with GND.
+
+MINORs include the QMK encoder-map enable (#22), the SWO conflict
+note for ENC_SW on P1.00 (#23), and others detailed in the
+firmware Cycle 2 prompt.
+
+## Phase 3 — Cycle 1 Adversarial review — RED-SAFETY (2026-04-21)
+
+Verdict: `5 BLOCKER / 14 MAJOR / 8 MINOR` — Fire/shock/reg: NO.
+
+BLOCKERs:
+- SF-B1: no nRF52840 hardware watchdog.
+- SF-B2: cap registry default `caps[] = { 100, 100 }` is fail-open.
+- SF-B3: VBAT sample cadence is 10 s, brownout window is sub-second.
+- SF-B4: BLE SMP enabled but neither SC-only nor MITM enforced;
+  README claims passkey, code does silent Just Works.
+- SF-B5: no runtime verification evidence (Annex Q §Q.4).
+
+MAJORs grouped: per-source TTL (M1), set_cap-after-latch (M2),
+two-tier hysteresis overlap (M6), VBAT physical-range sanity (M7),
+two-window broken-wire latch (M5), graceful_shutdown must drop BLE
+(M13), thermal latch break-out (M14), and others detailed in the
+prompt fix list.
+
+# Phase 3 Cycle 2 (2026-04-23)
+
+**Scope:** clear all 9 BLOCKERs and the majority of MAJORs from the
+Cycle 1 reviews. Hard gate: `west build` must produce a UF2.
+
+### Toolchain bring-up
+
+- Distrobox `kicad` (Fedora 43 toolbox): added cmake, ninja-build,
+  gperf, dtc, ccache, gcc, python3-devel, SDL2-devel, xz-devel
+  (~210 MB).
+- `pip install --user west` -> west 1.5.0.
+- Zephyr SDK 0.17.0 minimal + `arm-zephyr-eabi` toolchain
+  (~1.5 GB on disk under `~/zephyr-sdk-0.17.0`).
+- `west init -l config && west update` pulled ZMK pinned at
+  `0331b7d16e80954b807917f9323e59ffc1e3b626` plus its transitive
+  Zephyr v4.1.0+zmk-fixes (~660 MB Zephyr + 1.5 GB modules).
+- For `ztest` host runs: pip-installed `natsort`, `pytest`,
+  `junitparser`, `tabulate`, `colorama`; sudo dnf install gcc.
+
+### Commits (Phase 3 Cycle 2)
+
+| #     | Hash    | Scope |
+|-------|---------|-------|
+| C2.1  | 040d810 | structural / compile-prerequisite (zmk.yml, module.yml, ccp-safety binding, west.yml pin) |
+| C2.2  | 85c84f2 | overlay DT correctness, encoder-click wiring, binding includes |
+| C2.3  | b2cbfca | safety driver suite rewrite (4 files + Kconfig + CMake) |
+| C2.4  | 771d841 | BLE security posture + ADC/WDT wiring in shield conf |
+| C2.5  | 73921a1 | ztest suite for cap registry + graceful-shutdown latch |
+| C2.6  | (pending) | docs + UF2 artifact + QMK VIA + review log |
+
+### Build outcome
+
+`west build -s zmk/app -b xiao_ble/nrf52840 -- -DSHIELD=claude_code_pad
+-DZMK_EXTRA_MODULES=...`
+
+```
+Memory region         Used Size  Region Size  %age Used
+           FLASH:      257488 B       788 KB     31.91%
+             RAM:        58496 B       256 KB    22.31%
+        IDT_LIST:           0 GB        32 KB     0.00%
+Generating files from /home/meconnelly/ccp-build/build/zephyr/zmk.elf for board: xiao_ble
+Converted to uf2, output size: 515072, start address: 0x27000
+Wrote 515072 bytes to zmk.uf2
+```
+
+UF2 + full build log committed at
+`firmware/zmk/build-artifacts/{zmk.uf2,build.log}`.
+
+### Ztest outcome
+
+```
+SUITE PASS - 100.00% [ccp_safety_cap_registry]: pass = 6, fail = 0
+```
+
+Covers fail-dark default, min-of-sources, TTL decay, latch is
+no-oping, idempotent graceful-shutdown, and clamp-to-100. Bench-
+level evidence is documented in `docs/safety-verification.md` for
+follow-up against real silicon.
+
+### BLOCKER closure
+
+All 9 BLOCKERs from Cycle 1 closed:
+
+- FW-B1 (zmk.yml): `requires:` now empty. Shield binds against any
+  board exposing `&gpio0`/`&gpio1`/`&spi3`. (commit C2.1)
+- FW-B2 (README pin): VBAT_ADC documented as P0.31/AIN7. README
+  also footnotes that P1.x is digital-only on nRF52840. (commit C2.6)
+- FW-B3 (DT binding): `dts/bindings/claude-code-pad,ccp-safety.yaml`
+  added with full property descriptions. (commit C2.1)
+- FW-B4 (module.yml): `dts_root: .` added; top-level CMakeLists
+  delegates to `drivers/ccp_safety/CMakeLists.txt`. (commit C2.1)
+- SF-B1 (WDT): `CONFIG_WATCHDOG=y`, `CONFIG_WDT_NRFX=y`, plus the
+  aggregator k_work in `ccp_safety_common.c` requires both guards
+  to pet within the WDT window or the SoC resets. (commits C2.3 +
+  C2.4)
+- SF-B2 (fail-dark): cap registry default is `{ 0, 0 }`; each
+  guard raises its slot only after a successful sample. (C2.3)
+- SF-B3 (cadence): `CCP_BATTERY_GUARD_SAMPLE_INTERVAL_MS` default
+  dropped from 10000 to 250 ms (range 50..2000). (C2.3)
+- SF-B4 (BLE): `BT_SMP_SC_PAIR_ONLY=y`, `BT_SMP_ENFORCE_MITM=y`,
+  `BT_BONDABLE=n`, plus the as-shipped pairing-mode story
+  documented in README and `docs/safety-verification.md`. (C2.4)
+- SF-B5 (verification): ztest suite committed, bench protocol
+  written, BLE MITM test plan in `docs/safety-verification.md`.
+  (C2.5 + C2.6)
+
+### MAJOR disposition
+
+Closed: FW-M1 (SPI bias), FW-M2 (thermal cancel on latch), FW-M3
+(ADC error order + BUILD_ASSERT), FW-M4 (variance rename), FW-M5
+(LUT instead of log), FW-M6 (floating-pin probe), FW-M8 (latency
+30 -> 10), FW-M9 (encoder-click composite), FW-M10 (west.yml pin),
+FW-M11 (`west build` actually run), FW-M12 (SYS_INIT BUILD_ASSERT),
+FW-M13 (COL1 bodge twist guidance in BODGE-MAP), SF-M1 (TTL),
+SF-M2 (latch-aware set_cap), SF-M3 (SPI bias both states), SF-M4
+(derate band 4.00 V -> 3.80 V), SF-M5 (two-window broken-wire
+latch), SF-M6 (two-tier overlap resolved), SF-M7 (physical-range
+sanity), SF-M8 (BAS=0 on shutdown), SF-M9 (50 degC default), SF-M10
+(rate-of-change + plausibility), SF-M12 (BT_BONDABLE=n), SF-M13
+(disconnect + adv_stop on shutdown), SF-M14 (latched getter).
+
+Deferred to Cycle 3 with rationale:
+
+- FW-M7 / RED-FW #11: ZMK 4.1+ uses a single
+  `ZMK_HID_REPORT_TYPE_NKRO` choice symbol covering both USB and
+  BLE; no separate `ZMK_HID_BLE_REPORT_TYPE_NKRO` exists. The
+  reviewer's BUILD_ASSERT was based on a stale ZMK API. NKRO is
+  enabled via the choice in `claude_code_pad.conf`.
+- SF-M11 (LED 25 blink for OOR-latched vs battery-low): stub in
+  place; full implementation pending an upstream ZMK API for
+  per-LED override (currently no such API exists). User-facing
+  evidence today is in the log; tracked in safety-verification.md.
+- SF-M12 pairing-mode keymap binding: Kconfig is correct
+  (`BT_BONDABLE=n`); the keymap chord that flips
+  `bt_set_bondable(true)` for 60 s is queued for Cycle 3 keymap
+  polish.
+
+MINORs: applied opportunistically in C2.x where they overlap with
+the MAJOR group (FW-M5 + SF #16 = LUT; FW-M12 + SF #21 =
+BUILD_ASSERT; SF #23 = oversampling sanity confirmed). FW MINORs
+#19 (Kconfig range), #21-22 (QMK VIA + ENCODER_MAP), #20 (BAS=0
+on shutdown -- overlap with SF-M8), and SF #16/#21/#23 are
+all closed in commit C2.6 / C2.4 / C2.3.
+
+### Status
+
+`PHASE-3-CYCLE-2: READY_FOR_REVIEW` — `west build` succeeds
+(257 KB FLASH / 22% RAM), ztest 6/6 pass on native_sim/native/64,
+all 9 BLOCKERs closed.

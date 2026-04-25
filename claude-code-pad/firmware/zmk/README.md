@@ -51,27 +51,27 @@ Short version:
 ## Hard Requirement: Battery Cutoff Voltage
 
 Firmware **must** implement undervolt cutoff measured at the VBAT_ADC
-divider (NOT at Vcell upstream of Q_REV):
+divider (NOT at Vcell upstream of Q_REV). Phase 3 Cycle 2
+(RED-SAFETY SF-M4 / SF-M6) separates the LED-derate tripwire from
+the graceful-shutdown tripwire:
 
-| LED state       | Cutoff VBAT |
-|-----------------|-------------|
-| LEDs active     | **3.70 V**  |
-| LEDs off        | **3.50 V**  |
-| LED peak derate | linear 3.90 V -> 3.70 V (100 % -> 0 %) |
+| LED state       | Cutoff / derate VBAT |
+|-----------------|----------------------|
+| LED peak derate | linear **4.00 V -> 3.80 V** (100 % -> 0 %) |
+| LEDs latch off  | at **3.80 V** (end of the derate ramp) |
+| LEDs re-enable  | at **3.90 V** (100 mV hysteresis above latch) |
+| Graceful shutdown | at **3.50 V** (LEDs already off) |
 
-**Rationale (C5-M4 reconciled):** cutoff fires near **30-35 % SoC**
-to preserve LDO dropout headroom for the AP2112K 3V3 LDO. This is
-intentional -- the useful cell range is the top 65-70 % of nominal
-capacity. A cell at 3.70 V under 300 mA LED load sits at ~3.60 V at
-the VBAT node (100 mV Rds(on) + PTC drop) and feeds the LDO with
-~0.30 V of dropout headroom, well above the 0.25 V AP2112K minimum.
-The 200 mV hysteresis between 3.70 V (LEDs-on) and 3.50 V (LEDs-off)
-lets firmware save state on graceful shutdown before the LDO loses
-regulation.
-
-(Cycle 4 claimed "cutoff fires at ~25 % SoC"; that math was
-inconsistent with the 3.70 V trip point. Cycle 5 retracts that
-figure.)
+**Rationale (Cycle 2 revision):** in Cycle 1 the derate curve's
+lower bound (3.70 V) was also the graceful-shutdown threshold, so
+3.70 V fired `graceful_shutdown()` on the first sample and the
+two-tier design never got to activate. Cycle 2 raises the derate
+band to 4.00 -> 3.80 V so the LED-off latch has real separation
+from the BLE-disconnect latch at 3.50 V. A cell at 3.80 V under
+zero-LED load sits at ~3.75 V at the VBAT node and still feeds the
+AP2112K LDO with ~0.45 V of dropout headroom; graceful shutdown
+at 3.50 V therefore has 300 mV of headroom for "save and reconnect"
+HID events after the LEDs have been cut.
 
 **Measurement:** VBAT_ADC = VBAT / 2 (2x 1 MOhm resistor divider,
 100 nF ADC anti-alias cap). Source impedance ~500 kOhm -- firmware
@@ -80,8 +80,13 @@ BURST mode when reading VBAT_ADC.
 
 **Pin:** VBAT_ADC is on XIAO back-side rear-pad jumper **slot 5**
 (patch_x+4, Cycle 5 slot reassignment). User solder-wires from
-`J_XIAO_BP` slot 5 to an unused SAADC-capable XIAO back-side pin
-(P1.11 / AIN7 recommended).
+`J_XIAO_BP` slot 5 to **P0.31 / AIN7** on the XIAO's back-side
+castellation. (Cycle 1 of this README said "P1.11 / AIN7" -- FW-B2
+correction: on the nRF52840, P1.x pins are NOT SAADC-capable. AIN7
+lives on P0.31. Verified against
+nRF52840 product specification v1.7 §6.17 Analog input pin
+assignments: AIN0..7 correspond to P0.02/.03/.04/.05/.28/.29/.30/.31.
+All other P1 pins are digital-only.)
 
 ---
 
@@ -95,20 +100,36 @@ would be over-discharged to cell-damage levels.
 
 Firmware **must** detect a broken VBAT_ADC jumper and fail safe:
 
-- Sample VBAT_ADC eight consecutive times at the normal sampling
-  cadence (SAADC OVERSAMPLE>=2^3, BURST mode).
-- Compute **variance** over the 8 samples. If variance > 100 mV,
-  the wire is likely broken (floating input picks up 50/60 Hz hum
-  and noise).
+- Sample VBAT_ADC at 250 ms cadence (SAADC OVERSAMPLE>=2^3, BURST
+  mode). Cycle 2 dropped this from 10 s per RED-SAFETY SF-B3; nRF52840
+  brownout at 1.7 V plus up to 400 mV LDO ESR sag can traverse the
+  cutoff band faster than a 10 s window.
+- Compute **max-abs-residual** (max of |sample[i] - mean|) over a
+  rolling 8-sample window. If > 100 mV, the window is suspect
+  (floating input picks up 50/60 Hz hum and noise).
 - Compute **instantaneous step** between each sample pair. If any
-  step exceeds +/- 0.3 V, the wire is likely broken (a real cell
-  cannot change voltage that fast under 300 mA load).
-- If EITHER condition triggers, enter the **SAME** graceful-shutdown
-  path as the 3.50 V undervoltage cutoff: disable all LEDs, log
-  warning, advertise "critical battery / sensor fault" BLE state,
-  and reduce BLE activity to minimum.
+  step exceeds +/- 0.3 V, the window is suspect (a real cell cannot
+  change voltage that fast under 300 mA load).
+- **Cycle 2 SF-M5:** require TWO consecutive suspect windows before
+  latching graceful_shutdown. A single window of cell-sag under an
+  RGB transient no longer false-latches.
+- **Cycle 2 SF-M7:** physical-range sanity band. If cell_mv < 2800 OR
+  cell_mv > 4400, latch graceful_shutdown immediately (catches
+  open-divider-resistor: one of the 1 MOhm legs failing open would
+  put ~3.3 V on the ADC pin and the de-divided reading would exceed
+  4.4 V).
+- When EITHER the broken-wire latch or the physical-range band trips,
+  enter the **SAME** graceful-shutdown path as the 3.50 V
+  undervoltage cutoff: disable all LEDs, BAS -> 0, disconnect BLE,
+  stop advertising, log warning.
 
 This fail-safe cannot be disabled at runtime.
+
+**User-recoverable safety clear (SF-M5):** holding Fn + the top-
+right key through a RESET boot re-runs `bt_settings_clear_default()`
+and resets the `graceful_shutdown_latched` flag. This is a debug
+escape hatch for builders who have confirmed the bodge is sound but
+need to clear an earlier latch event from flash.
 
 ---
 
@@ -174,10 +195,11 @@ runaway threshold (~130 degC) within that interval.
 
 ## Hard Requirement: NTC fallback
 
-If the NTC ADC channel (NTC_ADC, XIAO pin D10 / P0.03) reads
-**out-of-range** (floating input -- typical when TH1 is not
-hand-installed, or a wire break on the axial thermistor), firmware
-**must**:
+If the NTC ADC channel (NTC_ADC, XIAO pin D1 / P0.03 -- P1.15 was
+the original Cycle 5 landing, moved in firmware Cycle 1 because
+P1.x is not SAADC-capable) reads **out-of-range** (floating input
+-- typical when TH1 is not hand-installed, or a wire break on the
+axial thermistor), firmware **must**:
 
 - Reduce the LED peak cap from 300 mA to **100 mA** until a valid
   temperature reading resumes.
@@ -186,6 +208,84 @@ Behavior documented to satisfy **IEC 62368-1 Annex Q** fallback
 requirements for a degraded thermal-sensing subsystem. "Out of
 range" = ADC reads either < 0.1 V (short-to-GND / wire break) or
 > 3.1 V (short-to-+3V3).
+
+**Cycle 2 over-temperature threshold (SF-M9):** firmware caps LEDs
+at 100 mA when the decoded NTC temperature exceeds **50 degC**
+(dropped from 60 degC). The NTC on this revision is co-located with
+the LDO, not the cell; the NTC-to-cell-surface correlation is not
+yet bench-validated, and a 10 degC cushion keeps the cell well
+below the 60 degC IEC 62133-2 onset threshold even under worst-case
+correlation error. Rev-B relocates the NTC to a cell-contact
+position.
+
+**Cycle 2 rate-of-change sanity (SF-M10):** a decoded temperature
+delta > 5 degC/sample OR a temperature outside the [-10 .. +70 degC]
+plausibility band forces the 100 mA fallback regardless of the
+absolute reading. Catches a partially-shorted divider that reads
+in-range but with nonsense physics.
+
+**Cycle 2 floating-pin probe (FW-M6):** on the first in-range
+reading after any out-of-range sample, firmware briefly drives the
+NTC pin HIGH, releases, and re-samples. A connected divider
+discharges the stray capacitance within < 100 us; a floating pin
+holds the driven level. A post-release sample within 50 mV of 3.3 V
+=> floating pin => 100 mA fallback. Does NOT accidentally flag a
+real NTC-shorted-to-+3V3 because that case already lands in the
+out-of-range path before the probe runs.
+
+**Cycle 2 NTC decode (FW-M5):** integer-only, 65-entry log-ratio
+LUT. `log()` / newlib dependency no longer on the critical path;
+worst-case decode error < 0.5 degC over the 0..70 degC plausibility
+band.
+
+---
+
+## Hard Requirement: BLE security (Phase 3 Cycle 2, SF-B4)
+
+Cycle 1 silently shipped legacy "just works" pairing while this
+README claimed passkey authentication. Cycle 2 corrects both the
+code and the documentation.
+
+**Posture (as-shipped Cycle 2):**
+
+| Setting                        | Value | Purpose                              |
+|--------------------------------|-------|--------------------------------------|
+| `BT_SMP_SC_PAIR_ONLY`          | y     | LE Secure Connections (ECDH) only    |
+| `BT_SMP_ENFORCE_MITM`          | y     | Authenticated pairing required       |
+| `BT_BONDABLE`                  | n     | New bonds only in pairing-mode window|
+| `BT_CTLR_TX_PWR_PLUS_4`        | y     | +4 dBm (PCB antenna tuned for this)  |
+
+**What this means without a display or keypad on the device:**
+
+The Claude Code Pad today has no OLED (Phase 1 Cycle 1 cut it for
+cost) and no dedicated 10-key passkey entry. With `ENFORCE_MITM=y`,
+pairing will only succeed via hosts that implement:
+
+1. **LE Secure Connections with Numeric Comparison.** Modern
+   macOS / iOS / Android / Windows 10+ all support this for BLE
+   peripherals that have no I/O capability -- the host shows a
+   6-digit number and the user presses "yes/no" on the host side.
+   No keypad on the peripheral required.
+2. **BLE OOB (Out Of Band) pairing.** Not applicable for this
+   build.
+
+Hosts that try to fall back to legacy "Just Works" (no user
+confirmation, no MITM resistance) will have pairing rejected by
+the peripheral's SMP layer. This is the intended behaviour. A
+drive-by attacker cannot silently bond; an attacker who owns the
+host already has HID access and BLE MITM is moot.
+
+**Pairing-mode window (SF-M12, keymap glue deferred to Cycle 3):**
+`BT_BONDABLE=n` means new bonds are rejected outside an explicit
+pairing-mode window. Firmware flips `bt_set_bondable(true)` for
+60 s when the user holds Fn + BT0 for 3 s. The keymap binding for
+this is a Cycle 3 deliverable.
+
+**Phase 5 upgrade path:** when the PN532 NFC reader + the RGB LEDs
+are available for passkey-display use, the firmware will implement
+colour-coded 6-digit passkey display via LEDs 0..5 and switch to
+`NoInputNoOutput -> DisplayOnly` IO-capabilities advertising.
+Documented in `docs/safety-verification.md §BLE MITM test plan`.
 
 ---
 
@@ -269,12 +369,24 @@ pip install -r zephyr/scripts/requirements-base.txt
 
 ```bash
 cd ~/zmk-ccp
-west build -s zmk/app -b seeeduino_xiao_ble \
+west build -s zmk/app -b xiao_ble/nrf52840 \
     -- -DSHIELD=claude_code_pad \
        -DZMK_EXTRA_MODULES="$PWD/src/ccp/claude-code-pad/firmware/zmk"
 ```
 
+Note: the Zephyr 4.1+ board name is `xiao_ble/nrf52840`. Upstream
+Zephyr renamed the old `seeeduino_xiao_ble` board to `xiao_ble` as
+part of the HWMv2 migration; the `/nrf52840` qualifier is required
+in v4.1 because the XIAO "Sense" variant (which carries an IMU)
+shares the same board tree.
+
 Output UF2: `build/zephyr/zmk.uf2`.
+
+A pre-built reference UF2 lives at `firmware/zmk/build-artifacts/zmk.uf2`
+(checked into the repo for the current Cycle 2 commit). Use it for
+quick smoke tests before standing up a local toolchain; the paired
+`firmware/zmk/build-artifacts/build.log` is the full `west build`
+log from the same build.
 
 ### Flash (UF2 bootloader)
 

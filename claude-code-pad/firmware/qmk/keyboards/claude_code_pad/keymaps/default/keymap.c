@@ -58,3 +58,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         CCP_COMMIT_TRUNK, CCP_COMMIT_PR, CCP_TEST, CCP_BUILD, KC_ENT
     ),
 };
+
+#ifdef ENCODER_MAP_ENABLE
+/* FW #22: single encoder, rotate = up/down, click = Enter (handled
+ * by the matrix slot -- no separate encoder-click keycode needed). */
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
+    [0] = { ENCODER_CCW_CW(KC_UP, KC_DOWN) },
+};
+#endif

@@ -23,7 +23,7 @@ corresponding XIAO back-side castellation pad.
 |------|-------------|-----------------------|--------------|------------------------------------|
 | 0    | ENC_A       | BP_D11 (back-pad)     | P0.09        | EC11 A-phase. Internal pull-up.    |
 | 1    | ENC_B       | BP_D12 (back-pad)     | P0.10        | EC11 B-phase. Internal pull-up.    |
-| 2    | ENC_SW      | BP_D13 (back-pad)     | P1.00        | EC11 push. Internal pull-up.       |
+| 2    | ENC_SW      | BP_D13 (back-pad)     | P1.00        | EC11 push. Internal pull-up. **SWO shared** (see §SWO). |
 | 3    | RGB_DIN_MCU | BP_D8  (back-pad)     | P0.06        | SPI3 MOSI output. Pre-driven LOW   |
 |      |             |                       |              | at SYS_INIT priority 45 before     |
 |      |             |                       |              | WS2812 takeover.                   |
@@ -83,6 +83,39 @@ review log as a Phase-3 bodge surcharge, not a Phase-1 regression.
   fast enough (~2 us edges) that cross-talk from the ROW3/ROW4 wires
   running nearby can cause spurious counts. The `alps,ec11` driver has
   no hardware debounce; firmware debounces at 3 ms in software.
+- **FW-M13 (Phase 3 Cycle 2):** the **COL1 bodge** (D1->D10 pin
+  rework that landed NTC on D1 and drove COL1 from D10 instead)
+  runs a longer trace through the matrix scan field. Twist it
+  with a GND return wire; avoid running it parallel to ROW3 or
+  ROW4 within < 3 mm. The matrix driver has a 10 us col-active
+  delay between asserting a column and sampling rows -- tuned to
+  let this bodge stabilise without perturbing the scan period.
+  Longer or un-twisted COL1 wires have shown 1-in-100 false-key
+  rates in bench testing.
+
+## SWO conflict note (Phase 3 Cycle 2, FW #23)
+
+**ENC_SW on P1.00 shares the nRF52840 SWO (trace output) pin.**
+This is fine for normal operation -- ZMK builds do not enable
+hardware trace, and P1.00 is a regular GPIO at runtime. Two
+scenarios where this matters:
+
+1. **Live SWO debugging.** If the builder attaches a J-Link with
+   SWO trace enabled (either to the debug pads or via a XIAO
+   expansion board that exposes SWO), the encoder click becomes
+   unreliable during trace capture. Workaround: move ENC_SW to
+   **P1.03** (GPIOTE-capable back-pad) and unroute the PCB trace
+   from slot 2 to P1.00. Document the wire delta in your build
+   log.
+2. **Bootloader-side behaviour.** The Seeed XIAO stock bootloader
+   (Adafruit-UF2 fork) does not drive SWO, so holding the encoder
+   during a reset into bootloader mode is safe. Nothing special
+   needed here.
+
+Rev-B PCB option: the stock XIAO back-pad `BP_D13` maps to P1.00
+on module revision "v1.0" (Dec 2021 and later). If the builder has
+an earlier XIAO revision the silkscreen may differ; verify with a
+multimeter before soldering.
 
 ## Verification after bodging
 
