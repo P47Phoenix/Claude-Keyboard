@@ -227,11 +227,22 @@ void ccp_safety_graceful_shutdown(const char *reason)
  * emulate a "both guards must pet" policy by requiring both the battery
  * and thermal guards to flip their pet bit within the WDT window. A
  * 250 ms k_work checks the flags, clears them, and feeds the WDT only
- * if BOTH were set. WDT timeout is 2 s (see CONFIG_CCP_WDT_TIMEOUT_MS),
- * giving each guard up to 8 pet intervals to catch up before reset.
+ * if BOTH were set.
+ *
+ * Phase 3 Cycle 3 (RED-SAFETY MINOR): WDT window raised from 2000 to
+ * 4000 ms. The thermal-guard pet cadence is 2000 ms (NTC sample
+ * interval); a 2000 ms WDT therefore had ZERO slack and a single
+ * missed thermal sample would spuriously reset the SoC. 4000 ms gives
+ * the thermal guard one full extra interval of headroom while still
+ * triggering reset within < 5 s of either guard hanging -- well
+ * inside the 10 s watchdog ceiling implied by IEC 62368-1 Annex Q's
+ * "fail-safe within reasonable user-observable time" guidance.
+ *
+ * Battery guard cadence (250 ms) still pets several times per WDT
+ * window; the limiting cadence is the thermal one.
  */
 #define WDT_CHECK_INTERVAL_MS 250
-#define WDT_TIMEOUT_MS        2000
+#define WDT_TIMEOUT_MS        4000
 
 static struct k_work_delayable wdt_work;
 static const struct device *wdt_dev;

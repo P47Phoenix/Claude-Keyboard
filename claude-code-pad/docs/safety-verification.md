@@ -131,13 +131,15 @@ Procedure:
    without calling `ccp_safety_wdt_feed(CCP_WDT_THERMAL)`.
 2. Flash, boot, observe: battery guard continues to pet its side,
    but the aggregator never sees both flags set.
-3. Expected: MCU resets within **2000 ms + 250 ms aggregator
-   interval** = 2.25 s of boot.
+3. Expected: MCU resets within **4000 ms + 250 ms aggregator
+   interval** = 4.25 s of boot. (Cycle 3: window raised from 2000 ms
+   to give the 2000 ms thermal-sample cadence one full interval of
+   slack -- a single missed sample no longer spuriously resets.)
 4. On reset, `ccp_rgb_init_safe` SYS_INIT runs, log shows
    `RGB_DIN_MCU pre-driven LOW`, LEDs stay dark until the first
    good NTC sample lands post-reboot.
 
-Pass criteria: reset fires within 2.5 s, RGB never lights during
+Pass criteria: reset fires within 4.5 s, RGB never lights during
 the reset sequence.
 
 ## 3. BLE MITM test plan
