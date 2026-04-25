@@ -1,0 +1,70 @@
+*** Booting Zephyr OS build 58a5874a446a ***
+Running TESTSUITE ccp_pair_window
+===================================================================
+START - test_double_open_keeps_flag
+[00:00:00.000,000] <wrn> ccp_pair: ccp_pair: pairing window OPEN (60000 ms) -- bondable=true
+[00:00:00.000,000] <inf> ccp_pair: ccp_pair: pairing window timer reset
+ PASS - test_double_open_keeps_flag in 0.000 seconds
+===================================================================
+START - test_graceful_shutdown_force_closes
+[00:00:00.000,000] <wrn> ccp_pair: ccp_pair: pairing window closed -- bondable=false
+[00:00:00.000,000] <wrn> ccp_pair: ccp_pair: pairing window OPEN (60000 ms) -- bondable=true
+[00:00:00.000,000] <wrn> ccp_safety: graceful shutdown: test latch
+[00:00:00.000,000] <wrn> ccp_pair: ccp_pair: pairing window closed -- bondable=false
+ PASS - test_graceful_shutdown_force_closes in 0.000 seconds
+===================================================================
+START - test_open_after_latch_is_nooped
+[00:00:00.000,000] <wrn> ccp_safety: graceful shutdown: pre-latched
+[00:00:00.000,000] <wrn> ccp_pair: ccp_pair: ignored -- graceful shutdown latched
+ PASS - test_open_after_latch_is_nooped in 0.000 seconds
+===================================================================
+START - test_open_sets_flag
+[00:00:00.000,000] <wrn> ccp_pair: ccp_pair: pairing window OPEN (60000 ms) -- bondable=true
+ PASS - test_open_sets_flag in 0.000 seconds
+===================================================================
+TESTSUITE ccp_pair_window succeeded
+Running TESTSUITE ccp_safety_cap_registry
+===================================================================
+START - test_cap_clamp_to_100
+ PASS - test_cap_clamp_to_100 in 0.000 seconds
+===================================================================
+START - test_fail_dark_default
+ PASS - test_fail_dark_default in 0.000 seconds
+===================================================================
+START - test_idempotent_graceful_shutdown
+[00:00:00.000,000] <wrn> ccp_safety: graceful shutdown: first
+ PASS - test_idempotent_graceful_shutdown in 0.000 seconds
+===================================================================
+START - test_latch_is_nooping
+[00:00:00.000,000] <wrn> ccp_safety: graceful shutdown: test trigger
+ PASS - test_latch_is_nooping in 0.000 seconds
+===================================================================
+START - test_min_is_effective
+ PASS - test_min_is_effective in 0.000 seconds
+===================================================================
+START - test_ttl_decays_to_zero
+ PASS - test_ttl_decays_to_zero in 0.310 seconds
+===================================================================
+TESTSUITE ccp_safety_cap_registry succeeded
+
+------ TESTSUITE SUMMARY START ------
+
+SUITE PASS - 100.00% [ccp_pair_window]: pass = 4, fail = 0, skip = 0, total = 4 duration = 0.000 seconds
+ - PASS - [ccp_pair_window.test_double_open_keeps_flag] duration = 0.000 seconds
+ - PASS - [ccp_pair_window.test_graceful_shutdown_force_closes] duration = 0.000 seconds
+ - PASS - [ccp_pair_window.test_open_after_latch_is_nooped] duration = 0.000 seconds
+ - PASS - [ccp_pair_window.test_open_sets_flag] duration = 0.000 seconds
+
+SUITE PASS - 100.00% [ccp_safety_cap_registry]: pass = 6, fail = 0, skip = 0, total = 6 duration = 0.310 seconds
+ - PASS - [ccp_safety_cap_registry.test_cap_clamp_to_100] duration = 0.000 seconds
+ - PASS - [ccp_safety_cap_registry.test_fail_dark_default] duration = 0.000 seconds
+ - PASS - [ccp_safety_cap_registry.test_idempotent_graceful_shutdown] duration = 0.000 seconds
+ - PASS - [ccp_safety_cap_registry.test_latch_is_nooping] duration = 0.000 seconds
+ - PASS - [ccp_safety_cap_registry.test_min_is_effective] duration = 0.000 seconds
+ - PASS - [ccp_safety_cap_registry.test_ttl_decays_to_zero] duration = 0.310 seconds
+
+------ TESTSUITE SUMMARY END ------
+
+===================================================================
+RunID: 23c237013432e3364c2294ec470fc3aa
+PROJECT EXECUTION SUCCESSFUL

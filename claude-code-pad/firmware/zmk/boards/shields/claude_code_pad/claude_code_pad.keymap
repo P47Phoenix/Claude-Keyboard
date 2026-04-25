@@ -43,6 +43,60 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
+/*
+ * Pairing-window behavior (Phase 3 Cycle 3, SF-M12).
+ *
+ *   bt0_pair: hold-tap on BT layer position (0,0):
+ *     tap          -> &bt BT_SEL 0   (regular profile-select)
+ *     hold (3 s)   -> &ccp_pair       (open bondable window for 60 s)
+ *
+ * The 3 s hold-time enforces deliberate intent so accidental presses
+ * during regular BT profile cycling don't open the pairing window.
+ *
+ * Implementation note: ZMK's hold-tap requires both inner bindings to
+ * accept exactly one parameter. `&ccp_pair` is 0-param and `&bt
+ * BT_SEL 0` needs 2 params, so we wrap each side in a 0-param macro
+ * (mac_pair_open, mac_bt_sel0) and use a 0-param hold-tap. The
+ * trampolines are pure devicetree -- no extra C code beyond ccp_pair.c.
+ */
+/ {
+	behaviors {
+		ccp_pair: ccp_pair {
+			compatible = "claude-code-pad,behavior-ccp-pair";
+			#binding-cells = <0>;
+		};
+
+		bt0_pair: bt0_pair {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			tapping-term-ms = <3000>;
+			quick-tap-ms = <0>;
+			flavor = "tap-preferred";
+			bindings = <&mac_pair_open_p>, <&mac_bt_sel0_p>;
+		};
+	};
+
+	macros {
+		/*
+		 * 1-param trampoline macros so the hold-tap above can wrap
+		 * a 0-param behavior on the hold side and a 2-param behavior
+		 * on the tap side. The parameter is consumed and discarded by
+		 * the hold-tap, so passing zero (which is what the keymap
+		 * does) is harmless.
+		 */
+		mac_pair_open_p: mac_pair_open_p {
+			compatible = "zmk,behavior-macro-one-param";
+			#binding-cells = <1>;
+			bindings = <&ccp_pair>;
+		};
+		mac_bt_sel0_p: mac_bt_sel0_p {
+			compatible = "zmk,behavior-macro-one-param";
+			#binding-cells = <1>;
+			bindings = <&bt BT_SEL 0>;
+		};
+	};
+};
+
 /* ---------- Macros: string emitters ------------------------------------ */
 / {
 	macros {
@@ -167,22 +221,23 @@
 			display-name = "BT";
 			/*
 			 * Layer 1 -- BLE profile select / clear / USB-BLE toggle.
-			 * Entered by holding position (4,4) (2U Enter) via the
-			 * &mo binding convention -- but Enter is primary. Easier:
-			 * combo of (0,4) Editor + (4,0) Commit-Trunk triggers this
-			 * layer's activation. For C1 we expose it via the keymap
-			 * directly with dedicated keys; user enters via a tap-dance
-			 * added in C2. Meanwhile this layer is reachable only by
-			 * deliberate keymap editing -- which is fine for a hobby
-			 * build. The bindings exist so the BLE safety plan is
-			 * documented in the shipped firmware, not a TODO.
+			 *
+			 * Position (0,0) is the BT0 chord: tap = BT_SEL 0; hold 3 s
+			 * = open bondable pairing window for 60 s (SF-M12). All
+			 * other bindings are direct.
+			 *
+			 * Layer entry is via tap-dance / combo work in a future
+			 * cycle; for today the layer is reachable only by deliberate
+			 * keymap editing -- which is fine for a hobby build. The
+			 * BT0 chord is wired so the BLE safety plan is documented
+			 * in the shipped firmware.
 			 */
 			bindings = <
-				&bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_CLR   &bt BT_CLR_ALL
-				&out OUT_TOG &out OUT_USB &out OUT_BLE &trans        &trans
-				&trans       &trans       &trans       &trans        &trans
-				&trans       &trans       &trans       &trans        &trans
-				&trans       &trans       &trans       &trans        &trans
+				&bt0_pair 0 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_CLR   &bt BT_CLR_ALL
+				&out OUT_TOG  &out OUT_USB &out OUT_BLE &trans        &trans
+				&trans        &trans       &trans       &trans        &trans
+				&trans        &trans       &trans       &trans        &trans
+				&trans        &trans       &trans       &trans        &trans
 			>;
 
 			sensor-bindings = <&inc_dec_kp UP DOWN>;

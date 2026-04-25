@@ -275,11 +275,26 @@ the peripheral's SMP layer. This is the intended behaviour. A
 drive-by attacker cannot silently bond; an attacker who owns the
 host already has HID access and BLE MITM is moot.
 
-**Pairing-mode window (SF-M12, keymap glue deferred to Cycle 3):**
+**Pairing-mode window (SF-M12, Phase 3 Cycle 3 — IMPLEMENTED):**
 `BT_BONDABLE=n` means new bonds are rejected outside an explicit
-pairing-mode window. Firmware flips `bt_set_bondable(true)` for
-60 s when the user holds Fn + BT0 for 3 s. The keymap binding for
-this is a Cycle 3 deliverable.
+pairing-mode window. The shipped keymap binds the `&ccp_pair`
+behavior to a 3-second hold on the BT-layer position (0,0):
+
+- Enter the BT layer (today: keymap editing; combo entry is queued
+  for Phase 3 Cycle 4 polish).
+- Tap (0,0) = `&bt BT_SEL 0` (regular profile-0 select).
+- Hold (0,0) for 3 s = `&ccp_pair` fires.
+
+`&ccp_pair` calls `bt_set_bondable(true)`, schedules a 60-second
+`k_work_delayable` that re-asserts `bt_set_bondable(false)`, and
+toggles the RGB strip at 1 Hz for visible feedback while the
+window is open. Re-pressing the chord during the window resets
+the timer to a fresh 60 s (no toggle, no early cancel — see
+`drivers/ccp_safety/ccp_pair.c` header for rationale).
+
+If `ccp_safety_graceful_shutdown` latches at any point during the
+window, the window is force-closed (bondable=false) — battery /
+thermal cutoffs always win over a pairing flow.
 
 **Phase 5 upgrade path:** when the PN532 NFC reader + the RGB LEDs
 are available for passkey-display use, the firmware will implement

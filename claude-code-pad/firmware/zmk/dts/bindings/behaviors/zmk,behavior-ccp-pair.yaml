@@ -1,0 +1,22 @@
+# Copyright (c) 2026 Claude Code Pad project
+# SPDX-License-Identifier: MIT
+#
+# Devicetree binding for the Claude Code Pad pairing-window behavior.
+#
+# When pressed, ccp_pair calls bt_set_bondable(true), schedules a
+# 60-second k_work_delayable that re-asserts bt_set_bondable(false),
+# and starts a 1 Hz LED-25 blink for the duration of the window.
+# Calling the behavior again before the window expires resets the
+# 60-second timer (no toggle / no early-cancel; this is by design --
+# accidental presses must not LEAVE the device bondable indefinitely
+# but must not silently cancel an in-progress pair either).
+#
+# Closes RED-SAFETY SF-M12: with CONFIG_BT_BONDABLE=n the device cannot
+# pair out of the box; ccp_pair is the explicit, time-bounded window
+# during which a host can establish a bond.
+
+description: Claude Code Pad bondable pairing-window behavior
+
+compatible: "claude-code-pad,behavior-ccp-pair"
+
+include: zero_param.yaml

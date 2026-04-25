@@ -90,3 +90,19 @@ config CCP_RGB_INIT_SAFE
 	  Drives RGB_DIN_MCU (P0.06) LOW at SYS_INIT priority 45 before
 	  the WS2812 driver initialises, so the LEDs cannot see garbage
 	  on DIN at power-on.
+
+config CCP_PAIR_BEHAVIOR
+	bool "Claude Code Pad time-bounded pairing-mode behavior"
+	depends on BT
+	default y
+	help
+	  Provides the &ccp_pair behavior used by the keymap to flip
+	  bt_set_bondable(true) for 60 s when the user holds the
+	  BT-layer BT0 chord for 3 s. With CONFIG_BT_BONDABLE=n as the
+	  shipped default, this is the ONLY way new bonds can form -- so
+	  it must remain enabled in any release build that exposes BLE
+	  HID. Disabling it means the device cannot pair out of the box;
+	  only useful for hostile-recompile experimentation per
+	  firmware/zmk/README.md §scope-boundary.
+
+	  Closes RED-SAFETY SF-M12.
