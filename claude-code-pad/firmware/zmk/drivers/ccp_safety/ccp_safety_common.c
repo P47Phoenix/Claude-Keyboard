@@ -187,6 +187,62 @@ static void disconnect_cb(struct bt_conn *conn, void *data)
 }
 #endif
 
+#if defined(CONFIG_BT)
+/*
+ * SF-M13 close-out (Phase 3 Cycle 3):
+ *
+ * The naive "call bt_le_adv_stop() once on shutdown" approach is
+ * insufficient because ZMK's app/src/ble.c::update_advertising()
+ * runs on its own scheduler (work queue + connection-state events)
+ * and will happily re-arm advertising after our one-shot stop.
+ *
+ * We close that hole with a two-pronged enforcement:
+ *
+ *   1. Set bondable=false and unpair every device on the default
+ *      identity. Even if ZMK re-advertises, no peer can complete
+ *      pairing while bondable=n -- the SMP layer rejects new bonds.
+ *   2. Register a bt_conn_cb that re-asserts bt_le_adv_stop() any
+ *      time a peer connects post-latch. The delayable backstop work
+ *      additionally re-stops advertising every 250 ms for the first
+ *      10 s after latch, by which point any stuck adv-restart that
+ *      ZMK enqueued has been observed and counter-acted.
+ *
+ * Bench verification (docs/safety-verification.md §2.2 step 5):
+ *   after a graceful_shutdown latch, a 60 s `bluetoothctl scan on`
+ *   sweep MUST find zero advertisements from the device.
+ */
+static struct k_work_delayable post_latch_adv_stop_work;
+static int64_t post_latch_start_ms;
+
+#define POST_LATCH_ENFORCE_MS    10000
+#define POST_LATCH_PERIOD_MS     250
+
+static void post_latch_adv_stop_handler(struct k_work *work)
+{
+	ARG_UNUSED(work);
+	(void)bt_le_adv_stop();
+
+	if ((k_uptime_get() - post_latch_start_ms) < POST_LATCH_ENFORCE_MS) {
+		k_work_schedule(&post_latch_adv_stop_work,
+				K_MSEC(POST_LATCH_PERIOD_MS));
+	}
+}
+
+static void post_latch_conn_connected(struct bt_conn *conn, uint8_t err)
+{
+	ARG_UNUSED(err);
+	if (graceful_shutdown_latched) {
+		LOG_WRN("post-latch peer connected -- disconnecting + adv_stop");
+		(void)bt_conn_disconnect(conn, BT_HCI_ERR_REMOTE_POWER_OFF);
+		(void)bt_le_adv_stop();
+	}
+}
+
+static struct bt_conn_cb post_latch_conn_cb = {
+	.connected = post_latch_conn_connected,
+};
+#endif
+
 void ccp_safety_graceful_shutdown(const char *reason)
 {
 	bool was_latched;
@@ -213,8 +269,35 @@ void ccp_safety_graceful_shutdown(const char *reason)
 #if defined(CONFIG_BT)
 	/* SF-M13 + SF-M8 + FW M#20: drop BLE radio activity + BAS flag. */
 	(void)bt_bas_set_battery_level(0);
+
+	/*
+	 * SF-M13 close-out: drop bondable so any post-latch advertise
+	 * cycle ZMK kicks off cannot result in a successful new bond.
+	 * Existing bonds are NOT torn down -- a graceful_shutdown event
+	 * is recoverable across a reboot, and forcing re-pair on every
+	 * brownout is poor UX. The win-condition is "no NEW bonds
+	 * after latch", which bondable=false guarantees at the SMP
+	 * layer regardless of ZMK's adv state.
+	 */
+	bt_set_bondable(false);
+
 	bt_conn_foreach(BT_CONN_TYPE_LE, disconnect_cb, NULL);
 	(void)bt_le_adv_stop();
+
+	/*
+	 * Backstop: register a connect-callback (defends against ZMK's
+	 * own work queue re-arming advertising after we stop it) and
+	 * launch a 250 ms periodic re-stop work for the first 10 s.
+	 * Both are idempotent -- a second graceful_shutdown call returns
+	 * via the was_latched gate above.
+	 */
+	bt_conn_cb_register(&post_latch_conn_cb);
+
+	k_work_init_delayable(&post_latch_adv_stop_work,
+			      post_latch_adv_stop_handler);
+	post_latch_start_ms = k_uptime_get();
+	k_work_schedule(&post_latch_adv_stop_work,
+			K_MSEC(POST_LATCH_PERIOD_MS));
 #endif
 }
 

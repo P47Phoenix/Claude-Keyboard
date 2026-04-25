@@ -90,10 +90,19 @@ Procedure:
 4. Within 2 consecutive windows (~500 ms total at 250 ms cadence),
    expected log: `graceful shutdown: VBAT_ADC broken wire`.
 5. Verify LEDs are off, `bt_bas_set_battery_level(0)` was called,
-   BLE LE connections are dropped, advertising has stopped.
+   BLE LE connections are dropped, advertising has stopped, and
+   `bt_set_bondable(false)` has been re-asserted.
+6. **(Cycle 3 SF-M13 close-out)** Run `bluetoothctl scan on` from a
+   nearby Linux host for 60 s. The pad MUST NOT appear in the scan
+   results. (The post-latch enforcement work re-calls
+   `bt_le_adv_stop()` every 250 ms for 10 s, and the registered
+   connect-callback drops any peer that gets through that window.
+   bondable=false at the SMP layer additionally rejects new bonds
+   even if some adv attempt slips past the work queue race.)
 
 Pass criteria: latch time < 1 s; no false-latch under a controlled
-300 mA LED burst with the wire connected.
+300 mA LED burst with the wire connected; zero scan hits during the
+60 s post-latch sweep.
 
 ### 2.3 NTC over-temp + floating-pin detection
 
