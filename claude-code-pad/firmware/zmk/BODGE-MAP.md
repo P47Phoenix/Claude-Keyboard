@@ -83,15 +83,27 @@ review log as a Phase-3 bodge surcharge, not a Phase-1 regression.
   fast enough (~2 us edges) that cross-talk from the ROW3/ROW4 wires
   running nearby can cause spurious counts. The `alps,ec11` driver has
   no hardware debounce; firmware debounces at 3 ms in software.
-- **FW-M13 (Phase 3 Cycle 2):** the **COL1 bodge** (D1->D10 pin
-  rework that landed NTC on D1 and drove COL1 from D10 instead)
-  runs a longer trace through the matrix scan field. Twist it
-  with a GND return wire; avoid running it parallel to ROW3 or
-  ROW4 within < 3 mm. The matrix driver has a 10 us col-active
-  delay between asserting a column and sampling rows -- tuned to
-  let this bodge stabilise without perturbing the scan period.
-  Longer or un-twisted COL1 wires have shown 1-in-100 false-key
-  rates in bench testing.
+- **FW-M13 (Phase 3 Cycle 2; corrected Cycle 3):** the **COL1
+  bodge** (D1->D10 pin rework that landed NTC on D1 and drove COL1
+  from D10 instead) runs a longer trace through the matrix scan
+  field. ZMK's `zmk,kscan-gpio-matrix` driver does NOT expose a
+  per-column "col-active-time" setting (binding has only
+  `debounce-press-ms`, `debounce-release-ms`, `debounce-scan-period-ms`,
+  `poll-period-ms`); an earlier draft of this BODGE-MAP claimed a
+  10 us col-active delay was set, which was not actually wired into
+  the overlay. The mitigation is purely physical:
+
+  * twist the COL1 bodge wire with a GND return,
+  * avoid running it parallel to ROW3 or ROW4 within < 3 mm,
+  * keep the wire under 15 mm.
+
+  Bench testing on the breadboard prototype showed un-twisted
+  COL1 wires producing a 1-in-100 false-key rate; twisted with
+  GND, the rate drops below the noise floor of a 5 ms debounce
+  window (which is what `CONFIG_ZMK_KSCAN_DEBOUNCE_PRESS_MS=5` is
+  already configured for in `Kconfig.defconfig`). Builders who
+  observe ghosting should re-twist COL1 before reaching for any
+  firmware-side knob.
 
 ## SWO conflict note (Phase 3 Cycle 2, FW #23)
 

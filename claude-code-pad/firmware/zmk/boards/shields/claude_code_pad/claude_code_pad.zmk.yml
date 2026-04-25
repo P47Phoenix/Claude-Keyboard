@@ -13,5 +13,7 @@ features:
   - keys
   - encoder
   - underglow
-siblings:
-  - claude_code_pad
+# `siblings` was previously listed with a self-reference. That field is
+# meant for split keyboards (pairing left + right halves under a single
+# logical shield); a unibody macropad has no siblings. Removed in
+# Phase 3 Cycle 3 to keep the shield manifest correct.

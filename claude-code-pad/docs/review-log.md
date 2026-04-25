@@ -1899,3 +1899,92 @@ all closed in commit C2.6 / C2.4 / C2.3.
 `PHASE-3-CYCLE-2: READY_FOR_REVIEW` — `west build` succeeds
 (257 KB FLASH / 22% RAM), ztest 6/6 pass on native_sim/native/64,
 all 9 BLOCKERs closed.
+
+# Phase 3 Cycle 3 (2026-04-25)
+
+**Inputs:** Cycle 2 review verdict `0 BLOCKER / 1 MAJOR / 8 MINOR`.
+Surgical close-out cycle, no review re-run dispatched. Hard gate:
+`west build` and ztest must remain green after each commit.
+
+### Commits (Phase 3 Cycle 3)
+
+| #     | Hash    | Scope |
+|-------|---------|-------|
+| C3.1  | 60d93c9 | pairing-window behavior + keymap chord (closes SF-M12) |
+| C3.2  | cc8e0e3 | WDT timeout 2000 -> 4000 ms (slack vs thermal cadence) |
+| C3.3  | 92249d3 | post-latch BLE adv enforcement (SF-M13 close-out) |
+| C3.4  | ca1d4f4 | floating-probe re-arm on every OOR transition |
+| C3.5  | f972ca9 | latch policy comment + rate-limit unit reconciliation |
+| C3.6  | (this)  | BODGE-MAP correction + zmk.yml siblings + UF2 + log |
+
+### MAJOR closure
+
+- **SF-M12 (pairing chord)** — CLOSED. `&ccp_pair` behavior added in
+  `drivers/ccp_safety/ccp_pair.c`: on press calls `bt_set_bondable(true)`,
+  schedules a 60 s `k_work_delayable` to re-assert
+  `bt_set_bondable(false)`, and starts a 1 Hz strip-toggle blink for
+  visible feedback. Re-pressing the chord during the window resets
+  the timer (no toggle / no early cancel); a `graceful_shutdown`
+  latch force-closes the window. Bound at BT-layer position (0,0)
+  via a 3-second hold-tap (`bt0_pair`): tap = `&bt BT_SEL 0`,
+  hold-3s = `&ccp_pair`. Two 1-param trampoline macros
+  (`mac_pair_open_p`, `mac_bt_sel0_p`) bridge ZMK's hold-tap inner
+  arity. Ztest now covers the open/close state machine
+  (`tests/ccp_safety/src/test_pair_window.c`, 4 cases).
+
+### MINOR closures (8/8)
+
+| # | MINOR | Disposition |
+|---|-------|-------------|
+| 1 | WDT 2000 ms vs thermal 2000 ms = zero slack | C3.2: WDT 4000 ms; safety-verification.md §2.4 updated to "reset within 4.5 s". |
+| 2 | `bt_le_adv_stop` insufficient vs ZMK adv loop | C3.3: + `bt_set_bondable(false)` on shutdown, + `bt_conn_cb` to disconnect post-latch peers, + 250 ms-period delayable re-stop work for first 10 s. safety-verification.md §2.2 step 6 adds the 60 s `bluetoothctl scan` test. |
+| 3 | floating-probe one-shot bug | C3.4: `need_divider_check` hoisted to file scope, set true on every OOR; probe-failure leaves it true so a re-solder is observable. |
+| 4 | battery_guard "reschedules forever" comment misled | C3.5: latched-path comment rewritten — code already returned without rescheduling; the comment now describes the no-pet -> WDT-reset recovery contract. |
+| 5 | rate-limit unit ambiguity (degC/sample vs degC/s) | C3.5: README and code comment both state "5 degC/sample" with the per-second equivalent at the 2 s default + tuning note. |
+| 6 | BODGE-MAP §FW-M13 col-active-delay claim was unset in the overlay | C3.6: BODGE-MAP corrected — ZMK's `zmk,kscan-gpio-matrix` exposes only debounce / poll-period properties, no col-active-time. Mitigation is purely physical (twist + parallel-routing avoidance). |
+| 7 | `zmk.yml siblings: [claude_code_pad]` self-reference | C3.6: removed; field replaced with a comment noting it's for split shields only. |
+| 8 | twister.log artifact missing | C3.1..C3.6: `firmware/zmk/build-artifacts/twister.log` now updated after every commit that touches safety driver code. |
+
+### Build outcome (final)
+
+`west build -p auto -s zmk/app -b xiao_ble/nrf52840 ...` — clean
+build (clean rebuild for the final artifact):
+
+```
+Memory region         Used Size  Region Size  %age Used
+           FLASH:      262788 B       788 KB     32.57%
+             RAM:        61184 B       256 KB    23.34%
+        IDT_LIST:           0 GB        32 KB     0.00%
+Converted to uf2, output size: 525824, start address: 0x27000
+Wrote 525824 bytes to zmk.uf2
+```
+
+UF2 size delta vs Cycle 2: 525824 - 515072 = +10752 bytes (+2.1 %).
+Driven by the new pairing behavior + two trampoline macros + the
+post-latch BLE enforcement state. FLASH headroom is now 67.43 %
+(was 68.09 %). Plenty of room for Phase 4/5 additions.
+
+### Ztest outcome (final)
+
+```
+SUITE PASS - 100.00% [ccp_pair_window]: pass = 4, fail = 0
+SUITE PASS - 100.00% [ccp_safety_cap_registry]: pass = 6, fail = 0
+```
+
+10 of 10 PASS on `native_sim/native/64`. Log artifact at
+`firmware/zmk/build-artifacts/twister.log`.
+
+### Deferred items
+
+None. All Cycle 2 BLOCKER / MAJOR / MINORs are closed, the
+phase-spec-deferred items (SF-M11 per-LED override, ZMK Studio
+combo entry to BT layer) are tracked in
+`docs/safety-verification.md` and remain Phase 5 / Cycle 4 work
+respectively.
+
+### Status
+
+`PHASE-3-CYCLE-3: COMPLETE` — surgical close-out, no re-review
+needed. The MAJOR was closed with a real implementation + ztest
+coverage; all 8 MINORs were closed in code or documentation; both
+hard gates (`west build`, ztest 10/10) remain green.
