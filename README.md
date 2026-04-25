@@ -6,14 +6,18 @@ Wireless multi-host via BLE on a Seeed XIAO nRF52840; firmware runs [ZMK](https:
 
 ## Status
 
+**Design-complete (2026-04-23).** Gerbers + case STLs + firmware UF2 are produced, reviewed, and committed. Hardware bring-up + bench verification of the safety thresholds is the next physical step.
+
 | Phase | Scope | State |
 |---|---|---|
-| 1 | PCB design (schematic, layout, routing, gerbers, BOM, CPL) | **Closed** (7 review cycles, 29 BLOCKERs resolved); post-closure GUI-DRC cleanup Cycle 8 in progress |
-| 2 | 3D-printed case + bottom plate (CadQuery, PETG) | Not started |
-| 3 | Firmware (ZMK on nRF52840) | Not started; hard requirements captured in `claude-code-pad/firmware/zmk/README.md` |
-| 4 | TinyML callouts | **Retired** — dropped with OLED in Cycle 1 arbitration |
-| 5 | RFID figurine keycap base | Not started |
-| 6 | Integration review | Not started |
+| 1 | PCB design (schematic, layout, routing, gerbers, BOM, CPL) | **Closed** (11 cycles) |
+| 2 | 3D-printed case + bottom plate (CadQuery, PETG) | **Closed** (3 cycles) |
+| 3 | Firmware (ZMK on nRF52840) | **Closed** (3 cycles) — `west build` clean, ztest 10/10 |
+| 4 | TinyML callouts | **Retired** (Cycle 1 arbitration) |
+| 5 | RFID figurine keycap base | **Retired** (post-Phase-3 scope decision) |
+| 6 | Integration review | **Retired** (post-Phase-3 scope decision) |
+
+PN532 NFC header + I²C bus remain on the PCB for any future revisit; firmware can wire them up later without a board respin.
 
 ## Hardware highlights
 
