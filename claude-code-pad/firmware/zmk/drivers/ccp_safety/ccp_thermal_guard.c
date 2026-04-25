@@ -54,6 +54,13 @@ static const struct adc_dt_spec ntc_spec =
 
 static struct k_work_delayable ntc_work;
 static int last_temp_c = INT_MIN;
+/*
+ * FW-M6 floating-pin probe state. true means "the next in-range sample
+ * must re-run the floating-pin verification". Set true at boot and any
+ * time a sample lands OOR; cleared once a probe successfully verifies
+ * the divider is connected.
+ */
+static bool need_divider_check = true;
 
 /* --------- Integer log-ratio LUT -----------------------------------
  *
@@ -274,21 +281,34 @@ static void ntc_work_handler(struct k_work *work)
 		goto reschedule;
 	}
 
+	/*
+	 * Phase 3 Cycle 3 (RED-FW MINOR): the floating-probe re-arm
+	 * lives at file scope so an OOR -> in-range -> OOR -> in-range
+	 * cycle correctly re-runs the probe each time the pin re-enters
+	 * the in-range band. Cycle 2's static-bool-inside-handler set
+	 * to false on the first probe and never recovered, so a transient
+	 * wire break that bounced the pin back into range silently re-
+	 * armed without divider verification.
+	 */
 	if (vntc_mv < NTC_OOR_LOW_MV || vntc_mv > NTC_OOR_HIGH_MV) {
 		LOG_WRN("NTC_ADC OOR: %d mV -- fallback 100 mA cap", vntc_mv);
 		ccp_safety_set_cap(CCP_CAP_THERMAL, NTC_FALLBACK_CAP, NTC_SAMPLE_MS);
 		ntc_missing_indicator(true);
+		need_divider_check = true;   /* re-arm probe on next in-range */
 		goto reschedule;
 	}
 
-	/* FW-M6: confirm the divider is really connected. Only invoke this
-	 * on the first sample after any OOR -> in-range transition. */
-	static bool need_divider_check = true;
-
+	/* FW-M6: confirm the divider is really connected. Re-armed on every
+	 * OOR transition so a flapping wire is verified each time it lands
+	 * back in-range, not just the first time at boot.
+	 */
 	if (need_divider_check && ntc_floating_probe()) {
 		LOG_WRN("NTC divider appears floating -- fallback");
 		ccp_safety_set_cap(CCP_CAP_THERMAL, NTC_FALLBACK_CAP, NTC_SAMPLE_MS);
 		ntc_missing_indicator(true);
+		/* Stay armed: a second probe attempt can succeed if the
+		 * builder re-soldered the bodge mid-run.
+		 */
 		goto reschedule;
 	}
 	need_divider_check = false;
