@@ -147,3 +147,7 @@ claude-code-pad/
 - Every adversarial review cycle gets logged in `docs/review-log.md` with severity tags (BLOCKER/MAJOR/MINOR).
 - Don't create speculative files or README stubs — only what a phase deliverable requires.
 - When in doubt between flatpak and a native dnf KiCad, stick with flatpak (already installed, library packs already present).
+
+## Repository Memory
+
+This repository has a corresponding entity in the `mcp__memory` knowledge graph (entity name: `Claude-Keyboard`, type `github_repo`, linked via an `owns` relation from `Michael Connelly`). Query it via `mcp__memory__search_nodes` or `mcp__memory__open_nodes` for cross-repo context, history, and notes captured outside this file.
